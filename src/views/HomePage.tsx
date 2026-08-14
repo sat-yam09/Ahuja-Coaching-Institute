@@ -70,8 +70,16 @@ export const HomePage: React.FC<HomePageProps> = ({
     <div className="space-y-16 pb-12 bg-[#FAF6EE]">
       {/* HERO SECTION */}
       <section className="relative bg-[#5C1315] text-white overflow-hidden py-16 sm:py-24 border-b-4 border-[#C99A2C]">
-        {/* Subtle Background Pattern */}
-        <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#C99A2C_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
+        {/* Background Stock Image with Deep Maroon Gradient Overlay */}
+        <div className="absolute inset-0 pointer-events-none z-0">
+          <img
+            src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=1920"
+            alt="Students Studying in Academic Campus"
+            className="w-full h-full object-cover object-center opacity-25 scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#380608]/95 via-[#5C1315]/90 to-[#2A0506]/92" />
+          <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#C99A2C_1px,transparent_1px)] [background-size:16px_16px]" />
+        </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">

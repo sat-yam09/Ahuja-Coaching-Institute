@@ -27,9 +27,19 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, onInqui
   ];
 
   return (
-    <header className="sticky top-0 z-40 w-full shadow-md bg-[#5C1315] text-white border-b border-[#430d0f]">
+    <header className="sticky top-0 z-40 w-full shadow-md bg-[#5C1315] text-white border-b border-[#430d0f] relative overflow-hidden">
+      {/* Background Stock Image with Deep Maroon Gradient Overlay */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <img
+          src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=1920"
+          alt="Campus Architecture Background"
+          className="w-full h-full object-cover object-center opacity-15"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#4A0E10]/95 via-[#5C1315]/90 to-[#400B0D]/95 backdrop-blur-[1px]" />
+      </div>
+
       {/* Top Ticker Notification Bar */}
-      <div className="bg-[#400B0D] text-amber-200 text-xs py-1.5 px-4 overflow-hidden border-b border-white/10 hidden sm:block">
+      <div className="relative z-10 bg-[#400B0D]/90 text-amber-200 text-xs py-1.5 px-4 overflow-hidden border-b border-white/10 hidden sm:block">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-2 flex-shrink-0 font-semibold text-white">
             <Award className="w-3.5 h-3.5 text-amber-400" />
@@ -54,7 +64,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, onInqui
       </div>
 
       {/* Main Navbar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <button

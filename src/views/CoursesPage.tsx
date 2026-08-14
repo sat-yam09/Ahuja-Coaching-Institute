@@ -72,6 +72,17 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({
     <div className="space-y-16 pb-16 bg-[#FAF6EE]">
       {/* COURSES HERO */}
       <section className="bg-[#5C1315] text-white py-16 text-center border-b-4 border-[#C99A2C] relative overflow-hidden">
+        {/* Background Stock Image with Deep Maroon Gradient Overlay */}
+        <div className="absolute inset-0 pointer-events-none z-0">
+          <img
+            src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=1920"
+            alt="Focused Students Preparing for Entrance Exams"
+            className="w-full h-full object-cover object-center opacity-25 scale-105"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#380608]/95 via-[#5C1315]/90 to-[#2A0506]/92" />
+          <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#C99A2C_1px,transparent_1px)] [background-size:16px_16px]" />
+        </div>
+
         <div className="max-w-4xl mx-auto px-4 relative z-10 space-y-4">
           <span className="inline-block px-3 py-1 bg-amber-400/20 text-amber-200 border border-amber-400/30 text-xs font-bold uppercase tracking-wider rounded-full">
             PROGRAMS & CURRICULUMS 2026-27
