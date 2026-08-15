@@ -1,10 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
-import { Menu, X, ChevronDown, PhoneCall, Sparkles, Award } from 'lucide-react';
+import React, { useState, useRef, useEffect } from 'react';
+import { Menu, X, ChevronDown, PhoneCall } from 'lucide-react';
 import { AhujaLogo } from './AhujaLogo';
 import { PageTab } from '../types';
-import { tickerResults } from '../data/mockData';
 
 interface HeaderProps {
   activeTab: PageTab;
@@ -15,6 +14,34 @@ interface HeaderProps {
 export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, onInquireClick }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
+  const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  // Close desktop dropdown on outside click
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setAboutDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const handleNavigateToSection = (tab: PageTab, sectionId?: string) => {
+    setActiveTab(tab);
+    setAboutDropdownOpen(false);
+    setMobileMenuOpen(false);
+
+    if (sectionId) {
+      setTimeout(() => {
+        const el = document.getElementById(sectionId);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 150);
+    }
+  };
 
   const navLinks: { id: PageTab; label: string; hasDropdown?: boolean }[] = [
     { id: 'home', label: 'Home' },
@@ -27,46 +54,9 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, onInqui
   ];
 
   return (
-    <header className="sticky top-0 z-40 w-full shadow-md bg-[#5C1315] text-white border-b border-[#430d0f] relative overflow-hidden">
-      {/* Background Stock Image with Deep Maroon Gradient Overlay */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <img
-          src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=80&w=1920"
-          alt="Campus Architecture Background"
-          className="w-full h-full object-cover object-center opacity-15"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#4A0E10]/95 via-[#5C1315]/90 to-[#400B0D]/95 backdrop-blur-[1px]" />
-      </div>
-
-      {/* Top Ticker Notification Bar */}
-      <div className="relative z-10 bg-[#400B0D]/90 text-amber-200 text-xs py-1.5 px-4 overflow-hidden border-b border-white/10 hidden sm:block">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-2 flex-shrink-0 font-semibold text-white">
-            <Award className="w-3.5 h-3.5 text-amber-400" />
-            <span className="uppercase text-[11px] tracking-wider text-amber-300">Historical Results Highlight:</span>
-          </div>
-          <div className="overflow-hidden relative flex-1 mx-4">
-            <div className="animate-marquee whitespace-nowrap inline-flex items-center gap-8 text-[11px]">
-              {tickerResults.map((res, i) => (
-                <span key={i} className="inline-flex items-center gap-1.5">
-                  <span className="font-bold text-white">{res.name}</span>
-                  <span className="bg-amber-400/20 text-amber-300 px-1.5 py-0.5 rounded text-[10px] font-mono">{res.score}</span>
-                  <span className="text-white/70">({res.exam})</span>
-                  <span className="text-amber-500/50">|</span>
-                </span>
-              ))}
-            </div>
-          </div>
-          <div className="flex items-center gap-3 text-[11px] text-white/80 flex-shrink-0">
-            <span className="flex items-center gap-1"><PhoneCall className="w-3 h-3 text-amber-400" /> +91 98250 12345</span>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Navbar */}
+    <header className="sticky top-0 z-40 w-full shadow-sm bg-[#5C1315] text-white border-b border-[#430d0f]">
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
+        <div className="flex items-center justify-between h-16">
           <button
             onClick={() => {
               setActiveTab('home');
@@ -77,66 +67,62 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, onInqui
             <AhujaLogo size="md" variant="light" />
           </button>
 
-          {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-1 bg-[#4A0E10] px-3 py-1.5 rounded-full border border-amber-500/20 shadow-inner">
+          <nav className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => {
               const isActive = activeTab === link.id;
 
               if (link.hasDropdown) {
                 return (
-                  <div key={link.id} className="relative group" onMouseLeave={() => setAboutDropdownOpen(false)}>
+                  <div
+                    key={link.id}
+                    ref={dropdownRef}
+                    className="relative group"
+                    onMouseEnter={() => setAboutDropdownOpen(true)}
+                    onMouseLeave={() => setAboutDropdownOpen(false)}
+                  >
                     <button
                       onClick={() => {
-                        setActiveTab(link.id);
-                        setAboutDropdownOpen(!aboutDropdownOpen);
+                        handleNavigateToSection('about');
                       }}
-                      onMouseEnter={() => setAboutDropdownOpen(true)}
-                      className={`px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition flex items-center gap-1 ${
+                      className={`px-3 py-2 rounded-md text-sm font-medium transition flex items-center gap-1 ${
                         isActive
-                          ? 'bg-[#C99A2C] text-[#1A1818] shadow-xs'
+                          ? 'bg-[#C99A2C] text-[#1A1818] font-semibold'
                           : 'text-white/90 hover:text-white hover:bg-white/10'
                       }`}
                     >
-                      {link.label} <ChevronDown className="w-3.5 h-3.5" />
+                      {link.label} <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${aboutDropdownOpen ? 'rotate-180' : ''}`} />
                     </button>
 
-                    {/* About Dropdown */}
                     {aboutDropdownOpen && (
-                      <div className="absolute top-full left-0 mt-1 w-52 bg-white text-gray-900 rounded-2xl shadow-xl border border-gray-200 py-2 z-50 animate-fadeIn">
+                      <div className="absolute top-full left-0 mt-0 pt-1 w-56 bg-white text-gray-900 rounded-lg shadow-xl border border-gray-200 py-1.5 z-50 animate-fadeIn">
                         <button
-                          onClick={() => {
-                            setActiveTab('about');
-                            setAboutDropdownOpen(false);
-                          }}
-                          className="w-full text-left px-4 py-2 text-xs font-medium hover:bg-amber-50 hover:text-[#5C1315] flex items-center justify-between"
+                          onClick={() => handleNavigateToSection('about', 'who-we-are')}
+                          className="w-full text-left px-4 py-2.5 text-sm hover:bg-amber-50 hover:text-[#5C1315] transition flex items-center justify-between font-medium"
                         >
                           <span>About Institute</span>
-                          <span className="text-[10px] text-gray-400">Since 2001</span>
+                          <span className="text-xs text-amber-700 bg-amber-100 px-1.5 py-0.5 rounded font-mono">Since 1998</span>
                         </button>
                         <button
-                          onClick={() => {
-                            setActiveTab('faculty');
-                            setAboutDropdownOpen(false);
-                          }}
-                          className="w-full text-left px-4 py-2 text-xs font-medium hover:bg-amber-50 hover:text-[#5C1315]"
+                          onClick={() => handleNavigateToSection('faculty')}
+                          className="w-full text-left px-4 py-2.5 text-sm hover:bg-amber-50 hover:text-[#5C1315] transition font-medium"
                         >
-                          Faculty Profiles
+                          Faculty Mentors
                         </button>
                         <button
-                          onClick={() => {
-                            setActiveTab('about');
-                            setAboutDropdownOpen(false);
-                          }}
-                          className="w-full text-left px-4 py-2 text-xs font-medium hover:bg-amber-50 hover:text-[#5C1315]"
+                          onClick={() => handleNavigateToSection('about', 'directors-message')}
+                          className="w-full text-left px-4 py-2.5 text-sm hover:bg-amber-50 hover:text-[#5C1315] transition font-medium"
                         >
-                          Director's Message
+                          Founder's Message
                         </button>
                         <button
-                          onClick={() => {
-                            setActiveTab('gallery');
-                            setAboutDropdownOpen(false);
-                          }}
-                          className="w-full text-left px-4 py-2 text-xs font-medium hover:bg-amber-50 hover:text-[#5C1315]"
+                          onClick={() => handleNavigateToSection('about', 'journey-timeline-section')}
+                          className="w-full text-left px-4 py-2.5 text-sm hover:bg-amber-50 hover:text-[#5C1315] transition font-medium"
+                        >
+                          Our 27+ Year Journey
+                        </button>
+                        <button
+                          onClick={() => handleNavigateToSection('gallery')}
+                          className="w-full text-left px-4 py-2.5 text-sm hover:bg-amber-50 hover:text-[#5C1315] transition font-medium border-t border-gray-100 mt-1"
                         >
                           Campus Learning Spaces
                         </button>
@@ -150,9 +136,9 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, onInqui
                 <button
                   key={link.id}
                   onClick={() => setActiveTab(link.id)}
-                  className={`px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition ${
+                  className={`px-3 py-2 rounded-md text-sm font-medium transition ${
                     isActive
-                      ? 'bg-[#C99A2C] text-[#1A1818] shadow-xs'
+                      ? 'bg-[#C99A2C] text-[#1A1818] font-semibold'
                       : 'text-white/90 hover:text-white hover:bg-white/10'
                   }`}
                 >
@@ -162,57 +148,122 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, onInqui
             })}
           </nav>
 
-          {/* CTA Inquire Button (Desktop >= 1024px) */}
-          <div className="hidden lg:flex items-center gap-3">
+          <div className="hidden lg:flex items-center gap-4">
+            <div className="flex items-center gap-1.5 text-sm text-amber-200/90">
+              <PhoneCall className="w-3.5 h-3.5" /> +91 74053 28676
+            </div>
             <button
               onClick={onInquireClick}
-              className="px-5 py-2.5 bg-white hover:bg-amber-50 text-[#5C1315] font-bold text-xs uppercase tracking-wider rounded-xl transition shadow-md hover:shadow-lg border border-amber-300 flex items-center gap-1.5"
+              className="px-4 py-2 bg-[#C99A2C] hover:bg-[#b08420] text-[#1A1818] font-semibold rounded-md text-sm transition shadow-sm"
             >
-              <Sparkles className="w-3.5 h-3.5 text-amber-600" /> Inquire Now
+              Inquire Now
             </button>
           </div>
 
-          {/* Mobile & Tablet Hamburger Menu Toggle */}
           <div className="flex lg:hidden items-center">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="text-white p-2 rounded-lg hover:bg-white/10 transition"
+              className="text-white p-2 rounded-md hover:bg-white/10 transition"
               aria-label="Toggle Navigation"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile & Tablet Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#4A0E10] border-t border-white/10 px-4 py-5 space-y-2 animate-fadeIn">
-          {navLinks.map((link) => (
-            <button
-              key={link.id}
-              onClick={() => {
-                setActiveTab(link.id);
-                setMobileMenuOpen(false);
-              }}
-              className={`w-full text-left px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition ${
-                activeTab === link.id
-                  ? 'bg-[#C99A2C] text-[#1A1818]'
-                  : 'text-white/90 hover:bg-white/10 hover:text-white'
-              }`}
-            >
-              {link.label}
-            </button>
-          ))}
-          <div className="pt-3 border-t border-white/10 mt-2">
+        <div className="lg:hidden bg-[#4A0E10] border-t border-white/10 px-4 py-4 space-y-1 animate-fadeIn">
+          {navLinks.map((link) => {
+            if (link.hasDropdown) {
+              return (
+                <div key={link.id} className="space-y-1">
+                  <div className="flex items-center justify-between">
+                    <button
+                      onClick={() => handleNavigateToSection('about')}
+                      className={`flex-1 text-left px-4 py-2.5 rounded-md text-sm font-medium transition ${
+                        activeTab === link.id
+                          ? 'bg-[#C99A2C] text-[#1A1818]'
+                          : 'text-white/90 hover:bg-white/10 hover:text-white'
+                      }`}
+                    >
+                      {link.label}
+                    </button>
+                    <button
+                      onClick={() => setMobileAboutOpen(!mobileAboutOpen)}
+                      className="p-2 text-amber-300 hover:bg-white/10 rounded-md"
+                    >
+                      <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileAboutOpen ? 'rotate-180' : ''}`} />
+                    </button>
+                  </div>
+
+                  {mobileAboutOpen && (
+                    <div className="pl-4 pr-2 py-1 space-y-1 bg-black/20 rounded-md border border-white/5">
+                      <button
+                        onClick={() => handleNavigateToSection('about', 'who-we-are')}
+                        className="w-full text-left px-3 py-2 text-xs text-amber-100 hover:text-white"
+                      >
+                        • About Institute (Since 1998)
+                      </button>
+                      <button
+                        onClick={() => handleNavigateToSection('faculty')}
+                        className="w-full text-left px-3 py-2 text-xs text-amber-100 hover:text-white"
+                      >
+                        • Faculty Mentors
+                      </button>
+                      <button
+                        onClick={() => handleNavigateToSection('about', 'directors-message')}
+                        className="w-full text-left px-3 py-2 text-xs text-amber-100 hover:text-white"
+                      >
+                        • Founder's Message
+                      </button>
+                      <button
+                        onClick={() => handleNavigateToSection('about', 'journey-timeline-section')}
+                        className="w-full text-left px-3 py-2 text-xs text-amber-100 hover:text-white"
+                      >
+                        • Our 27+ Year Journey
+                      </button>
+                      <button
+                        onClick={() => handleNavigateToSection('gallery')}
+                        className="w-full text-left px-3 py-2 text-xs text-amber-100 hover:text-white"
+                      >
+                        • Campus Learning Spaces
+                      </button>
+                    </div>
+                  )}
+                </div>
+              );
+            }
+
+            return (
+              <button
+                key={link.id}
+                onClick={() => {
+                  setActiveTab(link.id);
+                  setMobileMenuOpen(false);
+                }}
+                className={`w-full text-left px-4 py-2.5 rounded-md text-sm font-medium transition ${
+                  activeTab === link.id
+                    ? 'bg-[#C99A2C] text-[#1A1818]'
+                    : 'text-white/90 hover:bg-white/10 hover:text-white'
+                }`}
+              >
+                {link.label}
+              </button>
+            );
+          })}
+          <div className="pt-3 border-t border-white/10 mt-2 space-y-2">
+            <div className="flex items-center gap-1.5 px-4 text-sm text-amber-200/90">
+              <PhoneCall className="w-3.5 h-3.5" /> +91 98250 12345
+            </div>
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
                 onInquireClick();
               }}
-              className="w-full py-3.5 bg-white hover:bg-amber-50 text-[#5C1315] font-bold text-xs uppercase tracking-wider rounded-xl text-center shadow-lg border border-amber-300 flex items-center justify-center gap-2"
+              className="w-full py-2.5 bg-[#C99A2C] hover:bg-[#b08420] text-[#1A1818] font-semibold rounded-md text-sm shadow-sm"
             >
-              <Sparkles className="w-4 h-4 text-amber-600" /> Inquire Now
+              Inquire Now
             </button>
           </div>
         </div>

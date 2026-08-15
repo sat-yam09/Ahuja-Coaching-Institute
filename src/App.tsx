@@ -23,7 +23,6 @@ export default function App() {
   const [selectedSyllabusCourse, setSelectedSyllabusCourse] = useState<Course | null>(null);
   const [selectedCourseIdForPage, setSelectedCourseIdForPage] = useState('jee');
 
-  // Scroll to top on page tab change
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [activeTab]);
@@ -36,15 +35,13 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF6EE] text-[#1A1818] font-sans antialiased flex flex-col justify-between selection:bg-amber-300 selection:text-[#5C1315]">
-      {/* Top Header */}
+    <div className="min-h-screen bg-[#F5F5F4] text-[#1C1917] font-sans antialiased flex flex-col justify-between selection:bg-amber-300 selection:text-[#1C1917]">
       <Header
         activeTab={activeTab}
         setActiveTab={setActiveTab}
         onInquireClick={() => handleOpenInquire()}
       />
 
-      {/* Main View Area */}
       <main className="flex-grow">
         {activeTab === 'home' && (
           <HomePage
@@ -94,13 +91,11 @@ export default function App() {
         {activeTab === 'contact' && <ContactPage />}
       </main>
 
-      {/* Footer */}
       <Footer
         setActiveTab={setActiveTab}
         onInquireClick={() => handleOpenInquire()}
       />
 
-      {/* Global Modals */}
       <InquireModal
         isOpen={inquireModalOpen}
         onClose={() => setInquireModalOpen(false)}

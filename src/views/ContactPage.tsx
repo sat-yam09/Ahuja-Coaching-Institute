@@ -2,8 +2,7 @@
 
 import React, { useState } from 'react';
 import { branches, faqItems } from '../data/mockData';
-import { MapPin, Phone, Mail, Clock, Send, CheckCircle2, MessageCircle, Navigation, ChevronDown, HelpCircle } from 'lucide-react';
-import confetti from 'canvas-confetti';
+import { Send, CheckCircle2, ChevronDown, HelpCircle } from 'lucide-react';
 
 export const ContactPage: React.FC = () => {
   const [name, setName] = useState('');
@@ -17,162 +16,67 @@ export const ContactPage: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!name.trim() || !phone.trim()) return;
-
-    try {
-      confetti({
-        particleCount: 70,
-        spread: 60,
-        origin: { y: 0.6 },
-        colors: ['#5C1315', '#C99A2C', '#ffffff'],
-      });
-    } catch {
-      // fallback
-    }
-
     setSubmitted(true);
   };
 
   return (
-    <div className="space-y-16 pb-16 bg-[#FAF6EE]">
+    <div className="space-y-10 pb-12 bg-[#FAF6EE]">
       {/* CONTACT HERO */}
-      <section className="bg-[#5C1315] text-white py-16 text-center border-b-4 border-[#C99A2C] relative overflow-hidden">
-        {/* Background Stock Image with Deep Maroon Gradient Overlay */}
-        <div className="absolute inset-0 pointer-events-none z-0">
+      <section className="relative text-white py-16 sm:py-20 text-center overflow-hidden flex items-center justify-center border-b border-[#C99A2C]/40">
+        <div className="absolute inset-0 pointer-events-none">
           <img
-            src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=1920"
-            alt="Campus Reception & Academic Counseling Desk"
-            className="w-full h-full object-cover object-center opacity-25 scale-105"
+            src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1920"
+            alt="Contact Ahuja Career Institute Campuses"
+            className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#380608]/95 via-[#5C1315]/90 to-[#2A0506]/92" />
-          <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#C99A2C_1px,transparent_1px)] [background-size:16px_16px]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/65 to-black/75" />
         </div>
 
-        <div className="max-w-4xl mx-auto px-4 relative z-10 space-y-4">
-          <span className="inline-block px-3 py-1 bg-amber-400/20 text-amber-200 border border-amber-400/30 text-xs font-bold uppercase tracking-wider rounded-full">
-            VISIT & GET IN TOUCH
-          </span>
-          <h1 className="text-3xl sm:text-5xl font-bold font-serif leading-tight">
+        <div className="relative z-10 max-w-4xl mx-auto px-4 space-y-3">
+          <div className="inline-block px-3 py-1 bg-[#C99A2C]/20 border border-[#C99A2C]/40 text-amber-300 text-xs font-semibold tracking-wider rounded-md backdrop-blur-xs">
+            VISIT &amp; GET IN TOUCH
+          </div>
+          <h1 className="text-3xl sm:text-5xl font-bold leading-tight text-white">
             Contact Ahuja Career Institute
           </h1>
-          <p className="text-sm sm:text-base text-amber-100/90 leading-relaxed max-w-2xl mx-auto font-light">
-            Campus directory details for Vastral, Isanpur, and Maninagar branches. Our academic counselors are available 6 days a week.
+          <p className="text-sm sm:text-base text-gray-200 leading-relaxed max-w-2xl mx-auto font-normal">
+            Campus directory details for Maninagar Head Office and Vastral Branch. Our academic counselors are available from 3:00 PM to 9:00 PM (Monday - Saturday).
           </p>
         </div>
       </section>
 
-      {/* BRANCH CARDS GRID */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        <div className="text-center space-y-2">
-          <span className="text-xs font-bold text-[#5C1315] uppercase tracking-widest bg-amber-100 px-3 py-1 rounded-full border border-amber-200">
-            CAMPUS DIRECTORY
-          </span>
-          <h2 className="text-2xl sm:text-3xl font-bold font-serif text-[#4A0E10]">
-            Our Campuses Across Ahmedabad
-          </h2>
-        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {branches.map((branch) => (
-            <div
-              key={branch.id}
-              className={`bg-white rounded-2xl p-6 border shadow-md flex flex-col justify-between space-y-5 relative card-hover-effect ${
-                branch.isMainBranch
-                  ? 'border-[#C99A2C] ring-2 ring-amber-400/40'
-                  : 'border-[#E5DCCB]'
-              }`}
-            >
-              {branch.isMainBranch && (
-                <span className="absolute -top-3 right-4 px-3 py-0.5 bg-[#C99A2C] text-[#1A1818] font-bold text-[10px] uppercase rounded-full shadow-xs">
-                  Head Office
-                </span>
-              )}
-
-              <div className="space-y-3">
-                <h3 className="font-bold text-lg font-serif text-[#4A0E10]">{branch.name}</h3>
-
-                <div className="space-y-2.5 text-xs text-gray-700">
-                  <div className="flex items-start gap-2">
-                    <MapPin className="w-4 h-4 text-[#5C1315] flex-shrink-0 mt-0.5" />
-                    <span>{branch.address}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Phone className="w-4 h-4 text-[#5C1315] flex-shrink-0" />
-                    <span className="font-semibold text-gray-900">{branch.phone}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Mail className="w-4 h-4 text-[#5C1315] flex-shrink-0" />
-                    <span>{branch.email}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Clock className="w-4 h-4 text-[#5C1315] flex-shrink-0" />
-                    <span>{branch.timing}</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Actions Bar */}
-              <div className="space-y-2 pt-2 border-t border-gray-100">
-                <a
-                  href={`tel:${branch.phone.split('/')[0].trim()}`}
-                  className="w-full py-2 bg-[#5C1315] hover:bg-[#430d0f] text-white font-bold text-xs rounded-xl flex items-center justify-center gap-2 uppercase tracking-wider transition"
-                >
-                  <Phone className="w-3.5 h-3.5" /> Click-to-Call Branch
-                </a>
-
-                <div className="grid grid-cols-2 gap-2">
-                  <a
-                    href={branch.whatsappLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="py-2 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 font-bold text-[11px] rounded-xl border border-emerald-200 flex items-center justify-center gap-1.5 transition"
-                  >
-                    <MessageCircle className="w-3.5 h-3.5 text-emerald-600" /> WhatsApp
-                  </a>
-                  <a
-                    href={branch.mapsUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="py-2 bg-amber-50 hover:bg-amber-100 text-[#5C1315] font-bold text-[11px] rounded-xl border border-amber-200 flex items-center justify-center gap-1.5 transition"
-                  >
-                    <Navigation className="w-3.5 h-3.5 text-amber-600" /> Google Maps
-                  </a>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* INQUIRY & FAQ GRID */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
         <div className="text-center space-y-2">
-          <span className="text-xs font-bold text-[#5C1315] uppercase tracking-widest bg-amber-100 px-3 py-1 rounded-full border border-amber-200">
-            COUNSELING & SUPPORT
-          </span>
-          <h2 className="text-2xl sm:text-3xl font-bold font-serif text-[#4A0E10]">
-            Inquiry & Frequently Asked Questions
+          <div className="text-xs font-semibold text-[#5C1315] tracking-widest uppercase">
+            COUNSELING &amp; SUPPORT
+          </div>
+          <h2 className="text-xl sm:text-2xl font-bold text-[#4A0E10]">
+            Inquiry &amp; Frequently Asked Questions
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
           {/* Left Column: FAQ Accordion */}
-          <div className="lg:col-span-6 bg-white p-6 sm:p-8 rounded-3xl border border-[#E5DCCB] shadow-lg space-y-4">
+          <div className="lg:col-span-6 bg-white p-5 sm:p-6 rounded-lg border border-[#E5DCCB] space-y-4">
             <div className="flex items-center gap-2 border-b border-gray-100 pb-3">
               <HelpCircle className="w-5 h-5 text-[#5C1315]" />
-              <h3 className="font-serif font-bold text-lg text-[#4A0E10]">Frequently Asked Questions</h3>
+              <h3 className="font-semibold text-base text-[#4A0E10]">Frequently Asked Questions</h3>
             </div>
 
-            <div className="space-y-3">
+            <div className="space-y-2">
               {faqItems.map((faq, idx) => {
                 const isOpen = openFaqIndex === idx;
                 return (
                   <div
                     key={idx}
-                    className="border border-gray-200 rounded-2xl overflow-hidden transition bg-[#FAF6EE]"
+                    className="border border-gray-200 rounded-md overflow-hidden bg-[#FAF6EE]"
                   >
                     <button
                       onClick={() => setOpenFaqIndex(isOpen ? null : idx)}
-                      className="w-full text-left p-4 font-bold text-xs sm:text-sm text-[#4A0E10] flex items-center justify-between gap-2 hover:bg-amber-50"
+                      className="w-full text-left p-3 font-semibold text-xs sm:text-sm text-[#4A0E10] flex items-center justify-between gap-2 hover:bg-amber-50"
                     >
                       <span>{faq.question}</span>
                       <ChevronDown
@@ -182,7 +86,7 @@ export const ContactPage: React.FC = () => {
                       />
                     </button>
                     {isOpen && (
-                      <div className="p-4 pt-0 text-xs text-gray-700 leading-relaxed border-t border-gray-200/50 bg-white">
+                      <div className="p-3 pt-0 text-xs text-gray-700 leading-relaxed border-t border-gray-200/50 bg-white">
                         {faq.answer}
                       </div>
                     )}
@@ -193,24 +97,24 @@ export const ContactPage: React.FC = () => {
           </div>
 
           {/* Right Column: Callback Message Form */}
-          <div className="lg:col-span-6 bg-white rounded-3xl border border-[#E5DCCB] p-6 sm:p-8 shadow-lg space-y-6">
+          <div className="lg:col-span-6 bg-white rounded-lg border border-[#E5DCCB] p-5 sm:p-6 space-y-5">
             <div className="border-b border-gray-100 pb-3">
-              <span className="text-[10px] font-bold text-[#5C1315] uppercase tracking-widest bg-amber-100 px-2.5 py-0.5 rounded-full">
+              <div className="text-[10px] font-semibold text-[#5C1315] tracking-widest uppercase">
                 DETAILED CALLBACK FORM
-              </span>
-              <h3 className="text-xl font-bold font-serif text-[#4A0E10] mt-1">Request Academic Counseling</h3>
+              </div>
+              <h3 className="text-lg font-semibold text-[#4A0E10] mt-1">Request Academic Counseling</h3>
             </div>
 
             {submitted ? (
-              <div className="bg-amber-50 p-8 rounded-2xl text-center space-y-3 border border-amber-200 animate-fadeIn">
-                <CheckCircle2 className="w-12 h-12 text-emerald-600 mx-auto" />
-                <h3 className="text-2xl font-bold font-serif text-[#5C1315]">Inquiry Received!</h3>
+              <div className="bg-amber-50 p-6 rounded-lg text-center space-y-3 border border-amber-200 animate-fadeIn">
+                <CheckCircle2 className="w-10 h-10 text-emerald-600 mx-auto" />
+                <h3 className="text-lg font-semibold text-[#5C1315]">Inquiry Received!</h3>
                 <p className="text-xs text-gray-700">
-                  Thank you <span className="font-bold">{name}</span>. Our counselor at <span className="font-bold">{selectedBranch}</span> will contact you shortly.
+                  Thank you <span className="font-semibold">{name}</span>. Our counselor at <span className="font-semibold">{selectedBranch}</span> will contact you shortly.
                 </p>
                 <button
                   onClick={() => setSubmitted(false)}
-                  className="px-6 py-2 bg-[#5C1315] text-white rounded-xl text-xs font-bold"
+                  className="px-5 py-2 bg-[#5C1315] text-white rounded-md text-xs font-semibold"
                 >
                   Send Another Inquiry
                 </button>
@@ -219,7 +123,7 @@ export const ContactPage: React.FC = () => {
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-[11px] font-bold text-gray-700 uppercase tracking-wider mb-1">
+                    <label className="block text-[11px] font-semibold text-gray-700 mb-1">
                       Student Name *
                     </label>
                     <input
@@ -228,11 +132,11 @@ export const ContactPage: React.FC = () => {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder="Full name"
-                      className="w-full px-3.5 py-2.5 bg-[#FAF6EE] text-gray-900 rounded-xl border border-gray-300 text-xs focus:ring-2 focus:ring-[#5C1315] focus:outline-hidden"
+                      className="w-full px-3 py-2 bg-[#FAF6EE] text-gray-900 rounded-md border border-gray-300 text-xs focus:ring-2 focus:ring-[#5C1315] focus:outline-none"
                     />
                   </div>
                   <div>
-                    <label className="block text-[11px] font-bold text-gray-700 uppercase tracking-wider mb-1">
+                    <label className="block text-[11px] font-semibold text-gray-700 mb-1">
                       Contact Mobile *
                     </label>
                     <input
@@ -242,62 +146,68 @@ export const ContactPage: React.FC = () => {
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       placeholder="10 digit mobile"
-                      className="w-full px-3.5 py-2.5 bg-[#FAF6EE] text-gray-900 rounded-xl border border-gray-300 text-xs focus:ring-2 focus:ring-[#5C1315] focus:outline-hidden"
+                      className="w-full px-3 py-2 bg-[#FAF6EE] text-gray-900 rounded-md border border-gray-300 text-xs focus:ring-2 focus:ring-[#5C1315] focus:outline-none"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-[11px] font-bold text-gray-700 uppercase tracking-wider mb-1">
-                      Target Cohort Select
+                    <label className="block text-[11px] font-semibold text-gray-700 mb-1">
+                      Target Academic Cohort
                     </label>
-                    <select
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      className="w-full px-3.5 py-2.5 bg-[#FAF6EE] text-gray-900 rounded-xl border border-gray-300 text-xs focus:ring-2 focus:ring-[#5C1315] focus:outline-hidden font-medium"
-                    >
-                      <option value="JEE Main & Advanced 2027">JEE Main & Advanced 2027</option>
-                      <option value="NEET UG 2027 Medical">NEET UG 2027 Medical</option>
-                      <option value="Class 11-12 Science Board">Class 11-12 Science Board</option>
-                      <option value="Class 6-10 Junior Foundation">Class 6-10 Junior Foundation</option>
-                    </select>
+                    <div className="relative">
+                      <select
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="w-full px-3 pr-8 py-2.5 bg-[#FAF6EE] text-gray-900 rounded-md border border-gray-300 hover:border-[#C99A2C] text-xs focus:ring-2 focus:ring-[#5C1315] focus:outline-none font-medium appearance-none transition-colors"
+                      >
+                        <option value="11th & 12th Science (Eng/Guj)">11th &amp; 12th Science (GSEB/CBSE + JEE/NEET)</option>
+                        <option value="11th & 12th Commerce (Eng/Guj)">11th &amp; 12th Commerce (GSEB/CBSE)</option>
+                        <option value="JEE Main & Advanced / NEET UG">JEE Main/Adv &amp; NEET UG Competitive Prep</option>
+                        <option value="Std. 6th to 10th Secondary Foundation">Std. 6th to 10th Secondary Foundation</option>
+                      </select>
+                      <ChevronDown className="absolute right-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#5C1315]/50 pointer-events-none" />
+                    </div>
                   </div>
                   <div>
-                    <label className="block text-[11px] font-bold text-gray-700 uppercase tracking-wider mb-1">
+                    <label className="block text-[11px] font-semibold text-gray-700 mb-1">
                       Nearest Branch Select
                     </label>
-                    <select
-                      value={selectedBranch}
-                      onChange={(e) => setSelectedBranch(e.target.value)}
-                      className="w-full px-3.5 py-2.5 bg-[#FAF6EE] text-gray-900 rounded-xl border border-gray-300 text-xs focus:ring-2 focus:ring-[#5C1315] focus:outline-hidden font-medium"
-                    >
-                      {branches.map((b) => (
-                        <option key={b.id} value={b.name}>
-                          {b.name}
-                        </option>
-                      ))}
-                    </select>
+                    <div className="relative">
+                      <select
+                        value={selectedBranch}
+                        onChange={(e) => setSelectedBranch(e.target.value)}
+                        className="w-full px-3 pr-8 py-2.5 bg-[#FAF6EE] text-gray-900 rounded-md border border-gray-300 hover:border-[#C99A2C] text-xs focus:ring-2 focus:ring-[#5C1315] focus:outline-none font-medium appearance-none transition-colors"
+                      >
+                        {branches.map((b) => (
+                          <option key={b.id} value={b.name}>
+                            {b.name}
+                          </option>
+                        ))}
+                      </select>
+                      <ChevronDown className="absolute right-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#5C1315]/50 pointer-events-none" />
+                    </div>
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-[11px] font-bold text-gray-700 uppercase tracking-wider mb-1">
+                  <label className="block text-[11px] font-semibold text-gray-700 mb-1">
                     Query Text
                   </label>
                   <textarea
                     rows={3}
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    placeholder="Inquire about demo classes, fee installment structure, or scholarship test..."
-                    className="w-full px-3.5 py-2.5 bg-[#FAF6EE] text-gray-900 rounded-xl border border-gray-300 text-xs focus:ring-2 focus:ring-[#5C1315] focus:outline-hidden"
+                    placeholder="Inquire about batch timings, doubt sessions, fee structure, or admissions..."
+                    className="w-full px-3 py-2 bg-[#FAF6EE] text-gray-900 rounded-md border border-gray-300 text-xs focus:ring-2 focus:ring-[#5C1315] focus:outline-none"
                   />
                 </div>
 
-                <div className="pt-2">
+                <div className="pt-1">
                   <button
                     type="submit"
-                    className="w-full py-3.5 bg-[#5C1315] hover:bg-[#430d0f] text-white font-bold rounded-xl text-xs uppercase tracking-wider transition shadow-lg flex items-center justify-center gap-2"
+                    className="w-full py-2.5 bg-[#5C1315] hover:bg-[#430d0f] text-white font-semibold rounded-md text-xs transition flex items-center justify-center gap-2"
                   >
                     <Send className="w-4 h-4" /> Submit Callback Request
                   </button>
@@ -310,4 +220,3 @@ export const ContactPage: React.FC = () => {
     </div>
   );
 };
-

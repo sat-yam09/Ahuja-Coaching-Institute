@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#5C1315',
+  themeColor: '#1C1917',
 };
 
 export default function RootLayout({
@@ -34,11 +34,11 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Outfit:wght@500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body className="min-h-screen bg-[#FAF6EE] text-[#1A1818] antialiased selection:bg-amber-300 selection:text-[#5C1315]">
+      <body className="min-h-screen bg-[#F5F5F4] text-[#1C1917] antialiased selection:bg-amber-300 selection:text-[#1C1917]">
         {children}
       </body>
     </html>

@@ -4,121 +4,76 @@
   html {
     font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
     scroll-behavior: smooth;
-    color: #1A1818;
-    background-color: #FAF6EE;
+    color: #1C1917;
+    background-color: #F5F5F4;
   }
 
-  h1, h2, h3, h4, .font-serif {
+  h1, h2, h3, h4 {
     font-family: 'Playfair Display', Georgia, serif;
+    text-wrap: balance;
+    letter-spacing: -0.01em;
   }
 
-  .font-cinzel {
-    font-family: 'Cinzel', 'Times New Roman', serif;
-  }
-
-  .font-outfit {
-    font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+  p {
+    text-wrap: pretty;
   }
 }
 
 @layer utilities {
-  @keyframes marquee {
-    0% {
-      transform: translateX(0%);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
-  }
-
   @keyframes fadeIn {
     from {
       opacity: 0;
-      transform: scale(0.98);
     }
     to {
       opacity: 1;
-      transform: scale(1);
     }
-  }
-
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(18px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  @keyframes scaleUp {
-    from {
-      opacity: 0;
-      transform: scale(0.94);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-
-  @keyframes floatSlow {
-    0%, 100% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-6px);
-    }
-  }
-
-  .animate-marquee {
-    display: inline-flex;
-    animation: marquee 30s linear infinite;
-  }
-
-  .animate-marquee:hover {
-    animation-play-state: paused;
   }
 
   .animate-fadeIn {
-    animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
-
-  .animate-fade-in-up {
-    animation: fadeInUp 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
-
-  .animate-scale-up {
-    animation: scaleUp 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  }
-
-  .animate-float {
-    animation: floatSlow 4s ease-in-out infinite;
+    animation: fadeIn 0.15s ease-out forwards;
   }
 
   .card-hover-effect {
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .card-hover-effect:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 30px -10px rgba(92, 19, 21, 0.12), 0 8px 10px -6px rgba(92, 19, 21, 0.08);
+    transition: background-color 0.2s ease, border-color 0.2s ease;
   }
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-::-webkit-scrollbar-track {
-  background: #FAF6EE;
-}
-::-webkit-scrollbar-thumb {
-  background: #C99A2C;
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #5C1315;
+/* Custom styled select dropdowns */
+@layer base {
+  select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%235C1315' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 14px;
+    padding-right: 32px !important;
+    cursor: pointer;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.15s ease;
+  }
+
+  select:hover {
+    border-color: #C99A2C;
+    background-color: #FFF9EE;
+  }
+
+  select:focus {
+    border-color: #5C1315;
+    box-shadow: 0 0 0 2px rgba(92, 19, 21, 0.15);
+    outline: none;
+  }
+
+  select option {
+    padding: 8px 12px;
+    font-size: 13px;
+    background: white;
+    color: #1C1917;
+  }
+
+  select option:checked {
+    background: #FAF6EE;
+    color: #5C1315;
+    font-weight: 600;
+  }
 }

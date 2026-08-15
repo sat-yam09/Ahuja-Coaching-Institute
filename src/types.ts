@@ -4,7 +4,7 @@ export interface Course {
   id: string;
   title: string;
   tag: string;
-  category: 'JEE' | 'NEET' | 'Board' | 'Junior';
+  category: 'JEE' | 'NEET' | 'Board' | 'Junior' | 'Science Board' | 'Commerce Board' | 'JEE/NEET' | 'Junior Foundation';
   targetExam: string;
   shortDesc: string;
   badge: string;

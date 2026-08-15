@@ -6,7 +6,6 @@ import { FacultyMember } from '../types';
 import {
   BookOpen,
   ArrowRight,
-  Sparkles,
   Users,
   GraduationCap,
   Award,
@@ -33,54 +32,52 @@ export const FacultyPage: React.FC<FacultyPageProps> = ({
       : facultyMembers.filter((f) => f.category === selectedFilter);
 
   return (
-    <div className="space-y-16 pb-16 bg-[#FAF6EE]">
+    <div className="space-y-10 pb-12 bg-[#FAF6EE]">
       {/* FACULTY HERO */}
-      <section className="bg-[#5C1315] text-white py-16 text-center border-b-4 border-[#C99A2C] relative overflow-hidden">
-        {/* Background Stock Image with Deep Maroon Gradient Overlay */}
-        <div className="absolute inset-0 pointer-events-none z-0">
+      <section className="relative text-white py-16 sm:py-20 text-center overflow-hidden flex items-center justify-center border-b border-[#C99A2C]/40">
+        <div className="absolute inset-0 pointer-events-none">
           <img
-            src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&q=80&w=1920"
-            alt="Faculty Mentors in Classroom"
-            className="w-full h-full object-cover object-center opacity-25 scale-105"
+            src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=1920"
+            alt="Expert Faculty Mentors"
+            className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#380608]/95 via-[#5C1315]/90 to-[#2A0506]/92" />
-          <div className="absolute inset-0 opacity-15 bg-[radial-gradient(#C99A2C_1px,transparent_1px)] [background-size:16px_16px]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/65 to-black/75" />
         </div>
 
-        <div className="max-w-4xl mx-auto px-4 relative z-10 space-y-4">
-          <span className="inline-block px-3 py-1 bg-amber-400/20 text-amber-200 border border-amber-400/30 text-xs font-bold uppercase tracking-wider rounded-full">
-            FACULTY MENTORS & SUBJECT HEADS
-          </span>
-          <h1 className="text-3xl sm:text-5xl font-bold font-serif leading-tight">
+        <div className="relative z-10 max-w-4xl mx-auto px-4 space-y-3">
+          <div className="inline-block px-3 py-1 bg-[#C99A2C]/20 border border-[#C99A2C]/40 text-amber-300 text-xs font-semibold tracking-wider rounded-md backdrop-blur-xs">
+            TEACHING PHILOSOPHY &amp; MENTORS
+          </div>
+          <h1 className="text-3xl sm:text-5xl font-bold leading-tight text-white">
             Meet Our Expert Faculty
           </h1>
-          <p className="text-sm sm:text-base text-amber-100/90 leading-relaxed max-w-2xl mx-auto font-light">
-            Learn From Experienced educators who are passionate about guiding students and producing results.
+          <p className="text-sm sm:text-base text-gray-200 leading-relaxed max-w-2xl mx-auto font-normal">
+            At Ahuja Career Institute, our educators are guided by continuous mentorship, structured doubt resolution, and step-by-step concept building.
           </p>
         </div>
       </section>
 
       {/* OUR TEACHING APPROACH 4 CARDS */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center space-y-2 mb-8">
-          <span className="text-xs font-bold text-[#5C1315] uppercase tracking-widest bg-amber-100 px-3 py-1 rounded-full border border-amber-200">
+        <div className="text-center space-y-2 mb-6">
+          <div className="text-xs font-semibold text-[#5C1315] tracking-widest uppercase">
             OUR PEDAGOGY
-          </span>
-          <h2 className="text-2xl sm:text-3xl font-bold font-serif text-[#4A0E10]">
+          </div>
+          <h2 className="text-xl sm:text-2xl font-bold text-[#4A0E10]">
             Our Teaching Approach
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {teachingApproach.map((app, idx) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {teachingApproach.map((app) => (
             <div
               key={app.id}
-              className="bg-white p-6 rounded-2xl border border-[#E5DCCB] shadow-md space-y-3 hover:border-amber-300 transition card-hover-effect"
+              className="bg-white p-5 rounded-lg border border-[#E5DCCB] space-y-3 card-hover-effect"
             >
-              <div className="w-12 h-12 rounded-xl bg-amber-100 text-[#5C1315] flex items-center justify-center font-bold">
-                <BookOpen className="w-6 h-6" />
+              <div className="w-10 h-10 rounded-md bg-amber-100 text-[#5C1315] flex items-center justify-center">
+                <BookOpen className="w-5 h-5" />
               </div>
-              <h3 className="text-lg font-bold font-serif text-[#4A0E10]">{app.title}</h3>
+              <h3 className="text-base font-semibold text-[#4A0E10]">{app.title}</h3>
               <p className="text-xs text-gray-600 leading-relaxed">{app.description}</p>
             </div>
           ))}
@@ -90,14 +87,14 @@ export const FacultyPage: React.FC<FacultyPageProps> = ({
       {/* FILTER PILLS & FACULTY GRID */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Category Pills */}
-        <div className="flex flex-wrap justify-center gap-2 mb-10">
+        <div className="flex flex-wrap justify-center gap-2 mb-8">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setSelectedFilter(cat)}
-              className={`px-5 py-2 rounded-full text-xs font-bold uppercase tracking-wider transition ${
+              className={`px-4 py-1.5 rounded-md text-xs font-semibold transition ${
                 selectedFilter === cat
-                  ? 'bg-[#5C1315] text-white shadow-md'
+                  ? 'bg-[#5C1315] text-white shadow-xs'
                   : 'bg-white text-gray-700 hover:bg-amber-100 border border-gray-200'
               }`}
             >
@@ -107,38 +104,30 @@ export const FacultyPage: React.FC<FacultyPageProps> = ({
         </div>
 
         {/* Faculty Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {filteredFaculty.map((faculty) => (
             <div
               key={faculty.id}
-              className="bg-white rounded-2xl border border-[#E5DCCB] overflow-hidden shadow-md transition group flex flex-col justify-between card-hover-effect animate-fade-in-up"
+              className="bg-white rounded-lg border border-[#E5DCCB] overflow-hidden transition group flex flex-col justify-between card-hover-effect shadow-xs"
             >
               <div>
-                <div className="relative h-56 overflow-hidden bg-gray-100">
+                <div className="relative h-60 overflow-hidden bg-gray-100">
                   <img
                     src={faculty.avatarUrl}
                     alt={faculty.name}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition duration-500"
+                    className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
                   />
-                  <span className="absolute top-3 left-3 px-2.5 py-1 bg-[#5C1315] text-amber-200 text-[10px] font-bold uppercase rounded-md shadow-xs">
+                  <span className="absolute top-3 left-3 px-2.5 py-1 bg-black/75 backdrop-blur-xs text-amber-300 border border-amber-400/30 text-[10px] font-semibold rounded-md">
                     {faculty.category}
                   </span>
                 </div>
 
-                <div className="p-5 space-y-2 text-center">
-                  <h3 className="font-bold text-[#4A0E10] text-lg font-serif">{faculty.name}</h3>
+                <div className="p-4 space-y-2 text-center">
+                  <h3 className="font-bold text-[#4A0E10] text-base">{faculty.name}</h3>
                   <p className="text-xs text-[#5C1315] font-semibold">{faculty.role}</p>
                   <p className="text-[11px] text-gray-500 font-medium">{faculty.experience} • {faculty.education}</p>
+                  <p className="text-xs text-gray-600 line-clamp-2 pt-1">{faculty.bio}</p>
                 </div>
-              </div>
-
-              <div className="p-4 bg-[#FAF6EE] border-t border-gray-100 text-center">
-                <button
-                  onClick={() => onViewFacultyProfile(faculty)}
-                  className="w-full py-2 bg-white hover:bg-[#5C1315] hover:text-white text-[#5C1315] font-bold rounded-xl text-xs uppercase tracking-wider transition border border-gray-300 flex items-center justify-center gap-1"
-                >
-                  View Profile <ArrowRight className="w-3.5 h-3.5" />
-                </button>
               </div>
             </div>
           ))}
@@ -147,13 +136,13 @@ export const FacultyPage: React.FC<FacultyPageProps> = ({
 
       {/* BOTTOM FACULTY STATS BAR */}
       <section className="max-w-6xl mx-auto px-4">
-        <div className="bg-[#5C1315] text-white p-8 rounded-3xl border-2 border-[#C99A2C] shadow-2xl grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+        <div className="bg-[#5C1315] text-white p-6 rounded-lg border border-[#C99A2C]/50 grid grid-cols-2 sm:grid-cols-4 gap-5 text-center">
           {facultyStats.map((st, i) => (
             <div key={i} className="space-y-1">
-              <div className="text-3xl sm:text-4xl font-black text-amber-400 font-serif">
+              <div className="text-2xl sm:text-3xl font-bold text-amber-400">
                 {st.value}
               </div>
-              <div className="text-xs text-amber-100 font-bold uppercase tracking-wider">
+              <div className="text-xs text-amber-100 font-semibold tracking-wide">
                 {st.label}
               </div>
             </div>
