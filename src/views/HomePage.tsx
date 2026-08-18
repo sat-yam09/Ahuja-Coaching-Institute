@@ -449,100 +449,103 @@ export const HomePage: React.FC<HomePageProps> = ({
         </div>
       </section>
 
-      {/* 8. SEND AN INQUIRY (Clean Gray Card with Red CTA matching Screenshot) */}
-      <section className="max-w-3xl mx-auto px-4 sm:px-6">
-        <div className="bg-gray-50/90 rounded-3xl border border-gray-200 p-6 sm:p-10 shadow-xs space-y-6">
-          <div className="text-center space-y-1.5">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
-              Send an Inquiry
-            </h2>
-            <p className="text-xs sm:text-sm text-gray-600">
-              Fill out the form below and our counseling team will get back to you shortly.
-            </p>
+      {/* 8. SEND AN INQUIRY (Midnight Obsidian Theme) */}
+      <section className="mx-4 sm:mx-6 lg:mx-8 max-w-3xl lg:mx-auto bg-[#18191B] text-white rounded-3xl p-8 sm:p-12 border border-gray-800 shadow-2xl space-y-6">
+        <div className="text-center space-y-1.5">
+          <div className="inline-block px-3 py-1 bg-red-600/20 border border-red-500/30 text-red-400 text-xs font-bold uppercase tracking-wider rounded-full mb-1">
+            GET IN TOUCH
           </div>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+            Send an Inquiry
+          </h2>
+          <p className="text-xs sm:text-sm text-gray-300">
+            Fill out the form below and our counseling team will get back to you shortly.
+          </p>
+        </div>
 
-          {demoSuccess ? (
-            <div className="bg-white p-6 rounded-2xl border border-green-200 text-center space-y-3 animate-fadeIn">
-              <CheckCircle2 className="w-10 h-10 text-emerald-600 mx-auto" />
-              <h3 className="text-lg font-bold text-gray-900">Inquiry Request Received</h3>
-              <p className="text-sm text-gray-600">
-                Thank you <span className="font-semibold text-gray-900">{demoName}</span>! Our counselors at{' '}
-                <span className="font-semibold text-gray-900">{demoBranch}</span> will contact you on{' '}
-                <span className="font-semibold text-gray-900">{demoPhone}</span>.
-              </p>
-              <button
-                onClick={() => setDemoSuccess(false)}
-                className="px-5 py-2 bg-red-600 text-white rounded-lg text-sm font-semibold hover:bg-red-700 transition"
-              >
-                Submit Another Inquiry
-              </button>
-            </div>
-          ) : (
-            <form onSubmit={handleHomeDemoSubmit} className="space-y-4">
+        {demoSuccess ? (
+          <div className="bg-gray-900 p-6 sm:p-8 rounded-2xl border border-emerald-500/40 text-center space-y-3 animate-fadeIn">
+            <CheckCircle2 className="w-10 h-10 text-emerald-400 mx-auto" />
+            <h3 className="text-lg font-bold text-white">Inquiry Request Received</h3>
+            <p className="text-sm text-gray-300">
+              Thank you <span className="font-bold text-white">{demoName}</span>! Our counselors at{' '}
+              <span className="font-bold text-red-400">{demoBranch}</span> will contact you on{' '}
+              <span className="font-bold text-white">{demoPhone}</span>.
+            </p>
+            <button
+              onClick={() => setDemoSuccess(false)}
+              className="px-5 py-2 bg-red-600 text-white rounded-xl text-sm font-semibold hover:bg-red-700 transition cursor-pointer"
+            >
+              Submit Another Inquiry
+            </button>
+          </div>
+        ) : (
+          <form onSubmit={handleHomeDemoSubmit} className="space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label className="block text-xs font-bold text-gray-700 mb-1">Full Name</label>
+                <label className="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1.5">Full Name *</label>
                 <input
                   type="text"
                   required
                   value={demoName}
                   onChange={(e) => setDemoName(e.target.value)}
                   placeholder="e.g. Rahul Sharma"
-                  className="w-full px-4 py-3 bg-white text-gray-900 rounded-xl border border-gray-200 text-sm focus:border-red-600 focus:ring-2 focus:ring-red-600/10 focus:outline-hidden transition"
+                  className="w-full px-4 py-3 bg-gray-900 text-white placeholder-gray-500 rounded-xl border border-gray-700 text-sm focus:border-red-500 focus:outline-hidden transition"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-gray-700 mb-1">Phone Number</label>
+                <label className="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1.5">Phone Number *</label>
                 <input
                   type="tel"
                   required
                   pattern="[0-9]{10}"
                   value={demoPhone}
                   onChange={(e) => setDemoPhone(e.target.value)}
-                  placeholder="10 digit mobile number"
-                  className="w-full px-4 py-3 bg-white text-gray-900 rounded-xl border border-gray-200 text-sm focus:border-red-600 focus:ring-2 focus:ring-red-600/10 focus:outline-hidden transition"
+                  placeholder="10-digit mobile number"
+                  className="w-full px-4 py-3 bg-gray-900 text-white placeholder-gray-500 rounded-xl border border-gray-700 text-sm focus:border-red-500 focus:outline-hidden transition"
                 />
               </div>
+            </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-bold text-gray-700 mb-1">Interested In</label>
-                  <select
-                    value={demoCohort}
-                    onChange={(e) => setDemoCohort(e.target.value)}
-                    className="w-full px-4 py-3 bg-white text-gray-900 rounded-xl border border-gray-200 text-sm focus:border-red-600 focus:ring-2 focus:ring-red-600/10 focus:outline-hidden transition"
-                  >
-                    <option value="11th & 12th Science (JEE/NEET)">11th &amp; 12th Science (JEE/NEET)</option>
-                    <option value="11th & 12th Commerce">11th &amp; 12th Commerce</option>
-                    <option value="Std. 8th to 10th Foundation">Std. 8th to 10th Foundation</option>
-                    <option value="Crash Course / Test Series">Crash Course / Test Series</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="block text-xs font-bold text-gray-700 mb-1">Preferred Center</label>
-                  <select
-                    value={demoBranch}
-                    onChange={(e) => setDemoBranch(e.target.value)}
-                    className="w-full px-4 py-3 bg-white text-gray-900 rounded-xl border border-gray-200 text-sm focus:border-red-600 focus:ring-2 focus:ring-red-600/10 focus:outline-hidden transition"
-                  >
-                    <option value="Maninagar Head Office">Maninagar HQ (Takshshila Square)</option>
-                    <option value="Vastral Branch">Vastral Branch (Avadh Pride)</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="pt-2">
-                <button
-                  type="submit"
-                  className="w-full py-3.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl text-sm transition shadow-md shadow-red-600/20 active:scale-98 flex items-center justify-center gap-2"
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1.5">Interested In</label>
+                <select
+                  value={demoCohort}
+                  onChange={(e) => setDemoCohort(e.target.value)}
+                  className="w-full px-4 py-3 bg-gray-900 text-white rounded-xl border border-gray-700 text-sm focus:border-red-500 focus:outline-hidden transition"
                 >
-                  Submit Inquiry ▶
-                </button>
+                  <option value="11th & 12th Science (JEE/NEET)">11th &amp; 12th Science (JEE/NEET)</option>
+                  <option value="11th & 12th Commerce">11th &amp; 12th Commerce</option>
+                  <option value="Std. 8th to 10th Foundation">Std. 8th to 10th Foundation</option>
+                  <option value="Crash Course / Test Series">Crash Course / Test Series</option>
+                </select>
               </div>
-            </form>
-          )}
-        </div>
+
+              <div>
+                <label className="block text-xs font-bold text-gray-300 uppercase tracking-wider mb-1.5">Preferred Center</label>
+                <select
+                  value={demoBranch}
+                  onChange={(e) => setDemoBranch(e.target.value)}
+                  className="w-full px-4 py-3 bg-gray-900 text-white rounded-xl border border-gray-700 text-sm focus:border-red-500 focus:outline-hidden transition"
+                >
+                  <option value="Maninagar Head Office">Maninagar HQ (Takshshila Square)</option>
+                  <option value="Vastral Branch">Vastral Branch (Avadh Pride)</option>
+                </select>
+              </div>
+            </div>
+
+            <div className="pt-2">
+              <button
+                type="submit"
+                className="w-full py-3.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl text-sm transition shadow-md shadow-red-600/30 active:scale-98 flex items-center justify-center gap-2 cursor-pointer"
+              >
+                Submit Admission Inquiry <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+          </form>
+        )}
       </section>
     </div>
   );

@@ -153,7 +153,6 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onInquireClick }) => {
           </button>
         </div>
       </section>
-      </section>
 
       {/* 4. LIGHTBOX OVERLAY */}
       {currentItem && (
