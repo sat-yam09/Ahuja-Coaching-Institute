@@ -10,6 +10,9 @@ import {
   CheckCircle2,
   HelpCircle,
   FileText,
+  ArrowRight,
+  BookOpen,
+  Sparkles,
 } from 'lucide-react';
 
 interface CoursesPageProps {
@@ -21,7 +24,7 @@ interface CoursesPageProps {
 export const CoursesPage: React.FC<CoursesPageProps> = ({
   onInquireClick,
   onViewSyllabus,
-  initialCourseId = 'science-11-12',
+  initialCourseId = 'jee',
 }) => {
   const [selectedCourseId, setSelectedCourseId] = useState<string>(initialCourseId);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
@@ -64,71 +67,67 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({
   ];
 
   return (
-    <div className="space-y-10 pb-16 bg-[#FAF6EE]">
-      {/* COURSES HERO */}
-      <section className="relative text-white py-16 sm:py-20 text-center overflow-hidden flex items-center justify-center border-b border-[#C99A2C]/40">
-        <div className="absolute inset-0 pointer-events-none">
-          <img
-            src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=1920"
-            alt="Programs & Curriculums at Ahuja Institute"
-            className="w-full h-full object-cover object-center"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/65 to-black/75" />
+    <div className="space-y-16 sm:space-y-24 pb-16 bg-white text-gray-900">
+      {/* 1. HERO SECTION */}
+      <section className="pt-12 sm:pt-20 text-center max-w-4xl mx-auto px-4 sm:px-6 space-y-6">
+        <div className="inline-block px-3.5 py-1 border border-red-200 bg-red-50 text-red-700 text-xs sm:text-sm font-bold uppercase tracking-wider rounded-full shadow-xs">
+          OFFICIAL ACADEMIC TRACKS 2026-27
         </div>
+        <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight leading-[1.12]">
+          Programs Built Around <br />
+          <span className="text-red-600">Your Target Exam</span>
+        </h1>
+        <p className="text-sm sm:text-base text-gray-600 leading-relaxed max-w-2xl mx-auto">
+          Empowering students from Std. 6th to 12th (Science &amp; Commerce), JEE, and NEET with uncompromised dedication and proven methodologies.
+        </p>
 
-        <div className="relative z-10 max-w-4xl mx-auto px-4 space-y-3">
-          <div className="inline-block px-3 py-1 bg-[#C99A2C]/20 border border-[#C99A2C]/40 text-amber-300 text-xs font-semibold tracking-wider rounded-md backdrop-blur-xs">
-            Official Academic Programs 2026-27
+        {/* Hero Stock Image */}
+        <div className="relative rounded-3xl overflow-hidden shadow-lg border border-gray-200 max-w-3xl mx-auto group">
+          <img
+            src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=1200"
+            alt="Comprehensive Classroom & Exam Preparation"
+            className="w-full h-56 sm:h-72 object-cover group-hover:scale-102 transition duration-500"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent flex items-end p-5 sm:p-6">
+            <p className="text-white text-xs sm:text-sm font-bold">
+              Structured curriculums designed for board perfection and competitive exam success.
+            </p>
           </div>
-          <h1 className="text-3xl sm:text-5xl font-bold leading-tight text-white">
-            Programs Built Around Your Target Exam
-          </h1>
-          <p className="text-sm sm:text-base text-gray-200 leading-relaxed max-w-2xl mx-auto font-normal">
-            Empowering students from Std. 6th to 12th (Science &amp; Commerce), JEE, and NEET with uncompromised dedication and proven methodologies.
-          </p>
         </div>
       </section>
 
+      {/* 2. PROGRAM CARDS SELECTOR */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center space-y-2 mb-6">
-          <div className="text-xs font-semibold text-[#5C1315] uppercase tracking-wider">
-            What We Teach
-          </div>
-          <h2 className="text-xl sm:text-2xl font-bold text-[#4A0E10]">
-            Our Core Target Academic Tracks
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {coursesData.map((course) => {
             const isSelected = selectedCourseId === course.id;
             return (
               <div
                 key={course.id}
                 onClick={() => setSelectedCourseId(course.id)}
-                className={`cursor-pointer rounded-lg p-5 transition-all duration-200 border flex flex-col justify-between card-hover-effect bg-white text-gray-900 ${
+                className={`cursor-pointer rounded-2xl p-6 transition-all duration-200 border flex flex-col justify-between card-hover-effect bg-white text-gray-900 ${
                   isSelected
-                    ? 'border-2 border-[#C99A2C] shadow-md ring-2 ring-[#C99A2C]/25 bg-amber-50/20'
-                    : 'border-[#E5DCCB] hover:border-amber-400/60 shadow-xs'
+                    ? 'border-2 border-red-600 shadow-md ring-4 ring-red-600/10'
+                    : 'border-gray-200 hover:border-red-400 shadow-xs'
                 }`}
               >
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
                     <span
-                      className={`px-2.5 py-0.5 rounded text-[11px] font-semibold ${
+                      className={`px-3 py-1 rounded-full text-xs font-bold ${
                         isSelected
-                          ? 'bg-[#C99A2C] text-[#1A1818]'
-                          : 'bg-amber-100 text-[#5C1315]'
+                          ? 'bg-red-600 text-white'
+                          : 'bg-red-50 text-red-700 border border-red-100'
                       }`}
                     >
                       {course.tag}
                     </span>
-                    <span className="text-xs font-mono font-semibold text-[#5C1315]/70">
+                    <span className="text-xs font-mono font-semibold text-gray-400">
                       {course.badge}
                     </span>
                   </div>
 
-                  <h3 className="text-lg font-bold text-[#4A0E10]">
+                  <h3 className="text-lg font-bold text-gray-900">
                     {course.title}
                   </h3>
 
@@ -139,8 +138,8 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({
 
                 <div className="pt-5 mt-3 border-t border-gray-100 flex items-center justify-between">
                   <span
-                    className={`text-xs font-semibold flex items-center gap-1 ${
-                      isSelected ? 'text-[#C99A2C] font-bold' : 'text-[#5C1315]'
+                    className={`text-xs font-bold flex items-center gap-1 ${
+                      isSelected ? 'text-red-600' : 'text-gray-500'
                     }`}
                   >
                     {isSelected ? 'Active Track Selected ✓' : 'Explore Curriculum →'}
@@ -152,122 +151,107 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({
         </div>
       </section>
 
+      {/* 3. SELECTED PROGRAM DETAIL CARD */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-wrap justify-center gap-2 mb-6">
-          {coursesData.map((c) => (
-            <button
-              key={c.id}
-              onClick={() => setSelectedCourseId(c.id)}
-              className={`px-4 py-1.5 rounded-full text-xs font-semibold transition ${
-                selectedCourseId === c.id
-                  ? 'bg-[#5C1315] text-white shadow-sm'
-                  : 'bg-white text-gray-700 hover:bg-amber-100 border border-gray-200'
-              }`}
-            >
-              {c.title}
-            </button>
-          ))}
-        </div>
-
-        <div className="bg-white rounded-lg border border-[#E5DCCB] shadow-sm p-5 sm:p-8 space-y-6">
+        <div className="bg-white rounded-3xl border border-gray-200 shadow-sm p-6 sm:p-10 space-y-8">
           <div>
-            <div className="text-xs font-semibold text-[#5C1315] uppercase tracking-wider">
+            <span className="text-xs font-bold text-red-600 uppercase tracking-wider">
               Target Program Overview
-            </div>
-            <h2 className="text-xl sm:text-2xl font-bold text-[#4A0E10] mt-1">
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mt-1">
               {selectedCourse.targetExam}
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 bg-[#FAF6EE] p-4 rounded-md border border-amber-200 text-center">
-            <div className="bg-white p-3 rounded-md border border-gray-200">
-              <div className="text-base font-bold text-[#5C1315]">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-gray-50 p-5 rounded-2xl border border-gray-200 text-center">
+            <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-xs">
+              <div className="text-lg sm:text-xl font-extrabold text-red-600">
                 {selectedCourse.stats.stat1}
               </div>
-              <div className="text-[11px] text-gray-500 mt-0.5">Key Achievement</div>
+              <div className="text-xs text-gray-500 mt-1 font-medium">Key Achievement</div>
             </div>
-            <div className="bg-white p-3 rounded-md border border-gray-200">
-              <div className="text-base font-bold text-[#5C1315]">
+            <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-xs">
+              <div className="text-lg sm:text-xl font-extrabold text-red-600">
                 {selectedCourse.stats.stat2}
               </div>
-              <div className="text-[11px] text-gray-500 mt-0.5">Delivery Mode</div>
+              <div className="text-xs text-gray-500 mt-1 font-medium">Delivery Mode</div>
             </div>
-            <div className="bg-white p-3 rounded-md border border-gray-200">
-              <div className="text-base font-bold text-[#5C1315]">
+            <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-xs">
+              <div className="text-lg sm:text-xl font-extrabold text-red-600">
                 {selectedCourse.stats.stat3}
               </div>
-              <div className="text-[11px] text-gray-500 mt-0.5">Testing &amp; Evaluation</div>
+              <div className="text-xs text-gray-500 mt-1 font-medium">Testing &amp; Evaluation</div>
             </div>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-sm">
-            <div className="p-3 bg-amber-50 rounded-md border border-amber-200">
-              <span className="text-gray-500 uppercase tracking-wider block text-[11px] font-semibold">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
+            <div className="p-4 bg-gray-50 rounded-xl border border-gray-200">
+              <span className="text-gray-500 uppercase tracking-wider block text-[11px] font-bold">
                 Faculty Head
               </span>
-              <span className="font-semibold text-gray-900 mt-0.5 block">
+              <span className="font-bold text-gray-900 mt-1 block text-sm">
                 {selectedCourse.facultyHead}
               </span>
             </div>
-            <div className="p-3 bg-amber-50 rounded-md border border-amber-200">
-              <span className="text-gray-500 uppercase tracking-wider block text-[11px] font-semibold">
+            <div className="p-4 bg-gray-50 rounded-xl border border-gray-200">
+              <span className="text-gray-500 uppercase tracking-wider block text-[11px] font-bold">
                 Timings
               </span>
-              <span className="font-semibold text-gray-900 mt-0.5 block">
+              <span className="font-bold text-gray-900 mt-1 block text-sm">
                 {selectedCourse.timings}
               </span>
             </div>
-            <div className="p-3 bg-amber-50 rounded-md border border-amber-200">
-              <span className="text-gray-500 uppercase tracking-wider block text-[11px] font-semibold">
+            <div className="p-4 bg-gray-50 rounded-xl border border-gray-200">
+              <span className="text-gray-500 uppercase tracking-wider block text-[11px] font-bold">
                 Testing Freq
               </span>
-              <span className="font-semibold text-gray-900 mt-0.5 block">
+              <span className="font-bold text-gray-900 mt-1 block text-sm">
                 {selectedCourse.testingFrequency}
               </span>
             </div>
-            <div className="p-3 bg-amber-50 rounded-md border border-amber-200">
-              <span className="text-gray-500 uppercase tracking-wider block text-[11px] font-semibold">
+            <div className="p-4 bg-gray-50 rounded-xl border border-gray-200">
+              <span className="text-gray-500 uppercase tracking-wider block text-[11px] font-bold">
                 Medium / Target
               </span>
-              <span className="font-semibold text-[#5C1315] mt-0.5 block">
+              <span className="font-bold text-red-600 mt-1 block text-sm">
                 {selectedCourse.tag}
               </span>
             </div>
           </div>
 
-          <div className="space-y-3 pt-1">
-            <h3 className="text-xs font-semibold text-[#5C1315] uppercase tracking-wider border-b pb-2 flex items-center gap-2">
-              <FileText className="w-4 h-4" /> Syllabus Breakdown by Subject
+          <div className="space-y-4 pt-2">
+            <h3 className="text-sm font-extrabold text-gray-900 uppercase tracking-wider border-b border-gray-100 pb-3 flex items-center gap-2">
+              <FileText className="w-4 h-4 text-red-600" /> Syllabus Breakdown by Subject
             </h3>
 
-            <div className="space-y-2">
+            <div className="space-y-2.5">
               {selectedCourse.syllabus.map((s, idx) => {
                 const isOpen = openSyllabusSubject === s.subject || idx === 0;
                 return (
                   <div
                     key={idx}
-                    className="border border-gray-200 rounded-md overflow-hidden bg-[#FAF6EE]"
+                    className="border border-gray-200 rounded-xl overflow-hidden bg-white"
                   >
                     <button
                       onClick={() => setOpenSyllabusSubject(isOpen ? '' : s.subject)}
-                      className="w-full text-left px-4 py-3 flex items-center justify-between font-semibold text-sm text-[#4A0E10] hover:bg-amber-100/50 transition"
+                      className="w-full text-left px-5 py-3.5 flex items-center justify-between font-bold text-sm text-gray-900 hover:bg-gray-50 transition"
                     >
-                      <span className="flex items-center gap-2">
-                        <span className="w-2 h-2 rounded-full bg-[#5C1315]" />
+                      <span className="flex items-center gap-2.5">
+                        <span className="w-2.5 h-2.5 rounded-full bg-red-600" />
                         {s.subject}
                       </span>
                       <span className="text-xs text-gray-500">
-                        {s.topics.length} Key Topics {isOpen ? '-' : '+'}
+                        {s.topics.length} Key Topics {isOpen ? '▲' : '▼'}
                       </span>
                     </button>
 
                     {isOpen && (
-                      <div className="px-4 pb-4 pt-1 bg-white border-t border-gray-200 text-xs text-gray-700 space-y-2">
+                      <div className="px-5 pb-5 pt-2 bg-gray-50/50 border-t border-gray-100 text-xs text-gray-700 space-y-2">
                         <div className="flex flex-wrap gap-2">
                           {s.topics.map((t, tIdx) => (
                             <span
                               key={tIdx}
-                              className="px-3 py-1.5 bg-amber-50 text-amber-900 border border-amber-200 rounded-md font-medium"
+                              className="px-3.5 py-1.5 bg-white text-gray-800 border border-gray-200 rounded-lg font-medium shadow-2xs"
                             >
                               {t}
                             </span>
@@ -281,31 +265,32 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({
             </div>
           </div>
 
-          <div className="pt-3 flex flex-wrap items-center gap-3">
+          <div className="pt-4 flex flex-wrap items-center gap-3.5">
             <button
               onClick={() => onInquireClick(selectedCourse.title)}
-              className="px-5 py-2 bg-[#5C1315] hover:bg-[#430d0f] text-white font-semibold rounded-md text-sm transition shadow-sm"
+              className="px-6 py-3.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl text-sm transition shadow-md shadow-red-600/20 active:scale-98"
             >
               Inquire For Batch Admission
             </button>
             <button
               onClick={() => onViewSyllabus(selectedCourse)}
-              className="px-5 py-2 bg-white hover:bg-amber-50 text-gray-900 border border-gray-300 font-semibold rounded-md text-sm transition flex items-center gap-2"
+              className="px-6 py-3.5 bg-white hover:bg-gray-50 text-gray-800 border border-gray-300 font-bold rounded-xl text-sm transition flex items-center gap-2 shadow-xs"
             >
-              <Download className="w-4 h-4 text-[#5C1315]" /> Download Program Overview PDF
+              <Download className="w-4 h-4 text-red-600" /> Download Program PDF
             </button>
           </div>
         </div>
       </section>
 
-      <section className="bg-[#2A1011] text-white py-12 border-y border-[#C99A2C]/40">
+      {/* 4. DELIVERABLES SECTION */}
+      <section className="bg-[#18191B] text-white py-16 sm:py-20 border-y border-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center space-y-2 mb-8">
-            <div className="text-xs font-semibold text-amber-300 uppercase tracking-wider">
+          <div className="text-center space-y-2 mb-10">
+            <div className="inline-block px-3 py-1 bg-red-600/20 text-red-400 border border-red-500/30 text-xs font-bold uppercase tracking-wider rounded-md">
               Deliverables
             </div>
-            <h2 className="text-2xl font-bold text-white">What's Included</h2>
-            <p className="text-xs text-amber-100/80 max-w-md mx-auto">
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-white">What's Included</h2>
+            <p className="text-xs sm:text-sm text-gray-400 max-w-md mx-auto">
               Every student gets standard-setting academic resources and personal oversight.
             </p>
           </div>
@@ -318,40 +303,40 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({
                   <button
                     key={idx}
                     onClick={() => setActiveIncludedTab(idx)}
-                    className={`w-full text-left px-4 py-3 rounded-md transition flex items-center gap-4 border ${
+                    className={`w-full text-left px-5 py-4 rounded-xl transition flex items-center gap-4 border ${
                       isActive
-                        ? 'bg-[#5C1315] text-white border-amber-400 shadow-sm'
+                        ? 'bg-red-600 text-white border-red-500 shadow-md shadow-red-600/25'
                         : 'bg-white/5 text-gray-300 border-white/10 hover:bg-white/10'
                     }`}
                   >
-                    <span className="font-mono font-semibold text-amber-400 text-sm">{item.num}</span>
-                    <span className="font-semibold text-sm">{item.title}</span>
+                    <span className="font-mono font-bold text-sm">{item.num}</span>
+                    <span className="font-bold text-sm">{item.title}</span>
                   </button>
                 );
               })}
             </div>
 
-            <div className="lg:col-span-7 bg-[#381B1C] p-6 rounded-lg border border-white/10 space-y-5">
+            <div className="lg:col-span-7 bg-[#22262E] p-7 rounded-2xl border border-gray-700 space-y-5">
               <div>
-                <span className="text-amber-400 font-mono text-sm font-semibold block mb-1">
+                <span className="text-red-400 font-mono text-sm font-bold block mb-1">
                   {includedDeliverables[activeIncludedTab].num}
                 </span>
-                <h3 className="text-xl font-bold text-white">
+                <h3 className="text-xl sm:text-2xl font-extrabold text-white">
                   {includedDeliverables[activeIncludedTab].title}
                 </h3>
-                <p className="text-xs text-amber-100/80 leading-relaxed mt-2">
+                <p className="text-xs sm:text-sm text-gray-300 leading-relaxed mt-2">
                   {includedDeliverables[activeIncludedTab].desc}
                 </p>
               </div>
 
-              <div className="space-y-2 pt-1">
-                <span className="text-xs font-semibold text-amber-300 uppercase tracking-wider block">
+              <div className="space-y-2 pt-2">
+                <span className="text-xs font-bold text-red-400 uppercase tracking-wider block">
                   Key Features
                 </span>
                 <div className="space-y-2">
                   {includedDeliverables[activeIncludedTab].bullets.map((b, bIdx) => (
-                    <div key={bIdx} className="flex items-center gap-2.5 text-xs text-gray-200 bg-black/20 p-2.5 rounded-md border border-white/10">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                    <div key={bIdx} className="flex items-center gap-2.5 text-xs text-gray-200 bg-black/30 p-3 rounded-lg border border-white/5">
+                      <CheckCircle2 className="w-4 h-4 text-red-500 flex-shrink-0" />
                       <span>{b}</span>
                     </div>
                   ))}
@@ -362,35 +347,34 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({
         </div>
       </section>
 
+      {/* 5. FAQ SECTION */}
       <section className="max-w-4xl mx-auto px-4">
-        <div className="text-center space-y-2 mb-6">
-          <div className="text-xs font-semibold text-[#5C1315] uppercase tracking-wider">
-            Frequently Asked Questions
-          </div>
-          <h2 className="text-2xl font-bold text-[#4A0E10]">FAQ</h2>
+        <div className="text-center space-y-2 mb-8">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900">Frequently Asked Questions</h2>
+          <p className="text-xs sm:text-sm text-gray-500">Clarify your doubts regarding batches, admissions, and course materials.</p>
         </div>
 
-        <div className="space-y-2">
+        <div className="space-y-2.5">
           {faqItems.map((faq, idx) => {
             const isOpen = openFaqIndex === idx;
             return (
               <div
                 key={idx}
-                className="bg-white rounded-lg border border-[#E5DCCB] overflow-hidden transition"
+                className="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-xs"
               >
                 <button
                   onClick={() => setOpenFaqIndex(isOpen ? null : idx)}
-                  className="w-full text-left px-5 py-4 flex items-center justify-between font-semibold text-sm text-[#4A0E10] hover:bg-amber-50/50 transition"
+                  className="w-full text-left px-5 py-4 flex items-center justify-between font-bold text-sm text-gray-900 hover:bg-gray-50 transition"
                 >
-                  <span className="flex items-center gap-2">
-                    <HelpCircle className="w-4 h-4 text-[#5C1315] flex-shrink-0" />
+                  <span className="flex items-center gap-2.5">
+                    <HelpCircle className="w-4 h-4 text-red-600 flex-shrink-0" />
                     {faq.question}
                   </span>
-                  {isOpen ? <ChevronUp className="w-4 h-4 text-[#5C1315]" /> : <ChevronDown className="w-4 h-4 text-gray-400" />}
+                  {isOpen ? <ChevronUp className="w-4 h-4 text-red-600" /> : <ChevronDown className="w-4 h-4 text-gray-400" />}
                 </button>
 
                 {isOpen && (
-                  <div className="px-5 pb-5 pt-1 text-xs text-gray-600 leading-relaxed border-t border-gray-100 bg-[#FAF6EE]">
+                  <div className="px-5 pb-5 pt-1 text-xs sm:text-sm text-gray-600 leading-relaxed border-t border-gray-100 bg-gray-50/50">
                     {faq.answer}
                   </div>
                 )}

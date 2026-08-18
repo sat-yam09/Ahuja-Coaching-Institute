@@ -35,7 +35,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F5F5F4] text-[#1C1917] font-sans antialiased flex flex-col justify-between selection:bg-amber-300 selection:text-[#1C1917]">
+    <div className="min-h-screen bg-[#F8FAFC] text-[#111827] font-sans antialiased flex flex-col justify-between selection:bg-red-600 selection:text-white">
       <Header
         activeTab={activeTab}
         setActiveTab={setActiveTab}
