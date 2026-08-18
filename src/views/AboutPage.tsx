@@ -31,6 +31,47 @@ interface AboutPageProps {
 
 export const AboutPage: React.FC<AboutPageProps> = ({ setActiveTab, onInquireClick }) => {
   const [activeTimelineIndex, setActiveTimelineIndex] = useState(0);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const timelineSectionRef = useRef<HTMLDivElement>(null);
+
+
+  // ScrollTrigger listener for desktop horizontal translation
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!timelineSectionRef.current) return;
+      const rect = timelineSectionRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      const totalScrollDistance = rect.height - windowHeight;
+
+      if (totalScrollDistance <= 0) return;
+
+      const currentScroll = -rect.top;
+      const progress = Math.max(0, Math.min(1, currentScroll / totalScrollDistance));
+      setScrollProgress(progress);
+
+      const targetIdx = Math.min(
+        journeyTimeline.length - 1,
+        Math.floor(progress * journeyTimeline.length)
+      );
+      if (targetIdx >= 0 && targetIdx < journeyTimeline.length) {
+        setActiveTimelineIndex(targetIdx);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const shortDescs = [
+    'Founded by Late R.A. Ahuja Sir with home setup in Ghodasar, pioneering concept-first pedagogy.',
+    'Expanded to Jawaharchowk campus, structuring comprehensive Science & Commerce board batches.',
+    'Established Vastral flagship campus on Nirant Cross Road with dedicated lecture halls.',
+    'Opened modern Head Office at Takshshila Square, Maninagar with smart hybrid classrooms.',
+    '27+ Years of excellence with 22,000+ successful alumni across India.'
+  ];
+
+
 
   return (
     <div className="space-y-16 sm:space-y-24 pb-16 bg-white text-gray-900">
@@ -178,95 +219,162 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setActiveTab, onInquireCli
         </div>
       </section>
 
-      {/* 5. HORIZONTAL ZIGZAG TIMELINE SECTION */}
-      <section id="journey-timeline-section" className="mx-4 sm:mx-6 lg:mx-8 max-w-7xl lg:mx-auto bg-[#18191B] text-white rounded-3xl p-8 sm:p-12 lg:p-14 border border-gray-800 shadow-2xl space-y-10">
-        <div className="text-center space-y-2">
-          <div className="inline-block px-3.5 py-1 bg-red-600/20 text-red-400 border border-red-500/30 text-xs font-bold uppercase tracking-wider rounded-full">
-            1998 — 2026
-          </div>
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Our 27+ Year <span className="text-red-500">Journey</span>
-          </h2>
-          <p className="text-xs sm:text-sm text-gray-400 max-w-lg mx-auto">
-            Milestones that shaped academic excellence in Ahmedabad.
-          </p>
-        </div>
+      {/* 5. HORIZONTAL SCROLLTRIGGER TIMELINE SECTION */}
+      <section id="journey-timeline-section" ref={timelineSectionRef} className="relative">
+        {/* Desktop / Laptop: Smooth ScrollTrigger Horizontal Flow */}
+        <div className="hidden md:block">
+          <div className="sticky top-20 min-h-[500px] py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div className="bg-[#18191B] text-white rounded-3xl p-8 sm:p-12 border border-gray-800 shadow-2xl space-y-8 overflow-hidden relative">
+              <div className="flex items-center justify-between">
+                <div className="space-y-1">
+                  <div className="inline-block px-3 py-0.5 bg-red-600/20 text-red-400 border border-red-500/30 text-[11px] font-bold uppercase tracking-wider rounded-full">
+                    Scroll To Navigate Timeline (1998 — 2026)
+                  </div>
+                  <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
+                    Our 27+ Year <span className="text-red-500">Journey</span>
+                  </h2>
+                </div>
 
-        {/* Horizontal Zigzag Timeline (Desktop & Tablet) */}
-        <div className="relative pt-8 pb-4">
-          {/* Subtle Thin Zigzag Connecting SVG Line */}
-          <div className="hidden md:block absolute top-[48%] left-[5%] right-[5%] h-12 -translate-y-1/2 pointer-events-none z-0">
-            <svg className="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 1000 40">
-              <path
-                d="M 0,20 Q 125,0 250,20 T 500,20 T 750,20 T 1000,20"
-                fill="none"
-                stroke="#DC2626"
-                strokeWidth="1.5"
-                strokeDasharray="4 4"
-                className="opacity-40 animate-pulse"
-              />
-            </svg>
-          </div>
-
-          {/* 5 Milestone Cards in Alternating Zigzag Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-4 sm:gap-5 relative z-10">
-            {journeyTimeline.map((item, idx) => {
-              const isEven = idx % 2 === 0;
-              const isSelected = activeTimelineIndex === idx;
-              const shortDescs = [
-                'Founded by Late R.A. Ahuja Sir with home setup in Ghodasar, pioneering concept-first pedagogy.',
-                'Expanded to Jawaharchowk campus, structuring comprehensive Science & Commerce board batches.',
-                'Established Vastral flagship campus on Nirant Cross Road with dedicated lecture halls.',
-                'Opened modern Head Office at Takshshila Square, Maninagar with smart hybrid classrooms.',
-                '27+ Years of excellence with 22,000+ successful alumni across India.'
-              ];
-
-              return (
-                <div
-                  key={item.year}
-                  onClick={() => setActiveTimelineIndex(idx)}
-                  className={`cursor-pointer transition-all duration-300 ${
-                    isEven ? 'md:-translate-y-3' : 'md:translate-y-3'
-                  }`}
-                >
-                  <div
-                    className={`p-5 rounded-2xl border transition-all duration-300 flex flex-col justify-between h-full space-y-3 ${
-                      isSelected
-                        ? 'bg-gray-900 border-red-500 shadow-xl shadow-red-600/20 ring-2 ring-red-500/30 scale-102'
-                        : 'bg-[#22262E]/70 border-gray-800 hover:border-gray-700 hover:bg-[#22262E]'
-                    }`}
-                  >
-                    {/* Node Header with Year & Thin Dot */}
-                    <div className="flex items-center justify-between">
-                      <span className={`font-mono text-sm font-extrabold px-2.5 py-0.5 rounded-md ${
-                        isSelected ? 'bg-red-600 text-white' : 'bg-white/10 text-red-400'
-                      }`}>
-                        {item.year}
-                      </span>
-                      <div className={`w-2.5 h-2.5 rounded-full transition-all ${
-                        isSelected ? 'bg-red-500 ring-4 ring-red-500/30' : 'bg-gray-600'
-                      }`} />
-                    </div>
-
-                    {/* Short Title & Concise Info */}
-                    <div className="space-y-1.5 flex-1">
-                      <h4 className="font-bold text-sm text-white leading-snug">
-                        {item.title}
-                      </h4>
-                      <p className="text-xs text-gray-400 leading-relaxed font-normal">
-                        {shortDescs[idx]}
-                      </p>
-                    </div>
-
-                    {/* Footer Phase Indicator */}
-                    <div className="pt-2 border-t border-gray-800/80 flex items-center justify-between text-[10px] font-mono text-gray-500">
-                      <span>Phase 0{idx + 1}</span>
-                      {isSelected && <span className="text-red-400 font-bold">Active ✓</span>}
-                    </div>
+                <div className="flex items-center gap-3">
+                  <span className="text-xs font-mono text-gray-400">
+                    Phase 0{activeTimelineIndex + 1} / 05
+                  </span>
+                  <div className="w-24 h-1.5 bg-gray-800 rounded-full overflow-hidden">
+                    <div
+                      className="h-full bg-red-600 rounded-full transition-all duration-300"
+                      style={{ width: `${((activeTimelineIndex + 1) / journeyTimeline.length) * 100}%` }}
+                    />
                   </div>
                 </div>
-              );
-            })}
+              </div>
+
+              {/* Horizontal ScrollTrack with Thin Zigzag Path */}
+              <div className="relative pt-6 pb-6 overflow-hidden">
+                {/* Thin Zigzag Connecting SVG Line */}
+                <div className="absolute top-[48%] left-0 right-0 h-10 -translate-y-1/2 pointer-events-none z-0">
+                  <svg className="w-full h-full overflow-visible" preserveAspectRatio="none" viewBox="0 0 1000 30">
+                    <path
+                      d="M 0,15 Q 125,0 250,15 T 500,15 T 750,15 T 1000,15"
+                      fill="none"
+                      stroke="#DC2626"
+                      strokeWidth="1.5"
+                      strokeDasharray="4 4"
+                      className="opacity-50"
+                    />
+                  </svg>
+                </div>
+
+                {/* Horizontally Translating Milestone Track */}
+                <motion.div
+                  className="flex gap-5 relative z-10"
+                  animate={{
+                    x: `-${scrollProgress * (journeyTimeline.length - 2.2) * 220}px`,
+                  }}
+                  transition={{ ease: 'easeOut', duration: 0.2 }}
+                >
+                  {journeyTimeline.map((item, idx) => {
+                    const isEven = idx % 2 === 0;
+                    const isSelected = activeTimelineIndex === idx;
+
+                    return (
+                      <div
+                        key={item.year}
+                        onClick={() => setActiveTimelineIndex(idx)}
+                        className={`min-w-[250px] max-w-[270px] flex-shrink-0 cursor-pointer transition-all duration-300 ${
+                          isEven ? '-translate-y-2' : 'translate-y-2'
+                        }`}
+                      >
+                        <div
+                          className={`p-5 rounded-2xl border transition-all duration-300 flex flex-col justify-between h-full space-y-3 ${
+                            isSelected
+                              ? 'bg-gray-900 border-red-500 shadow-xl shadow-red-600/25 ring-2 ring-red-500/30 scale-103'
+                              : 'bg-[#22262E]/80 border-gray-800 hover:border-gray-700 hover:bg-[#22262E]'
+                          }`}
+                        >
+                          <div className="flex items-center justify-between">
+                            <span
+                              className={`font-mono text-sm font-extrabold px-2.5 py-0.5 rounded-md ${
+                                isSelected ? 'bg-red-600 text-white' : 'bg-white/10 text-red-400'
+                              }`}
+                            >
+                              {item.year}
+                            </span>
+                            <div
+                              className={`w-2.5 h-2.5 rounded-full transition-all ${
+                                isSelected ? 'bg-red-500 ring-4 ring-red-500/30' : 'bg-gray-600'
+                              }`}
+                            />
+                          </div>
+
+                          <div className="space-y-1.5 flex-1">
+                            <h4 className="font-bold text-sm text-white leading-snug">
+                              {item.title}
+                            </h4>
+                            <p className="text-xs text-gray-400 leading-relaxed font-normal">
+                              {shortDescs[idx]}
+                            </p>
+                          </div>
+
+                          <div className="pt-2 border-t border-gray-800/80 flex items-center justify-between text-[10px] font-mono text-gray-500">
+                            <span>Phase 0{idx + 1}</span>
+                            {isSelected && <span className="text-red-400 font-bold">Active ✓</span>}
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </motion.div>
+              </div>
+
+              {/* Scroll Hint */}
+              <div className="text-center text-xs text-gray-500 pt-2 flex items-center justify-center gap-1.5">
+                <span>Scroll down page to advance horizontal milestones</span>
+                <span className="text-red-500 font-bold">→</span>
+              </div>
+            </div>
+          </div>
+          <div className="h-[70vh] pointer-events-none" />
+        </div>
+
+        {/* Mobile Version: Simple Stacked Cards */}
+        <div className="block md:hidden mx-4">
+          <div className="bg-[#18191B] text-white rounded-3xl p-6 border border-gray-800 shadow-2xl space-y-6">
+            <div className="text-center space-y-1.5">
+              <div className="inline-block px-3 py-0.5 bg-red-600/20 text-red-400 border border-red-500/30 text-[10px] font-bold uppercase tracking-wider rounded-full">
+                1998 — 2026
+              </div>
+              <h2 className="text-2xl font-extrabold text-white">
+                Our 27+ Year <span className="text-red-500">Journey</span>
+              </h2>
+            </div>
+
+            {/* Vertically Stacked Milestone Cards */}
+            <div className="flex flex-col gap-3.5">
+              {journeyTimeline.map((item, idx) => (
+                <div
+                  key={item.year}
+                  className="p-5 rounded-2xl border border-gray-800 bg-[#22262E] space-y-3"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-sm font-extrabold px-2.5 py-0.5 rounded-md bg-red-600 text-white">
+                      {item.year}
+                    </span>
+                    <span className="text-xs text-gray-400 font-mono">
+                      0{idx + 1}/05
+                    </span>
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <h4 className="font-bold text-base text-white">{item.title}</h4>
+                    <p className="text-xs text-gray-300 leading-relaxed">{shortDescs[idx]}</p>
+                  </div>
+
+                  <div className="pt-2 border-t border-gray-800 text-[11px] text-red-400 font-bold font-mono">
+                    Milestone Phase 0{idx + 1}
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
