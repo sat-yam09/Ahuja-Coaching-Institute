@@ -30,6 +30,7 @@ import {
   Building2,
   MapPin,
   TrendingUp,
+  Quote,
 } from 'lucide-react';
 
 interface HomePageProps {
@@ -121,13 +122,46 @@ export const HomePage: React.FC<HomePageProps> = ({
           </div>
 
           {/* Key Stats Bar */}
-          <div className="pt-8 max-w-3xl mx-auto grid grid-cols-3 gap-4 border-t border-gray-100">
+          <div className="pt-8 max-w-3xl mx-auto grid grid-cols-3 gap-2 sm:gap-4 border-t border-gray-100">
             {heroStats.map((stat, idx) => (
-              <div key={idx} className="space-y-0.5">
-                <div className="text-2xl sm:text-3xl font-extrabold text-red-600">{stat.value}</div>
-                <div className="text-xs sm:text-sm text-gray-500 font-medium">{stat.label}</div>
+              <div key={idx} className="text-center space-y-0.5 px-1">
+                <div className="text-xl sm:text-3xl font-extrabold text-red-600 whitespace-nowrap">{stat.value}</div>
+                <div className="text-[11px] sm:text-sm text-gray-500 font-medium leading-snug">{stat.label}</div>
               </div>
             ))}
+          </div>
+
+          {/* Testimonial Marquee Ticker */}
+          <div className="pt-8 max-w-5xl mx-auto">
+            <div className="relative overflow-hidden rounded-2xl border border-gray-100 bg-gray-50/60">
+              {/* Fade edges */}
+              <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none" />
+              <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none" />
+
+              <div className="flex animate-marquee w-max py-4">
+                {[...testimonials, ...testimonials].map((t, idx) => (
+                  <div
+                    key={`${t.id}-${idx}`}
+                    className="flex items-center gap-3 px-6 min-w-max"
+                  >
+                    <Quote className="w-4 h-4 text-red-400 flex-shrink-0 opacity-60" />
+                    <img
+                      src={t.avatarUrl}
+                      alt={t.name}
+                      className="w-8 h-8 rounded-full object-cover border border-gray-200 flex-shrink-0"
+                    />
+                    <p className="text-xs sm:text-sm text-gray-700 max-w-xs sm:max-w-sm">
+                      <span className="italic">"{t.quote.length > 80 ? t.quote.slice(0, 80) + '…' : t.quote}"</span>
+                      <span className="text-gray-400 ml-1.5">— {t.name}</span>
+                    </p>
+                    <span className="text-[10px] font-bold text-red-600 bg-red-50 px-2 py-0.5 rounded-full border border-red-100 flex-shrink-0">
+                      {t.examOrChildExam}
+                    </span>
+                    <div className="w-px h-6 bg-gray-200 mx-2 flex-shrink-0" />
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -349,102 +383,102 @@ export const HomePage: React.FC<HomePageProps> = ({
         </div>
       </section>
 
-      {/* 6. CAMPUS LIFE (Midnight Obsidian Background) */}
+      {/* 6. WHY CHOOSE US (Midnight Obsidian Background) */}
       <section className="mx-4 sm:mx-6 lg:mx-8 max-w-7xl lg:mx-auto bg-[#18191B] text-white rounded-3xl p-8 sm:p-12 border border-gray-800 shadow-2xl">
-        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mb-8">
-          <div className="space-y-1">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-              Campus <span className="text-red-500">Life</span>
-            </h2>
-            <p className="text-sm text-gray-300">A glimpse into our vibrant learning environment.</p>
-          </div>
-          <button
-            onClick={() => setActiveTab('gallery')}
-            className="text-red-400 hover:text-red-300 font-bold text-sm inline-flex items-center gap-1 group cursor-pointer"
-          >
-            View Gallery <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </button>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-          <div className="md:col-span-6 rounded-2xl overflow-hidden h-64 sm:h-80 shadow-md border border-gray-700">
-            <img
-              src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=800"
-              alt="Campus Life"
-              className="w-full h-full object-cover hover:scale-103 transition-transform duration-500"
-            />
-          </div>
-          <div className="md:col-span-3 rounded-2xl overflow-hidden h-64 sm:h-80 shadow-md border border-gray-700">
-            <img
-              src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=600"
-              alt="Library Study Space"
-              className="w-full h-full object-cover hover:scale-103 transition-transform duration-500"
-            />
-          </div>
-          <div className="md:col-span-3 rounded-2xl overflow-hidden h-64 sm:h-80 shadow-md border border-gray-700">
-            <img
-              src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=600"
-              alt="Student Collaboration"
-              className="w-full h-full object-cover hover:scale-103 transition-transform duration-500"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* 7. WHY CHOOSE US (Matches Screenshot: 4 pillars with light red icon boxes) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center space-y-2 mb-10 sm:mb-12">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
-            Why Choose Us
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+            Why Choose <span className="text-red-500">Us</span>
           </h2>
-          <p className="text-sm sm:text-base text-gray-600 max-w-xl mx-auto">
+          <p className="text-sm sm:text-base text-gray-300 max-w-xl mx-auto">
             The pillars of our academic success.
           </p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* Pillar 1 */}
-          <div className="bg-white rounded-2xl border border-gray-200/80 p-6 shadow-xs hover:shadow-md transition card-hover-effect space-y-4">
-            <div className="w-11 h-11 rounded-xl bg-red-50 border border-red-100 flex items-center justify-center text-red-600">
+          <div className="bg-[#22262E]/80 rounded-2xl border border-gray-800 p-6 shadow-md hover:border-gray-700 hover:bg-[#22262E] transition card-hover-effect space-y-4">
+            <div className="w-11 h-11 rounded-xl bg-red-600/20 border border-red-500/30 flex items-center justify-center text-red-400">
               <GraduationCap className="w-5 h-5" />
             </div>
             <div className="space-y-1.5">
-              <h3 className="font-bold text-base text-gray-900">{teachingApproach[0].title}</h3>
-              <p className="text-xs text-gray-600 leading-relaxed">{teachingApproach[0].description}</p>
+              <h3 className="font-bold text-base text-white">{teachingApproach[0].title}</h3>
+              <p className="text-xs text-gray-300 leading-relaxed">{teachingApproach[0].description}</p>
             </div>
           </div>
 
           {/* Pillar 2 */}
-          <div className="bg-white rounded-2xl border border-gray-200/80 p-6 shadow-xs hover:shadow-md transition card-hover-effect space-y-4">
-            <div className="w-11 h-11 rounded-xl bg-red-50 border border-red-100 flex items-center justify-center text-red-600">
+          <div className="bg-[#22262E]/80 rounded-2xl border border-gray-800 p-6 shadow-md hover:border-gray-700 hover:bg-[#22262E] transition card-hover-effect space-y-4">
+            <div className="w-11 h-11 rounded-xl bg-red-600/20 border border-red-500/30 flex items-center justify-center text-red-400">
               <LineChart className="w-5 h-5" />
             </div>
             <div className="space-y-1.5">
-              <h3 className="font-bold text-base text-gray-900">{teachingApproach[1].title}</h3>
-              <p className="text-xs text-gray-600 leading-relaxed">{teachingApproach[1].description}</p>
+              <h3 className="font-bold text-base text-white">{teachingApproach[1].title}</h3>
+              <p className="text-xs text-gray-300 leading-relaxed">{teachingApproach[1].description}</p>
             </div>
           </div>
 
           {/* Pillar 3 */}
-          <div className="bg-white rounded-2xl border border-gray-200/80 p-6 shadow-xs hover:shadow-md transition card-hover-effect space-y-4">
-            <div className="w-11 h-11 rounded-xl bg-red-50 border border-red-100 flex items-center justify-center text-red-600">
+          <div className="bg-[#22262E]/80 rounded-2xl border border-gray-800 p-6 shadow-md hover:border-gray-700 hover:bg-[#22262E] transition card-hover-effect space-y-4">
+            <div className="w-11 h-11 rounded-xl bg-red-600/20 border border-red-500/30 flex items-center justify-center text-red-400">
               <UserCheck className="w-5 h-5" />
             </div>
             <div className="space-y-1.5">
-              <h3 className="font-bold text-base text-gray-900">{teachingApproach[2].title}</h3>
-              <p className="text-xs text-gray-600 leading-relaxed">{teachingApproach[2].description}</p>
+              <h3 className="font-bold text-base text-white">{teachingApproach[2].title}</h3>
+              <p className="text-xs text-gray-300 leading-relaxed">{teachingApproach[2].description}</p>
             </div>
           </div>
 
           {/* Pillar 4 */}
-          <div className="bg-white rounded-2xl border border-gray-200/80 p-6 shadow-xs hover:shadow-md transition card-hover-effect space-y-4">
-            <div className="w-11 h-11 rounded-xl bg-red-50 border border-red-100 flex items-center justify-center text-red-600">
+          <div className="bg-[#22262E]/80 rounded-2xl border border-gray-800 p-6 shadow-md hover:border-gray-700 hover:bg-[#22262E] transition card-hover-effect space-y-4">
+            <div className="w-11 h-11 rounded-xl bg-red-600/20 border border-red-500/30 flex items-center justify-center text-red-400">
               <Target className="w-5 h-5" />
             </div>
             <div className="space-y-1.5">
-              <h3 className="font-bold text-base text-gray-900">{teachingApproach[3].title}</h3>
-              <p className="text-xs text-gray-600 leading-relaxed">{teachingApproach[3].description}</p>
+              <h3 className="font-bold text-base text-white">{teachingApproach[3].title}</h3>
+              <p className="text-xs text-gray-300 leading-relaxed">{teachingApproach[3].description}</p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. CAMPUS LIFE (White / Light Background) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mb-8">
+          <div className="space-y-1">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
+              Campus <span className="text-red-600">Life</span>
+            </h2>
+            <p className="text-sm text-gray-600">A glimpse into our vibrant learning environment.</p>
+          </div>
+          <button
+            onClick={() => setActiveTab('gallery')}
+            className="text-red-600 hover:text-red-700 font-bold text-sm inline-flex items-center gap-1 group cursor-pointer"
+          >
+            View Gallery <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </button>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
+          <div className="md:col-span-6 rounded-2xl overflow-hidden h-64 sm:h-80 shadow-xs border border-gray-200">
+            <img
+              src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=800"
+              alt="Campus Life"
+              className="w-full h-full object-cover hover:scale-103 transition-transform duration-500"
+            />
+          </div>
+          <div className="md:col-span-3 rounded-2xl overflow-hidden h-64 sm:h-80 shadow-xs border border-gray-200">
+            <img
+              src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=600"
+              alt="Library Study Space"
+              className="w-full h-full object-cover hover:scale-103 transition-transform duration-500"
+            />
+          </div>
+          <div className="md:col-span-3 rounded-2xl overflow-hidden h-64 sm:h-80 shadow-xs border border-gray-200">
+            <img
+              src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=600"
+              alt="Student Collaboration"
+              className="w-full h-full object-cover hover:scale-103 transition-transform duration-500"
+            />
           </div>
         </div>
       </section>
