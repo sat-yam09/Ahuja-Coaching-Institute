@@ -132,24 +132,27 @@ export const HomePage: React.FC<HomePageProps> = ({
         </div>
       </section>
 
-      {/* 2. A LEGACY OF 27+ YEARS (Matches Screenshot: 2-column split with text on left, classroom image on right) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* 2. A LEGACY OF 27+ YEARS (Midnight Obsidian Background) */}
+      <section className="mx-4 sm:mx-6 lg:mx-8 max-w-7xl lg:mx-auto bg-[#18191B] text-white rounded-3xl p-8 sm:p-12 lg:p-16 border border-gray-800 shadow-2xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-          <div className="lg:col-span-6 space-y-4">
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
-              A Legacy of <span className="text-red-600">27+ Years</span>
+          <div className="lg:col-span-6 space-y-5">
+            <div className="inline-block px-3 py-1 bg-red-600/20 border border-red-500/30 text-red-400 text-xs font-bold uppercase tracking-wider rounded-full">
+              ESTABLISHED 1998
+            </div>
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
+              A Legacy of <span className="text-red-500">27+ Years</span>
             </h2>
-            <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+            <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
               Founded in 1998 on the vision of Late R.A. Ahuja Sir, Ahuja Career Institute has been a beacon of academic excellence in Ahmedabad. Our philosophy centers on providing quality education with unwavering dedication, discipline, and personal mentorship.
             </p>
-            <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+            <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
               We believe in nurturing talent and instilling a lifelong passion for learning, empowering over 22,000 students to secure admissions in premier engineering and medical institutions across India.
             </p>
 
             <div className="pt-2">
               <button
                 onClick={() => setActiveTab('about')}
-                className="text-red-600 hover:text-red-700 font-bold text-sm inline-flex items-center gap-1.5 group transition"
+                className="text-red-400 hover:text-red-300 font-bold text-sm inline-flex items-center gap-2 group transition"
               >
                 Learn More <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
@@ -157,15 +160,15 @@ export const HomePage: React.FC<HomePageProps> = ({
           </div>
 
           <div className="lg:col-span-6">
-            <div className="relative rounded-2xl overflow-hidden shadow-lg border border-gray-100 group">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-700/60 group">
               <img
                 src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=1200"
                 alt="Classroom at Ahuja Career Institute"
                 className="w-full h-72 sm:h-96 object-cover object-center group-hover:scale-103 transition-transform duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
               <div className="absolute bottom-4 left-4 right-4 text-white">
-                <p className="text-xs font-semibold text-red-200">Inspiring Learning Spaces</p>
+                <p className="text-xs font-semibold text-red-400">Inspiring Learning Spaces</p>
                 <p className="text-sm font-bold">The foundation of academic rigour and conceptual clarity.</p>
               </div>
             </div>
@@ -173,8 +176,8 @@ export const HomePage: React.FC<HomePageProps> = ({
         </div>
       </section>
 
-      {/* 3. OUR PROGRAMS (Matches Screenshot: 3 cards grid with light red icon boxes and red links) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* 3. OUR PROGRAMS (White / Light Background) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="text-center space-y-2 mb-10 sm:mb-12">
           <h2 className="text-2xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
             Our <span className="text-red-600">Programs</span>
@@ -186,7 +189,7 @@ export const HomePage: React.FC<HomePageProps> = ({
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {/* Card 1: Science */}
-          <div className="bg-white rounded-2xl border border-gray-200/80 p-6 sm:p-7 shadow-xs hover:shadow-md transition card-hover-effect flex flex-col justify-between space-y-5">
+          <div className="bg-white rounded-2xl border border-gray-200/90 p-6 sm:p-7 shadow-xs hover:shadow-lg transition duration-300 card-hover-effect flex flex-col justify-between space-y-5">
             <div className="space-y-4">
               <div className="w-12 h-12 rounded-xl bg-red-50 border border-red-100 flex items-center justify-center text-red-600">
                 <FlaskConical className="w-6 h-6" />
@@ -203,14 +206,14 @@ export const HomePage: React.FC<HomePageProps> = ({
                 onSelectCourse('jee');
                 setActiveTab('courses');
               }}
-              className="text-red-600 hover:text-red-700 font-bold text-sm inline-flex items-center gap-1.5 group self-start pt-2"
+              className="text-red-600 hover:text-red-700 font-bold text-sm inline-flex items-center gap-1.5 group self-start pt-2 cursor-pointer"
             >
               Explore Program <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
 
           {/* Card 2: Commerce */}
-          <div className="bg-white rounded-2xl border border-gray-200/80 p-6 sm:p-7 shadow-xs hover:shadow-md transition card-hover-effect flex flex-col justify-between space-y-5">
+          <div className="bg-white rounded-2xl border border-gray-200/90 p-6 sm:p-7 shadow-xs hover:shadow-lg transition duration-300 card-hover-effect flex flex-col justify-between space-y-5">
             <div className="space-y-4">
               <div className="w-12 h-12 rounded-xl bg-red-50 border border-red-100 flex items-center justify-center text-red-600">
                 <TrendingUp className="w-6 h-6" />
@@ -227,14 +230,14 @@ export const HomePage: React.FC<HomePageProps> = ({
                 onSelectCourse('commerce');
                 setActiveTab('courses');
               }}
-              className="text-red-600 hover:text-red-700 font-bold text-sm inline-flex items-center gap-1.5 group self-start pt-2"
+              className="text-red-600 hover:text-red-700 font-bold text-sm inline-flex items-center gap-1.5 group self-start pt-2 cursor-pointer"
             >
               Explore Program <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
           </div>
 
           {/* Card 3: Foundation */}
-          <div className="bg-white rounded-2xl border border-gray-200/80 p-6 sm:p-7 shadow-xs hover:shadow-md transition card-hover-effect flex flex-col justify-between space-y-5">
+          <div className="bg-white rounded-2xl border border-gray-200/90 p-6 sm:p-7 shadow-xs hover:shadow-lg transition duration-300 card-hover-effect flex flex-col justify-between space-y-5">
             <div className="space-y-4">
               <div className="w-12 h-12 rounded-xl bg-red-50 border border-red-100 flex items-center justify-center text-red-600">
                 <Building2 className="w-6 h-6" />
@@ -251,7 +254,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 onSelectCourse('foundation');
                 setActiveTab('courses');
               }}
-              className="text-red-600 hover:text-red-700 font-bold text-sm inline-flex items-center gap-1.5 group self-start pt-2"
+              className="text-red-600 hover:text-red-700 font-bold text-sm inline-flex items-center gap-1.5 group self-start pt-2 cursor-pointer"
             >
               Explore Program <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
@@ -259,18 +262,18 @@ export const HomePage: React.FC<HomePageProps> = ({
         </div>
       </section>
 
-      {/* 4. LEARN FROM SUBJECT MATTER EXPERTS (Matches Screenshot) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-gray-50/80 rounded-3xl p-6 sm:p-10 border border-gray-200/70">
+      {/* 4. LEARN FROM SUBJECT MATTER EXPERTS (Midnight Obsidian Background) */}
+      <section className="mx-4 sm:mx-6 lg:mx-8 max-w-7xl lg:mx-auto bg-[#18191B] text-white rounded-3xl p-8 sm:p-12 border border-gray-800 shadow-2xl">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-6">
-            <div className="relative rounded-2xl overflow-hidden shadow-md aspect-video bg-gray-200">
+            <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-video bg-gray-900 border border-gray-700">
               <img
                 src="https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&q=80&w=1000"
                 alt="Subject Matter Experts at Ahuja Institute"
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-5">
-                <span className="text-white text-xs font-semibold bg-red-600 px-2.5 py-1 rounded-md">
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-5">
+                <span className="text-white text-xs font-semibold bg-red-600 px-3 py-1 rounded-md shadow-xs">
                   Mentorship Driven
                 </span>
               </div>
@@ -278,17 +281,17 @@ export const HomePage: React.FC<HomePageProps> = ({
           </div>
 
           <div className="lg:col-span-6 space-y-4">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
-              Learn from <span className="text-red-600">Subject Matter</span> Experts
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+              Learn from <span className="text-red-500">Subject Matter</span> Experts
             </h2>
-            <p className="text-sm text-gray-600 leading-relaxed">
+            <p className="text-sm text-gray-300 leading-relaxed">
               Our leadership and senior faculty have personally mentored thousands of students to top ranks. With decades of combined teaching experience, they simplify complex concepts into crystal-clear fundamentals.
             </p>
 
-            <div className="bg-white p-5 rounded-xl border border-gray-200 space-y-1.5 shadow-xs">
-              <h4 className="font-bold text-base text-gray-900">Chiragbhai Ahuja</h4>
-              <p className="text-xs font-semibold text-red-600">Director &amp; Lead in Mathematics</p>
-              <p className="text-xs text-gray-500 leading-relaxed pt-1">
+            <div className="bg-gray-900/90 p-5 rounded-2xl border border-gray-800 space-y-1.5 shadow-md">
+              <h4 className="font-bold text-base text-white">Chiragbhai Ahuja</h4>
+              <p className="text-xs font-bold text-red-400">Director &amp; Lead in Mathematics</p>
+              <p className="text-xs text-gray-300 leading-relaxed pt-1">
                 16+ years of inspiring students to conquer mathematics with deep conceptual clarity, speed tricks, and board exam perfection.
               </p>
             </div>
@@ -296,7 +299,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             <div className="pt-2">
               <button
                 onClick={() => setActiveTab('faculty')}
-                className="text-red-600 hover:text-red-700 font-bold text-sm inline-flex items-center gap-1.5 group"
+                className="text-red-400 hover:text-red-300 font-bold text-sm inline-flex items-center gap-2 group cursor-pointer"
               >
                 Meet All Faculty <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
@@ -305,8 +308,8 @@ export const HomePage: React.FC<HomePageProps> = ({
         </div>
       </section>
 
-      {/* 5. CELEBRATING EXCELLENCE (Matches Screenshot: Student Result Badges) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* 5. CELEBRATING EXCELLENCE (White Background) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
         <div className="text-center space-y-2 mb-10">
           <h2 className="text-2xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
             Celebrating <span className="text-red-600">Excellence</span>
@@ -339,46 +342,46 @@ export const HomePage: React.FC<HomePageProps> = ({
         <div className="text-center mt-8">
           <button
             onClick={() => setActiveTab('scoreboard')}
-            className="px-6 py-2.5 bg-white hover:bg-gray-50 text-gray-800 border border-gray-300 font-semibold rounded-lg text-sm transition shadow-xs"
+            className="px-6 py-2.5 bg-white hover:bg-gray-50 text-gray-800 border border-gray-300 font-semibold rounded-lg text-sm transition shadow-xs cursor-pointer"
           >
             See All Results →
           </button>
         </div>
       </section>
 
-      {/* 6. CAMPUS LIFE (Matches Screenshot: Mosaic photo gallery) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* 6. CAMPUS LIFE (Midnight Obsidian Background) */}
+      <section className="mx-4 sm:mx-6 lg:mx-8 max-w-7xl lg:mx-auto bg-[#18191B] text-white rounded-3xl p-8 sm:p-12 border border-gray-800 shadow-2xl">
         <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 mb-8">
           <div className="space-y-1">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
-              Campus <span className="text-red-600">Life</span>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
+              Campus <span className="text-red-500">Life</span>
             </h2>
-            <p className="text-sm text-gray-500">A glimpse into our vibrant learning environment.</p>
+            <p className="text-sm text-gray-300">A glimpse into our vibrant learning environment.</p>
           </div>
           <button
             onClick={() => setActiveTab('gallery')}
-            className="text-red-600 hover:text-red-700 font-bold text-sm inline-flex items-center gap-1 group"
+            className="text-red-400 hover:text-red-300 font-bold text-sm inline-flex items-center gap-1 group cursor-pointer"
           >
             View Gallery <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-          <div className="md:col-span-6 rounded-2xl overflow-hidden h-64 sm:h-80 shadow-xs border border-gray-100">
+          <div className="md:col-span-6 rounded-2xl overflow-hidden h-64 sm:h-80 shadow-md border border-gray-700">
             <img
               src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=800"
               alt="Campus Life"
               className="w-full h-full object-cover hover:scale-103 transition-transform duration-500"
             />
           </div>
-          <div className="md:col-span-3 rounded-2xl overflow-hidden h-64 sm:h-80 shadow-xs border border-gray-100">
+          <div className="md:col-span-3 rounded-2xl overflow-hidden h-64 sm:h-80 shadow-md border border-gray-700">
             <img
               src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=600"
               alt="Library Study Space"
               className="w-full h-full object-cover hover:scale-103 transition-transform duration-500"
             />
           </div>
-          <div className="md:col-span-3 rounded-2xl overflow-hidden h-64 sm:h-80 shadow-xs border border-gray-100">
+          <div className="md:col-span-3 rounded-2xl overflow-hidden h-64 sm:h-80 shadow-md border border-gray-700">
             <img
               src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=600"
               alt="Student Collaboration"

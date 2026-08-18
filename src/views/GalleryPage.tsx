@@ -84,17 +84,26 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onInquireClick }) => {
         </div>
       </section>
 
-      {/* 3. GALLERY GRID (Matches Screenshot 3: 2-col / 3-col photo cards) */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      {/* 3. GALLERY GRID (Midnight Obsidian Background) */}
+      <section className="mx-4 sm:mx-6 lg:mx-8 max-w-6xl lg:mx-auto bg-[#18191B] text-white rounded-3xl p-8 sm:p-12 border border-gray-800 shadow-2xl space-y-10">
+        <div className="text-center space-y-2">
+          <span className="text-xs font-bold text-red-400 uppercase tracking-wider">
+            CAMPUS SPACES &amp; INFRASTRUCTURE
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
+            Photo Showcase
+          </h2>
+        </div>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredItems.map((item, idx) => (
             <div
               key={item.id}
               onClick={() => handleOpenLightbox(idx)}
-              className="bg-white rounded-2xl border border-gray-200 overflow-hidden transition group flex flex-col justify-between card-hover-effect cursor-pointer shadow-xs hover:shadow-md"
+              className="bg-gray-900/90 rounded-2xl border border-gray-800 overflow-hidden transition group flex flex-col justify-between card-hover-effect cursor-pointer shadow-md hover:border-gray-700"
             >
               <div>
-                <div className="relative h-64 overflow-hidden bg-gray-100">
+                <div className="relative h-64 overflow-hidden bg-gray-950">
                   <img
                     src={item.imageUrl}
                     alt={item.title}
@@ -104,28 +113,28 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onInquireClick }) => {
                   <span className="absolute top-3 left-3 px-2.5 py-1 bg-red-600 text-white text-[10px] font-bold rounded-md shadow-xs">
                     {item.category}
                   </span>
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center gap-2 text-white">
+                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center gap-2 text-white">
                     <Eye className="w-5 h-5 text-white" />
                     <span className="text-xs font-semibold">Tap to Expand</span>
                   </div>
                 </div>
 
                 <div className="p-5 space-y-1.5">
-                  <h3 className="font-bold text-gray-900 text-base">{item.title}</h3>
-                  <p className="text-xs text-gray-500 leading-relaxed line-clamp-2">{item.description}</p>
+                  <h3 className="font-bold text-white text-base">{item.title}</h3>
+                  <p className="text-xs text-gray-300 leading-relaxed line-clamp-2">{item.description}</p>
                 </div>
               </div>
 
-              <div className="p-4 bg-gray-50 border-t border-gray-100 flex items-center justify-between">
-                <span className="text-[11px] font-medium text-gray-500 flex items-center gap-1">
-                  <ZoomIn className="w-3.5 h-3.5 text-red-600" /> Click to enlarge
+              <div className="p-4 bg-black/30 border-t border-gray-800 flex items-center justify-between">
+                <span className="text-[11px] font-medium text-gray-400 flex items-center gap-1">
+                  <ZoomIn className="w-3.5 h-3.5 text-red-500" /> Click to enlarge
                 </span>
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
                     onInquireClick();
                   }}
-                  className="px-3 py-1.5 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg text-[11px] transition shadow-xs"
+                  className="px-3 py-1.5 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg text-[11px] transition shadow-xs cursor-pointer"
                 >
                   Visit Campus
                 </button>
@@ -134,15 +143,16 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onInquireClick }) => {
           ))}
         </div>
 
-        {/* Load More Button (Matches Screenshot 3) */}
+        {/* Load More / Book Tour Button */}
         <div className="text-center pt-2">
           <button
             onClick={onInquireClick}
-            className="px-8 py-3 bg-white hover:bg-gray-50 text-gray-900 border-2 border-gray-900 font-bold rounded-xl text-sm transition active:scale-98 shadow-xs"
+            className="px-6 py-2.5 bg-white hover:bg-gray-100 text-gray-900 border border-gray-300 font-bold rounded-xl text-xs sm:text-sm transition shadow-sm cursor-pointer"
           >
-            Load More
+            Book a Personal Campus Tour →
           </button>
         </div>
+      </section>
       </section>
 
       {/* 4. LIGHTBOX OVERLAY */}

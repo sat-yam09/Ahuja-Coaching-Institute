@@ -87,18 +87,27 @@ export const FacultyPage: React.FC<FacultyPageProps> = ({
         </div>
       </section>
 
-      {/* 3. FILTER PILLS & FACULTY GRID */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      {/* 3. FILTER PILLS & FACULTY GRID (Midnight Obsidian Background) */}
+      <section className="mx-4 sm:mx-6 lg:mx-8 max-w-7xl lg:mx-auto bg-[#18191B] text-white rounded-3xl p-8 sm:p-12 border border-gray-800 shadow-2xl space-y-8">
+        <div className="text-center space-y-2">
+          <span className="text-xs font-bold text-red-400 uppercase tracking-wider">
+            OUR MENTORS
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
+            Meet the Educator Team
+          </h2>
+        </div>
+
         {/* Category Pills */}
         <div className="flex flex-wrap justify-center gap-2.5">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setSelectedFilter(cat)}
-              className={`px-5 py-2 rounded-full text-xs sm:text-sm font-bold transition-all ${
+              className={`px-5 py-2 rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                 selectedFilter === cat
-                  ? 'bg-red-600 text-white shadow-md shadow-red-600/20 scale-102'
-                  : 'bg-white text-gray-700 hover:border-red-500 hover:text-red-600 border border-gray-300'
+                  ? 'bg-red-600 text-white shadow-md shadow-red-600/30 scale-102'
+                  : 'bg-gray-900 text-gray-300 hover:border-red-500 hover:text-red-400 border border-gray-700'
               }`}
             >
               {cat}
@@ -111,10 +120,10 @@ export const FacultyPage: React.FC<FacultyPageProps> = ({
           {filteredFaculty.map((faculty) => (
             <div
               key={faculty.id}
-              className="bg-white rounded-2xl border border-gray-200 overflow-hidden transition group flex flex-col justify-between card-hover-effect shadow-xs hover:shadow-md"
+              className="bg-gray-900/90 rounded-2xl border border-gray-800 overflow-hidden transition group flex flex-col justify-between card-hover-effect shadow-md hover:border-gray-700"
             >
               <div>
-                <div className="relative h-64 overflow-hidden bg-gray-100">
+                <div className="relative h-64 overflow-hidden bg-gray-950">
                   <img
                     src={faculty.avatarUrl}
                     alt={faculty.name}
@@ -126,10 +135,10 @@ export const FacultyPage: React.FC<FacultyPageProps> = ({
                 </div>
 
                 <div className="p-5 space-y-2 text-center">
-                  <h3 className="font-bold text-gray-900 text-base">{faculty.name}</h3>
-                  <p className="text-xs text-red-600 font-bold">{faculty.role}</p>
-                  <p className="text-[11px] text-gray-500 font-medium">{faculty.experience} • {faculty.education}</p>
-                  <p className="text-xs text-gray-600 line-clamp-2 pt-1">{faculty.bio}</p>
+                  <h3 className="font-bold text-white text-base">{faculty.name}</h3>
+                  <p className="text-xs text-red-400 font-bold">{faculty.role}</p>
+                  <p className="text-[11px] text-gray-400 font-medium">{faculty.experience} • {faculty.education}</p>
+                  <p className="text-xs text-gray-300 line-clamp-2 pt-1">{faculty.bio}</p>
                 </div>
               </div>
             </div>
@@ -139,13 +148,13 @@ export const FacultyPage: React.FC<FacultyPageProps> = ({
 
       {/* 4. BOTTOM FACULTY STATS BAR */}
       <section className="max-w-6xl mx-auto px-4">
-        <div className="bg-[#18191B] text-white p-8 sm:p-10 rounded-3xl border border-gray-800 grid grid-cols-2 sm:grid-cols-4 gap-6 text-center">
+        <div className="bg-slate-50 text-gray-900 p-8 sm:p-10 rounded-3xl border border-gray-200 grid grid-cols-2 sm:grid-cols-4 gap-6 text-center shadow-xs">
           {facultyStats.map((st, i) => (
             <div key={i} className="space-y-1.5">
-              <div className="text-3xl sm:text-4xl font-extrabold text-red-500">
+              <div className="text-3xl sm:text-4xl font-extrabold text-red-600">
                 {st.value}
               </div>
-              <div className="text-xs text-gray-300 font-semibold tracking-wide">
+              <div className="text-xs text-gray-600 font-bold tracking-wide">
                 {st.label}
               </div>
             </div>
