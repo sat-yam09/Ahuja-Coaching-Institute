@@ -24,7 +24,7 @@ interface CoursesPageProps {
 export const CoursesPage: React.FC<CoursesPageProps> = ({
   onInquireClick,
   onViewSyllabus,
-  initialCourseId = 'jee',
+  initialCourseId = 'competitive-jee-neet',
 }) => {
   const [selectedCourseId, setSelectedCourseId] = useState<string>(initialCourseId);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
@@ -32,6 +32,10 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({
   const [activeIncludedTab, setActiveIncludedTab] = useState<number>(0);
 
   const selectedCourse = coursesData.find((c) => c.id === selectedCourseId) || coursesData[0];
+  const orderedCourses = [...coursesData].sort((a, b) => {
+    const classOrder = ['foundation-6-10', 'science-11-12', 'commerce-11-12', 'competitive-jee-neet'];
+    return classOrder.indexOf(a.id) - classOrder.indexOf(b.id);
+  });
 
   const includedDeliverables = [
     {
@@ -99,7 +103,7 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({
       {/* 2. PROGRAM CARDS SELECTOR */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {coursesData.map((course) => {
+          {orderedCourses.map((course, index) => {
             const isSelected = selectedCourseId === course.id;
             return (
               <div
@@ -129,7 +133,7 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({
                       {course.tag}
                     </span>
                     <span className="text-xs font-mono font-semibold text-gray-400">
-                      {course.badge}
+                      {String(index + 1).padStart(2, '0')}/04
                     </span>
                   </div>
 
@@ -159,30 +163,6 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({
 
       {/* 3. SELECTED PROGRAM DETAIL CARD WITH CAPSULE FILTER SELECTOR */}
       <section id="program-detail-view" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 scroll-mt-24">
-        {/* Capsule Filter Switcher Pills */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
-          <span className="text-xs font-bold text-gray-400 uppercase tracking-wider whitespace-nowrap pl-1 pr-2 hidden sm:inline">
-            Select Track:
-          </span>
-          {coursesData.map((course) => {
-            const isSelected = selectedCourseId === course.id;
-            return (
-              <button
-                key={course.id}
-                onClick={() => setSelectedCourseId(course.id)}
-                className={`px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap transition-all flex items-center gap-1.5 cursor-pointer ${
-                  isSelected
-                    ? 'bg-red-600 text-white shadow-md shadow-red-600/25 ring-2 ring-red-600/20'
-                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200 border border-gray-200'
-                }`}
-              >
-                <span>{course.title}</span>
-                {isSelected && <span className="text-[10px] bg-white/20 px-1.5 py-0.2 rounded-full">Active</span>}
-              </button>
-            );
-          })}
-        </div>
-
         <div className="bg-white rounded-3xl border border-gray-200 shadow-sm p-6 sm:p-10 space-y-8">
           <div>
             <div className="inline-block px-2.5 py-0.5 bg-red-50 text-red-700 border border-red-200 text-[11px] font-bold uppercase tracking-wider rounded-md mb-2">
