@@ -8,6 +8,9 @@ import {
   ArrowRight,
   Users,
   GraduationCap,
+  ClipboardCheck,
+  MessageSquare,
+  Target,
   Award,
   Star,
   CheckCircle2,
@@ -30,6 +33,21 @@ export const FacultyPage: React.FC<FacultyPageProps> = ({
     selectedFilter === 'All'
       ? facultyMembers
       : facultyMembers.filter((f) => f.category === selectedFilter);
+
+  const getApproachIcon = (app: { id: string; title: string }) => {
+    switch (app.id) {
+      case '1':
+        return <GraduationCap className="w-6 h-6" />;
+      case '2':
+        return <ClipboardCheck className="w-6 h-6" />;
+      case '3':
+        return <MessageSquare className="w-6 h-6" />;
+      case '4':
+        return <Target className="w-6 h-6" />;
+      default:
+        return <BookOpen className="w-6 h-6" />;
+    }
+  };
 
   return (
     <div className="space-y-16 sm:space-y-20 pb-16 bg-white text-gray-900">
@@ -75,10 +93,10 @@ export const FacultyPage: React.FC<FacultyPageProps> = ({
           {teachingApproach.map((app) => (
             <div
               key={app.id}
-              className="bg-white p-6 rounded-2xl border border-gray-200 space-y-3.5 card-hover-effect shadow-xs"
+              className="bg-white p-6 rounded-2xl border border-gray-200 space-y-3.5 card-hover-effect shadow-xs hover:border-red-200 transition"
             >
-              <div className="w-12 h-12 rounded-xl bg-red-50 text-red-600 flex items-center justify-center border border-red-100">
-                <BookOpen className="w-6 h-6" />
+              <div className="w-12 h-12 rounded-xl bg-red-50 text-red-600 flex items-center justify-center border border-red-100 shadow-2xs">
+                {getApproachIcon(app)}
               </div>
               <h3 className="text-base font-bold text-gray-900">{app.title}</h3>
               <p className="text-xs text-gray-600 leading-relaxed">{app.description}</p>
