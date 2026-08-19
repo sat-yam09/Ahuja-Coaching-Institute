@@ -57,6 +57,20 @@ export interface Testimonial {
   avatarUrl: string;
 }
 
+export interface GoogleReview {
+  id: string;
+  authorName: string;
+  authorPhotoUrl: string;
+  rating: number;
+  relativeTimeDescription: string;
+  text: string;
+  branch: string;
+  tag: string;
+  mapsUrl?: string;
+  badge?: string;
+}
+
+
 export interface GalleryItem {
   id: string;
   title: string;
