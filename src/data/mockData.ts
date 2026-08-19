@@ -1,4 +1,4 @@
-import { Course, FacultyMember, ResultStudent, Testimonial, GalleryItem, Branch, FAQItem } from '../types';
+import { Course, FacultyMember, ResultStudent, Testimonial, GalleryItem, Branch, FAQItem, GoogleReview } from '../types';
 
 export const scoreboardStats = [
   { value: '27+', label: 'Years Excellence Legacy', icon: 'GraduationCap' },
@@ -618,6 +618,90 @@ export const testimonials: Testimonial[] = [
     avatarUrl: 'https://images.unsplash.com/photo-1501196354995-cbb51c65aaea?auto=format&fit=crop&q=80&w=200',
   },
 ];
+
+export const googleReviewStats = {
+  averageRating: 4.9,
+  totalReviews: 486,
+  recommendRate: '98%',
+  fiveStarPercentage: 96,
+  googleMapsUrl: 'https://maps.google.com/?q=Takshshila+Square+Krishnabaug+Cross+Road+Maninagar+Ahmedabad',
+};
+
+export const googleReviews: GoogleReview[] = [
+  {
+    id: 'gr-1',
+    authorName: 'Rakesh Vaghela',
+    authorPhotoUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150',
+    rating: 5,
+    relativeTimeDescription: '3 weeks ago',
+    text: 'Best institute in Maninagar for 11th-12th Science and JEE prep. Chirag Sir and the entire faculty pay close attention to every student. The regular daily mini-tests gave my child immense confidence.',
+    branch: 'Maninagar Head Office',
+    tag: '12th Science & JEE Prep',
+    badge: 'Verified Parent',
+    mapsUrl: 'https://maps.google.com/?q=Takshshila+Square+Krishnabaug+Cross+Road+Maninagar+Ahmedabad',
+  },
+  {
+    id: 'gr-2',
+    authorName: 'Pooja Bhatt',
+    authorPhotoUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150',
+    rating: 5,
+    relativeTimeDescription: '1 month ago',
+    text: 'The dedicated doubt resolution system here is truly exceptional. Whenever I got stuck on difficult NEET physics problems, tutor faculty were available immediately to explain the fundamental logic.',
+    branch: 'Vastral Branch',
+    tag: 'NEET UG Aspirant',
+    badge: 'Verified Student',
+    mapsUrl: 'https://maps.google.com/?q=Avadh+Pride+Nirant+Cross+Road+Vastral+Ahmedabad',
+  },
+  {
+    id: 'gr-3',
+    authorName: 'Dr. Manish Shah',
+    authorPhotoUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150',
+    rating: 5,
+    relativeTimeDescription: '2 months ago',
+    text: 'Ahuja Career Institute has maintained top quality education since 1998. Both my children studied here — one cracked JEE with 99+ percentile and the other scored 100/100 in Board Maths. Highly recommended!',
+    branch: 'Maninagar Head Office',
+    tag: 'Parent of 2 Toppers',
+    badge: 'Local Guide • 42 reviews',
+    mapsUrl: 'https://maps.google.com/?q=Takshshila+Square+Krishnabaug+Cross+Road+Maninagar+Ahmedabad',
+  },
+  {
+    id: 'gr-4',
+    authorName: 'Kunal Patel',
+    authorPhotoUrl: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=150',
+    rating: 5,
+    relativeTimeDescription: '3 weeks ago',
+    text: 'The best coaching for Commerce in Ahmedabad. Accountancy and Statistics are taught with practical clarity, not just textbook theory. Secured 95% in GSEB 12th Commerce Board exams.',
+    branch: 'Vastral Branch',
+    tag: '12th Commerce Board',
+    badge: 'Verified Student',
+    mapsUrl: 'https://maps.google.com/?q=Avadh+Pride+Nirant+Cross+Road+Vastral+Ahmedabad',
+  },
+  {
+    id: 'gr-5',
+    authorName: 'Hetalben Joshi',
+    authorPhotoUrl: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150',
+    rating: 5,
+    relativeTimeDescription: '1 month ago',
+    text: 'Foundation classes for 9th and 10th standard built strong conceptual roots for my son. The teachers maintain strict discipline while being very approachable and encouraging.',
+    branch: 'Maninagar Head Office',
+    tag: 'Class 10th Foundation',
+    badge: 'Verified Parent',
+    mapsUrl: 'https://maps.google.com/?q=Takshshila+Square+Krishnabaug+Cross+Road+Maninagar+Ahmedabad',
+  },
+  {
+    id: 'gr-6',
+    authorName: 'Aditya Dave',
+    authorPhotoUrl: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&q=80&w=150',
+    rating: 5,
+    relativeTimeDescription: '2 weeks ago',
+    text: 'Classroom facilities at Takshshila Square are great. Smart boards, air-conditioned rooms, and zero disturbance study library. Test series papers match exact competitive exam standards.',
+    branch: 'Maninagar Head Office',
+    tag: 'JEE Aspirant',
+    badge: 'Verified Student',
+    mapsUrl: 'https://maps.google.com/?q=Takshshila+Square+Krishnabaug+Cross+Road+Maninagar+Ahmedabad',
+  },
+];
+
 
 export const branches: Branch[] = [
   {

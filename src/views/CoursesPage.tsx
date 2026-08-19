@@ -205,74 +205,74 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({
           </p>
         </div>
 
-        {/* Horizontal Touch-Scrollable Capsule Filter Row on Mobile, Centered on Desktop */}
-        <div className="flex items-center gap-2.5 overflow-x-auto no-scrollbar py-2 px-4 sm:px-0 sm:flex-wrap sm:justify-center -mx-4 sm:mx-0 touch-pan-x scroll-smooth">
+        {/* Non-Scrollable Course Selection Capsule Grid (2x2 on Mobile, Centered Flex on Desktop) */}
+        <div className="grid grid-cols-2 sm:flex sm:flex-wrap sm:justify-center gap-2 sm:gap-3">
           {orderedCourses.map((course) => {
             const isSelected = selectedCourseId === course.id;
             return (
               <button
                 key={course.id}
                 onClick={() => handleSelectCourse(course.id)}
-                className={`flex-shrink-0 whitespace-nowrap px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-2 ${
+                className={`w-full sm:w-auto px-3 sm:px-5 py-2.5 sm:py-3 rounded-2xl sm:rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center justify-center sm:justify-start gap-1.5 sm:gap-2 text-center sm:text-left ${
                   isSelected
-                    ? 'bg-red-600 text-white shadow-md shadow-red-600/25 scale-102 ring-2 ring-red-500/20'
-                    : 'bg-white text-gray-700 hover:border-red-500 hover:text-red-600 border border-gray-300 shadow-2xs'
+                    ? 'bg-red-600 text-white shadow-md shadow-red-600/25 ring-2 ring-red-500/20 scale-[1.02]'
+                    : 'bg-white text-gray-700 hover:border-red-500 hover:text-red-600 border border-gray-300 shadow-2xs hover:bg-red-50/40'
                 }`}
               >
                 {getCourseIcon(course.id)}
-                <span>{course.title}</span>
+                <span className="truncate">{course.title}</span>
               </button>
             );
           })}
         </div>
 
         {/* Main Details Card */}
-        <div className="bg-white rounded-3xl border border-gray-200 shadow-sm p-6 sm:p-10 space-y-8">
-          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-gray-100 pb-5">
+        <div className="bg-white rounded-3xl border border-gray-200 shadow-sm p-5 sm:p-10 space-y-6 sm:space-y-8">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-gray-100 pb-4 sm:pb-5">
             <div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-red-50 text-red-700 border border-red-200 text-xs font-bold uppercase tracking-wider rounded-full mb-2">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-red-50 text-red-700 border border-red-200 text-xs font-bold uppercase tracking-wider rounded-full mb-1.5">
                 {getCourseIcon(selectedCourse.id)}
                 <span>Detailed Syllabus &amp; Batch Guide</span>
               </div>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900">
+              <h2 className="text-xl sm:text-3xl font-extrabold text-gray-900 leading-tight">
                 {selectedCourse.targetExam}
               </h2>
             </div>
 
             {/* Quick Badge Capsule */}
-            <div className="px-4 py-2 bg-gray-50 border border-gray-200 rounded-full text-xs font-bold text-gray-700 flex items-center gap-2">
+            <div className="self-start sm:self-auto px-3.5 py-1.5 bg-gray-50 border border-gray-200 rounded-full text-xs font-bold text-gray-700 flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
               <span>{selectedCourse.tag}</span>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-gray-50 p-5 rounded-2xl border border-gray-200 text-center">
-            <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-xs">
-              <div className="text-lg sm:text-xl font-extrabold text-red-600">
+          <div className="grid grid-cols-3 gap-2 sm:gap-4 bg-gray-50 p-3 sm:p-5 rounded-2xl border border-gray-200 text-center">
+            <div className="bg-white p-2.5 sm:p-4 rounded-xl border border-gray-200 shadow-xs">
+              <div className="text-sm sm:text-xl font-extrabold text-red-600 leading-tight">
                 {selectedCourse.stats.stat1}
               </div>
-              <div className="text-xs text-gray-500 mt-1 font-medium">Key Achievement</div>
+              <div className="text-[10px] sm:text-xs text-gray-500 mt-0.5 sm:mt-1 font-medium">Achievement</div>
             </div>
-            <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-xs">
-              <div className="text-lg sm:text-xl font-extrabold text-red-600">
+            <div className="bg-white p-2.5 sm:p-4 rounded-xl border border-gray-200 shadow-xs">
+              <div className="text-sm sm:text-xl font-extrabold text-red-600 leading-tight">
                 {selectedCourse.stats.stat2}
               </div>
-              <div className="text-xs text-gray-500 mt-1 font-medium">Delivery Mode</div>
+              <div className="text-[10px] sm:text-xs text-gray-500 mt-0.5 sm:mt-1 font-medium">Batch Delivery</div>
             </div>
-            <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-xs">
-              <div className="text-lg sm:text-xl font-extrabold text-red-600">
+            <div className="bg-white p-2.5 sm:p-4 rounded-xl border border-gray-200 shadow-xs">
+              <div className="text-sm sm:text-xl font-extrabold text-red-600 leading-tight">
                 {selectedCourse.stats.stat3}
               </div>
-              <div className="text-xs text-gray-500 mt-1 font-medium">Testing &amp; Evaluation</div>
+              <div className="text-[10px] sm:text-xs text-gray-500 mt-0.5 sm:mt-1 font-medium">Test System</div>
             </div>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 text-sm">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4 text-sm">
             <div className="p-3 sm:p-4 bg-gray-50 rounded-xl border border-gray-200 overflow-hidden">
               <span className="text-gray-500 uppercase tracking-wider block text-[10px] sm:text-[11px] font-bold">
                 Faculty Head
               </span>
-              <span className="font-bold text-gray-900 mt-1 block text-xs sm:text-sm break-words leading-snug">
+              <span className="font-bold text-gray-900 mt-0.5 block text-xs sm:text-sm break-words leading-snug">
                 {selectedCourse.facultyHead}
               </span>
             </div>
@@ -280,7 +280,7 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({
               <span className="text-gray-500 uppercase tracking-wider block text-[10px] sm:text-[11px] font-bold">
                 Timings
               </span>
-              <span className="font-bold text-gray-900 mt-1 block text-xs sm:text-sm break-words leading-snug">
+              <span className="font-bold text-gray-900 mt-0.5 block text-xs sm:text-sm break-words leading-snug">
                 {selectedCourse.timings}
               </span>
             </div>
@@ -288,7 +288,7 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({
               <span className="text-gray-500 uppercase tracking-wider block text-[10px] sm:text-[11px] font-bold">
                 Testing Freq
               </span>
-              <span className="font-bold text-gray-900 mt-1 block text-xs sm:text-sm break-words leading-snug">
+              <span className="font-bold text-gray-900 mt-0.5 block text-xs sm:text-sm break-words leading-snug">
                 {selectedCourse.testingFrequency}
               </span>
             </div>
@@ -296,25 +296,25 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({
               <span className="text-gray-500 uppercase tracking-wider block text-[10px] sm:text-[11px] font-bold">
                 Medium / Target
               </span>
-              <span className="font-bold text-red-600 mt-1 block text-xs sm:text-sm break-words leading-snug">
+              <span className="font-bold text-red-600 mt-0.5 block text-xs sm:text-sm break-words leading-snug">
                 {selectedCourse.tag}
               </span>
             </div>
           </div>
 
-          {/* Curriculum Breakdown Section with Simple Subject Capsule Pills */}
-          <div className="space-y-4">
-            <div className="flex flex-wrap items-center justify-between gap-2">
-              <h3 className="text-xl font-extrabold text-gray-900">
+          {/* Curriculum Breakdown Section with Responsive Non-Scrollable Subject Capsule Grid */}
+          <div className="space-y-3.5">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+              <h3 className="text-lg sm:text-xl font-extrabold text-gray-900">
                 Curriculum &amp; Syllabus Breakdown
               </h3>
-              <span className="text-xs text-gray-500 font-medium">
-                Click a subject capsule to view chapter topics
+              <span className="text-[11px] sm:text-xs text-gray-500 font-medium">
+                Tap a subject capsule to view modules:
               </span>
             </div>
 
-            {/* Subject Capsule Filter Pills - Horizontal Touch-Scrollable on Mobile */}
-            <div className="flex items-center gap-2.5 overflow-x-auto no-scrollbar py-1 px-1 sm:px-0 sm:flex-wrap -mx-1 sm:mx-0 touch-pan-x scroll-smooth pb-2">
+            {/* Subject Capsule Filter Grid - Non-scrollable, all visible on one screen on mobile */}
+            <div className="grid grid-cols-2 sm:flex sm:flex-wrap gap-2 sm:gap-2.5 pt-0.5">
               {selectedCourse.syllabus.map((s) => {
                 const isSubActive =
                   openSyllabusSubject === s.subject ||
@@ -324,18 +324,20 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({
                   <button
                     key={s.subject}
                     onClick={() => setOpenSyllabusSubject(s.subject)}
-                    className={`flex-shrink-0 whitespace-nowrap px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-2 ${
+                    className={`w-full sm:w-auto px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl sm:rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center justify-between sm:justify-start gap-1.5 sm:gap-2 ${
                       isSubActive
-                        ? 'bg-red-600 text-white shadow-md shadow-red-600/25 ring-2 ring-red-500/20 scale-102'
-                        : 'bg-white text-gray-700 hover:border-red-500 hover:text-red-600 border border-gray-300 shadow-2xs'
+                        ? 'bg-red-600 text-white shadow-md shadow-red-600/25 ring-2 ring-red-500/20 scale-[1.01]'
+                        : 'bg-white text-gray-700 hover:border-red-500 hover:text-red-600 border border-gray-300 shadow-2xs hover:bg-gray-50'
                     }`}
                   >
-                    <BookOpen className={`w-3.5 h-3.5 ${isSubActive ? 'text-white' : 'text-red-600'}`} />
-                    <span>{s.subject}</span>
-                    <span className={`text-[10px] px-2 py-0.5 rounded-full ${
+                    <div className="flex items-center gap-1.5 min-w-0">
+                      <BookOpen className={`w-3.5 h-3.5 flex-shrink-0 ${isSubActive ? 'text-white' : 'text-red-600'}`} />
+                      <span className="truncate">{s.subject}</span>
+                    </div>
+                    <span className={`text-[10px] px-1.5 py-0.5 rounded-md font-semibold flex-shrink-0 ${
                       isSubActive ? 'bg-white/20 text-white' : 'bg-gray-100 text-gray-600'
                     }`}>
-                      {s.topics.length} Modules
+                      {s.topics.length}
                     </span>
                   </button>
                 );
@@ -346,21 +348,21 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({
               const currentSubjectObj = selectedCourse.syllabus.find((s) => s.subject === openSyllabusSubject) || selectedCourse.syllabus[0];
               if (!currentSubjectObj) return null;
               return (
-                <div className="bg-gray-50/80 p-5 sm:p-6 rounded-2xl border border-gray-200 space-y-3 animate-fadeIn">
+                <div className="bg-gray-50/80 p-4 sm:p-6 rounded-2xl border border-gray-200 space-y-3 animate-fadeIn mt-3">
                   <div className="flex items-center justify-between">
-                    <h4 className="font-bold text-sm text-gray-900 flex items-center gap-2">
+                    <h4 className="font-bold text-xs sm:text-sm text-gray-900 flex items-center gap-2">
                       <BookOpen className="w-4 h-4 text-red-600" />
                       <span>{currentSubjectObj.subject} Modules &amp; Coverage</span>
                     </h4>
-                    <span className="text-xs font-semibold text-red-600 bg-red-50 px-3 py-1 rounded-full border border-red-100">
+                    <span className="text-[11px] sm:text-xs font-semibold text-red-600 bg-red-50 px-2.5 py-0.5 rounded-full border border-red-100">
                       Standard {selectedCourse.title}
                     </span>
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5 pt-1">
                     {currentSubjectObj.topics.map((topic, tIdx) => (
                       <div
                         key={tIdx}
-                        className="flex items-center gap-2.5 text-xs sm:text-sm text-gray-700 bg-white p-3 rounded-xl border border-gray-200 shadow-2xs hover:border-red-200 transition"
+                        className="flex items-center gap-2.5 text-xs sm:text-sm text-gray-700 bg-white p-2.5 sm:p-3 rounded-xl border border-gray-200 shadow-2xs hover:border-red-200 transition"
                       >
                         <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
                         <span className="font-medium">{topic}</span>
@@ -373,22 +375,23 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({
           </div>
 
           {/* Action CTAs */}
-          <div className="flex flex-wrap gap-3 pt-2">
+          <div className="flex flex-col sm:flex-row gap-3 pt-2">
             <button
               onClick={() => onInquireClick(selectedCourse.title)}
-              className="px-6 py-3.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl text-sm transition shadow-md shadow-red-600/20 active:scale-98 cursor-pointer"
+              className="w-full sm:w-auto px-6 py-3.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl text-sm transition shadow-md shadow-red-600/20 active:scale-98 cursor-pointer text-center"
             >
               Inquire For Batch Admission
             </button>
             <button
               onClick={() => onViewSyllabus(selectedCourse)}
-              className="px-6 py-3.5 bg-white hover:bg-gray-50 text-gray-800 border border-gray-300 font-bold rounded-xl text-sm transition flex items-center gap-2 shadow-xs cursor-pointer"
+              className="w-full sm:w-auto px-6 py-3.5 bg-white hover:bg-gray-50 text-gray-800 border border-gray-300 font-bold rounded-xl text-sm transition flex items-center justify-center gap-2 shadow-xs cursor-pointer text-center"
             >
               <Download className="w-4 h-4 text-red-600" /> Download Program PDF
             </button>
           </div>
         </div>
       </section>
+
 
       {/* 4. DELIVERABLES / TEACHING METHODS (Inline Accordion Pattern) */}
       <section className="bg-[#18191B] text-white py-16 sm:py-20 border-y border-gray-800">

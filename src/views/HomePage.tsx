@@ -11,6 +11,8 @@ import {
   facultyMembers,
   resultStudents,
 } from '../data/mockData';
+import { GoogleReviewsMarquee } from '../components/GoogleReviewsMarquee';
+
 import {
   ArrowRight,
   BookOpen,
@@ -384,8 +386,15 @@ export const HomePage: React.FC<HomePageProps> = ({
         </div>
       </section>
 
-      {/* 6. WHY CHOOSE US (Midnight Obsidian Background) */}
+      {/* 6. GOOGLE REVIEWS CARD MARQUEE SECTION */}
+      <GoogleReviewsMarquee
+        title="What Students &amp; Parents Say on Google"
+        subtitle="Transparent 5-star ratings and reviews from our Maninagar &amp; Vastral campuses on Google Maps."
+      />
+
+      {/* 7. WHY CHOOSE US (Midnight Obsidian Background) */}
       <section className="mx-4 sm:mx-6 lg:mx-8 max-w-7xl lg:mx-auto bg-[#18191B] text-white rounded-3xl p-8 sm:p-12 border border-gray-800 shadow-2xl">
+
         <div className="text-center space-y-2 mb-10 sm:mb-12">
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
             Why Choose <span className="text-red-500">Us</span>
