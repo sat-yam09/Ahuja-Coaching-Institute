@@ -13,6 +13,12 @@ import {
   ArrowRight,
   BookOpen,
   Sparkles,
+  FlaskConical,
+  TrendingUp,
+  Target,
+  GraduationCap,
+  Layers,
+  Check,
 } from 'lucide-react';
 
 interface CoursesPageProps {
@@ -31,11 +37,44 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({
   const [openSyllabusSubject, setOpenSyllabusSubject] = useState<string>('Physics');
   const [activeIncludedTab, setActiveIncludedTab] = useState<number>(0);
 
+  React.useEffect(() => {
+    if (initialCourseId) {
+      setSelectedCourseId(initialCourseId);
+      const course = coursesData.find((c) => c.id === initialCourseId);
+      if (course && course.syllabus && course.syllabus.length > 0) {
+        setOpenSyllabusSubject(course.syllabus[0].subject);
+      }
+    }
+  }, [initialCourseId]);
+
   const selectedCourse = coursesData.find((c) => c.id === selectedCourseId) || coursesData[0];
   const orderedCourses = [...coursesData].sort((a, b) => {
     const classOrder = ['foundation-6-10', 'science-11-12', 'commerce-11-12', 'competitive-jee-neet'];
     return classOrder.indexOf(a.id) - classOrder.indexOf(b.id);
   });
+
+  const getCourseIcon = (courseId: string) => {
+    switch (courseId) {
+      case 'science-11-12':
+        return <FlaskConical className="w-4 h-4 flex-shrink-0" />;
+      case 'commerce-11-12':
+        return <TrendingUp className="w-4 h-4 flex-shrink-0" />;
+      case 'competitive-jee-neet':
+        return <Target className="w-4 h-4 flex-shrink-0" />;
+      case 'foundation-6-10':
+        return <GraduationCap className="w-4 h-4 flex-shrink-0" />;
+      default:
+        return <BookOpen className="w-4 h-4 flex-shrink-0" />;
+    }
+  };
+
+  const handleSelectCourse = (courseId: string) => {
+    setSelectedCourseId(courseId);
+    const course = coursesData.find((c) => c.id === courseId);
+    if (course && course.syllabus && course.syllabus.length > 0) {
+      setOpenSyllabusSubject(course.syllabus[0].subject);
+    }
+  };
 
   const includedDeliverables = [
     {
@@ -100,77 +139,111 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({
         </div>
       </section>
 
-      {/* 2. PROGRAM CARDS SELECTOR */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* 2. PROGRAM STATIC SHOWCASE CARDS */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        <div className="text-center space-y-2">
+          <span className="text-xs font-bold text-red-600 uppercase tracking-wider">
+            PROGRAM OVERVIEW
+          </span>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900">
+            Our Academic Offerings
+          </h2>
+          <p className="text-xs sm:text-sm text-gray-500 max-w-xl mx-auto">
+            Comprehensive learning paths engineered for school board exams, JEE Main/Advanced, and NEET UG.
+          </p>
+        </div>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {orderedCourses.map((course, index) => {
-            const isSelected = selectedCourseId === course.id;
-            return (
-              <div
-                key={course.id}
-                onClick={() => {
-                  setSelectedCourseId(course.id);
-                  const el = document.getElementById('program-detail-view');
-                  if (el) {
-                    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  }
-                }}
-                className={`cursor-pointer rounded-2xl p-6 transition-all duration-200 border flex flex-col justify-between card-hover-effect bg-white text-gray-900 ${
-                  isSelected
-                    ? 'border-2 border-red-600 shadow-lg ring-4 ring-red-600/10'
-                    : 'border-gray-200 hover:border-red-400 shadow-xs'
-                }`}
-              >
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <span
-                      className={`px-3 py-1 rounded-full text-xs font-bold ${
-                        isSelected
-                          ? 'bg-red-600 text-white'
-                          : 'bg-red-50 text-red-700 border border-red-100'
-                      }`}
-                    >
-                      {course.tag}
-                    </span>
-                    <span className="text-xs font-mono font-semibold text-gray-400">
-                      {String(index + 1).padStart(2, '0')}/04
-                    </span>
-                  </div>
-
-                  <h3 className="text-lg font-bold text-gray-900">
-                    {course.title}
-                  </h3>
-
-                  <p className="text-xs leading-relaxed text-gray-600">
-                    {course.shortDesc}
-                  </p>
-                </div>
-
-                <div className="pt-5 mt-3 border-t border-gray-100 flex items-center justify-between">
-                  <span
-                    className={`text-xs font-bold flex items-center gap-1 ${
-                      isSelected ? 'text-red-600' : 'text-gray-500'
-                    }`}
-                  >
-                    {isSelected ? 'Viewing Details Below ↓' : 'Explore Curriculum →'}
+          {orderedCourses.map((course, index) => (
+            <div
+              key={course.id}
+              className="rounded-2xl p-6 border border-gray-200 flex flex-col justify-between bg-white text-gray-900 shadow-xs hover:border-gray-300 transition"
+            >
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="px-3 py-1 rounded-full text-xs font-bold bg-red-50 text-red-700 border border-red-100 flex items-center gap-1.5">
+                    {getCourseIcon(course.id)}
+                    {course.tag}
+                  </span>
+                  <span className="text-xs font-mono font-semibold text-gray-400">
+                    {String(index + 1).padStart(2, '0')}/04
                   </span>
                 </div>
+
+                <h3 className="text-lg font-bold text-gray-900">
+                  {course.title}
+                </h3>
+
+                <p className="text-xs leading-relaxed text-gray-600">
+                  {course.shortDesc}
+                </p>
               </div>
-            );
-          })}
+
+              <div className="pt-4 mt-4 border-t border-gray-100 space-y-2">
+                <div className="text-[11px] font-semibold text-gray-500 flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+                  <span>{course.stats.stat2}</span>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
-      {/* 3. SELECTED PROGRAM DETAIL CARD WITH CAPSULE FILTER SELECTOR */}
-      <section id="program-detail-view" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 scroll-mt-24">
+      {/* 3. SELECTED PROGRAM DETAIL CARD WITH SIMPLE CAPSULE FILTER OPTIONS */}
+      <section id="program-detail-view" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6 scroll-mt-24">
+        <div className="text-center space-y-2">
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 bg-red-50 text-red-700 border border-red-200 text-xs font-bold uppercase tracking-wider rounded-full shadow-xs">
+            <Sparkles className="w-3.5 h-3.5 text-red-600" />
+            Curriculum &amp; Batch Breakdown
+          </div>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900">
+            Course Detailed Syllabus &amp; Structure
+          </h2>
+          <p className="text-xs sm:text-sm text-gray-500 max-w-xl mx-auto">
+            Select a course capsule below to instantly view batch timings, target examination parameters, and subject modules.
+          </p>
+        </div>
+
+        {/* Horizontal Touch-Scrollable Capsule Filter Row on Mobile, Centered on Desktop */}
+        <div className="flex items-center gap-2.5 overflow-x-auto no-scrollbar py-2 px-4 sm:px-0 sm:flex-wrap sm:justify-center -mx-4 sm:mx-0 touch-pan-x scroll-smooth">
+          {orderedCourses.map((course) => {
+            const isSelected = selectedCourseId === course.id;
+            return (
+              <button
+                key={course.id}
+                onClick={() => handleSelectCourse(course.id)}
+                className={`flex-shrink-0 whitespace-nowrap px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-2 ${
+                  isSelected
+                    ? 'bg-red-600 text-white shadow-md shadow-red-600/25 scale-102 ring-2 ring-red-500/20'
+                    : 'bg-white text-gray-700 hover:border-red-500 hover:text-red-600 border border-gray-300 shadow-2xs'
+                }`}
+              >
+                {getCourseIcon(course.id)}
+                <span>{course.title}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Main Details Card */}
         <div className="bg-white rounded-3xl border border-gray-200 shadow-sm p-6 sm:p-10 space-y-8">
-          <div>
-            <div className="inline-block px-2.5 py-0.5 bg-red-50 text-red-700 border border-red-200 text-[11px] font-bold uppercase tracking-wider rounded-md mb-2">
-              Currently Viewing Detailed Syllabus
+          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-gray-100 pb-5">
+            <div>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-red-50 text-red-700 border border-red-200 text-xs font-bold uppercase tracking-wider rounded-full mb-2">
+                {getCourseIcon(selectedCourse.id)}
+                <span>Detailed Syllabus &amp; Batch Guide</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900">
+                {selectedCourse.targetExam}
+              </h2>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900">
-              {selectedCourse.targetExam}
-            </h2>
+
+            {/* Quick Badge Capsule */}
+            <div className="px-4 py-2 bg-gray-50 border border-gray-200 rounded-full text-xs font-bold text-gray-700 flex items-center gap-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+              <span>{selectedCourse.tag}</span>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 bg-gray-50 p-5 rounded-2xl border border-gray-200 text-center">
@@ -229,45 +302,68 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({
             </div>
           </div>
 
-          {/* Curriculum Breakdown Section */}
+          {/* Curriculum Breakdown Section with Simple Subject Capsule Pills */}
           <div className="space-y-4">
-            <h3 className="text-xl font-extrabold text-gray-900">
-              Curriculum &amp; Syllabus Breakdown
-            </h3>
-            
-            <div className="flex flex-wrap gap-2 border-b border-gray-200 pb-3">
-              {selectedCourse.syllabus.map((s) => (
-                <button
-                  key={s.subject}
-                  onClick={() => setOpenSyllabusSubject(s.subject)}
-                  className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition cursor-pointer ${
-                    openSyllabusSubject === s.subject || (!selectedCourse.syllabus.some((sub) => sub.subject === openSyllabusSubject) && s === selectedCourse.syllabus[0])
-                      ? 'bg-red-600 text-white shadow-xs'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
-                >
-                  {s.subject}
-                </button>
-              ))}
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <h3 className="text-xl font-extrabold text-gray-900">
+                Curriculum &amp; Syllabus Breakdown
+              </h3>
+              <span className="text-xs text-gray-500 font-medium">
+                Click a subject capsule to view chapter topics
+              </span>
+            </div>
+
+            {/* Subject Capsule Filter Pills - Horizontal Touch-Scrollable on Mobile */}
+            <div className="flex items-center gap-2.5 overflow-x-auto no-scrollbar py-1 px-1 sm:px-0 sm:flex-wrap -mx-1 sm:mx-0 touch-pan-x scroll-smooth pb-2">
+              {selectedCourse.syllabus.map((s) => {
+                const isSubActive =
+                  openSyllabusSubject === s.subject ||
+                  (!selectedCourse.syllabus.some((sub) => sub.subject === openSyllabusSubject) && s === selectedCourse.syllabus[0]);
+
+                return (
+                  <button
+                    key={s.subject}
+                    onClick={() => setOpenSyllabusSubject(s.subject)}
+                    className={`flex-shrink-0 whitespace-nowrap px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center gap-2 ${
+                      isSubActive
+                        ? 'bg-red-600 text-white shadow-md shadow-red-600/25 ring-2 ring-red-500/20 scale-102'
+                        : 'bg-white text-gray-700 hover:border-red-500 hover:text-red-600 border border-gray-300 shadow-2xs'
+                    }`}
+                  >
+                    <BookOpen className={`w-3.5 h-3.5 ${isSubActive ? 'text-white' : 'text-red-600'}`} />
+                    <span>{s.subject}</span>
+                    <span className={`text-[10px] px-2 py-0.5 rounded-full ${
+                      isSubActive ? 'bg-white/20 text-white' : 'bg-gray-100 text-gray-600'
+                    }`}>
+                      {s.topics.length} Modules
+                    </span>
+                  </button>
+                );
+              })}
             </div>
 
             {(() => {
               const currentSubjectObj = selectedCourse.syllabus.find((s) => s.subject === openSyllabusSubject) || selectedCourse.syllabus[0];
               if (!currentSubjectObj) return null;
               return (
-                <div className="bg-gray-50/80 p-5 sm:p-6 rounded-2xl border border-gray-200">
-                  <h4 className="font-bold text-sm text-gray-900 mb-3 flex items-center gap-2">
-                    <BookOpen className="w-4 h-4 text-red-600" />
-                    {currentSubjectObj.subject} Comprehensive Modules:
-                  </h4>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                <div className="bg-gray-50/80 p-5 sm:p-6 rounded-2xl border border-gray-200 space-y-3 animate-fadeIn">
+                  <div className="flex items-center justify-between">
+                    <h4 className="font-bold text-sm text-gray-900 flex items-center gap-2">
+                      <BookOpen className="w-4 h-4 text-red-600" />
+                      <span>{currentSubjectObj.subject} Modules &amp; Coverage</span>
+                    </h4>
+                    <span className="text-xs font-semibold text-red-600 bg-red-50 px-3 py-1 rounded-full border border-red-100">
+                      Standard {selectedCourse.title}
+                    </span>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1">
                     {currentSubjectObj.topics.map((topic, tIdx) => (
                       <div
                         key={tIdx}
-                        className="flex items-center gap-2 text-xs sm:text-sm text-gray-700 bg-white p-3 rounded-xl border border-gray-200 shadow-2xs"
+                        className="flex items-center gap-2.5 text-xs sm:text-sm text-gray-700 bg-white p-3 rounded-xl border border-gray-200 shadow-2xs hover:border-red-200 transition"
                       >
                         <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                        <span>{topic}</span>
+                        <span className="font-medium">{topic}</span>
                       </div>
                     ))}
                   </div>
