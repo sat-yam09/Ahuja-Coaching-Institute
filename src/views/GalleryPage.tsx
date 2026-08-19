@@ -2,8 +2,6 @@
 
 import React, { useState } from 'react';
 import { learningSpaces } from '../data/mockData';
-import { GalleryItem } from '../types';
-import { Eye, X, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react';
 
 interface GalleryPageProps {
   onInquireClick: () => void;
@@ -11,7 +9,6 @@ interface GalleryPageProps {
 
 export const GalleryPage: React.FC<GalleryPageProps> = ({ onInquireClick }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
-  const [activeLightboxIndex, setActiveLightboxIndex] = useState<number | null>(null);
 
   const categories = ['All', 'Classrooms', 'Awards', 'Student Life', 'Labs'];
 
@@ -19,27 +16,6 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onInquireClick }) => {
     selectedCategory === 'All'
       ? learningSpaces
       : learningSpaces.filter((item) => item.category === selectedCategory || (selectedCategory === 'Classrooms' && item.category === 'Smart Rooms'));
-
-  const handleOpenLightbox = (index: number) => {
-    setActiveLightboxIndex(index);
-  };
-
-  const handleCloseLightbox = () => {
-    setActiveLightboxIndex(null);
-  };
-
-  const handlePrevLightbox = () => {
-    if (activeLightboxIndex === null) return;
-    setActiveLightboxIndex((activeLightboxIndex - 1 + filteredItems.length) % filteredItems.length);
-  };
-
-  const handleNextLightbox = () => {
-    if (activeLightboxIndex === null) return;
-    setActiveLightboxIndex((activeLightboxIndex + 1) % filteredItems.length);
-  };
-
-  const currentItem: GalleryItem | null =
-    activeLightboxIndex !== null ? filteredItems[activeLightboxIndex] : null;
 
   return (
     <div className="space-y-12 sm:space-y-16 pb-16 bg-white text-gray-900">
@@ -96,11 +72,10 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onInquireClick }) => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredItems.map((item, idx) => (
+          {filteredItems.map((item) => (
             <div
               key={item.id}
-              onClick={() => handleOpenLightbox(idx)}
-              className="bg-gray-900/90 rounded-2xl border border-gray-800 overflow-hidden transition group flex flex-col justify-between card-hover-effect cursor-pointer shadow-md hover:border-gray-700"
+              className="bg-gray-900/90 rounded-2xl border border-gray-800 overflow-hidden transition group flex flex-col justify-between card-hover-effect shadow-md hover:border-gray-700"
             >
               <div>
                 <div className="relative h-64 overflow-hidden bg-gray-950">
@@ -113,10 +88,6 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onInquireClick }) => {
                   <span className="absolute top-3 left-3 px-2.5 py-1 bg-red-600 text-white text-[10px] font-bold rounded-md shadow-xs">
                     {item.category}
                   </span>
-                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center gap-2 text-white">
-                    <Eye className="w-5 h-5 text-white" />
-                    <span className="text-xs font-semibold">Tap to Expand</span>
-                  </div>
                 </div>
 
                 <div className="p-5 space-y-1.5">
@@ -126,14 +97,9 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onInquireClick }) => {
               </div>
 
               <div className="p-4 bg-black/30 border-t border-gray-800 flex items-center justify-between">
-                <span className="text-[11px] font-medium text-gray-400 flex items-center gap-1">
-                  <ZoomIn className="w-3.5 h-3.5 text-red-500" /> Click to enlarge
-                </span>
+                <span className="text-[11px] font-medium text-gray-400">Campus learning space</span>
                 <button
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    onInquireClick();
-                  }}
+                  onClick={onInquireClick}
                   className="px-3 py-1.5 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg text-[11px] transition shadow-xs cursor-pointer"
                 >
                   Visit Campus
@@ -154,61 +120,6 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onInquireClick }) => {
         </div>
       </section>
 
-      {/* 4. LIGHTBOX OVERLAY */}
-      {currentItem && (
-        <div className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 animate-fadeIn">
-          <div className="relative max-w-4xl w-full bg-[#18191B] rounded-2xl overflow-hidden border border-gray-800 text-white flex flex-col max-h-[90vh]">
-            <div className="p-4 bg-[#22262E] flex items-center justify-between border-b border-gray-800">
-              <div className="flex items-center gap-3">
-                <span className="px-2.5 py-0.5 bg-red-600 text-white text-[10px] font-bold rounded-md">
-                  {currentItem.category}
-                </span>
-                <h3 className="font-bold text-sm sm:text-base text-white">{currentItem.title}</h3>
-              </div>
-              <button
-                onClick={handleCloseLightbox}
-                className="p-1.5 rounded-lg hover:bg-white/10 text-white transition"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            <div className="relative flex-1 bg-black flex items-center justify-center overflow-hidden min-h-[300px] max-h-[60vh]">
-              <img
-                src={currentItem.imageUrl}
-                alt={currentItem.title}
-                className="max-w-full max-h-[60vh] object-contain transition duration-300"
-              />
-
-              <button
-                onClick={handlePrevLightbox}
-                className="absolute left-4 p-2 rounded-lg bg-black/60 hover:bg-red-600 text-white border border-white/10 transition"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-              <button
-                onClick={handleNextLightbox}
-                className="absolute right-4 p-2 rounded-lg bg-black/60 hover:bg-red-600 text-white border border-white/10 transition"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
-            </div>
-
-            <div className="p-4 bg-[#18191B] border-t border-gray-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-300">
-              <p className="leading-relaxed max-w-2xl">{currentItem.description}</p>
-              <button
-                onClick={() => {
-                  handleCloseLightbox();
-                  onInquireClick();
-                }}
-                className="px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold text-xs rounded-xl flex-shrink-0 shadow-xs"
-              >
-                Book Campus Visit
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 };

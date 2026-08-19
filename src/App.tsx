@@ -21,7 +21,7 @@ export default function App() {
   const [inquireCohort, setInquireCohort] = useState('JEE Main & Advanced 2027');
   const [selectedFaculty, setSelectedFaculty] = useState<FacultyMember | null>(null);
   const [selectedSyllabusCourse, setSelectedSyllabusCourse] = useState<Course | null>(null);
-  const [selectedCourseIdForPage, setSelectedCourseIdForPage] = useState('jee');
+  const [selectedCourseIdForPage, setSelectedCourseIdForPage] = useState('competitive-jee-neet');
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });

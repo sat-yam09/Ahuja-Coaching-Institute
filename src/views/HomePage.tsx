@@ -31,6 +31,7 @@ import {
   MapPin,
   TrendingUp,
   Quote,
+  Trophy,
 } from 'lucide-react';
 
 interface HomePageProps {
@@ -66,7 +67,7 @@ export const HomePage: React.FC<HomePageProps> = ({
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-red-200 bg-red-50 text-red-700 text-xs sm:text-sm font-semibold shadow-xs animate-fadeIn">
-            <span className="text-red-600 font-bold">🏆</span>
+            <Trophy className="w-4 h-4 text-red-600" aria-hidden="true" />
             <span>27+ Years of Academic Excellence • Est. 1998</span>
           </div>
 
@@ -237,7 +238,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             </div>
             <button
               onClick={() => {
-                onSelectCourse('jee');
+                onSelectCourse('competitive-jee-neet');
                 setActiveTab('courses');
               }}
               className="text-red-600 hover:text-red-700 font-bold text-sm inline-flex items-center gap-1.5 group self-start pt-2 cursor-pointer"
