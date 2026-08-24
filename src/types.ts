@@ -41,11 +41,38 @@ export interface ResultStudent {
   name: string;
   score: string;
   exam: string;
-  category: 'JEE' | 'NEET' | 'Board';
+  category: 'JEE' | 'NEET' | 'Board' | 'Foundation';
   year: string;
   avatarUrl: string;
   instituteBranch: string;
+  school?: string;
+  standeeUrl?: string;
+  subject?: string;
   quote?: string;
+}
+
+export interface StandeeTopper {
+  id: string;
+  name: string;
+  exam: string;
+  score: string;
+  school?: string;
+  branch?: string;
+  standeeUrl: string;
+  type: 'Junior' | 'Senior';
+  tag: string;
+}
+
+export interface PosterAsset {
+  id: string;
+  title: string;
+  subtitle: string;
+  category: 'Mega Results' | 'Admissions Pamphlet' | 'Branch Campaign';
+  imageUrl: string;
+  downloadUrl?: string;
+  year: string;
+  description: string;
+  highlights: string[];
 }
 
 export interface Testimonial {
@@ -70,11 +97,10 @@ export interface GoogleReview {
   badge?: string;
 }
 
-
 export interface GalleryItem {
   id: string;
   title: string;
-  category: 'Smart Rooms' | 'Labs' | 'Events' | 'Student Life';
+  category: 'Smart Rooms' | 'Labs' | 'Events' | 'Student Life' | 'Print Media & Campaigns';
   imageUrl: string;
   description: string;
 }
@@ -84,6 +110,8 @@ export interface Branch {
   name: string;
   address: string;
   phone: string;
+  secondaryPhone?: string;
+  landline?: string;
   email: string;
   timing: string;
   isMainBranch?: boolean;

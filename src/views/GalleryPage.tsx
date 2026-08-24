@@ -1,7 +1,10 @@
 'use client';
 
 import React, { useState } from 'react';
-import { learningSpaces } from '../data/mockData';
+import { learningSpaces, posterAssets } from '../data/mockData';
+import { PosterModal } from '../components/PosterModal';
+import { PosterAsset } from '../types';
+import { Eye, Sparkles, Building2 } from 'lucide-react';
 
 interface GalleryPageProps {
   onInquireClick: () => void;
@@ -9,46 +12,55 @@ interface GalleryPageProps {
 
 export const GalleryPage: React.FC<GalleryPageProps> = ({ onInquireClick }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
+  const [selectedPoster, setSelectedPoster] = useState<PosterAsset | null>(null);
+  const [isPosterModalOpen, setIsPosterModalOpen] = useState(false);
 
-  const categories = ['All', 'Classrooms', 'Awards', 'Student Life', 'Labs'];
+  const categories = ['All', 'Classrooms', 'Print & Campaigns', 'Events', 'Student Life', 'Labs'];
 
   const filteredItems =
     selectedCategory === 'All'
       ? learningSpaces
-      : learningSpaces.filter((item) => item.category === selectedCategory || (selectedCategory === 'Classrooms' && item.category === 'Smart Rooms'));
+      : learningSpaces.filter((item) => {
+          if (selectedCategory === 'Classrooms') return item.category === 'Smart Rooms';
+          if (selectedCategory === 'Print & Campaigns') return item.category === 'Print Media & Campaigns';
+          return item.category === selectedCategory;
+        });
+
+  const handleOpenItem = (item: (typeof learningSpaces)[0]) => {
+    // If it's a print media poster, open the high-res modal
+    if (item.category === 'Print Media & Campaigns') {
+      const match = posterAssets.find((p) => p.imageUrl === item.imageUrl);
+      if (match) {
+        setSelectedPoster(match);
+        setIsPosterModalOpen(true);
+        return;
+      }
+    }
+  };
 
   return (
     <div className="space-y-12 sm:space-y-16 pb-16 bg-white text-gray-900">
-      {/* 1. HEADER SECTION (Matches Screenshot 3: "Campus Gallery", subtitle with stock image showcase) */}
+      {/* 1. HEADER SECTION */}
       <section className="pt-12 sm:pt-16 text-center max-w-3xl mx-auto px-4 space-y-4">
-        <h1 className="text-3xl sm:text-5xl font-extrabold text-gray-900 tracking-tight">
-          Campus <span className="text-red-600">Gallery</span>
-        </h1>
-        <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-          Explore learning spaces, smart classrooms, and student life at Ahuja Career Institute.
-        </p>
-
-        {/* Hero Stock Image */}
-        <div className="relative rounded-3xl overflow-hidden shadow-lg border border-gray-200 max-w-2xl mx-auto group">
-          <img
-            src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&q=80&w=1200"
-            alt="Campus Infrastructure and Smart Classrooms"
-            className="w-full h-52 sm:h-64 object-cover group-hover:scale-102 transition duration-500"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent flex items-end p-5">
-            <p className="text-white text-xs sm:text-sm font-bold">
-              Air-conditioned smart classrooms, computer CBT labs, and personalized doubt resolution desks.
-            </p>
-          </div>
+        <div className="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-red-50 border border-red-200 text-red-700 text-xs font-bold uppercase tracking-wider">
+          <Building2 className="w-3.5 h-3.5 text-red-600" />
+          <span>Campuses &amp; Publications</span>
         </div>
 
-        {/* 2. FILTER PILLS (Matches Screenshot 3: Red active pill, white outlined inactive pills) */}
+        <h1 className="text-3xl sm:text-5xl font-extrabold text-gray-900 tracking-tight">
+          Campus &amp; Media <span className="text-red-600">Gallery</span>
+        </h1>
+        <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
+          Explore smart classrooms, student life, doubt clearing desks, and official print marketing publications.
+        </p>
+
+        {/* 2. FILTER PILLS */}
         <div className="flex flex-wrap justify-center gap-2.5 pt-4">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-5 py-2 rounded-full text-xs sm:text-sm font-bold transition-all ${
+              className={`px-5 py-2 rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                 selectedCategory === cat
                   ? 'bg-red-600 text-white shadow-md shadow-red-600/20 scale-102'
                   : 'bg-white text-gray-700 hover:border-red-500 hover:text-red-600 border border-gray-300'
@@ -60,14 +72,14 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onInquireClick }) => {
         </div>
       </section>
 
-      {/* 3. GALLERY GRID (Midnight Obsidian Background) */}
-      <section className="mx-4 sm:mx-6 lg:mx-8 max-w-6xl lg:mx-auto bg-[#18191B] text-white rounded-3xl p-8 sm:p-12 border border-gray-800 shadow-2xl space-y-10">
+      {/* 3. GALLERY GRID (Midnight Obsidian Card) */}
+      <section className="mx-4 sm:mx-6 lg:mx-8 max-w-6xl lg:mx-auto bg-[#18191B] text-white rounded-3xl p-6 sm:p-10 lg:p-12 border border-gray-800 shadow-2xl space-y-8">
         <div className="text-center space-y-2">
           <span className="text-xs font-bold text-red-400 uppercase tracking-wider">
-            CAMPUS SPACES &amp; INFRASTRUCTURE
+            CAMPUS SPACES &amp; OFFICIAL ASSETS
           </span>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-white">
-            Photo Showcase
+            Visual Showcase ({filteredItems.length})
           </h2>
         </div>
 
@@ -75,31 +87,49 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onInquireClick }) => {
           {filteredItems.map((item) => (
             <div
               key={item.id}
-              className="bg-gray-900/90 rounded-2xl border border-gray-800 overflow-hidden transition group flex flex-col justify-between card-hover-effect shadow-md hover:border-gray-700"
+              onClick={() => handleOpenItem(item)}
+              className={`bg-gray-900/90 rounded-2xl border border-gray-800 overflow-hidden transition group flex flex-col justify-between shadow-md hover:border-gray-700 card-hover-effect ${
+                item.category === 'Print Media & Campaigns' ? 'cursor-pointer' : ''
+              }`}
             >
               <div>
-                <div className="relative h-64 overflow-hidden bg-gray-950">
+                <div className="relative h-64 overflow-hidden bg-gray-950 flex items-center justify-center p-2">
                   <img
                     src={item.imageUrl}
                     alt={item.title}
                     loading="lazy"
-                    className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                    className="max-h-full w-full object-contain group-hover:scale-105 transition duration-500 rounded-lg"
                   />
                   <span className="absolute top-3 left-3 px-2.5 py-1 bg-red-600 text-white text-[10px] font-bold rounded-md shadow-xs">
                     {item.category}
                   </span>
+                  {item.category === 'Print Media & Campaigns' && (
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                      <span className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg bg-white text-gray-900 font-bold text-xs shadow-lg">
+                        <Eye className="w-3.5 h-3.5 text-red-600" />
+                        <span>View High-Res</span>
+                      </span>
+                    </div>
+                  )}
                 </div>
 
                 <div className="p-5 space-y-1.5">
-                  <h3 className="font-bold text-white text-base">{item.title}</h3>
+                  <h3 className="font-bold text-white text-base group-hover:text-red-400 transition-colors">
+                    {item.title}
+                  </h3>
                   <p className="text-xs text-gray-300 leading-relaxed line-clamp-2">{item.description}</p>
                 </div>
               </div>
 
               <div className="p-4 bg-black/30 border-t border-gray-800 flex items-center justify-between">
-                <span className="text-[11px] font-medium text-gray-400">Campus learning space</span>
+                <span className="text-[11px] font-medium text-gray-400">
+                  {item.category === 'Print Media & Campaigns' ? 'Official Media' : 'Campus Space'}
+                </span>
                 <button
-                  onClick={onInquireClick}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onInquireClick();
+                  }}
                   className="px-3 py-1.5 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg text-[11px] transition shadow-xs cursor-pointer"
                 >
                   Visit Campus
@@ -109,7 +139,7 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onInquireClick }) => {
           ))}
         </div>
 
-        {/* Load More / Book Tour Button */}
+        {/* Action Button */}
         <div className="text-center pt-2">
           <button
             onClick={onInquireClick}
@@ -120,6 +150,15 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onInquireClick }) => {
         </div>
       </section>
 
+      {/* Modal Lightbox */}
+      <PosterModal
+        poster={selectedPoster}
+        isOpen={isPosterModalOpen}
+        onClose={() => {
+          setIsPosterModalOpen(false);
+          setSelectedPoster(null);
+        }}
+      />
     </div>
   );
 };

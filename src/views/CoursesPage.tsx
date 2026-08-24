@@ -302,6 +302,21 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({
             </div>
           </div>
 
+          {/* Special Morning Batch Notice for Nelson's / Punit Ashram students */}
+          {selectedCourse.id === 'foundation-6-10' && (
+            <div className="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-amber-900 flex items-start gap-3">
+              <Sparkles className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+              <div className="space-y-0.5 text-xs">
+                <span className="font-bold text-amber-950 uppercase tracking-wider">
+                  Special Morning Batches: 9:00 AM – 11:15 AM
+                </span>
+                <p className="text-amber-800 leading-relaxed">
+                  Dedicated morning timetable for Std 8th, 9th &amp; 10th students of Nelson's School and Punit Ashram School to avoid any clash with school hours.
+                </p>
+              </div>
+            </div>
+          )}
+
           {/* Curriculum Breakdown Section with Responsive Non-Scrollable Subject Capsule Grid */}
           <div className="space-y-3.5">
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1">

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { PageTab } from '../types';
+import { PageTab, PosterAsset } from '../types';
 import {
   coursesData,
   teachingApproach,
@@ -10,8 +10,13 @@ import {
   heroStats,
   facultyMembers,
   resultStudents,
+  standeeToppers,
+  posterAssets,
+  brandTagline,
+  specialMorningBatches,
 } from '../data/mockData';
 import { GoogleReviewsMarquee } from '../components/GoogleReviewsMarquee';
+import { PosterModal } from '../components/PosterModal';
 
 import {
   ArrowRight,
@@ -34,6 +39,9 @@ import {
   TrendingUp,
   Quote,
   Trophy,
+  Download,
+  Eye,
+  School,
 } from 'lucide-react';
 
 interface HomePageProps {
@@ -48,6 +56,8 @@ export const HomePage: React.FC<HomePageProps> = ({
   onSelectCourse,
 }) => {
   const [selectedCurriculumTab, setSelectedCurriculumTab] = useState<string>('jee');
+  const [selectedPoster, setSelectedPoster] = useState<PosterAsset | null>(null);
+  const [isPosterModalOpen, setIsPosterModalOpen] = useState(false);
   const [demoName, setDemoName] = useState('');
   const [demoPhone, setDemoPhone] = useState('');
   const [demoCohort, setDemoCohort] = useState('11th & 12th Science (JEE/NEET)');
@@ -62,15 +72,20 @@ export const HomePage: React.FC<HomePageProps> = ({
     setDemoSuccess(true);
   };
 
+  const handleOpenPoster = (poster: PosterAsset) => {
+    setSelectedPoster(poster);
+    setIsPosterModalOpen(true);
+  };
+
   return (
     <div className="space-y-16 sm:space-y-24 pb-16 bg-white text-gray-900">
-      {/* 1. HERO SECTION (With High-Quality Stock Image & Floating Highlights) */}
+      {/* 1. HERO SECTION */}
       <section className="relative pt-12 sm:pt-20 pb-12 sm:pb-16 overflow-hidden bg-gradient-to-b from-red-50/40 via-white to-white">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-red-200 bg-red-50 text-red-700 text-xs sm:text-sm font-semibold shadow-xs animate-fadeIn">
-            <Trophy className="w-4 h-4 text-red-600" aria-hidden="true" />
-            <span>27+ Years of Academic Excellence • Est. 1998</span>
+          {/* Badge with Hindi Motto */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-red-200 bg-red-50 text-red-700 text-xs sm:text-sm font-bold shadow-xs animate-fadeIn">
+            <Sparkles className="w-4 h-4 text-red-600" aria-hidden="true" />
+            <span>{brandTagline.hindi} • 27+ Years Legacy (Est. 1998)</span>
           </div>
 
           {/* Headline */}
@@ -81,22 +96,29 @@ export const HomePage: React.FC<HomePageProps> = ({
 
           {/* Subtitle */}
           <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed">
-            Guiding students towards academic excellence since 1998. Join our legacy of 22,000+ successful students across Std. 6th to 12th (Science &amp; Commerce), JEE, and NEET.
+            Guiding students towards academic excellence since 1998. Join our legacy of 22,000+ successful students across Std. 6th to 12th (Science &amp; Commerce), JEE Main, and NEET UG.
           </p>
 
           {/* Action Buttons */}
           <div className="pt-2 flex flex-wrap items-center justify-center gap-3.5">
             <button
               onClick={onInquireClick}
-              className="px-7 py-3.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl text-sm transition-all shadow-md shadow-red-600/20 active:scale-98 flex items-center gap-2"
+              className="px-7 py-3.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl text-sm transition-all shadow-md shadow-red-600/20 active:scale-98 flex items-center gap-2 cursor-pointer"
             >
-              Inquire Now <ArrowRight className="w-4 h-4" />
+              Inquire for 2026-27 <ArrowRight className="w-4 h-4" />
             </button>
             <button
-              onClick={() => setActiveTab('courses')}
-              className="px-7 py-3.5 bg-white hover:bg-gray-50 text-gray-800 border border-gray-300 font-semibold rounded-xl text-sm transition shadow-xs hover:border-gray-400 active:scale-98"
+              onClick={() => handleOpenPoster(posterAssets[2])}
+              className="px-6 py-3.5 bg-white hover:bg-gray-50 text-gray-800 border border-gray-300 font-semibold rounded-xl text-sm transition shadow-xs flex items-center gap-2 cursor-pointer"
             >
-              Explore Programs
+              <FileText className="w-4 h-4 text-red-600" />
+              <span>Admission Brochure</span>
+            </button>
+            <button
+              onClick={() => setActiveTab('scoreboard')}
+              className="px-6 py-3.5 bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold rounded-xl text-sm transition cursor-pointer"
+            >
+              View Scoreboard →
             </button>
           </div>
 
@@ -346,42 +368,90 @@ export const HomePage: React.FC<HomePageProps> = ({
       </section>
 
       {/* 5. CELEBRATING EXCELLENCE (White Background) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-        <div className="text-center space-y-2 mb-10">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 space-y-8">
+        <div className="text-center space-y-2">
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-red-50 border border-red-200 text-red-700 text-xs font-bold uppercase tracking-wider">
+            <Trophy className="w-3.5 h-3.5 text-red-600" />
+            <span>Verified Scoreboard</span>
+          </div>
           <h2 className="text-2xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
             Celebrating <span className="text-red-600">Excellence</span>
           </h2>
           <p className="text-sm sm:text-base text-gray-600 max-w-xl mx-auto">
-            Consistently benchmarked by students achieving top ranks and scores every year.
+            Consistently benchmarked by students achieving 100/100 perfect board marks and top JEE/NEET ranks.
           </p>
         </div>
 
+        {/* Real Toppers Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {resultStudents.slice(0, 4).map((top) => (
+          {standeeToppers.slice(0, 4).map((st) => (
             <div
-              key={top.id}
-              className="bg-white rounded-2xl border border-gray-200 p-5 shadow-xs hover:shadow-md transition card-hover-effect flex items-center gap-4"
+              key={st.id}
+              className="bg-white rounded-2xl border border-gray-200 p-4 shadow-xs hover:shadow-md transition card-hover-effect flex flex-col justify-between"
             >
-              <img
-                src={top.avatarUrl}
-                alt={top.name}
-                className="w-14 h-14 rounded-xl object-cover border border-gray-100 flex-shrink-0"
-              />
+              <div className="relative h-44 overflow-hidden rounded-xl bg-gray-50 p-2 flex items-center justify-center mb-3">
+                <img
+                  src={st.standeeUrl}
+                  alt={st.name}
+                  className="max-h-full w-auto object-contain rounded-lg"
+                />
+                <span className="absolute top-2 right-2 px-2 py-0.5 bg-red-600 text-white text-[10px] font-bold rounded">
+                  {st.tag}
+                </span>
+              </div>
               <div className="space-y-1">
-                <h4 className="font-bold text-sm text-gray-900 leading-tight">{top.name}</h4>
-                <p className="text-xs text-gray-500">{top.exam}</p>
-                <div className="text-base font-extrabold text-red-600">{top.score}</div>
+                <h4 className="font-bold text-base text-gray-900 leading-tight">{st.name}</h4>
+                <div className="text-sm font-extrabold text-red-600">{st.score}</div>
+                <p className="text-xs text-gray-500 font-medium">{st.exam}</p>
+                {st.school && (
+                  <p className="text-[11px] text-gray-500 flex items-center space-x-1 pt-1">
+                    <School className="w-3 h-3 text-red-500" />
+                    <span>{st.school}</span>
+                  </p>
+                )}
               </div>
             </div>
           ))}
         </div>
 
-        <div className="text-center mt-8">
+        {/* Brochure Download & Mega Results Banner (Obsidian Card) */}
+        <div className="bg-[#18191B] p-6 sm:p-8 rounded-3xl border border-gray-800 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="space-y-1 text-center md:text-left">
+            <span className="text-xs font-bold text-red-400 uppercase tracking-wider">
+              OFFICIAL 2026-27 ADMISSION ASSETS
+            </span>
+            <h3 className="text-xl sm:text-2xl font-bold">
+              Download Admissions Pamphlet &amp; Mega Scoreboard Poster
+            </h3>
+            <p className="text-xs sm:text-sm text-gray-300 max-w-xl">
+              Get complete curriculum syllabus details, batch timings, and the full list of 100/100 subject stars.
+            </p>
+          </div>
+
+          <div className="flex flex-wrap gap-3">
+            <button
+              onClick={() => handleOpenPoster(posterAssets[2])}
+              className="px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-xs sm:text-sm transition flex items-center space-x-2 shadow-xs cursor-pointer"
+            >
+              <Eye className="w-4 h-4" />
+              <span>View Pamphlet</span>
+            </button>
+            <button
+              onClick={() => handleOpenPoster(posterAssets[0])}
+              className="px-5 py-2.5 rounded-xl bg-gray-800 hover:bg-gray-700 text-gray-200 border border-gray-700 font-bold text-xs sm:text-sm transition flex items-center space-x-2 cursor-pointer"
+            >
+              <Download className="w-4 h-4 text-red-400" />
+              <span>Mega Poster</span>
+            </button>
+          </div>
+        </div>
+
+        <div className="text-center">
           <button
             onClick={() => setActiveTab('scoreboard')}
-            className="px-6 py-2.5 bg-white hover:bg-gray-50 text-gray-800 border border-gray-300 font-semibold rounded-lg text-sm transition shadow-xs cursor-pointer"
+            className="px-6 py-2.5 bg-white hover:bg-gray-50 text-gray-800 border border-gray-300 font-semibold rounded-xl text-sm transition shadow-xs cursor-pointer"
           >
-            See All Results →
+            See Full Verified Scoreboard ({resultStudents.length}+ Records) →
           </button>
         </div>
       </section>
@@ -591,6 +661,16 @@ export const HomePage: React.FC<HomePageProps> = ({
           </form>
         )}
       </section>
+
+      {/* Lightbox Modal for Official Posters & Pamphlet */}
+      <PosterModal
+        poster={selectedPoster}
+        isOpen={isPosterModalOpen}
+        onClose={() => {
+          setIsPosterModalOpen(false);
+          setSelectedPoster(null);
+        }}
+      />
     </div>
   );
 };

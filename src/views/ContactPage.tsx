@@ -79,6 +79,10 @@ export const ContactPage: React.FC = () => {
                     <Clock className="w-3.5 h-3.5 text-gray-400" />
                     <span>Timings: 3:00 PM - 9:00 PM (Mon - Sat)</span>
                   </div>
+                  <div className="flex items-center gap-2 text-gray-600 font-medium">
+                    <Phone className="w-3.5 h-3.5 text-red-500" />
+                    <span>Landline: (079) 48909397 • Alt: +91 97243 28989</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -124,6 +128,10 @@ export const ContactPage: React.FC = () => {
                   <div className="flex items-center gap-2">
                     <Clock className="w-3.5 h-3.5 text-gray-400" />
                     <span>Timings: 3:00 PM - 9:00 PM (Mon - Sat)</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-600 font-medium">
+                    <Phone className="w-3.5 h-3.5 text-red-500" />
+                    <span>Landline: (079) 48909398 • Alt: +91 98792 28189</span>
                   </div>
                 </div>
               </div>
