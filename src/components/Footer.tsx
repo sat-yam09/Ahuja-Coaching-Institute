@@ -19,7 +19,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onInquireClick }) 
           <div className="lg:col-span-4 space-y-4">
             <AhujaLogo variant="footer" size="lg" />
             <p className="text-xs text-gray-400 leading-relaxed max-w-md pt-2">
-              Building Strong Foundations, Achieving Top Results. Trusted name for 27+ years in empowering students from Std. 6th to 12th (Science &amp; Commerce), JEE, and NEET. Founded in 1998 by Late R.A. Ahuja Sir.
+              Building Strong Foundations, Achieving Top Results. Trusted name for 27+ years in empowering students from Std. 6th to 12th (Science &amp; Commerce), JEE, and NEET. Founded in 1998 by Late Rajkumar Ahuja Sir.
             </p>
             
             <div className="pt-2 flex items-center gap-3">
@@ -54,9 +54,14 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onInquireClick }) 
                 </button>
               </li>
               <li>
-                <button onClick={() => setActiveTab('faculty')} className="hover:text-red-400 transition">
-                  Faculty &amp; Mentors
-                </button>
+                <a
+                  href="/assets/Ahuja Institute 23X33.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-red-400 transition inline-flex items-center gap-1"
+                >
+                  Official Brochure (PDF)
+                </a>
               </li>
               <li>
                 <button onClick={() => setActiveTab('scoreboard')} className="hover:text-red-400 transition">

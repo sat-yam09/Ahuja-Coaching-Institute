@@ -127,6 +127,11 @@ export const PosterModal: React.FC<PosterModalProps> = ({ poster, isOpen, onClos
                   {poster.category}
                 </span>
                 <span className="text-[11px] text-gray-500 font-medium">{poster.year}</span>
+                {poster.resolution && (
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-amber-50 text-amber-800 border border-amber-300">
+                    {poster.resolution}
+                  </span>
+                )}
               </div>
               <h3 className="text-sm sm:text-base font-bold text-gray-900 truncate">
                 {poster.title}
@@ -183,7 +188,7 @@ export const PosterModal: React.FC<PosterModalProps> = ({ poster, isOpen, onClos
                 className="hidden md:inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-red-600 text-white hover:bg-red-700 transition shadow-xs cursor-pointer"
               >
                 <Download className="w-3.5 h-3.5" />
-                <span>Download Asset</span>
+                <span>Download Master HD</span>
               </a>
             )}
 
@@ -240,13 +245,13 @@ export const PosterModal: React.FC<PosterModalProps> = ({ poster, isOpen, onClos
               ) : (
                 <>
                   <ZoomIn className="w-3 h-3 text-red-400" />
-                  <span>Click or scroll to zoom in high-res</span>
+                  <span>Click or scroll to zoom in Ultra HD</span>
                 </>
               )}
             </div>
 
-            <div className="absolute bottom-3 right-3 bg-black/70 backdrop-blur-xs text-white text-[10px] px-2 py-0.5 rounded pointer-events-none opacity-75">
-              HD Vector-rendered Preview
+            <div className="absolute bottom-3 right-3 bg-black/80 backdrop-blur-xs text-amber-300 border border-amber-500/30 text-[10px] px-2.5 py-1 rounded-md pointer-events-none font-bold shadow-lg">
+              {poster.resolution ? `${poster.resolution} • Master Quality` : 'Ultra HD 300 DPI • Master Quality'}
             </div>
           </div>
 

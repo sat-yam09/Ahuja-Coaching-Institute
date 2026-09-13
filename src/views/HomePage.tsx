@@ -107,13 +107,15 @@ export const HomePage: React.FC<HomePageProps> = ({
             >
               Inquire for 2026-27 <ArrowRight className="w-4 h-4" />
             </button>
-            <button
-              onClick={() => handleOpenPoster(posterAssets[2])}
+            <a
+              href="/assets/Ahuja Institute 23X33.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-6 py-3.5 bg-white hover:bg-gray-50 text-gray-800 border border-gray-300 font-semibold rounded-xl text-sm transition shadow-xs flex items-center gap-2 cursor-pointer"
             >
-              <FileText className="w-4 h-4 text-red-600" />
-              <span>Admission Brochure</span>
-            </button>
+              <Download className="w-4 h-4 text-red-600" />
+              <span>Official 23"×33" Brochure (PDF)</span>
+            </a>
             <button
               onClick={() => setActiveTab('scoreboard')}
               className="px-6 py-3.5 bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold rounded-xl text-sm transition cursor-pointer"
@@ -202,33 +204,71 @@ export const HomePage: React.FC<HomePageProps> = ({
               A Legacy of <span className="text-red-500">27+ Years</span>
             </h2>
             <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
-              Founded in 1998 on the vision of Late R.A. Ahuja Sir, Ahuja Career Institute has been a beacon of academic excellence in Ahmedabad. Our philosophy centers on providing quality education with unwavering dedication, discipline, and personal mentorship.
+              Founded in 1998 on the vision of <strong className="text-white font-bold">Late Rajkumar Ahuja Sir</strong>, Ahuja Career Institute has been a beacon of academic excellence in Ahmedabad. Our philosophy centers on providing quality education with unwavering dedication, discipline, and personal mentorship.
             </p>
             <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
               We believe in nurturing talent and instilling a lifelong passion for learning, empowering over 22,000 students to secure admissions in premier engineering and medical institutions across India.
             </p>
 
-            <div className="pt-2">
+            <div className="pt-2 flex flex-wrap items-center gap-3">
               <button
                 onClick={() => setActiveTab('about')}
-                className="text-red-400 hover:text-red-300 font-bold text-sm inline-flex items-center gap-2 group transition"
+                className="px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold text-xs sm:text-sm rounded-xl transition shadow-md shadow-red-600/20 inline-flex items-center gap-2 group cursor-pointer"
               >
-                Learn More <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                Our 27-Year Journey <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
+              <a
+                href="/assets/Ahuja Institute 23X33.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-5 py-2.5 bg-gray-800 hover:bg-gray-700 text-gray-200 border border-gray-700 text-xs sm:text-sm font-semibold rounded-xl transition inline-flex items-center gap-2 cursor-pointer"
+              >
+                <Download className="w-4 h-4 text-red-400" />
+                <span>Brochure (PDF)</span>
+              </a>
             </div>
           </div>
 
           <div className="lg:col-span-6">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-gray-700/60 group">
-              <img
-                src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=1200"
-                alt="Classroom at Ahuja Career Institute"
-                className="w-full h-72 sm:h-96 object-cover object-center group-hover:scale-103 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-              <div className="absolute bottom-4 left-4 right-4 text-white">
-                <p className="text-xs font-semibold text-red-400">Inspiring Learning Spaces</p>
-                <p className="text-sm font-bold">The foundation of academic rigour and conceptual clarity.</p>
+            <div className="bg-gradient-to-br from-[#1E2024] to-[#141517] rounded-3xl p-6 sm:p-8 border border-gray-800 shadow-2xl space-y-6">
+              <div className="flex items-center space-x-4">
+                <div className="relative">
+                  <img
+                    src="/assets/Founder - Rajkumar Ahuja.jpeg"
+                    alt="Late Rajkumar Ahuja Sir - Founder"
+                    className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-cover object-top border-2 border-red-500/40 shadow-xl"
+                  />
+                  <span className="absolute -bottom-2 -right-2 px-2 py-0.5 bg-red-600 text-white text-[10px] font-bold rounded-md shadow-xs">
+                    Founder
+                  </span>
+                </div>
+                <div>
+                  <h3 className="text-lg sm:text-xl font-extrabold text-white">
+                    Late Rajkumar Ahuja Sir
+                  </h3>
+                  <p className="text-xs font-bold text-red-400 uppercase tracking-wide">
+                    The Visionary Founder (Est. 1998)
+                  </p>
+                  <p className="text-xs text-gray-400 mt-1">
+                    Pioneer of Concept-First Coaching in Ahmedabad
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-[#0E0F11] p-5 rounded-2xl border border-gray-800 relative">
+                <span className="text-3xl text-red-500/40 font-serif leading-none absolute top-2 left-3">“</span>
+                <p className="text-sm font-semibold text-gray-200 leading-relaxed italic px-3 pt-1">
+                  "Life is Great but it never grows great until it is focused, dedicated &amp; disciplined."
+                </p>
+                <span className="text-3xl text-red-500/40 font-serif leading-none absolute bottom-0 right-3">”</span>
+              </div>
+
+              <div className="flex items-center justify-between text-xs text-gray-400 border-t border-gray-800/80 pt-3">
+                <span className="flex items-center gap-1.5 text-gray-300">
+                  <Sparkles className="w-3.5 h-3.5 text-red-500" />
+                  Academic Excellence Legacy
+                </span>
+                <span className="font-mono text-red-400 font-bold">1998 — Present</span>
               </div>
             </div>
           </div>
@@ -321,47 +361,88 @@ export const HomePage: React.FC<HomePageProps> = ({
         </div>
       </section>
 
-      {/* 4. LEARN FROM SUBJECT MATTER EXPERTS (Midnight Obsidian Background) */}
+      {/* 4. VISIONARY LEADERSHIP & MENTORSHIP (Midnight Obsidian Background) */}
       <section className="mx-4 sm:mx-6 lg:mx-8 max-w-7xl lg:mx-auto bg-[#18191B] text-white rounded-3xl p-8 sm:p-12 border border-gray-800 shadow-2xl">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          <div className="lg:col-span-6">
-            <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-video bg-gray-900 border border-gray-700">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <div className="lg:col-span-5">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-gray-900 border-2 border-gray-700/80 group max-w-md mx-auto">
               <img
-                src="https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&q=80&w=1000"
-                alt="Subject Matter Experts at Ahuja Institute"
-                className="w-full h-full object-cover"
+                src="/assets/Director - Sunil Ahuja.jpeg"
+                alt="Director Sunil Ahuja - Ahuja Career Institute"
+                className="w-full h-80 sm:h-96 object-cover object-top group-hover:scale-103 transition-transform duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent flex items-end p-5">
-                <span className="text-white text-xs font-semibold bg-red-600 px-3 py-1 rounded-md shadow-xs">
-                  Mentorship Driven
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent flex flex-col justify-end p-5 sm:p-6">
+                <span className="text-white text-xs font-bold bg-red-600 px-3 py-1 rounded-md shadow-xs self-start mb-1.5">
+                  Institute Director
                 </span>
+                <h3 className="text-lg sm:text-xl font-extrabold text-white">Sunil Ahuja</h3>
+                <p className="text-xs text-red-400 font-semibold">Director, Ahuja Career Institute</p>
               </div>
             </div>
           </div>
 
-          <div className="lg:col-span-6 space-y-4">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-              Learn from <span className="text-red-500">Subject Matter</span> Experts
-            </h2>
-            <p className="text-sm text-gray-300 leading-relaxed">
-              Our leadership and senior faculty have personally mentored thousands of students to top ranks. With decades of combined teaching experience, they simplify complex concepts into crystal-clear fundamentals.
-            </p>
-
-            <div className="bg-gray-900/90 p-5 rounded-2xl border border-gray-800 space-y-1.5 shadow-md">
-              <h4 className="font-bold text-base text-white">Chiragbhai Ahuja</h4>
-              <p className="text-xs font-bold text-red-400">Director &amp; Lead in Mathematics</p>
-              <p className="text-xs text-gray-300 leading-relaxed pt-1">
-                16+ years of inspiring students to conquer mathematics with deep conceptual clarity, speed tricks, and board exam perfection.
-              </p>
+          <div className="lg:col-span-7 space-y-5">
+            <div className="inline-block px-3 py-1 bg-red-600/20 border border-red-500/30 text-red-400 text-xs font-bold uppercase tracking-wider rounded-full">
+              ACADEMIC GOVERNANCE &amp; PERSONAL CARE
             </div>
 
-            <div className="pt-2">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight">
+              Guided by <span className="text-red-500">Director Sunil Ahuja</span>
+            </h2>
+
+            <p className="text-sm text-gray-300 leading-relaxed">
+              Under the active direction of Sunil Ahuja, Ahuja Career Institute maintains an uncompromising standard of conceptual clarity, regular homework monitoring, and dedicated 1-on-1 doubt solving desks for every single student.
+            </p>
+
+            <div className="bg-gray-900/90 p-5 rounded-2xl border border-gray-800 space-y-2 relative shadow-md">
+              <span className="text-3xl text-red-500/40 font-serif leading-none absolute top-2 left-3">“</span>
+              <p className="text-xs sm:text-sm font-semibold text-gray-200 leading-relaxed italic px-3 pt-1">
+                "Our mission is to nurture intellectual discipline and deep conceptual clarity so every student achieves their highest ambition across Board and competitive entrance exams."
+              </p>
+              <p className="text-[11px] font-bold text-red-400 text-right px-3">— Sunil Ahuja, Director</p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+              <div className="flex items-center space-x-2 text-xs text-gray-300">
+                <CheckCircle2 className="w-4 h-4 text-red-500 shrink-0" />
+                <span>1-on-1 Continuous Doubt Desks</span>
+              </div>
+              <div className="flex items-center space-x-2 text-xs text-gray-300">
+                <CheckCircle2 className="w-4 h-4 text-red-500 shrink-0" />
+                <span>Daily Practice Problems (DPPs)</span>
+              </div>
+              <div className="flex items-center space-x-2 text-xs text-gray-300">
+                <CheckCircle2 className="w-4 h-4 text-red-500 shrink-0" />
+                <span>Maninagar H.O. &amp; Vastral Branches</span>
+              </div>
+              <div className="flex items-center space-x-2 text-xs text-gray-300">
+                <CheckCircle2 className="w-4 h-4 text-red-500 shrink-0" />
+                <span>Special Morning Batches Available</span>
+              </div>
+            </div>
+
+            <div className="pt-2 flex flex-wrap items-center gap-3">
               <button
-                onClick={() => setActiveTab('faculty')}
-                className="text-red-400 hover:text-red-300 font-bold text-sm inline-flex items-center gap-2 group cursor-pointer"
+                onClick={onInquireClick}
+                className="px-6 py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold text-xs sm:text-sm rounded-xl transition shadow-md shadow-red-600/20 cursor-pointer"
               >
-                Meet All Faculty <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                Inquire For Admissions
               </button>
+              <button
+                onClick={() => setActiveTab('courses')}
+                className="px-5 py-2.5 bg-gray-800 hover:bg-gray-700 text-gray-200 border border-gray-700 font-bold text-xs sm:text-sm rounded-xl transition cursor-pointer"
+              >
+                Explore Courses
+              </button>
+              <a
+                href="/assets/Ahuja Institute 23X33.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-red-400 hover:text-red-300 font-bold text-xs sm:text-sm inline-flex items-center gap-1.5 transition ml-1"
+              >
+                <Download className="w-4 h-4" />
+                <span>Official Brochure PDF</span>
+              </a>
             </div>
           </div>
         </div>
@@ -416,33 +497,37 @@ export const HomePage: React.FC<HomePageProps> = ({
 
         {/* Brochure Download & Mega Results Banner (Obsidian Card) */}
         <div className="bg-[#18191B] p-6 sm:p-8 rounded-3xl border border-gray-800 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="space-y-1 text-center md:text-left">
-            <span className="text-xs font-bold text-red-400 uppercase tracking-wider">
-              OFFICIAL 2026-27 ADMISSION ASSETS
-            </span>
+          <div className="space-y-1.5 text-center md:text-left">
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-red-600/20 text-red-400 border border-red-500/30 text-[11px] font-bold uppercase tracking-wider rounded-full">
+              <FileText className="w-3 h-3" />
+              <span>OFFICIAL 2026-27 ADMISSION ASSETS</span>
+            </div>
             <h3 className="text-xl sm:text-2xl font-bold">
-              Download Admissions Pamphlet &amp; Mega Scoreboard Poster
+              Download Official 23"×33" Admissions Brochure &amp; Scoreboard
             </h3>
             <p className="text-xs sm:text-sm text-gray-300 max-w-xl">
-              Get complete curriculum syllabus details, batch timings, and the full list of 100/100 subject stars.
+              Official 2-page print edition with 12th Science subject stars, JEE/NEET results, 10th GSEB Board ranks, and special morning batches.
             </p>
           </div>
 
-          <div className="flex flex-wrap gap-3">
-            <button
-              onClick={() => handleOpenPoster(posterAssets[2])}
-              className="px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-xs sm:text-sm transition flex items-center space-x-2 shadow-xs cursor-pointer"
+          <div className="flex flex-wrap items-center justify-center gap-3 shrink-0">
+            <a
+              href="/assets/Ahuja Institute 23X33.pdf"
+              download="Ahuja-Institute-23X33-Brochure.pdf"
+              className="px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-xs sm:text-sm transition flex items-center space-x-2 shadow-md shadow-red-600/20 cursor-pointer"
             >
-              <Eye className="w-4 h-4" />
-              <span>View Pamphlet</span>
-            </button>
-            <button
-              onClick={() => handleOpenPoster(posterAssets[0])}
+              <Download className="w-4 h-4" />
+              <span>Download PDF (5.2 MB)</span>
+            </a>
+            <a
+              href="/assets/Ahuja Institute 23X33.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="px-5 py-2.5 rounded-xl bg-gray-800 hover:bg-gray-700 text-gray-200 border border-gray-700 font-bold text-xs sm:text-sm transition flex items-center space-x-2 cursor-pointer"
             >
-              <Download className="w-4 h-4 text-red-400" />
-              <span>Mega Poster</span>
-            </button>
+              <Eye className="w-4 h-4 text-red-400" />
+              <span>View Brochure PDF</span>
+            </a>
           </div>
         </div>
 

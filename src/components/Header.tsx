@@ -41,7 +41,6 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, onInqui
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About', hasDropdown: true },
     { id: 'courses', label: 'Courses' },
-    { id: 'faculty', label: 'Faculty' },
     { id: 'achievements', label: 'Success Stories' },
     { id: 'gallery', label: 'Gallery' },
     { id: 'contact', label: 'Contact Us' },
@@ -106,7 +105,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, onInqui
                     </button>
 
                     {aboutDropdownOpen && (
-                      <div className="absolute top-full left-0 mt-1 w-60 bg-white text-gray-900 rounded-2xl shadow-xl border border-gray-100 py-2 z-50 animate-fadeIn">
+                      <div className="absolute top-full left-0 mt-1 w-64 bg-white text-gray-900 rounded-2xl shadow-xl border border-gray-100 py-2 z-50 animate-fadeIn">
                         <button
                           onClick={() => handleNavClick('about')}
                           className="w-full text-left px-4 py-2.5 text-sm hover:bg-red-50 hover:text-red-700 transition flex items-center justify-between font-semibold"
@@ -117,17 +116,22 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, onInqui
                           </span>
                         </button>
                         <button
-                          onClick={() => handleNavClick('faculty')}
-                          className="w-full text-left px-4 py-2.5 text-sm hover:bg-red-50 hover:text-red-700 transition font-semibold"
-                        >
-                          Faculty Mentors
-                        </button>
-                        <button
                           onClick={() => handleNavClick('about')}
                           className="w-full text-left px-4 py-2.5 text-sm hover:bg-red-50 hover:text-red-700 transition font-semibold"
                         >
-                          Founder's Message
+                          Founder &amp; Director
                         </button>
+                        <a
+                          href="/assets/Ahuja Institute 23X33.pdf"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-full text-left px-4 py-2.5 text-sm hover:bg-red-50 hover:text-red-700 transition flex items-center justify-between font-semibold"
+                        >
+                          <span>Official 23"×33" Brochure</span>
+                          <span className="text-[10px] font-bold text-white bg-red-600 px-1.5 py-0.5 rounded-sm">
+                            PDF
+                          </span>
+                        </a>
                         <button
                           onClick={() => handleNavClick('gallery')}
                           className="w-full text-left px-4 py-2.5 text-sm hover:bg-red-50 hover:text-red-700 transition font-semibold border-t border-gray-100 mt-1 pt-2"
