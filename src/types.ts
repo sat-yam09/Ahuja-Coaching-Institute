@@ -1,4 +1,4 @@
-export type PageTab = 'home' | 'courses' | 'about' | 'faculty' | 'achievements' | 'scoreboard' | 'gallery' | 'contact';
+export type PageTab = 'home' | 'courses' | 'about' | 'achievements' | 'scoreboard' | 'gallery' | 'contact';
 
 export interface Course {
   id: string;
@@ -67,8 +67,10 @@ export interface PosterAsset {
   id: string;
   title: string;
   subtitle: string;
-  category: 'Mega Results' | 'Admissions Pamphlet' | 'Branch Campaign';
+  category: 'Mega Results' | 'Admissions Pamphlet' | 'Branch Campaign' | 'Felicitation Standee' | 'Official Brochure PDF';
   imageUrl: string;
+  previewUrl?: string;
+  resolution?: string;
   downloadUrl?: string;
   year: string;
   description: string;

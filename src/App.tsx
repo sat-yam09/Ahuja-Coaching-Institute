@@ -1,25 +1,22 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { PageTab, Course, FacultyMember } from './types';
+import { PageTab, Course } from './types';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { HomePage } from './views/HomePage';
 import { CoursesPage } from './views/CoursesPage';
 import { AboutPage } from './views/AboutPage';
-import { FacultyPage } from './views/FacultyPage';
 import { ScoreboardPage } from './views/ScoreboardPage';
 import { GalleryPage } from './views/GalleryPage';
 import { ContactPage } from './views/ContactPage';
 import { InquireModal } from './components/InquireModal';
-import { FacultyModal } from './components/FacultyModal';
 import { SyllabusModal } from './components/SyllabusModal';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<PageTab>('home');
   const [inquireModalOpen, setInquireModalOpen] = useState(false);
   const [inquireCohort, setInquireCohort] = useState('JEE Main & Advanced 2027');
-  const [selectedFaculty, setSelectedFaculty] = useState<FacultyMember | null>(null);
   const [selectedSyllabusCourse, setSelectedSyllabusCourse] = useState<Course | null>(null);
   const [selectedCourseIdForPage, setSelectedCourseIdForPage] = useState('competitive-jee-neet');
 
@@ -69,13 +66,6 @@ export default function App() {
           />
         )}
 
-        {activeTab === 'faculty' && (
-          <FacultyPage
-            onViewFacultyProfile={(fac) => setSelectedFaculty(fac)}
-            onInquireClick={() => handleOpenInquire()}
-          />
-        )}
-
         {(activeTab === 'achievements' || activeTab === 'scoreboard') && (
           <ScoreboardPage
             onInquireClick={() => handleOpenInquire()}
@@ -100,12 +90,6 @@ export default function App() {
         isOpen={inquireModalOpen}
         onClose={() => setInquireModalOpen(false)}
         defaultCohort={inquireCohort}
-      />
-
-      <FacultyModal
-        faculty={selectedFaculty}
-        onClose={() => setSelectedFaculty(null)}
-        onInquire={(name) => handleOpenInquire(`Mentorship under ${name}`)}
       />
 
       <SyllabusModal
