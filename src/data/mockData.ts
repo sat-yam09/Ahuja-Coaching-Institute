@@ -1,4 +1,4 @@
-import { Course, FacultyMember, ResultStudent, StandeeTopper, PosterAsset, Testimonial, GalleryItem, Branch, FAQItem, GoogleReview } from '../types';
+import { Course, FacultyMember, ResultStudent, StandeeTopper, ShowcaseStudent, PosterAsset, Testimonial, GalleryItem, Branch, FAQItem, GoogleReview } from '../types';
 
 export const brandTagline = {
   hindi: 'कलम से कामयाबी, तब हैं',
@@ -1700,4 +1700,50 @@ export const faqItems: FAQItem[] = [
     question: 'What are the batch timings?',
     answer: 'Standard regular batches operate in the afternoon/evening from 3:00 PM to 9:00 PM. Special morning batches are available between 9:00 AM and 11:15 AM exclusively for students of Std. 8, 9, 10 from Nelson\'s School, Punit Ashram School, and feeder institutions.',
   },
+];
+
+/* ══════════════════════════════════════════════════════════
+   EDITORIAL SHOWCASE — Deduplicated Student Portraits
+   Each student listed ONCE with all their scored subjects.
+   Images sourced from /public/student/<category>/
+   ══════════════════════════════════════════════════════════ */
+export const showcaseStudents: ShowcaseStudent[] = [
+  // ── 12th Science: Multi-subject achievers ──
+  { id: 'sc-01', name: 'Astha Rai', imagePath: '/student/Chemistry/Astha Rai.png', subjects: ['Chemistry', 'Maths', 'Physics'], category: '12th Science' },
+  { id: 'sc-02', name: 'Dhyana Chavda', imagePath: '/student/Biology/Dhyana Chavda.png', subjects: ['Biology', 'Chemistry', 'Physics'], category: '12th Science' },
+  { id: 'sc-03', name: 'Divyaraj Rathod', imagePath: '/student/Chemistry/Divyaraj Rathod.png', subjects: ['Chemistry', 'Maths', 'Physics'], category: '12th Science' },
+  { id: 'sc-04', name: 'Mahi Patel', imagePath: '/student/Chemistry/Mahi Patel.png', subjects: ['Chemistry', 'Maths', 'Physics'], category: '12th Science' },
+  { id: 'sc-05', name: 'Preet Patel', imagePath: '/student/Chemistry/Preet Patel.png', subjects: ['Chemistry', 'Maths', 'Physics'], category: '12th Science' },
+  { id: 'sc-06', name: 'Shena Mistry', imagePath: '/student/Chemistry/Shena Mistry.png', subjects: ['Chemistry', 'Maths', 'Physics'], category: '12th Science' },
+  { id: 'sc-07', name: 'Bhavy Prajapati', imagePath: '/student/Maths/Bhavy Prajapati.png', subjects: ['Maths', 'Physics'], category: '12th Science' },
+  { id: 'sc-08', name: 'Kanan Solanki', imagePath: '/student/Maths/Kanan Solanki.png', subjects: ['Maths', 'Physics'], category: '12th Science' },
+  { id: 'sc-09', name: 'Prathana Shah', imagePath: '/student/Maths/Prathana Shah.png', subjects: ['Maths', 'Physics'], category: '12th Science' },
+  { id: 'sc-10', name: 'Riya Prajapati', imagePath: '/student/Maths/Riya Prajapati.png', subjects: ['Maths', 'Physics'], category: '12th Science' },
+  { id: 'sc-11', name: 'Srusti Soni', imagePath: '/student/Maths/Srusti Soni.png', subjects: ['Maths', 'Physics'], category: '12th Science' },
+  { id: 'sc-12', name: 'Hitanshi Khalas', imagePath: '/student/Biology/Hitanshi Khalas.png', subjects: ['Biology', 'Chemistry'], category: '12th Science' },
+  { id: 'sc-13', name: 'Raj Bhavsar', imagePath: '/student/Biology/Raj Bhavsar.png', subjects: ['Biology', 'Chemistry'], category: '12th Science' },
+  { id: 'sc-14', name: 'Kunj Patel', imagePath: '/student/Chemistry/Kunj Patel.png', subjects: ['Chemistry', 'Maths'], category: '12th Science' },
+  { id: 'sc-15', name: 'Hanna Pathan', imagePath: '/student/Chemistry/hanna Pathan.png', subjects: ['Chemistry', 'Physics'], category: '12th Science' },
+  { id: 'sc-16', name: 'Om Parmar', imagePath: '/student/Chemistry/Om parmar.png', subjects: ['Chemistry', 'Physics'], category: '12th Science' },
+  // ── 12th Science: Single-subject achievers ──
+  { id: 'sc-17', name: 'Helly Patel', imagePath: '/student/Maths/Helly Patel.png', subjects: ['Maths'], category: '12th Science' },
+  { id: 'sc-18', name: 'Tirth Jirawala', imagePath: '/student/Maths/Tirth Jirawala.png', subjects: ['Maths'], category: '12th Science' },
+  { id: 'sc-19', name: 'Diya Patel', imagePath: '/student/Chemistry/Diya Patel.png', subjects: ['Chemistry'], category: '12th Science' },
+  { id: 'sc-20', name: 'Jahanvi Agarwal', imagePath: '/student/Biology/Jahanvi Agarwal.png', subjects: ['Biology'], category: '12th Science' },
+  { id: 'sc-21', name: 'Ayushi Mishra', imagePath: '/student/Physics/Ayushi Mishra.png', subjects: ['Physics'], category: '12th Science' },
+  { id: 'sc-22', name: 'Divyaesh Rana', imagePath: '/student/Physics/Divyaesh Rana.png', subjects: ['Physics'], category: '12th Science' },
+  // ── Foundation (Std. 8th – 10th) ──
+  { id: 'fn-01', name: 'Aksh Soni', imagePath: '/student/8_9_!0/Aksh Soni.png', subjects: ['Foundation'], category: 'Foundation' },
+  { id: 'fn-02', name: 'Bhavya Agrawal', imagePath: '/student/8_9_!0/Bhavya Agrawal.png', subjects: ['Foundation'], category: 'Foundation' },
+  { id: 'fn-03', name: 'Ferin Mistry', imagePath: '/student/8_9_!0/Ferin Mistry.png', subjects: ['Foundation'], category: 'Foundation' },
+  { id: 'fn-04', name: 'Ishita Khambadkar', imagePath: '/student/8_9_!0/Ishita khambadkar.png', subjects: ['Foundation'], category: 'Foundation' },
+  { id: 'fn-05', name: 'Karsh Gajjar', imagePath: '/student/8_9_!0/Karsh Gajjar.png', subjects: ['Foundation'], category: 'Foundation' },
+  { id: 'fn-06', name: 'Luv Advani', imagePath: '/student/8_9_!0/Luv Advani.png', subjects: ['Foundation'], category: 'Foundation' },
+  { id: 'fn-07', name: 'Maahi Gupta', imagePath: '/student/8_9_!0/Maahi Gupta.png', subjects: ['Foundation'], category: 'Foundation' },
+  { id: 'fn-08', name: 'Meet Gupta', imagePath: '/student/8_9_!0/Meet Gupta.png', subjects: ['Foundation'], category: 'Foundation' },
+  { id: 'fn-09', name: 'Rethika Mudaliar', imagePath: '/student/8_9_!0/Rethika Mudaliar.png', subjects: ['Foundation'], category: 'Foundation' },
+  { id: 'fn-10', name: 'Saanvi Jain', imagePath: '/student/8_9_!0/Saanvi Jain.png', subjects: ['Foundation'], category: 'Foundation' },
+  { id: 'fn-11', name: 'Umang Yadav', imagePath: '/student/8_9_!0/Umang Yadav.png', subjects: ['Foundation'], category: 'Foundation' },
+  { id: 'fn-12', name: 'Vansh Brahmakar', imagePath: '/student/8_9_!0/Vansh Brahmakar.png', subjects: ['Foundation'], category: 'Foundation' },
+  { id: 'fn-13', name: 'Vruddhi Brahmakar', imagePath: '/student/8_9_!0/Vruddhi Brahmakar.png', subjects: ['Foundation'], category: 'Foundation' },
 ];

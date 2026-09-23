@@ -10,13 +10,13 @@ import {
   heroStats,
   facultyMembers,
   resultStudents,
-  standeeToppers,
   posterAssets,
   brandTagline,
   specialMorningBatches,
 } from '../data/mockData';
 import { GoogleReviewsMarquee } from '../components/GoogleReviewsMarquee';
 import { PosterModal } from '../components/PosterModal';
+import { StudentShowcase } from '../components/StudentShowcase';
 
 import {
   ArrowRight,
@@ -38,10 +38,8 @@ import {
   MapPin,
   TrendingUp,
   Quote,
-  Trophy,
   Download,
   Eye,
-  School,
 } from 'lucide-react';
 
 interface HomePageProps {
@@ -448,53 +446,14 @@ export const HomePage: React.FC<HomePageProps> = ({
         </div>
       </section>
 
-      {/* 5. CELEBRATING EXCELLENCE (White Background) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 space-y-8">
-        <div className="text-center space-y-2">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-red-50 border border-red-200 text-red-700 text-xs font-bold uppercase tracking-wider">
-            <Trophy className="w-3.5 h-3.5 text-red-600" />
-            <span>Verified Scoreboard</span>
-          </div>
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
-            Celebrating <span className="text-red-600">Excellence</span>
-          </h2>
-          <p className="text-sm sm:text-base text-gray-600 max-w-xl mx-auto">
-            Consistently benchmarked by students achieving 100/100 perfect board marks and top JEE/NEET ranks.
-          </p>
-        </div>
+      {/* 5. STUDENT SHOWCASE — Editorial Portrait Gallery (Preview of 8) */}
+      <StudentShowcase
+        previewLimit={8}
+        onViewMore={() => setActiveTab('scoreboard')}
+      />
 
-        {/* Real Toppers Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {standeeToppers.slice(0, 4).map((st) => (
-            <div
-              key={st.id}
-              className="bg-white rounded-2xl border border-gray-200 p-4 shadow-xs hover:shadow-md transition card-hover-effect flex flex-col justify-between"
-            >
-              <div className="relative h-44 overflow-hidden rounded-xl bg-gray-50 p-2 flex items-center justify-center mb-3">
-                <img
-                  src={st.standeeUrl}
-                  alt={st.name}
-                  className="max-h-full w-auto object-contain rounded-lg"
-                />
-                <span className="absolute top-2 right-2 px-2 py-0.5 bg-red-600 text-white text-[10px] font-bold rounded">
-                  {st.tag}
-                </span>
-              </div>
-              <div className="space-y-1">
-                <h4 className="font-bold text-base text-gray-900 leading-tight">{st.name}</h4>
-                <div className="text-sm font-extrabold text-red-600">{st.score}</div>
-                <p className="text-xs text-gray-500 font-medium">{st.exam}</p>
-                {st.school && (
-                  <p className="text-[11px] text-gray-500 flex items-center space-x-1 pt-1">
-                    <School className="w-3 h-3 text-red-500" />
-                    <span>{st.school}</span>
-                  </p>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
-
+      {/* Brochure Download & Scoreboard CTA */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         {/* Brochure Download & Mega Results Banner (Obsidian Card) */}
         <div className="bg-[#18191B] p-6 sm:p-8 rounded-3xl border border-gray-800 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-1.5 text-center md:text-left">

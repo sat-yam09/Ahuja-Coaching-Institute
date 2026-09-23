@@ -42,4 +42,5 @@ scripts/
 public/assets/*.cdr/
 public/assets/**/*.cdr
 public/assets/Ahuja/
+public/student_raw_backup/
 
