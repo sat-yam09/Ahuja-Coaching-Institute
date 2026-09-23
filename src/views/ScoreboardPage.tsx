@@ -1,9 +1,10 @@
 'use client';
 
 import React, { useState } from 'react';
-import { resultStudents, scoreboardStats, standeeToppers, brandTagline, posterAssets } from '../data/mockData';
-import { ResultStudent, StandeeTopper, PosterAsset } from '../types';
+import { scoreboardStats, standeeToppers, brandTagline, posterAssets } from '../data/mockData';
+import { StandeeTopper, PosterAsset } from '../types';
 import { PosterModal } from '../components/PosterModal';
+import { StudentShowcase } from '../components/StudentShowcase';
 import {
   Search,
   Award,
@@ -23,12 +24,7 @@ interface ScoreboardPageProps {
 }
 
 export const ScoreboardPage: React.FC<ScoreboardPageProps> = ({ onInquireClick }) => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState<
-    'All' | '12th Science' | 'JEE Main' | 'NEET UG' | '10th Board' | 'Foundation' | 'Chemistry 100' | 'Maths Top'
-  >('All');
   const [activeStandeeType, setActiveStandeeType] = useState<'All' | 'Senior' | 'Junior'>('All');
-  const [currentPage, setCurrentPage] = useState(1);
   const [selectedPoster, setSelectedPoster] = useState<PosterAsset | null>(null);
   const [isPosterModalOpen, setIsPosterModalOpen] = useState(false);
 
@@ -57,43 +53,7 @@ export const ScoreboardPage: React.FC<ScoreboardPageProps> = ({ onInquireClick }
     setIsPosterModalOpen(true);
   };
 
-  const itemsPerPage = 8;
 
-  // Filter students based on search and category
-  const filteredStudents = resultStudents.filter((student) => {
-    const query = searchTerm.toLowerCase();
-    const matchesSearch =
-      student.name.toLowerCase().includes(query) ||
-      student.exam.toLowerCase().includes(query) ||
-      student.score.toLowerCase().includes(query) ||
-      (student.school && student.school.toLowerCase().includes(query)) ||
-      (student.subject && student.subject.toLowerCase().includes(query));
-
-    let matchesCategory = true;
-    if (selectedCategory === '12th Science') {
-      matchesCategory = student.exam.includes('12th Science') || student.category === 'Board';
-    } else if (selectedCategory === 'JEE Main') {
-      matchesCategory = student.category === 'JEE' || student.exam.includes('JEE');
-    } else if (selectedCategory === 'NEET UG') {
-      matchesCategory = student.category === 'NEET' || student.exam.includes('NEET');
-    } else if (selectedCategory === '10th Board') {
-      matchesCategory = student.exam.includes('10th');
-    } else if (selectedCategory === 'Foundation') {
-      matchesCategory = student.category === 'Foundation' || student.exam.includes('Foundation') || student.exam.includes('Std');
-    } else if (selectedCategory === 'Chemistry 100') {
-      matchesCategory = student.subject === 'Chemistry' || student.score === '100/100';
-    } else if (selectedCategory === 'Maths Top') {
-      matchesCategory = student.subject === 'Mathematics' || student.score.includes('99/100') || student.score.includes('100/100');
-    }
-
-    return matchesSearch && matchesCategory;
-  });
-
-  const totalPages = Math.ceil(filteredStudents.length / itemsPerPage) || 1;
-  const currentStudents = filteredStudents.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
 
   const filteredStandees = standeeToppers.filter((st) => {
     if (activeStandeeType === 'All') return true;
@@ -356,130 +316,14 @@ export const ScoreboardPage: React.FC<ScoreboardPageProps> = ({ onInquireClick }
       </section>
 
       {/* 4. SEARCH AND FILTERABLE STUDENT SCOREBOARD TABLE & CARDS */}
-      <section id="student-records-grid" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8 scroll-mt-24">
-        <div className="bg-gray-50 p-5 rounded-2xl border border-gray-200 flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-4">
-          {/* Search Box */}
-          <div className="relative flex-1 max-w-md">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-            <input
-              type="text"
-              value={searchTerm}
-              onChange={(e) => {
-                setSearchTerm(e.target.value);
-                setCurrentPage(1);
-              }}
-              placeholder="Search student name, school, score, or exam..."
-              className="w-full pl-11 pr-4 py-2.5 bg-white rounded-xl border border-gray-300 text-xs sm:text-sm font-medium focus:outline-hidden focus:border-red-600 focus:ring-2 focus:ring-red-600/10 text-gray-900"
-            />
-          </div>
-
-          {/* Stream Toggles */}
-          <div className="flex flex-wrap items-center gap-2">
-            {(
-              [
-                'All',
-                '12th Science',
-                'JEE Main',
-                'NEET UG',
-                '10th Board',
-                'Foundation',
-                'Chemistry 100',
-                'Maths Top',
-              ] as const
-            ).map((cat) => (
-              <button
-                key={cat}
-                onClick={() => {
-                  setSelectedCategory(cat);
-                  setCurrentPage(1);
-                }}
-                className={`px-3.5 py-1.5 rounded-full text-xs font-bold transition-all cursor-pointer ${
-                  selectedCategory === cat
-                    ? 'bg-red-600 text-white shadow-xs scale-102'
-                    : 'bg-white text-gray-700 hover:border-red-500 hover:text-red-600 border border-gray-300'
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Student Result Cards Grid */}
-        {currentStudents.length === 0 ? (
-          <div className="bg-white p-12 text-center rounded-2xl border border-gray-200 space-y-3">
-            <Trophy className="w-12 h-12 text-red-500 mx-auto" />
-            <h3 className="text-base font-bold text-gray-800">No Student Records Found</h3>
-            <p className="text-xs text-gray-500">
-              Try adjusting your search query or switching the category filter.
-            </p>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {currentStudents.map((student) => (
-              <div
-                key={student.id}
-                className="bg-white rounded-2xl border border-gray-200 overflow-hidden transition-all duration-300 group flex flex-col justify-between shadow-xs hover:shadow-md hover:border-red-300"
-              >
-                <div>
-                  <div className="relative h-56 overflow-hidden bg-gray-50 p-2 flex items-center justify-center">
-                    <img
-                      src={student.avatarUrl}
-                      alt={student.name}
-                      className="max-h-full w-auto object-contain rounded-lg group-hover:scale-103 transition duration-500"
-                    />
-                    <span className="absolute top-3 left-3 px-2.5 py-1 bg-red-600 text-white text-[10px] font-bold rounded-md shadow-xs">
-                      {student.year}
-                    </span>
-                    {student.school && (
-                      <span className="absolute bottom-3 left-3 px-2 py-0.5 bg-gray-900/85 text-white text-[9px] font-medium rounded">
-                        {student.school}
-                      </span>
-                    )}
-                  </div>
-
-                  <div className="p-5 space-y-2">
-                    <h3 className="font-bold text-gray-900 text-base">{student.name}</h3>
-                    <div className="inline-block bg-red-50 border border-red-200 px-3 py-1 rounded-lg text-sm font-extrabold text-red-600">
-                      {student.score}
-                    </div>
-                    <p className="text-xs text-gray-500 font-semibold">{student.exam}</p>
-
-                    {student.quote && (
-                      <p className="text-xs text-gray-600 italic bg-gray-50 p-3 rounded-xl border border-gray-100 mt-2">
-                        "{student.quote}"
-                      </p>
-                    )}
-                  </div>
-                </div>
-
-                <div className="p-3.5 bg-gray-50 border-t border-gray-100 text-center text-xs text-gray-500 font-medium">
-                  {student.instituteBranch}
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {/* Pagination Controls */}
-        {totalPages > 1 && (
-          <div className="flex justify-center items-center gap-2 pt-4">
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-              <button
-                key={page}
-                onClick={() => setCurrentPage(page)}
-                className={`w-10 h-10 rounded-xl font-bold text-xs transition border cursor-pointer ${
-                  currentPage === page
-                    ? 'bg-red-600 text-white border-red-600 shadow-xs'
-                    : 'bg-white text-gray-700 hover:bg-gray-100 border-gray-300'
-                }`}
-              >
-                {page}
-              </button>
-            ))}
-          </div>
-        )}
-      </section>
+      <div id="student-records-grid" className="scroll-mt-24">
+        <StudentShowcase
+          id="student-records-grid"
+          showHeading={false}
+          title="Verified Student Achievers"
+          subtitle="Explore our verified rankers with individual subject distinction records and authentic portraits."
+        />
+      </div>
 
       {/* 6. CALL TO ACTION: ADMISSION & ENQUIRY */}
       <section className="max-w-5xl mx-auto px-4">

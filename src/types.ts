@@ -63,6 +63,14 @@ export interface StandeeTopper {
   tag: string;
 }
 
+export interface ShowcaseStudent {
+  id: string;
+  name: string;
+  imagePath: string;
+  subjects: string[];
+  category: 'Foundation' | '12th Science';
+}
+
 export interface PosterAsset {
   id: string;
   title: string;
