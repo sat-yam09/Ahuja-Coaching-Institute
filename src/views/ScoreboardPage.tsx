@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { scoreboardStats, standeeToppers, brandTagline, posterAssets } from '../data/mockData';
+import { scoreboardStats, standeeToppers, brandTagline, posterAssets, subjectMeritRecords } from '../data/mockData';
 import { StandeeTopper, PosterAsset } from '../types';
 import { PosterModal } from '../components/PosterModal';
 import { StudentShowcase } from '../components/StudentShowcase';
@@ -27,6 +27,7 @@ export const ScoreboardPage: React.FC<ScoreboardPageProps> = ({ onInquireClick }
   const [activeStandeeType, setActiveStandeeType] = useState<'All' | 'Senior' | 'Junior'>('All');
   const [selectedPoster, setSelectedPoster] = useState<PosterAsset | null>(null);
   const [isPosterModalOpen, setIsPosterModalOpen] = useState(false);
+  const [activeSubjectTab, setActiveSubjectTab] = useState<'Physics' | 'Maths' | 'Chemistry' | 'Biology'>('Physics');
 
   const handleOpenStandee = (st: StandeeTopper) => {
     setSelectedPoster({
@@ -324,6 +325,120 @@ export const ScoreboardPage: React.FC<ScoreboardPageProps> = ({ onInquireClick }
           subtitle="Explore our verified rankers with individual subject distinction records and authentic portraits."
         />
       </div>
+
+      {/* 5. OFFICIAL 12th SCIENCE SUBJECT MERIT BOARD (DIRECT FROM EXAMINATION JSON) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-gray-200 pb-5">
+          <div>
+            <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-red-600">
+              <Award className="w-4 h-4" />
+              <span>Official 12th Science Results (2025–26)</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mt-1">
+              Subject-Wise Merit Scoreboard
+            </h2>
+            <p className="text-xs sm:text-sm text-gray-500">
+              Complete verified subject merit lists with individual student marks and ranks from Ahuja Career Institute.
+            </p>
+          </div>
+
+          {/* Subject Switcher Tabs */}
+          <div className="flex flex-wrap items-center gap-2 bg-gray-100 p-1.5 rounded-xl border border-gray-200">
+            {(['Physics', 'Maths', 'Chemistry', 'Biology'] as const).map((subject) => {
+              const count = subjectMeritRecords[subject]?.length || 0;
+              const isSelected = activeSubjectTab === subject;
+              return (
+                <button
+                  key={subject}
+                  onClick={() => setActiveSubjectTab(subject)}
+                  className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
+                    isSelected
+                      ? 'bg-red-600 text-white shadow-xs'
+                      : 'text-gray-700 hover:text-red-600'
+                  }`}
+                >
+                  <span>{subject}</span>
+                  <span className={`ml-1.5 text-[11px] ${isSelected ? 'text-white/90' : 'text-gray-500'}`}>
+                    ({count})
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Merit List Table / Grid */}
+        <div className="bg-white rounded-3xl border border-gray-200 overflow-hidden shadow-xs">
+          <div className="p-4 sm:p-5 bg-gradient-to-r from-gray-900 via-gray-900 to-gray-800 text-white flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div className="flex items-center space-x-3">
+              <div className="w-9 h-9 rounded-xl bg-red-600 text-white flex items-center justify-center font-black text-sm shadow-xs">
+                {activeSubjectTab[0]}
+              </div>
+              <div>
+                <h3 className="text-base sm:text-lg font-black tracking-tight">
+                  {activeSubjectTab} Official Top Scorers ({subjectMeritRecords[activeSubjectTab]?.length || 0} Students)
+                </h3>
+                <p className="text-[11px] text-gray-300">
+                  Highest score: <span className="font-extrabold text-amber-300">{subjectMeritRecords[activeSubjectTab]?.[0]?.score}/100</span> by {subjectMeritRecords[activeSubjectTab]?.[0]?.name}
+                </p>
+              </div>
+            </div>
+            <div className="text-xs text-gray-400 font-medium">
+              Verified Batch Records • Ahuja Career Institute
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 p-4 sm:p-6 bg-gray-50/50">
+            {subjectMeritRecords[activeSubjectTab]?.map((rec) => {
+              const isTop3 = rec.rank <= 3;
+              const isElite = rec.score >= 95;
+              const isDistinction = rec.score >= 90;
+
+              return (
+                <div
+                  key={`${rec.name}-${rec.rank}`}
+                  className={`p-3.5 rounded-2xl border transition-all duration-200 flex items-center justify-between gap-3 ${
+                    isTop3
+                      ? 'bg-white border-amber-300 shadow-xs ring-1 ring-amber-400/20'
+                      : 'bg-white border-gray-200 hover:border-red-200 hover:shadow-xs'
+                  }`}
+                >
+                  <div className="flex items-center space-x-3 min-w-0">
+                    <span
+                      className={`w-7 h-7 shrink-0 rounded-lg flex items-center justify-center text-xs font-black ${
+                        rec.rank === 1
+                          ? 'bg-amber-400 text-amber-950 shadow-xs'
+                          : rec.rank === 2
+                          ? 'bg-slate-200 text-slate-800'
+                          : rec.rank === 3
+                          ? 'bg-amber-100 text-amber-800'
+                          : 'bg-gray-100 text-gray-600'
+                      }`}
+                    >
+                      #{rec.rank}
+                    </span>
+                    <div className="min-w-0">
+                      <p className="text-xs sm:text-sm font-black text-gray-900 truncate uppercase">
+                        {rec.name}
+                      </p>
+                      <span className="text-[10px] font-semibold text-gray-500">
+                        {isElite ? '95+ Elite' : isDistinction ? '90+ Distinction' : '80+ High First Class'}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="text-right shrink-0">
+                    <div className="text-sm sm:text-base font-black text-gray-900">
+                      <span className="text-red-600">{rec.score}</span>
+                      <span className="text-[10px] text-gray-500 font-normal">/100</span>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
       {/* 6. CALL TO ACTION: ADMISSION & ENQUIRY */}
       <section className="max-w-5xl mx-auto px-4">
