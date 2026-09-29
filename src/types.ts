@@ -66,9 +66,18 @@ export interface StandeeTopper {
 export interface ShowcaseStudent {
   id: string;
   name: string;
-  imagePath: string;
+  imagePath?: string;
   subjects: string[];
   category: 'Foundation' | '12th Science';
+  marks?: Record<string, number>;
+  ranks?: Record<string, number>;
+  topScore?: number;
+}
+
+export interface SubjectMeritEntry {
+  rank: number;
+  name: string;
+  score: number;
 }
 
 export interface PosterAsset {

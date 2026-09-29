@@ -1703,47 +1703,470 @@ export const faqItems: FAQItem[] = [
 ];
 
 /* ══════════════════════════════════════════════════════════
-   EDITORIAL SHOWCASE — Deduplicated Student Portraits
-   Each student listed ONCE with all their scored subjects.
-   Images sourced from /public/student/<category>/
+   EDITORIAL SHOWCASE — Student Portraits & Verified Marks
+   Each student listed with individual subject distinction marks
+   sourced directly from official examination data.
    ══════════════════════════════════════════════════════════ */
 export const showcaseStudents: ShowcaseStudent[] = [
-  // ── 12th Science: Multi-subject achievers ──
-  { id: 'sc-01', name: 'Astha Rai', imagePath: '/student/Chemistry/Astha Rai.png', subjects: ['Chemistry', 'Maths', 'Physics'], category: '12th Science' },
-  { id: 'sc-02', name: 'Dhyana Chavda', imagePath: '/student/Biology/Dhyana Chavda.png', subjects: ['Biology', 'Chemistry', 'Physics'], category: '12th Science' },
-  { id: 'sc-03', name: 'Divyaraj Rathod', imagePath: '/student/Chemistry/Divyaraj Rathod.png', subjects: ['Chemistry', 'Maths', 'Physics'], category: '12th Science' },
-  { id: 'sc-04', name: 'Mahi Patel', imagePath: '/student/Chemistry/Mahi Patel.png', subjects: ['Chemistry', 'Maths', 'Physics'], category: '12th Science' },
-  { id: 'sc-05', name: 'Preet Patel', imagePath: '/student/Chemistry/Preet Patel.png', subjects: ['Chemistry', 'Maths', 'Physics'], category: '12th Science' },
-  { id: 'sc-06', name: 'Shena Mistry', imagePath: '/student/Chemistry/Shena Mistry.png', subjects: ['Chemistry', 'Maths', 'Physics'], category: '12th Science' },
-  { id: 'sc-07', name: 'Bhavy Prajapati', imagePath: '/student/Maths/Bhavy Prajapati.png', subjects: ['Maths', 'Physics'], category: '12th Science' },
-  { id: 'sc-08', name: 'Kanan Solanki', imagePath: '/student/Maths/Kanan Solanki.png', subjects: ['Maths', 'Physics'], category: '12th Science' },
-  { id: 'sc-09', name: 'Prathana Shah', imagePath: '/student/Maths/Prathana Shah.png', subjects: ['Maths', 'Physics'], category: '12th Science' },
-  { id: 'sc-10', name: 'Riya Prajapati', imagePath: '/student/Maths/Riya Prajapati.png', subjects: ['Maths', 'Physics'], category: '12th Science' },
-  { id: 'sc-11', name: 'Srusti Soni', imagePath: '/student/Maths/Srusti Soni.png', subjects: ['Maths', 'Physics'], category: '12th Science' },
-  { id: 'sc-12', name: 'Hitanshi Khalas', imagePath: '/student/Biology/Hitanshi Khalas.png', subjects: ['Biology', 'Chemistry'], category: '12th Science' },
-  { id: 'sc-13', name: 'Raj Bhavsar', imagePath: '/student/Biology/Raj Bhavsar.png', subjects: ['Biology', 'Chemistry'], category: '12th Science' },
-  { id: 'sc-14', name: 'Kunj Patel', imagePath: '/student/Chemistry/Kunj Patel.png', subjects: ['Chemistry', 'Maths'], category: '12th Science' },
-  { id: 'sc-15', name: 'Hanna Pathan', imagePath: '/student/Chemistry/hanna Pathan.png', subjects: ['Chemistry', 'Physics'], category: '12th Science' },
-  { id: 'sc-16', name: 'Om Parmar', imagePath: '/student/Chemistry/Om parmar.png', subjects: ['Chemistry', 'Physics'], category: '12th Science' },
-  // ── 12th Science: Single-subject achievers ──
-  { id: 'sc-17', name: 'Helly Patel', imagePath: '/student/Maths/Helly Patel.png', subjects: ['Maths'], category: '12th Science' },
-  { id: 'sc-18', name: 'Tirth Jirawala', imagePath: '/student/Maths/Tirth Jirawala.png', subjects: ['Maths'], category: '12th Science' },
-  { id: 'sc-19', name: 'Diya Patel', imagePath: '/student/Chemistry/Diya Patel.png', subjects: ['Chemistry'], category: '12th Science' },
-  { id: 'sc-20', name: 'Jahanvi Agarwal', imagePath: '/student/Biology/Jahanvi Agarwal.png', subjects: ['Biology'], category: '12th Science' },
-  { id: 'sc-21', name: 'Ayushi Mishra', imagePath: '/student/Physics/Ayushi Mishra.png', subjects: ['Physics'], category: '12th Science' },
-  { id: 'sc-22', name: 'Divyaesh Rana', imagePath: '/student/Physics/Divyaesh Rana.png', subjects: ['Physics'], category: '12th Science' },
-  // ── Foundation (Std. 8th – 10th) ──
-  { id: 'fn-01', name: 'Aksh Soni', imagePath: '/student/8_9_!0/Aksh Soni.png', subjects: ['Foundation'], category: 'Foundation' },
-  { id: 'fn-02', name: 'Bhavya Agrawal', imagePath: '/student/8_9_!0/Bhavya Agrawal.png', subjects: ['Foundation'], category: 'Foundation' },
-  { id: 'fn-03', name: 'Ferin Mistry', imagePath: '/student/8_9_!0/Ferin Mistry.png', subjects: ['Foundation'], category: 'Foundation' },
-  { id: 'fn-04', name: 'Ishita Khambadkar', imagePath: '/student/8_9_!0/Ishita khambadkar.png', subjects: ['Foundation'], category: 'Foundation' },
-  { id: 'fn-05', name: 'Karsh Gajjar', imagePath: '/student/8_9_!0/Karsh Gajjar.png', subjects: ['Foundation'], category: 'Foundation' },
-  { id: 'fn-06', name: 'Luv Advani', imagePath: '/student/8_9_!0/Luv Advani.png', subjects: ['Foundation'], category: 'Foundation' },
-  { id: 'fn-07', name: 'Maahi Gupta', imagePath: '/student/8_9_!0/Maahi Gupta.png', subjects: ['Foundation'], category: 'Foundation' },
-  { id: 'fn-08', name: 'Meet Gupta', imagePath: '/student/8_9_!0/Meet Gupta.png', subjects: ['Foundation'], category: 'Foundation' },
-  { id: 'fn-09', name: 'Rethika Mudaliar', imagePath: '/student/8_9_!0/Rethika Mudaliar.png', subjects: ['Foundation'], category: 'Foundation' },
-  { id: 'fn-10', name: 'Saanvi Jain', imagePath: '/student/8_9_!0/Saanvi Jain.png', subjects: ['Foundation'], category: 'Foundation' },
-  { id: 'fn-11', name: 'Umang Yadav', imagePath: '/student/8_9_!0/Umang Yadav.png', subjects: ['Foundation'], category: 'Foundation' },
-  { id: 'fn-12', name: 'Vansh Brahmakar', imagePath: '/student/8_9_!0/Vansh Brahmakar.png', subjects: ['Foundation'], category: 'Foundation' },
-  { id: 'fn-13', name: 'Vruddhi Brahmakar', imagePath: '/student/8_9_!0/Vruddhi Brahmakar.png', subjects: ['Foundation'], category: 'Foundation' },
+  // ── 12th Science: Multi-subject and Single-subject Star Achievers (with Cutouts) ──
+  { id: 'sc-01', name: 'Dhairya Patel', imagePath: '/student/Physics/Dhairya Patel.png', subjects: ["Physics", "Chemistry", "Maths"], category: '12th Science', marks: {"Physics": 99, "Maths": 93, "Chemistry": 96}, ranks: {"Physics": 1, "Maths": 3, "Chemistry": 1}, topScore: 99 },
+  { id: 'sc-02', name: 'Astha Rai', imagePath: '/student/Chemistry/Astha Rai.png', subjects: ["Physics", "Maths", "Chemistry"], category: '12th Science', marks: {"Physics": 97, "Maths": 88, "Chemistry": 87}, ranks: {"Physics": 2, "Maths": 9, "Chemistry": 10}, topScore: 97 },
+  { id: 'sc-03', name: 'Seema Chaudhry', imagePath: '/student/Biology/Seema Chaudhry.png', subjects: ["Physics", "Chemistry", "Biology"], category: '12th Science', marks: {"Physics": 94, "Biology": 90, "Chemistry": 91}, ranks: {"Physics": 4, "Biology": 2, "Chemistry": 5}, topScore: 94 },
+  { id: 'sc-04', name: 'Manan Bura', imagePath: '/student/Maths/Manan Bura.png', subjects: ["Physics", "Maths", "Chemistry"], category: '12th Science', marks: {"Physics": 93, "Maths": 93, "Chemistry": 87}, ranks: {"Physics": 6, "Maths": 2, "Chemistry": 12}, topScore: 93 },
+  { id: 'sc-05', name: 'Dhyana Chavda', imagePath: '/student/Biology/Dhyana Chavda.png', subjects: ["Biology", "Chemistry", "Physics"], category: '12th Science', marks: {"Physics": 84, "Biology": 90, "Chemistry": 86}, ranks: {"Physics": 24, "Biology": 3, "Chemistry": 15}, topScore: 90 },
+  { id: 'sc-06', name: 'Divyaraj Rathod', imagePath: '/student/Chemistry/Divyaraj Rathod.png', subjects: ["Maths", "Chemistry", "Physics"], category: '12th Science', marks: {"Physics": 81, "Maths": 88, "Chemistry": 88}, ranks: {"Physics": 28, "Maths": 10, "Chemistry": 9}, topScore: 88 },
+  { id: 'sc-07', name: 'Mahi Patel', imagePath: '/student/Chemistry/Mahi Patel.png', subjects: ["Maths", "Chemistry", "Physics"], category: '12th Science', marks: {"Physics": 86, "Maths": 94, "Chemistry": 89}, ranks: {"Physics": 17, "Maths": 1, "Chemistry": 7}, topScore: 94 },
+  { id: 'sc-08', name: 'Preet Patel', imagePath: '/student/Chemistry/Preet Patel.png', subjects: ["Physics", "Maths", "Chemistry"], category: '12th Science', marks: {"Physics": 94, "Maths": 90, "Chemistry": 86}, ranks: {"Physics": 5, "Maths": 7, "Chemistry": 14}, topScore: 94 },
+  { id: 'sc-09', name: 'Shena Mistry', imagePath: '/student/Chemistry/Shena Mistry.png', subjects: ["Physics", "Maths", "Chemistry"], category: '12th Science', marks: {"Physics": 91, "Maths": 86, "Chemistry": 86}, ranks: {"Physics": 11, "Maths": 11, "Chemistry": 16}, topScore: 91 },
+  { id: 'sc-10', name: 'Bhavy Prajapati', imagePath: '/student/Maths/Bhavy Prajapati.png', subjects: ["Physics", "Maths"], category: '12th Science', marks: {"Physics": 84, "Maths": 83}, ranks: {"Physics": 20, "Maths": 15}, topScore: 84 },
+  { id: 'sc-11', name: 'Falgun Patel', imagePath: '/student/Maths/Falgun Patel.png', subjects: ["Maths", "Physics"], category: '12th Science', marks: {"Physics": 81, "Maths": 83}, ranks: {"Physics": 29, "Maths": 14}, topScore: 83 },
+  { id: 'sc-12', name: 'Kanan Solanki', imagePath: '/student/Maths/Kanan Solanki.png', subjects: ["Physics", "Maths"], category: '12th Science', marks: {"Physics": 84, "Maths": 82}, ranks: {"Physics": 21, "Maths": 16}, topScore: 84 },
+  { id: 'sc-13', name: 'Prathana Shah', imagePath: '/student/Maths/Prathana Shah.png', subjects: ["Physics", "Maths"], category: '12th Science', marks: {"Physics": 92, "Maths": 92}, ranks: {"Physics": 10, "Maths": 6}, topScore: 92 },
+  { id: 'sc-14', name: 'Riya Prajapati', imagePath: '/student/Maths/Riya Prajapati.png', subjects: ["Physics", "Maths"], category: '12th Science', marks: {"Physics": 90, "Maths": 85}, ranks: {"Physics": 13, "Maths": 13}, topScore: 90 },
+  { id: 'sc-15', name: 'Srusti Soni', imagePath: '/student/Maths/Srusti Soni.png', subjects: ["Physics", "Maths"], category: '12th Science', marks: {"Physics": 92, "Maths": 86}, ranks: {"Physics": 8, "Maths": 12}, topScore: 92 },
+  { id: 'sc-16', name: 'Hitanshi Khalas', imagePath: '/student/Biology/Hitanshi Khalas.png', subjects: ["Chemistry", "Biology"], category: '12th Science', marks: {"Biology": 84, "Chemistry": 85}, ranks: {"Biology": 7, "Chemistry": 17}, topScore: 85 },
+  { id: 'sc-17', name: 'Raj Bhavsar', imagePath: '/student/Biology/Raj Bhavsar.png', subjects: ["Biology", "Chemistry"], category: '12th Science', marks: {"Biology": 89, "Chemistry": 87}, ranks: {"Biology": 4, "Chemistry": 11}, topScore: 89 },
+  { id: 'sc-18', name: 'Kunj Patel', imagePath: '/student/Chemistry/Kunj Patel.png', subjects: ["Maths", "Chemistry"], category: '12th Science', marks: {"Maths": 93, "Chemistry": 91}, ranks: {"Maths": 4, "Chemistry": 4}, topScore: 93 },
+  { id: 'sc-19', name: 'Hanna Pathan', imagePath: '/student/Chemistry/hanna Pathan.png', subjects: ["Physics", "Chemistry"], category: '12th Science', marks: {"Physics": 92, "Chemistry": 86}, ranks: {"Physics": 9, "Chemistry": 13}, topScore: 92 },
+  { id: 'sc-20', name: 'Om Parmar', imagePath: '/student/Chemistry/Om parmar.png', subjects: ["Physics", "Chemistry"], category: '12th Science', marks: {"Physics": 95, "Chemistry": 88}, ranks: {"Physics": 3, "Chemistry": 8}, topScore: 95 },
+  { id: 'sc-21', name: 'Meet Mojidra', imagePath: '/student/Physics/Meet Mojidra.png', subjects: ["Physics"], category: '12th Science', marks: {"Physics": 93}, ranks: {"Physics": 7}, topScore: 93 },
+  { id: 'sc-22', name: 'Shlok Maurya', imagePath: '/student/Physics/Shlok Maurya.png', subjects: ["Physics"], category: '12th Science', marks: {"Physics": 87}, ranks: {"Physics": 16}, topScore: 87 },
+  { id: 'sc-23', name: 'Dhvani Prajapati', imagePath: '/student/Physics/Dhvani Prajapati.png', subjects: ["Physics"], category: '12th Science', marks: {"Physics": 86}, ranks: {"Physics": 18}, topScore: 86 },
+  { id: 'sc-24', name: 'Kasak Prajapati', imagePath: '/student/Physics/Kasak Prajapati.png', subjects: ["Physics"], category: '12th Science', marks: {"Physics": 84}, ranks: {"Physics": 22}, topScore: 84 },
+  { id: 'sc-25', name: 'Helly Patel', imagePath: '/student/Maths/Helly Patel.png', subjects: ["Maths"], category: '12th Science', marks: {"Maths": 92}, ranks: {"Maths": 5}, topScore: 92 },
+  { id: 'sc-26', name: 'Tirth Jirawala', imagePath: '/student/Maths/Tirth Jirawala.png', subjects: ["Maths"], category: '12th Science', marks: {"Maths": 90}, ranks: {"Maths": 8}, topScore: 90 },
+  { id: 'sc-27', name: 'Diya Patel', imagePath: '/student/Chemistry/Diya Patel.png', subjects: ["Chemistry"], category: '12th Science', marks: {"Chemistry": 92}, ranks: {"Chemistry": 2}, topScore: 92 },
+  { id: 'sc-28', name: 'Jahanvi Agarwal', imagePath: '/student/Biology/Jahanvi Agarwal.png', subjects: ["Biology"], category: '12th Science', marks: {"Biology": 88}, ranks: {"Biology": 6}, topScore: 88 },
+  { id: 'sc-29', name: 'Ayushi Mishra', imagePath: '/student/Physics/Ayushi Mishra.png', subjects: ["Physics"], category: '12th Science', marks: {"Physics": 81}, ranks: {"Physics": 30}, topScore: 81 },
+  { id: 'sc-30', name: 'Divyaesh Rana', imagePath: '/student/Physics/Divyaesh Rana.png', subjects: ["Physics"], category: '12th Science', marks: {"Physics": 88}, ranks: {"Physics": 14}, topScore: 88 },
+  // ── 12th Science: Converted Board Achievers Batch (Cutouts) ──
+  { id: 'cv-01', name: 'Dhruti Panchal', imagePath: '/student/converted/Dhruti Panchal.png', subjects: ["12th Science"], category: '12th Science' },
+  { id: 'cv-02', name: 'Dhruva Patel', imagePath: '/student/converted/Dhruva Patel.png', subjects: ["12th Science"], category: '12th Science' },
+  { id: 'cv-03', name: 'Hitansh Mahajan', imagePath: '/student/converted/Hitansh Mahajan.png', subjects: ["12th Science"], category: '12th Science' },
+  { id: 'cv-04', name: 'Mahi Bavne', imagePath: '/student/converted/Mahi Bavne.png', subjects: ["12th Science"], category: '12th Science' },
+  { id: 'cv-05', name: 'Manav Shethe', imagePath: '/student/converted/Manav Shethe.png', subjects: ["12th Science"], category: '12th Science' },
+  { id: 'cv-06', name: 'Nishit Pandit', imagePath: '/student/converted/Nishit Pandit.png', subjects: ["12th Science"], category: '12th Science' },
+  { id: 'cv-07', name: 'Rahul Pandey', imagePath: '/student/converted/Rahul Pandey.png', subjects: ["12th Science"], category: '12th Science' },
+  { id: 'cv-08', name: 'Rainy Chauhan', imagePath: '/student/converted/Rainy Chauhan.png', subjects: ["12th Science"], category: '12th Science' },
+  { id: 'cv-09', name: 'Rudra Purohit', imagePath: '/student/converted/Rudra Purohit.png', subjects: ["12th Science"], category: '12th Science' },
+  { id: 'cv-10', name: 'Varshil Mehta', imagePath: '/student/converted/Varshil Mehta.png', subjects: ["12th Science"], category: '12th Science' },
+  { id: 'cv-11', name: 'Vrinda Patel', imagePath: '/student/converted/Vrinda Patel.png', subjects: ["12th Science"], category: '12th Science' },
+  // ── 12th Science: Additional Verified Subject Merit Achievers from Official Results ──
+  { id: 'mk-01', name: 'Affiya Shaikh', subjects: ["Biology"], category: '12th Science', marks: {"Biology": 80}, ranks: {"Biology": 8}, topScore: 80 },
+  { id: 'mk-02', name: 'Ankit Prajapati', subjects: ["Physics"], category: '12th Science', marks: {"Physics": 82}, ranks: {"Physics": 27}, topScore: 82 },
+  { id: 'mk-03', name: 'Dev Patel', subjects: ["Chemistry"], category: '12th Science', marks: {"Chemistry": 90}, ranks: {"Chemistry": 6}, topScore: 90 },
+  { id: 'mk-04', name: 'Dharmi Patel', subjects: ["Biology"], category: '12th Science', marks: {"Biology": 91}, ranks: {"Biology": 1}, topScore: 91 },
+  { id: 'mk-05', name: 'Hitanshi Koshti', subjects: ["Physics"], category: '12th Science', marks: {"Physics": 85}, ranks: {"Physics": 19}, topScore: 85 },
+  { id: 'mk-06', name: 'Jayveersinh Masani', subjects: ["Maths"], category: '12th Science', marks: {"Maths": 80}, ranks: {"Maths": 17}, topScore: 80 },
+  { id: 'mk-07', name: 'Mihir Prajapati', subjects: ["Physics", "Maths"], category: '12th Science', marks: {"Physics": 88, "Maths": 80}, ranks: {"Physics": 15, "Maths": 18}, topScore: 88 },
+  { id: 'mk-08', name: 'Nikhil Soni', subjects: ["Physics"], category: '12th Science', marks: {"Physics": 83}, ranks: {"Physics": 25}, topScore: 83 },
+  { id: 'mk-09', name: 'Niyati Patil', subjects: ["Physics"], category: '12th Science', marks: {"Physics": 83}, ranks: {"Physics": 26}, topScore: 83 },
+  { id: 'mk-10', name: 'Nutan Rai', subjects: ["Physics"], category: '12th Science', marks: {"Physics": 81}, ranks: {"Physics": 31}, topScore: 81 },
+  { id: 'mk-11', name: 'Parshwa Patel', subjects: ["Physics"], category: '12th Science', marks: {"Physics": 84}, ranks: {"Physics": 23}, topScore: 84 },
+  { id: 'mk-12', name: 'Priyanshi', subjects: ["Physics"], category: '12th Science', marks: {"Physics": 80}, ranks: {"Physics": 32}, topScore: 80 },
+  { id: 'mk-13', name: 'Savan Nai', subjects: ["Physics", "Chemistry"], category: '12th Science', marks: {"Physics": 91, "Chemistry": 91}, ranks: {"Physics": 12, "Chemistry": 3}, topScore: 91 },
+  { id: 'mk-14', name: 'Trisha Hamirani', subjects: ["Biology"], category: '12th Science', marks: {"Biology": 88}, ranks: {"Biology": 5}, topScore: 88 },
+  // ── Foundation (Std. 8th – 10th Achievers) ──
+  { id: 'fn-01', name: 'Aksh Soni', imagePath: '/student/8_9_!0/Aksh Soni.png', subjects: ["Foundation"], category: 'Foundation' },
+  { id: 'fn-02', name: 'Bhavya Agrawal', imagePath: '/student/8_9_!0/Bhavya Agrawal.png', subjects: ["Foundation"], category: 'Foundation' },
+  { id: 'fn-03', name: 'Ferin Mistry', imagePath: '/student/8_9_!0/Ferin Mistry.png', subjects: ["Foundation"], category: 'Foundation' },
+  { id: 'fn-04', name: 'Ishita Khambadkar', imagePath: '/student/8_9_!0/Ishita khambadkar.png', subjects: ["Foundation"], category: 'Foundation' },
+  { id: 'fn-05', name: 'Karsh Gajjar', imagePath: '/student/8_9_!0/Karsh Gajjar.png', subjects: ["Foundation"], category: 'Foundation' },
+  { id: 'fn-06', name: 'Luv Advani', imagePath: '/student/8_9_!0/Luv Advani.png', subjects: ["Foundation"], category: 'Foundation' },
+  { id: 'fn-07', name: 'Maahi Gupta', imagePath: '/student/8_9_!0/Maahi Gupta.png', subjects: ["Foundation"], category: 'Foundation' },
+  { id: 'fn-08', name: 'Meet Gupta', imagePath: '/student/8_9_!0/Meet Gupta.png', subjects: ["Foundation"], category: 'Foundation' },
+  { id: 'fn-09', name: 'Rethika Mudaliar', imagePath: '/student/8_9_!0/Rethika Mudaliar.png', subjects: ["Foundation"], category: 'Foundation' },
+  { id: 'fn-10', name: 'Saanvi Jain', imagePath: '/student/8_9_!0/Saanvi Jain.png', subjects: ["Foundation"], category: 'Foundation' },
+  { id: 'fn-11', name: 'Umang Yadav', imagePath: '/student/8_9_!0/Umang Yadav.png', subjects: ["Foundation"], category: 'Foundation' },
+  { id: 'fn-12', name: 'Vansh Brahmakar', imagePath: '/student/8_9_!0/Vansh Brahmakar.png', subjects: ["Foundation"], category: 'Foundation' },
+  { id: 'fn-13', name: 'Vruddhi Brahmakar', imagePath: '/student/8_9_!0/Vruddhi Brahmakar.png', subjects: ["Foundation"], category: 'Foundation' },
 ];
+
+/* ══════════════════════════════════════════════════════════
+   OFFICIAL 12th SCIENCE SUBJECT MERIT RECORDS (2025–26)
+   ══════════════════════════════════════════════════════════ */
+export const subjectMeritRecords: Record<string, { rank: number; name: string; score: number }[]> = {
+  Physics: [
+      {
+        "rank": 1,
+        "name": "DHAIRYA PATEL",
+        "score": 99
+      },
+      {
+        "rank": 2,
+        "name": "ASTHA RAI",
+        "score": 97
+      },
+      {
+        "rank": 3,
+        "name": "OM PARMAR",
+        "score": 95
+      },
+      {
+        "rank": 4,
+        "name": "SEEMA CHAUDHRY",
+        "score": 94
+      },
+      {
+        "rank": 5,
+        "name": "PREET PATEL",
+        "score": 94
+      },
+      {
+        "rank": 6,
+        "name": "MANAN BURA",
+        "score": 93
+      },
+      {
+        "rank": 7,
+        "name": "MEET MOJIDRA",
+        "score": 93
+      },
+      {
+        "rank": 8,
+        "name": "SRUSHTI SONI",
+        "score": 92
+      },
+      {
+        "rank": 9,
+        "name": "HANNA PATHAN",
+        "score": 92
+      },
+      {
+        "rank": 10,
+        "name": "PRARTHNA SHAH",
+        "score": 92
+      },
+      {
+        "rank": 11,
+        "name": "SNEHA MISTRY",
+        "score": 91
+      },
+      {
+        "rank": 12,
+        "name": "SAVAN NAI",
+        "score": 91
+      },
+      {
+        "rank": 13,
+        "name": "RIYA PRAJAPATI",
+        "score": 90
+      },
+      {
+        "rank": 14,
+        "name": "DIVYESH RANA",
+        "score": 88
+      },
+      {
+        "rank": 15,
+        "name": "MIHIR PRAJAPATI",
+        "score": 88
+      },
+      {
+        "rank": 16,
+        "name": "SHLOK MAURYA",
+        "score": 87
+      },
+      {
+        "rank": 17,
+        "name": "MAHEE PATEL",
+        "score": 86
+      },
+      {
+        "rank": 18,
+        "name": "DHVANI PRAJAPATI",
+        "score": 86
+      },
+      {
+        "rank": 19,
+        "name": "HITANSHI KOSHTI",
+        "score": 85
+      },
+      {
+        "rank": 20,
+        "name": "BHAVYA PRAJAPATI",
+        "score": 84
+      },
+      {
+        "rank": 21,
+        "name": "KANAN SOLANKI",
+        "score": 84
+      },
+      {
+        "rank": 22,
+        "name": "KASAK PRAJAPATI",
+        "score": 84
+      },
+      {
+        "rank": 23,
+        "name": "PARSHWA PATEL",
+        "score": 84
+      },
+      {
+        "rank": 24,
+        "name": "DHYANA CHAVDA",
+        "score": 84
+      },
+      {
+        "rank": 25,
+        "name": "NIKHIL SONI",
+        "score": 83
+      },
+      {
+        "rank": 26,
+        "name": "NIYATI PATIL",
+        "score": 83
+      },
+      {
+        "rank": 27,
+        "name": "ANKIT PRAJAPATI",
+        "score": 82
+      },
+      {
+        "rank": 28,
+        "name": "DIVYARAJ RATHOD",
+        "score": 81
+      },
+      {
+        "rank": 29,
+        "name": "FALGUN PATEL",
+        "score": 81
+      },
+      {
+        "rank": 30,
+        "name": "AYUSHI MISHRA",
+        "score": 81
+      },
+      {
+        "rank": 31,
+        "name": "NUTAN RAI",
+        "score": 81
+      },
+      {
+        "rank": 32,
+        "name": "PRIYANSHI",
+        "score": 80
+      }
+    ],
+  Maths: [
+      {
+        "rank": 1,
+        "name": "MAHI PATEL",
+        "score": 94
+      },
+      {
+        "rank": 2,
+        "name": "MANAN BURA",
+        "score": 93
+      },
+      {
+        "rank": 3,
+        "name": "DHAIRYA PATEL",
+        "score": 93
+      },
+      {
+        "rank": 4,
+        "name": "KUNJ PATEL",
+        "score": 93
+      },
+      {
+        "rank": 5,
+        "name": "HELLY PATEL",
+        "score": 92
+      },
+      {
+        "rank": 6,
+        "name": "PRARTHNA SHAH",
+        "score": 92
+      },
+      {
+        "rank": 7,
+        "name": "PREET PATEL",
+        "score": 90
+      },
+      {
+        "rank": 8,
+        "name": "TIRTH JARIWALA",
+        "score": 90
+      },
+      {
+        "rank": 9,
+        "name": "ASTHA RAI",
+        "score": 88
+      },
+      {
+        "rank": 10,
+        "name": "DIVYARAJ RATHOD",
+        "score": 88
+      },
+      {
+        "rank": 11,
+        "name": "SNEHA MISTRY",
+        "score": 86
+      },
+      {
+        "rank": 12,
+        "name": "SRUSHTI SONI",
+        "score": 86
+      },
+      {
+        "rank": 13,
+        "name": "RIYA PRAJAPATI",
+        "score": 85
+      },
+      {
+        "rank": 14,
+        "name": "FALGUN PATEL",
+        "score": 83
+      },
+      {
+        "rank": 15,
+        "name": "BHAVY PRAJAPATI",
+        "score": 83
+      },
+      {
+        "rank": 16,
+        "name": "KANAN SOLANKI",
+        "score": 82
+      },
+      {
+        "rank": 17,
+        "name": "JAYVEERSINH MASANI",
+        "score": 80
+      },
+      {
+        "rank": 18,
+        "name": "MIHIR PRAJAPATI",
+        "score": 80
+      }
+    ],
+  Biology: [
+      {
+        "rank": 1,
+        "name": "DHARMI PATEL",
+        "score": 91
+      },
+      {
+        "rank": 2,
+        "name": "SEEMA CHAUDHRY",
+        "score": 90
+      },
+      {
+        "rank": 3,
+        "name": "DHYANA CHAVDA",
+        "score": 90
+      },
+      {
+        "rank": 4,
+        "name": "RAJ BHAVSAR",
+        "score": 89
+      },
+      {
+        "rank": 5,
+        "name": "TRISHA HAMIRANI",
+        "score": 88
+      },
+      {
+        "rank": 6,
+        "name": "JAHANVI AGRAWAL",
+        "score": 88
+      },
+      {
+        "rank": 7,
+        "name": "HITANSHI KHALAS",
+        "score": 84
+      },
+      {
+        "rank": 8,
+        "name": "AFFIYA SHAIKH",
+        "score": 80
+      }
+    ],
+  Chemistry: [
+      {
+        "rank": 1,
+        "name": "DHAIRYA PATEL",
+        "score": 96
+      },
+      {
+        "rank": 2,
+        "name": "DIYA PATEL",
+        "score": 92
+      },
+      {
+        "rank": 3,
+        "name": "SAVAN NAI",
+        "score": 91
+      },
+      {
+        "rank": 4,
+        "name": "KUNJ PATEL",
+        "score": 91
+      },
+      {
+        "rank": 5,
+        "name": "SEEMA CHAUDHRY",
+        "score": 91
+      },
+      {
+        "rank": 6,
+        "name": "DEV PATEL",
+        "score": 90
+      },
+      {
+        "rank": 7,
+        "name": "MAHI PATEL",
+        "score": 89
+      },
+      {
+        "rank": 8,
+        "name": "OM PARMAR",
+        "score": 88
+      },
+      {
+        "rank": 9,
+        "name": "DIVYARAJ RATHOD",
+        "score": 88
+      },
+      {
+        "rank": 10,
+        "name": "AASTHA RAI",
+        "score": 87
+      },
+      {
+        "rank": 11,
+        "name": "RAJ BHAVSAR",
+        "score": 87
+      },
+      {
+        "rank": 12,
+        "name": "MANAN BURA",
+        "score": 87
+      },
+      {
+        "rank": 13,
+        "name": "HANNA PATHAN",
+        "score": 86
+      },
+      {
+        "rank": 14,
+        "name": "PREET PATEL",
+        "score": 86
+      },
+      {
+        "rank": 15,
+        "name": "DHYANA CHAVDA",
+        "score": 86
+      },
+      {
+        "rank": 16,
+        "name": "SNEHA MISTRY",
+        "score": 86
+      },
+      {
+        "rank": 17,
+        "name": "HITANSHI KHALAS",
+        "score": 85
+      }
+    ],
+};
