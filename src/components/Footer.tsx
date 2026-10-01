@@ -54,16 +54,6 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onInquireClick }) 
                 </button>
               </li>
               <li>
-                <a
-                  href="/assets/Ahuja Institute 23X33.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-red-400 transition inline-flex items-center gap-1"
-                >
-                  Official Brochure (PDF)
-                </a>
-              </li>
-              <li>
                 <button onClick={() => setActiveTab('scoreboard')} className="hover:text-red-400 transition">
                   Toppers &amp; Results
                 </button>

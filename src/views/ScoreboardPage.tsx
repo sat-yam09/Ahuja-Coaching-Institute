@@ -1,22 +1,19 @@
 'use client';
 
 import React, { useState } from 'react';
-import { scoreboardStats, standeeToppers, brandTagline, posterAssets, subjectMeritRecords } from '../data/mockData';
+import { scoreboardStats, standeeToppers, brandTagline } from '../data/mockData';
 import { StandeeTopper, PosterAsset } from '../types';
 import { PosterModal } from '../components/PosterModal';
 import { StudentShowcase } from '../components/StudentShowcase';
 import {
-  Search,
   Award,
   Trophy,
   Sparkles,
   PhoneCall,
   School,
   Eye,
-  FileText,
-  Maximize2,
   Download,
-  ExternalLink,
+  Calendar,
 } from 'lucide-react';
 
 interface ScoreboardPageProps {
@@ -27,7 +24,6 @@ export const ScoreboardPage: React.FC<ScoreboardPageProps> = ({ onInquireClick }
   const [activeStandeeType, setActiveStandeeType] = useState<'All' | 'Senior' | 'Junior'>('All');
   const [selectedPoster, setSelectedPoster] = useState<PosterAsset | null>(null);
   const [isPosterModalOpen, setIsPosterModalOpen] = useState(false);
-  const [activeSubjectTab, setActiveSubjectTab] = useState<'Physics' | 'Maths' | 'Chemistry' | 'Biology'>('Physics');
 
   const handleOpenStandee = (st: StandeeTopper) => {
     setSelectedPoster({
@@ -49,18 +45,10 @@ export const ScoreboardPage: React.FC<ScoreboardPageProps> = ({ onInquireClick }
     setIsPosterModalOpen(true);
   };
 
-  const handleOpenPoster = (poster: PosterAsset) => {
-    setSelectedPoster(poster);
-    setIsPosterModalOpen(true);
-  };
-
-
-
   const filteredStandees = standeeToppers.filter((st) => {
     if (activeStandeeType === 'All') return true;
     return st.type === activeStandeeType;
   });
-
 
   return (
     <div className="space-y-16 sm:space-y-24 pb-20 bg-white text-gray-900">
@@ -79,7 +67,7 @@ export const ScoreboardPage: React.FC<ScoreboardPageProps> = ({ onInquireClick }
           Every year, students at Ahuja Career Institute achieve record-breaking scores across 12th Science Boards, JEE Main, NEET UG, and 10th Secondary Boards with consistent 100/100 subject distinctions.
         </p>
 
-        {/* Action Buttons */}
+        {/* Action Buttons with the ONE Dedicated Official Brochure Button */}
         <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
           <button
             onClick={onInquireClick}
@@ -87,13 +75,49 @@ export const ScoreboardPage: React.FC<ScoreboardPageProps> = ({ onInquireClick }
           >
             <span>Inquire for 2026-27 Batch</span>
           </button>
+          
+          <a
+            href="/assets/Ahuja Institute 23X33.pdf"
+            download="Ahuja-Institute-23X33-Brochure.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center space-x-2 px-6 py-3 rounded-xl bg-white text-gray-800 border border-gray-300 font-bold text-xs sm:text-sm hover:border-red-500 hover:text-red-600 transition shadow-xs cursor-pointer group"
+          >
+            <Download className="w-4 h-4 text-red-600 group-hover:scale-110 transition-transform" />
+            <span>Official 23"×33" Brochure (PDF)</span>
+          </a>
+
           <a
             href="#student-records-grid"
-            className="inline-flex items-center space-x-2 px-6 py-3 rounded-xl bg-white text-gray-800 border border-gray-300 font-semibold text-xs sm:text-sm hover:bg-gray-50 transition cursor-pointer"
+            className="inline-flex items-center space-x-2 px-6 py-3 rounded-xl bg-gray-100 text-gray-700 font-bold text-xs sm:text-sm hover:bg-gray-200 transition cursor-pointer"
           >
             <Trophy className="w-4 h-4 text-red-600" />
-            <span>Browse Student Records</span>
+            <span>Browse All Student Records</span>
           </a>
+        </div>
+
+        {/* Hero Photo Showcase */}
+        <div className="relative pt-6 max-w-4xl mx-auto">
+          <div className="relative rounded-3xl overflow-hidden shadow-xl border border-gray-200 group">
+            <img
+              src="/assets/gallery/gallery-smart-screen-physics.jpg"
+              alt="Rank-Producing Preparation at Ahuja Career Institute"
+              className="w-full h-64 sm:h-96 object-cover group-hover:scale-102 transition duration-700"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent flex flex-col justify-end p-6 sm:p-8 text-left">
+              <div className="flex flex-wrap gap-2 mb-2">
+                <span className="px-3 py-1 bg-red-600 text-white text-xs font-bold rounded-full">
+                  Official Academic Records
+                </span>
+                <span className="px-3 py-1 bg-black/50 backdrop-blur-md text-white text-xs font-medium rounded-full">
+                  22,000+ Success Stories
+                </span>
+              </div>
+              <p className="text-white text-base sm:text-xl font-bold">
+                Celebrating Consistent 100/100 Subject Toppers, Board State Merits &amp; High Competitive Percentiles
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -131,13 +155,13 @@ export const ScoreboardPage: React.FC<ScoreboardPageProps> = ({ onInquireClick }
           <div>
             <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-red-600">
               <Award className="w-4 h-4" />
-              <span>Official Felicitation Standees</span>
+              <span>Official Felicitation Standees (2024–25)</span>
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mt-1">
               Top Rankers &amp; High Scorers
             </h2>
             <p className="text-xs sm:text-sm text-gray-500">
-              Authentic standee banners celebrating Ahuja students in their official uniforms.
+              Authentic standee banners celebrating Ahuja students in their official uniforms. Click to inspect high-resolution standees.
             </p>
           </div>
 
@@ -205,275 +229,47 @@ export const ScoreboardPage: React.FC<ScoreboardPageProps> = ({ onInquireClick }
         </div>
       </section>
 
-      {/* 4. OFFICIAL SCOREBOARD POSTERS & MARKETING PUBLICATIONS */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-gray-200 pb-5">
-          <div>
-            <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-red-600">
-              <FileText className="w-4 h-4" />
-              <span>Official Publications &amp; Print Assets</span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mt-1">
-              Felicitation Scoreboard Posters ({posterAssets.length})
-            </h2>
-            <p className="text-xs sm:text-sm text-gray-500">
-              Verified high-resolution posters, admissions brochures, and roadshow campaigns. Click any poster to pan and zoom.
-            </p>
-          </div>
-        </div>
+      {/* 4. SEARCH AND FILTERABLE STUDENT SCOREBOARD TABLE & CARDS (WITH 2024-25 & 2025-26 DROPDOWN) */}
+      <div id="student-records-grid" className="scroll-mt-24">
+        <StudentShowcase
+          id="student-records-grid"
+          showHeading={true}
+          title="Verified Student Achievers Roster"
+          subtitle="Explore our verified rankers with individual subject distinction records and authentic portraits across batches."
+        />
+      </div>
 
-        {/* Featured Official 23"×33" Master Brochure Banner */}
-        <div className="bg-[#18191B] text-white p-6 sm:p-8 rounded-3xl border border-gray-800 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+      {/* 5. CALL TO ACTION: ADMISSION & ENQUIRY */}
+      <section className="max-w-5xl mx-auto px-4">
+        <div className="bg-gradient-to-r from-red-600 via-red-700 to-rose-700 rounded-3xl p-8 sm:p-12 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-2 text-center md:text-left">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-red-600/20 text-red-400 border border-red-500/30 text-xs font-bold uppercase tracking-wider rounded-full">
-              <Download className="w-3.5 h-3.5" />
-              <span>Official 23" × 33" Print Standee Publication</span>
-            </div>
-            <h3 className="text-xl sm:text-2xl font-extrabold text-white">
-              Admissions 2026-27 &amp; Results Standee Master Edition (PDF)
-            </h3>
-            <p className="text-xs sm:text-sm text-gray-300 max-w-2xl leading-relaxed">
-              Download the official full-size 2-page master edition featuring the complete constellation of 12th Science Toppers (Maths, Physics, Chemistry, Biology), JEE/NEET rankers, 10th GSEB Board stars, and special morning batches.
+            <h2 className="text-2xl sm:text-3xl font-extrabold">
+              Be Next on Our Wall of Fame
+            </h2>
+            <p className="text-xs sm:text-sm text-red-100 max-w-xl">
+              Admissions open for Std. 6th to 12th Science &amp; Commerce, JEE Main, and NEET UG batches. Experience the teaching philosophy that builds rankers.
             </p>
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-3 shrink-0">
-            <a
-              href="/assets/Ahuja Institute 23X33.pdf"
-              download="Ahuja-Institute-23X33-Brochure.pdf"
-              className="px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-bold text-xs sm:text-sm rounded-xl transition shadow-md shadow-red-600/20 flex items-center gap-2 cursor-pointer"
-            >
-              <Download className="w-4 h-4" />
-              <span>Download PDF (5.2 MB)</span>
-            </a>
-            <a
-              href="/assets/Ahuja Institute 23X33.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-5 py-3 bg-gray-800 hover:bg-gray-700 text-gray-200 border border-gray-700 font-bold text-xs sm:text-sm rounded-xl transition flex items-center gap-2 cursor-pointer"
-            >
-              <ExternalLink className="w-4 h-4 text-red-400" />
-              <span>View Fullscreen</span>
-            </a>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {posterAssets.map((poster) => (
-            <div
-              key={poster.id}
-              onClick={() => handleOpenPoster(poster)}
-              className="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-xs hover:shadow-lg hover:border-red-300 transition duration-300 group flex flex-col justify-between cursor-pointer"
-            >
-              <div>
-                <div className="relative h-64 overflow-hidden bg-gray-950 flex items-center justify-center p-2">
-                  <img
-                    src={poster.previewUrl || poster.imageUrl}
-                    alt={poster.title}
-                    loading="lazy"
-                    className="max-h-full w-full object-contain group-hover:scale-105 transition duration-500 rounded-lg"
-                  />
-                  <span className="absolute top-3 left-3 px-2.5 py-1 bg-red-600 text-white text-[10px] font-bold rounded-md shadow-xs">
-                    {poster.category}
-                  </span>
-                  {poster.resolution && (
-                    <span className="absolute top-3 right-3 px-2 py-0.5 bg-black/75 backdrop-blur-xs text-amber-300 border border-amber-500/30 text-[9px] font-extrabold rounded-md shadow-xs">
-                      {poster.resolution}
-                    </span>
-                  )}
-                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <span className="inline-flex items-center space-x-1.5 px-3.5 py-2 rounded-lg bg-white text-gray-900 font-bold text-xs shadow-lg">
-                      <Maximize2 className="w-3.5 h-3.5 text-red-600" />
-                      <span>Pan &amp; Zoom Ultra HD</span>
-                    </span>
-                  </div>
-                </div>
-
-                <div className="p-5 space-y-2">
-                  <h3 className="font-bold text-gray-900 text-sm sm:text-base group-hover:text-red-600 transition-colors line-clamp-1">
-                    {poster.title}
-                  </h3>
-                  <p className="text-xs text-gray-500 font-medium line-clamp-1">
-                    {poster.subtitle}
-                  </p>
-                  <p className="text-xs text-gray-600 leading-relaxed line-clamp-2">
-                    {poster.description}
-                  </p>
-                </div>
-              </div>
-
-              <div className="p-4 bg-gray-50 border-t border-gray-100 flex items-center justify-between">
-                <span className="text-[11px] font-bold text-gray-500 uppercase tracking-wider">
-                  Batch {poster.year}
-                </span>
-                <span className="inline-flex items-center space-x-1 text-xs font-bold text-red-600 group-hover:underline">
-                  <Eye className="w-3.5 h-3.5" />
-                  <span>Inspect Ultra HD</span>
-                </span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* 4. SEARCH AND FILTERABLE STUDENT SCOREBOARD TABLE & CARDS */}
-      <div id="student-records-grid" className="scroll-mt-24">
-        <StudentShowcase
-          id="student-records-grid"
-          showHeading={false}
-          title="Verified Student Achievers"
-          subtitle="Explore our verified rankers with individual subject distinction records and authentic portraits."
-        />
-      </div>
-
-      {/* 5. OFFICIAL 12th SCIENCE SUBJECT MERIT BOARD (DIRECT FROM EXAMINATION JSON) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-gray-200 pb-5">
-          <div>
-            <div className="flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-red-600">
-              <Award className="w-4 h-4" />
-              <span>Official 12th Science Results (2025–26)</span>
-            </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 mt-1">
-              Subject-Wise Merit Scoreboard
-            </h2>
-            <p className="text-xs sm:text-sm text-gray-500">
-              Complete verified subject merit lists with individual student marks and ranks from Ahuja Career Institute.
-            </p>
-          </div>
-
-          {/* Subject Switcher Tabs */}
-          <div className="flex flex-wrap items-center gap-2 bg-gray-100 p-1.5 rounded-xl border border-gray-200">
-            {(['Physics', 'Maths', 'Chemistry', 'Biology'] as const).map((subject) => {
-              const count = subjectMeritRecords[subject]?.length || 0;
-              const isSelected = activeSubjectTab === subject;
-              return (
-                <button
-                  key={subject}
-                  onClick={() => setActiveSubjectTab(subject)}
-                  className={`px-3.5 py-1.5 rounded-lg text-xs font-bold transition-all cursor-pointer ${
-                    isSelected
-                      ? 'bg-red-600 text-white shadow-xs'
-                      : 'text-gray-700 hover:text-red-600'
-                  }`}
-                >
-                  <span>{subject}</span>
-                  <span className={`ml-1.5 text-[11px] ${isSelected ? 'text-white/90' : 'text-gray-500'}`}>
-                    ({count})
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* Merit List Table / Grid */}
-        <div className="bg-white rounded-3xl border border-gray-200 overflow-hidden shadow-xs">
-          <div className="p-4 sm:p-5 bg-gradient-to-r from-gray-900 via-gray-900 to-gray-800 text-white flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <div className="flex items-center space-x-3">
-              <div className="w-9 h-9 rounded-xl bg-red-600 text-white flex items-center justify-center font-black text-sm shadow-xs">
-                {activeSubjectTab[0]}
-              </div>
-              <div>
-                <h3 className="text-base sm:text-lg font-black tracking-tight">
-                  {activeSubjectTab} Official Top Scorers ({subjectMeritRecords[activeSubjectTab]?.length || 0} Students)
-                </h3>
-                <p className="text-[11px] text-gray-300">
-                  Highest score: <span className="font-extrabold text-amber-300">{subjectMeritRecords[activeSubjectTab]?.[0]?.score}/100</span> by {subjectMeritRecords[activeSubjectTab]?.[0]?.name}
-                </p>
-              </div>
-            </div>
-            <div className="text-xs text-gray-400 font-medium">
-              Verified Batch Records • Ahuja Career Institute
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 p-4 sm:p-6 bg-gray-50/50">
-            {subjectMeritRecords[activeSubjectTab]?.map((rec) => {
-              const isTop3 = rec.rank <= 3;
-              const isElite = rec.score >= 95;
-              const isDistinction = rec.score >= 90;
-
-              return (
-                <div
-                  key={`${rec.name}-${rec.rank}`}
-                  className={`p-3.5 rounded-2xl border transition-all duration-200 flex items-center justify-between gap-3 ${
-                    isTop3
-                      ? 'bg-white border-amber-300 shadow-xs ring-1 ring-amber-400/20'
-                      : 'bg-white border-gray-200 hover:border-red-200 hover:shadow-xs'
-                  }`}
-                >
-                  <div className="flex items-center space-x-3 min-w-0">
-                    <span
-                      className={`w-7 h-7 shrink-0 rounded-lg flex items-center justify-center text-xs font-black ${
-                        rec.rank === 1
-                          ? 'bg-amber-400 text-amber-950 shadow-xs'
-                          : rec.rank === 2
-                          ? 'bg-slate-200 text-slate-800'
-                          : rec.rank === 3
-                          ? 'bg-amber-100 text-amber-800'
-                          : 'bg-gray-100 text-gray-600'
-                      }`}
-                    >
-                      #{rec.rank}
-                    </span>
-                    <div className="min-w-0">
-                      <p className="text-xs sm:text-sm font-black text-gray-900 truncate uppercase">
-                        {rec.name}
-                      </p>
-                      <span className="text-[10px] font-semibold text-gray-500">
-                        {isElite ? '95+ Elite' : isDistinction ? '90+ Distinction' : '80+ High First Class'}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="text-right shrink-0">
-                    <div className="text-sm sm:text-base font-black text-gray-900">
-                      <span className="text-red-600">{rec.score}</span>
-                      <span className="text-[10px] text-gray-500 font-normal">/100</span>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* 6. CALL TO ACTION: ADMISSION & ENQUIRY */}
-      <section className="max-w-5xl mx-auto px-4">
-        <div className="bg-gradient-to-r from-red-600 via-red-700 to-rose-700 rounded-3xl p-8 sm:p-12 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="space-y-2 text-center md:text-left">
-            <span className="text-xs font-bold uppercase tracking-wider bg-white/20 px-3 py-1 rounded-full">
-              Admissions Open 2026-27
-            </span>
-            <h3 className="text-2xl sm:text-3xl font-extrabold">
-              Want Your Child on Our Next Scoreboard?
-            </h3>
-            <p className="text-xs sm:text-sm text-red-100 max-w-xl">
-              Join Ahmedabad’s trusted institute for 11th–12th Science, JEE/NEET entrance, and 6th–10th foundation batches.
-            </p>
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
             <button
               onClick={onInquireClick}
-              className="px-6 py-3 rounded-xl bg-white text-red-600 font-bold text-sm hover:bg-red-50 transition shadow-md text-center cursor-pointer"
+              className="px-6 py-3.5 bg-white text-red-600 font-extrabold text-xs sm:text-sm rounded-xl hover:bg-gray-100 transition shadow-lg cursor-pointer"
             >
-              Book Admission Consultation
+              Inquire Now
             </button>
             <a
-              href="tel:+917405328676"
-              className="px-5 py-3 rounded-xl bg-red-950/40 hover:bg-red-950/60 border border-white/20 text-white font-bold text-sm transition flex items-center justify-center space-x-2"
+              href="tel:7405328676"
+              className="px-5 py-3.5 bg-red-800/80 hover:bg-red-800 text-white font-bold text-xs sm:text-sm rounded-xl border border-red-500/40 transition flex items-center space-x-2"
             >
               <PhoneCall className="w-4 h-4" />
-              <span>Call Helpline</span>
+              <span>Call 74053 28676</span>
             </a>
           </div>
         </div>
       </section>
 
-      {/* 7. INTERACTIVE POSTER & STANDEE LIGHTBOX MODAL */}
+      {/* Lightbox Modal for Fullscreen Poster / Standee Inspection */}
       <PosterModal
         poster={selectedPoster}
         isOpen={isPosterModalOpen}
