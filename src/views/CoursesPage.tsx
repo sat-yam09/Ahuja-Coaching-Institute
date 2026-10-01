@@ -30,11 +30,11 @@ interface CoursesPageProps {
 export const CoursesPage: React.FC<CoursesPageProps> = ({
   onInquireClick,
   onViewSyllabus,
-  initialCourseId = 'competitive-jee-neet',
+  initialCourseId = 'foundation-6-10',
 }) => {
   const [selectedCourseId, setSelectedCourseId] = useState<string>(initialCourseId);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
-  const [openSyllabusSubject, setOpenSyllabusSubject] = useState<string>('Physics');
+  const [openSyllabusSubject, setOpenSyllabusSubject] = useState<string>('Mathematics & Mental Ability');
   const [activeIncludedTab, setActiveIncludedTab] = useState<number>(0);
 
   React.useEffect(() => {
