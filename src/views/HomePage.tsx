@@ -9,20 +9,17 @@ import {
   testimonials,
   heroStats,
   facultyMembers,
-  resultStudents,
-  posterAssets,
   brandTagline,
   specialMorningBatches,
 } from '../data/mockData';
 import { GoogleReviewsMarquee } from '../components/GoogleReviewsMarquee';
-import { PosterModal } from '../components/PosterModal';
 import { StudentShowcase } from '../components/StudentShowcase';
+import { PosterModal } from '../components/PosterModal';
 
 import {
   ArrowRight,
   BookOpen,
   LineChart,
-  FileText,
   RotateCcw,
   CheckCircle2,
   Clock,
@@ -38,8 +35,6 @@ import {
   MapPin,
   TrendingUp,
   Quote,
-  Download,
-  Eye,
 } from 'lucide-react';
 
 interface HomePageProps {
@@ -105,15 +100,6 @@ export const HomePage: React.FC<HomePageProps> = ({
             >
               Inquire for 2026-27 <ArrowRight className="w-4 h-4" />
             </button>
-            <a
-              href="/assets/Ahuja Institute 23X33.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-3.5 bg-white hover:bg-gray-50 text-gray-800 border border-gray-300 font-semibold rounded-xl text-sm transition shadow-xs flex items-center gap-2 cursor-pointer"
-            >
-              <Download className="w-4 h-4 text-red-600" />
-              <span>Official 23"×33" Brochure (PDF)</span>
-            </a>
             <button
               onClick={() => setActiveTab('scoreboard')}
               className="px-6 py-3.5 bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold rounded-xl text-sm transition cursor-pointer"
@@ -147,11 +133,11 @@ export const HomePage: React.FC<HomePageProps> = ({
           </div>
 
           {/* Key Stats Bar */}
-          <div className="pt-8 max-w-3xl mx-auto grid grid-cols-3 gap-2 sm:gap-4 border-t border-gray-100">
+          <div className="pt-8 max-w-4xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 border-t border-gray-100">
             {heroStats.map((stat, idx) => (
-              <div key={idx} className="text-center space-y-0.5 px-1">
-                <div className="text-xl sm:text-3xl font-extrabold text-red-600 whitespace-nowrap">{stat.value}</div>
-                <div className="text-[11px] sm:text-sm text-gray-500 font-medium leading-snug">{stat.label}</div>
+              <div key={idx} className="text-center space-y-0.5 px-2">
+                <div className="text-2xl sm:text-3xl font-extrabold text-red-600 whitespace-nowrap">{stat.value}</div>
+                <div className="text-xs sm:text-sm text-gray-600 font-medium leading-snug">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -215,58 +201,51 @@ export const HomePage: React.FC<HomePageProps> = ({
               >
                 Our 27-Year Journey <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
-              <a
-                href="/assets/Ahuja Institute 23X33.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-5 py-2.5 bg-gray-800 hover:bg-gray-700 text-gray-200 border border-gray-700 text-xs sm:text-sm font-semibold rounded-xl transition inline-flex items-center gap-2 cursor-pointer"
-              >
-                <Download className="w-4 h-4 text-red-400" />
-                <span>Brochure (PDF)</span>
-              </a>
             </div>
           </div>
 
-          <div className="lg:col-span-6">
-            <div className="bg-gradient-to-br from-[#1E2024] to-[#141517] rounded-3xl p-6 sm:p-8 border border-gray-800 shadow-2xl space-y-6">
-              <div className="flex items-center space-x-4">
-                <div className="relative">
-                  <img
-                    src="/assets/Founder - Rajkumar Ahuja.jpeg"
-                    alt="Late Rajkumar Ahuja Sir - Founder"
-                    className="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl object-cover object-top border-2 border-red-500/40 shadow-xl"
-                  />
-                  <span className="absolute -bottom-2 -right-2 px-2 py-0.5 bg-red-600 text-white text-[10px] font-bold rounded-md shadow-xs">
-                    Founder
-                  </span>
-                </div>
+          <div className="lg:col-span-6 h-full">
+            <div className="bg-gradient-to-br from-[#1E2024] to-[#141517] rounded-3xl border border-gray-800 shadow-2xl overflow-hidden grid grid-cols-1 sm:grid-cols-12 h-full">
+              <div className="sm:col-span-5 relative min-h-[300px] sm:min-h-full">
+                <img
+                  src="/assets/Founder - Rajkumar Ahuja.jpeg"
+                  alt="Late Rajkumar Ahuja Sir - Founder"
+                  className="w-full h-full object-cover object-top absolute inset-0"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#141517] via-transparent to-transparent sm:bg-gradient-to-r sm:from-transparent sm:to-[#1E2024]/30" />
+                <span className="absolute top-3 left-3 px-2.5 py-1 bg-red-600 text-white text-[10px] font-bold rounded-lg shadow-md uppercase tracking-wider">
+                  Founder
+                </span>
+              </div>
+
+              <div className="sm:col-span-7 p-6 sm:p-7 flex flex-col justify-between space-y-5">
                 <div>
-                  <h3 className="text-lg sm:text-xl font-extrabold text-white">
+                  <h3 className="text-xl sm:text-2xl font-extrabold text-white">
                     Late Rajkumar Ahuja Sir
                   </h3>
-                  <p className="text-xs font-bold text-red-400 uppercase tracking-wide">
+                  <p className="text-xs font-bold text-red-400 uppercase tracking-wider mt-1">
                     The Visionary Founder (Est. 1998)
                   </p>
-                  <p className="text-xs text-gray-400 mt-1">
+                  <p className="text-xs text-gray-400 mt-1.5 leading-relaxed">
                     Pioneer of Concept-First Coaching in Ahmedabad
                   </p>
                 </div>
-              </div>
 
-              <div className="bg-[#0E0F11] p-5 rounded-2xl border border-gray-800 relative">
-                <span className="text-3xl text-red-500/40 font-serif leading-none absolute top-2 left-3">“</span>
-                <p className="text-sm font-semibold text-gray-200 leading-relaxed italic px-3 pt-1">
-                  "Life is Great but it never grows great until it is focused, dedicated &amp; disciplined."
-                </p>
-                <span className="text-3xl text-red-500/40 font-serif leading-none absolute bottom-0 right-3">”</span>
-              </div>
+                <div className="bg-[#0E0F11] p-4 sm:p-5 rounded-2xl border border-gray-800 relative">
+                  <span className="text-3xl text-red-500/40 font-serif leading-none absolute top-2 left-3">“</span>
+                  <p className="text-xs sm:text-sm font-semibold text-gray-200 leading-relaxed italic px-3 pt-1">
+                    "Life is Great but it never grows great until it is focused, dedicated &amp; disciplined."
+                  </p>
+                  <span className="text-3xl text-red-500/40 font-serif leading-none absolute bottom-0 right-3">”</span>
+                </div>
 
-              <div className="flex items-center justify-between text-xs text-gray-400 border-t border-gray-800/80 pt-3">
-                <span className="flex items-center gap-1.5 text-gray-300">
-                  <Sparkles className="w-3.5 h-3.5 text-red-500" />
-                  Academic Excellence Legacy
-                </span>
-                <span className="font-mono text-red-400 font-bold">1998 — Present</span>
+                <div className="flex items-center justify-between text-xs text-gray-400 border-t border-gray-800/80 pt-3">
+                  <span className="flex items-center gap-1.5 text-gray-300">
+                    <Sparkles className="w-3.5 h-3.5 text-red-500" />
+                    Academic Excellence Legacy
+                  </span>
+                  <span className="font-mono text-red-400 font-bold">1998 — Present</span>
+                </div>
               </div>
             </div>
           </div>
@@ -432,73 +411,19 @@ export const HomePage: React.FC<HomePageProps> = ({
               >
                 Explore Courses
               </button>
-              <a
-                href="/assets/Ahuja Institute 23X33.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-red-400 hover:text-red-300 font-bold text-xs sm:text-sm inline-flex items-center gap-1.5 transition ml-1"
-              >
-                <Download className="w-4 h-4" />
-                <span>Official Brochure PDF</span>
-              </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 5. STUDENT SHOWCASE — Editorial Portrait Gallery (Preview of 8) */}
+      {/* 5. STUDENT SHOWCASE — Editorial Portrait Gallery (Preview of 8, No Filter Bar on Home) */}
       <StudentShowcase
         previewLimit={8}
+        showFilters={false}
         onViewMore={() => setActiveTab('scoreboard')}
       />
 
-      {/* Brochure Download & Scoreboard CTA */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-        {/* Brochure Download & Mega Results Banner (Obsidian Card) */}
-        <div className="bg-[#18191B] p-6 sm:p-8 rounded-3xl border border-gray-800 text-white shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="space-y-1.5 text-center md:text-left">
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-red-600/20 text-red-400 border border-red-500/30 text-[11px] font-bold uppercase tracking-wider rounded-full">
-              <FileText className="w-3 h-3" />
-              <span>OFFICIAL 2026-27 ADMISSION ASSETS</span>
-            </div>
-            <h3 className="text-xl sm:text-2xl font-bold">
-              Download Official 23"×33" Admissions Brochure &amp; Scoreboard
-            </h3>
-            <p className="text-xs sm:text-sm text-gray-300 max-w-xl">
-              Official 2-page print edition with 12th Science subject stars, JEE/NEET results, 10th GSEB Board ranks, and special morning batches.
-            </p>
-          </div>
 
-          <div className="flex flex-wrap items-center justify-center gap-3 shrink-0">
-            <a
-              href="/assets/Ahuja Institute 23X33.pdf"
-              download="Ahuja-Institute-23X33-Brochure.pdf"
-              className="px-5 py-2.5 rounded-xl bg-red-600 hover:bg-red-700 text-white font-bold text-xs sm:text-sm transition flex items-center space-x-2 shadow-md shadow-red-600/20 cursor-pointer"
-            >
-              <Download className="w-4 h-4" />
-              <span>Download PDF (5.2 MB)</span>
-            </a>
-            <a
-              href="/assets/Ahuja Institute 23X33.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-5 py-2.5 rounded-xl bg-gray-800 hover:bg-gray-700 text-gray-200 border border-gray-700 font-bold text-xs sm:text-sm transition flex items-center space-x-2 cursor-pointer"
-            >
-              <Eye className="w-4 h-4 text-red-400" />
-              <span>View Brochure PDF</span>
-            </a>
-          </div>
-        </div>
-
-        <div className="text-center">
-          <button
-            onClick={() => setActiveTab('scoreboard')}
-            className="px-6 py-2.5 bg-white hover:bg-gray-50 text-gray-800 border border-gray-300 font-semibold rounded-xl text-sm transition shadow-xs cursor-pointer"
-          >
-            See Full Verified Scoreboard ({resultStudents.length}+ Records) →
-          </button>
-        </div>
-      </section>
 
       {/* 6. GOOGLE REVIEWS CARD MARQUEE SECTION */}
       <GoogleReviewsMarquee
@@ -582,27 +507,45 @@ export const HomePage: React.FC<HomePageProps> = ({
           </button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-          <div className="md:col-span-6 rounded-2xl overflow-hidden h-64 sm:h-80 shadow-xs border border-gray-200">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+          <div
+            onClick={() => setActiveTab('gallery')}
+            className="rounded-2xl overflow-hidden aspect-[16/10] shadow-md border border-gray-200 group relative cursor-pointer"
+          >
             <img
-              src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=800"
-              alt="Campus Life"
-              className="w-full h-full object-cover hover:scale-103 transition-transform duration-500"
+              src="/assets/gallery/gallery-bohr-chemistry-lecture.jpg"
+              alt="Interactive Smart Classroom Lecture"
+              className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent flex items-end p-4">
+              <span className="text-xs sm:text-sm text-white font-bold drop-shadow-xs">Interactive Smart Classrooms</span>
+            </div>
           </div>
-          <div className="md:col-span-3 rounded-2xl overflow-hidden h-64 sm:h-80 shadow-xs border border-gray-200">
+          <div
+            onClick={() => setActiveTab('gallery')}
+            className="rounded-2xl overflow-hidden aspect-[16/10] shadow-md border border-gray-200 group relative cursor-pointer"
+          >
             <img
-              src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=600"
-              alt="Library Study Space"
-              className="w-full h-full object-cover hover:scale-103 transition-transform duration-500"
+              src="/assets/gallery/gallery-smart-screen-physics.jpg"
+              alt="Physics Trajectory Analysis"
+              className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent flex items-end p-4">
+              <span className="text-xs sm:text-sm text-white font-bold drop-shadow-xs">Physics Kinematics &amp; Motion</span>
+            </div>
           </div>
-          <div className="md:col-span-3 rounded-2xl overflow-hidden h-64 sm:h-80 shadow-xs border border-gray-200">
+          <div
+            onClick={() => setActiveTab('gallery')}
+            className="rounded-2xl overflow-hidden aspect-[16/10] shadow-md border border-gray-200 group relative cursor-pointer sm:col-span-2 md:col-span-1"
+          >
             <img
-              src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=600"
-              alt="Student Collaboration"
-              className="w-full h-full object-cover hover:scale-103 transition-transform duration-500"
+              src="/assets/gallery/gallery-geometry-classroom.jpg"
+              alt="Offline Batch Mathematics Session"
+              className="w-full h-full object-cover object-[center_20%] group-hover:scale-105 transition-transform duration-500"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent flex items-end p-4">
+              <span className="text-xs sm:text-sm text-white font-bold drop-shadow-xs">Board &amp; Competitive Batches</span>
+            </div>
           </div>
         </div>
       </section>

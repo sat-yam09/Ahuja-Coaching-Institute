@@ -15,6 +15,11 @@ export const metadata: Metadata = {
     'Medical Entrance Coaching',
   ],
   authors: [{ name: 'Ahuja Career Institute' }],
+  icons: {
+    icon: '/contact.webp',
+    shortcut: '/contact.webp',
+    apple: '/contact.webp',
+  },
 };
 
 export const viewport: Viewport = {

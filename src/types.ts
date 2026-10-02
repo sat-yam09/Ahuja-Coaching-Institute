@@ -72,6 +72,11 @@ export interface ShowcaseStudent {
   marks?: Record<string, number>;
   ranks?: Record<string, number>;
   topScore?: number;
+  scoreDisplay?: string;
+  exam?: string;
+  school?: string;
+  year?: '2025-26' | '2024-25';
+  grade?: string;
 }
 
 export interface SubjectMeritEntry {
@@ -119,9 +124,11 @@ export interface GoogleReview {
 export interface GalleryItem {
   id: string;
   title: string;
-  category: 'Smart Rooms' | 'Labs' | 'Events' | 'Student Life' | 'Print Media & Campaigns';
+  category: string;
   imageUrl: string;
   description: string;
+  location?: string;
+  badge?: string;
 }
 
 export interface Branch {

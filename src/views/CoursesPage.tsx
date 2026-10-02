@@ -30,11 +30,11 @@ interface CoursesPageProps {
 export const CoursesPage: React.FC<CoursesPageProps> = ({
   onInquireClick,
   onViewSyllabus,
-  initialCourseId = 'competitive-jee-neet',
+  initialCourseId = 'foundation-6-10',
 }) => {
   const [selectedCourseId, setSelectedCourseId] = useState<string>(initialCourseId);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
-  const [openSyllabusSubject, setOpenSyllabusSubject] = useState<string>('Physics');
+  const [openSyllabusSubject, setOpenSyllabusSubject] = useState<string>('Mathematics & Mental Ability');
   const [activeIncludedTab, setActiveIncludedTab] = useState<number>(0);
 
   React.useEffect(() => {
@@ -247,20 +247,20 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({
           </div>
 
           <div className="grid grid-cols-3 gap-2 sm:gap-4 bg-gray-50 p-3 sm:p-5 rounded-2xl border border-gray-200 text-center">
-            <div className="bg-white p-2.5 sm:p-4 rounded-xl border border-gray-200 shadow-xs">
-              <div className="text-sm sm:text-xl font-extrabold text-red-600 leading-tight">
+            <div className="bg-white p-2.5 sm:p-4 rounded-xl border border-gray-200 shadow-xs overflow-hidden">
+              <div className="text-[11px] sm:text-xl font-extrabold text-red-600 leading-tight break-words">
                 {selectedCourse.stats.stat1}
               </div>
               <div className="text-[10px] sm:text-xs text-gray-500 mt-0.5 sm:mt-1 font-medium">Achievement</div>
             </div>
-            <div className="bg-white p-2.5 sm:p-4 rounded-xl border border-gray-200 shadow-xs">
-              <div className="text-sm sm:text-xl font-extrabold text-red-600 leading-tight">
+            <div className="bg-white p-2.5 sm:p-4 rounded-xl border border-gray-200 shadow-xs overflow-hidden">
+              <div className="text-[11px] sm:text-xl font-extrabold text-red-600 leading-tight break-words">
                 {selectedCourse.stats.stat2}
               </div>
               <div className="text-[10px] sm:text-xs text-gray-500 mt-0.5 sm:mt-1 font-medium">Batch Delivery</div>
             </div>
-            <div className="bg-white p-2.5 sm:p-4 rounded-xl border border-gray-200 shadow-xs">
-              <div className="text-sm sm:text-xl font-extrabold text-red-600 leading-tight">
+            <div className="bg-white p-2.5 sm:p-4 rounded-xl border border-gray-200 shadow-xs overflow-hidden">
+              <div className="text-[11px] sm:text-xl font-extrabold text-red-600 leading-tight break-words">
                 {selectedCourse.stats.stat3}
               </div>
               <div className="text-[10px] sm:text-xs text-gray-500 mt-0.5 sm:mt-1 font-medium">Test System</div>
