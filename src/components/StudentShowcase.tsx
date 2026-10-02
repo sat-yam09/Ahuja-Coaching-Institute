@@ -10,6 +10,7 @@ const FILTER_TABS = [
   { id: 'All', label: 'All' },
   { id: '12th Science', label: '12th Science' },
   { id: '10th Board', label: '10th Board' },
+  { id: '9th Foundation', label: '9th Class' },
   { id: '8th Foundation', label: '8th Foundation' },
   { id: 'Physics', label: 'Physics' },
   { id: 'Maths', label: 'Maths' },
@@ -83,7 +84,7 @@ export const StudentShowcase: React.FC<StudentShowcaseProps> = ({
     if (tabId === 'All') return true;
     if (tabId === '12th Science') return s.category === '12th Science' || Boolean(s.grade && s.grade.includes('12th'));
     if (tabId === '10th Board') return Boolean(s.grade && s.grade.includes('10th')) || s.subjects.includes('10th Board') || s.subjects.includes('10th');
-    if (tabId === '9th Foundation') return Boolean(s.grade && s.grade.includes('9th')) || s.subjects.includes('9th Foundation') || s.subjects.includes('9th');
+    if (tabId === '9th Foundation' || tabId === '9th Class') return Boolean(s.grade && s.grade.includes('9th')) || s.subjects.includes('9th Foundation') || s.subjects.includes('9th') || s.category === '9th Foundation';
     if (tabId === '8th Foundation') return Boolean(s.grade && s.grade.includes('8th')) || s.subjects.includes('8th Foundation') || s.subjects.includes('8th');
     if (tabId === 'Foundation') return s.category === 'Foundation' || Boolean(s.grade && (s.grade.includes('8th') || s.grade.includes('9th') || s.grade.includes('10th')));
     return s.subjects.includes(tabId);
