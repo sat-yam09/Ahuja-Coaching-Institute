@@ -981,7 +981,8 @@ export const resultStudents: ResultStudent[] = [
     exam: 'JEE Main 2024-25',
     category: 'JEE',
     year: '2024-25',
-    avatarUrl: '/assets/toppers/senior-shivam-bhatt.png',
+    avatarUrl: '/student/converted/Keval Dholakiya.png',
+    standeeUrl: '/student/converted/Keval Dholakiya.png',
     instituteBranch: 'Vastral Branch',
     quote: '99.28%tile in JEE Main! Speed and accuracy drills helped eliminate negative marking completely.',
   },
@@ -1011,13 +1012,14 @@ export const resultStudents: ResultStudent[] = [
   {
     id: 'res-krisha-vora-jee',
     name: 'Krisha Vora',
-    score: '98.18 %tile',
-    exam: 'JEE Main 2024-25 (Physics 90/100)',
+    score: '94.96 %tile',
+    exam: 'JEE Main 2024-25 (Physics 86/100)',
     category: 'JEE',
     year: '2024-25',
-    avatarUrl: '/assets/toppers/senior-aneri-prajapati.png',
+    avatarUrl: '/student/converted/Krisha Vora.png',
+    standeeUrl: '/student/converted/Krisha Vora.png',
     instituteBranch: 'Ahmedabad Campuses',
-    quote: '98.18%tile in JEE Main along with 90/100 in Board Physics! Systematic syllabus completion was crucial.',
+    quote: '94.96%tile in JEE Main along with 86/100 in Board Physics! Systematic syllabus completion was crucial.',
   },
   {
     id: 'res-krisha-vaghela-jee',
@@ -1063,9 +1065,22 @@ export const resultStudents: ResultStudent[] = [
     exam: 'NEET UG 2024-25',
     category: 'NEET',
     year: '2024-25',
-    avatarUrl: '/assets/toppers/junior-hetsi-pitroda.png',
+    avatarUrl: '/student/converted/Nakshatra Shah.png',
+    standeeUrl: '/student/converted/Nakshatra Shah.png',
     instituteBranch: 'Maninagar Head Office',
     quote: '575/720 in NEET UG! Step-by-step guidance made complex physics and organic chemistry intuitive.',
+  },
+  {
+    id: 'res-shrut-italia',
+    name: 'Shrut Italia',
+    score: '475/720',
+    exam: 'NEET UG 2024-25 (Biology 90/100)',
+    category: 'NEET',
+    year: '2024-25',
+    avatarUrl: '/student/converted/Shrut Italia.png',
+    standeeUrl: '/student/converted/Shrut Italia.png',
+    instituteBranch: 'Maninagar Head Office',
+    quote: '475/720 in NEET UG with 90/100 in Biology! Concept lectures and intensive doubt sessions made the dream possible.',
   },
   {
     id: 'res-abhishek-shah-neet',
@@ -1741,14 +1756,23 @@ export const showcaseStudents: ShowcaseStudent[] = [
   {"id": "std-33", "name": "Varshil Mehta", "imagePath": "/student/converted/Varshil Mehta.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["12th Science"], "scoreDisplay": "12th Science Achiever", "exam": "12th Science Board Examination"},
   {"id": "std-22", "name": "Vrinda Patel", "imagePath": "/student/converted/Vrinda Patel.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["12th Science"], "scoreDisplay": "12th Science Achiever", "exam": "12th Science Board Examination"},
 
-  // ── 2024-25 - Std. 12th Science ──
-  {"id": "std-24", "name": "Dhairya Sheth", "imagePath": "/student/converted/Dhairya Sheth.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["NEET UG", "Biology", "12th Science"], "topScore": 645, "scoreDisplay": "645/720 NEET UG", "exam": "NEET UG High Scorer"},
-  {"id": "std-23", "name": "Ved Pandit", "imagePath": "/student/converted/Ved Pandit.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["NEET UG", "Biology", "12th Science"], "topScore": 645, "scoreDisplay": "645/720 NEET UG", "exam": "NEET UG High Scorer"},
+  // ── 2024-25 - Std. 12th Science (4 JEE Toppers, 4 NEET Toppers & Subject Toppers) ──
+  // 4 JEE Main Toppers (from official brochure)
+  {"id": "top-smit-parikh", "name": "Smit Parikh", "imagePath": "/student/converted/Smit Parikh.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["JEE Main", "Physics", "12th Science"], "topScore": 99.38, "scoreDisplay": "99.38%ile JEE Main", "marks": {"Physics": 97}, "ranks": {"Physics": 1}, "exam": "JEE Main 99.38%ile & 12th Science Physics Topper"},
+  {"id": "top-keval-dholakiya", "name": "Keval Dholakiya", "imagePath": "/student/converted/Keval Dholakiya.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["JEE Main", "12th Science"], "topScore": 99.28, "scoreDisplay": "99.28%ile JEE Main", "exam": "JEE Main State High Ranker"},
+  {"id": "top-shivam-bhatt", "name": "Shivam Bhatt", "imagePath": "/student/converted/Shivam Bhatt.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["JEE Main", "Maths", "Physics", "12th Science"], "topScore": 98.85, "scoreDisplay": "98.85%ile JEE Main", "marks": {"Physics": 95}, "exam": "JEE Main High Scorer (Phy 95/100)"},
+  {"id": "top-krisha-vora", "name": "Krisha Vora", "imagePath": "/student/converted/Krisha Vora.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["JEE Main", "Physics", "12th Science"], "topScore": 94.96, "scoreDisplay": "94.96%ile JEE Main", "marks": {"Physics": 86}, "exam": "JEE Main Star & Board Physics Topper"},
+
+  // 4 NEET UG Toppers (from official brochure)
+  {"id": "top-ved-pandit", "name": "Ved Pandit", "imagePath": "/student/converted/Ved Pandit.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["NEET UG", "Biology", "12th Science"], "topScore": 645, "scoreDisplay": "645/720 NEET UG", "exam": "NEET UG High Scorer (645/720)"},
+  {"id": "top-dhairya-sheth", "name": "Dhairya Sheth", "imagePath": "/student/converted/Dhairya Sheth.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["NEET UG", "Biology", "12th Science"], "topScore": 645, "scoreDisplay": "645/720 NEET UG", "exam": "NEET UG High Scorer (645/720)"},
+  {"id": "top-nakshatra-shah", "name": "Nakshatra Shah", "imagePath": "/student/converted/Nakshatra Shah.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["NEET UG", "Biology", "12th Science"], "topScore": 575, "scoreDisplay": "575/720 NEET UG", "exam": "NEET UG Medical Qualifier"},
+  {"id": "top-shrut-italia", "name": "Shrut Italia", "imagePath": "/student/converted/Shrut Italia.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["NEET UG", "Biology", "12th Science"], "topScore": 475, "scoreDisplay": "475/720 NEET UG", "marks": {"Biology": 90}, "exam": "NEET UG Qualifier & Bio 90/100"},
+
+  // 12th Science Board Subject Champions
   {"id": "std-17", "name": "Manshi Panchal", "imagePath": "/student/converted/Manshi Panchal.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["Maths", "12th Science"], "topScore": 99, "scoreDisplay": "99/100 Maths Topper", "marks": {"Maths": 99}, "ranks": {"Maths": 1}, "exam": "12th Science Mathematics Topper"},
-  {"id": "std-21", "name": "Shivam Bhatt", "imagePath": "/student/converted/Shivam Bhatt.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["JEE Main", "Maths", "12th Science"], "topScore": 99, "scoreDisplay": "98.85%ile JEE Main", "exam": "JEE Mains High Scorer"},
-  {"id": "std-19", "name": "Smit Parikh", "imagePath": "/student/converted/Smit Parikh.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["Physics", "JEE Main", "12th Science"], "topScore": 99, "scoreDisplay": "97/100 Phy • 99.38%ile JEE", "marks": {"Physics": 97}, "ranks": {"Physics": 1}, "exam": "12th Science Physics Topper & JEE Star"},
-  {"id": "top-khushi", "name": "Khushi Amin", "imagePath": "/student/converted/Khushi Amin.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["Biology", "12th Science"], "topScore": 98, "scoreDisplay": "98/100", "marks": {"Biology": 98}, "ranks": {"Biology": 1}, "exam": "12th Science Biology Topper"},
-  {"id": "top-aneri", "name": "Aneri Prajapati", "imagePath": "/student/converted/Aneri Prajapati.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["Chemistry", "12th Science"], "topScore": 90, "scoreDisplay": "90/100", "marks": {"Chemistry": 90}, "ranks": {"Chemistry": 1}, "exam": "12th Science Chemistry Topper"},
+  {"id": "top-khushi", "name": "Khushi Amin", "imagePath": "/student/converted/Khushi Amin.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["Biology", "12th Science"], "topScore": 98, "scoreDisplay": "98/100 Bio Topper", "marks": {"Biology": 98}, "ranks": {"Biology": 1}, "exam": "12th Science Biology Topper"},
+  {"id": "top-aneri", "name": "Aneri Prajapati", "imagePath": "/student/converted/Aneri Prajapati.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["Chemistry", "12th Science"], "topScore": 90, "scoreDisplay": "90/100 Chem Topper", "marks": {"Chemistry": 90}, "ranks": {"Chemistry": 1}, "exam": "12th Science Chemistry Topper"},
 
   // ── 2024-25 - Std. 10th Board Toppers ──
   {"id": "std-luv-advani", "name": "Luv Advani", "imagePath": "/student/converted/Luv Advani.png", "grade": "Std. 10th Board", "category": "Foundation", "year": "2024-25", "subjects": ["10th Board", "10th", "Foundation", "Maths", "Science"], "topScore": 99.56, "scoreDisplay": "99.56 PR GSEB 10th", "school": "Nelson's Uttam Nagar", "marks": {"Maths": 97, "Science": 100, "Social Science": 99, "English": 91}, "ranks": {"Science": 1}, "exam": "10th Board State Top Ranker (99.56 PR)"},

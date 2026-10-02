@@ -339,9 +339,6 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setActiveTab, onInquireCli
                     <span className="px-3.5 py-1 bg-red-600 text-white font-mono font-black text-sm rounded-xl shadow-xs">
                       1998
                     </span>
-                    <span className="px-3 py-1 bg-red-950/60 text-red-400 border border-red-800/40 text-[10px] font-bold uppercase tracking-wider rounded-xl font-mono">
-                      Phase 01 • Genesis
-                    </span>
                   </div>
                   <div className="w-10 h-10 rounded-2xl bg-red-600/15 border border-red-500/30 flex items-center justify-center text-red-500 shadow-sm">
                     <BookOpen className="w-5 h-5" />
@@ -399,9 +396,6 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setActiveTab, onInquireCli
                     <span className="px-3.5 py-1 bg-red-950/80 text-red-400 border border-red-800/40 font-mono font-black text-sm rounded-xl">
                       2005
                     </span>
-                    <span className="px-2.5 py-1 bg-gray-800/60 text-gray-300 text-[10px] font-bold uppercase tracking-wider rounded-xl font-mono">
-                      Phase 02 • Expansion
-                    </span>
                   </div>
                   <div className="w-10 h-10 rounded-2xl bg-red-600/15 border border-red-500/30 flex items-center justify-center text-red-500 shadow-sm">
                     <Compass className="w-5 h-5" />
@@ -452,9 +446,6 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setActiveTab, onInquireCli
                     <span className="px-3 py-1 bg-red-950/80 text-red-400 border border-red-800/40 font-mono font-black text-xs sm:text-sm rounded-xl">
                       2014
                     </span>
-                    <span className="px-2 py-0.5 bg-gray-800/60 text-gray-300 text-[10px] font-bold uppercase tracking-wider rounded-lg font-mono">
-                      Phase 03
-                    </span>
                   </div>
                   <div className="w-9 h-9 rounded-xl bg-red-600/15 border border-red-500/30 flex items-center justify-center text-red-500 shadow-sm">
                     <Building2 className="w-4 h-4" />
@@ -501,9 +492,6 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setActiveTab, onInquireCli
                   <div className="flex items-center gap-2">
                     <span className="px-3 py-1 bg-red-950/80 text-red-400 border border-red-800/40 font-mono font-black text-xs sm:text-sm rounded-xl">
                       2020
-                    </span>
-                    <span className="px-2 py-0.5 bg-gray-800/60 text-gray-300 text-[10px] font-bold uppercase tracking-wider rounded-lg font-mono">
-                      Phase 04
                     </span>
                   </div>
                   <div className="w-9 h-9 rounded-xl bg-red-600/15 border border-red-500/30 flex items-center justify-center text-red-500 shadow-sm">
@@ -552,9 +540,6 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setActiveTab, onInquireCli
                   <div className="flex items-center gap-2">
                     <span className="px-3 py-1 bg-red-600 text-white font-mono font-black text-xs sm:text-sm rounded-xl shadow-xs">
                       2025–26
-                    </span>
-                    <span className="px-2 py-0.5 bg-red-950/80 text-red-300 border border-red-800/50 text-[10px] font-bold uppercase tracking-wider rounded-lg font-mono">
-                      Phase 05 • Legacy
                     </span>
                   </div>
                   <div className="w-9 h-9 rounded-xl bg-red-600 border border-red-400/50 flex items-center justify-center text-white shadow-lg shadow-red-600/30">

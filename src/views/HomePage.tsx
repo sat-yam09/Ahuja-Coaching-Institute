@@ -9,7 +9,6 @@ import {
   testimonials,
   heroStats,
   facultyMembers,
-  resultStudents,
   brandTagline,
   specialMorningBatches,
 } from '../data/mockData';
@@ -424,16 +423,7 @@ export const HomePage: React.FC<HomePageProps> = ({
         onViewMore={() => setActiveTab('scoreboard')}
       />
 
-      {/* Scoreboard CTA */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center py-4">
-        <button
-          onClick={() => setActiveTab('scoreboard')}
-          className="px-7 py-3.5 bg-white hover:bg-gray-50 text-gray-900 border border-gray-300 font-bold rounded-xl text-sm transition shadow-xs cursor-pointer inline-flex items-center gap-2 hover:border-gray-400"
-        >
-          <span>See Full Verified Scoreboard ({resultStudents.length}+ Records)</span>
-          <ArrowRight className="w-4 h-4 text-red-600" />
-        </button>
-      </section>
+
 
       {/* 6. GOOGLE REVIEWS CARD MARQUEE SECTION */}
       <GoogleReviewsMarquee

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Award, Search, X, Sparkles, ArrowRight, Trophy, Calendar, ChevronDown, GraduationCap, School, SlidersHorizontal } from 'lucide-react';
+import { Award, Search, X, Sparkles, ArrowRight, Trophy, Calendar, ChevronDown, ChevronLeft, ChevronRight, GraduationCap, School, SlidersHorizontal } from 'lucide-react';
 import { ShowcaseStudent } from '../types';
 import { showcaseStudents } from '../data/mockData';
 
@@ -43,6 +43,8 @@ export const StudentShowcase: React.FC<StudentShowcaseProps> = ({
   const [activeFilter, setActiveFilter] = useState<string>('All');
   const [sortBy, setSortBy] = useState<'default' | 'marks' | 'year' | 'class' | 'name'>('default');
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const [mobilePage, setMobilePage] = useState<number>(1);
+  const MOBILE_PAGE_SIZE = 2;
 
   // Helper function to check if student matches active tab
   const checkTabMatch = (s: ShowcaseStudent, tabId: string): boolean => {
@@ -323,9 +325,16 @@ export const StudentShowcase: React.FC<StudentShowcaseProps> = ({
           </button>
         </div>
       ) : (
-        /* ── Card Grid (Every Student Has Face & Verified Score) ── */
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 pt-2 items-stretch">
-          {displayedStudents.map((student) => {
+        /* ── Card Grid: Mobile Paginated Grid + Desktop 4-Col Grid ── */
+        (() => {
+          const totalMobilePages = Math.ceil(displayedStudents.length / MOBILE_PAGE_SIZE);
+          const currentMobilePage = Math.min(mobilePage, Math.max(1, totalMobilePages));
+          const mobileStudents = displayedStudents.slice(
+            (currentMobilePage - 1) * MOBILE_PAGE_SIZE,
+            currentMobilePage * MOBILE_PAGE_SIZE
+          );
+
+          const renderStudentCard = (student: ShowcaseStudent) => {
             const hasMarks = student.marks && Object.keys(student.marks).length > 0;
             const isNeet = student.scoreDisplay && student.scoreDisplay.includes('NEET');
             const isJee = student.scoreDisplay && (student.scoreDisplay.includes('JEE') || student.scoreDisplay.includes('%ile'));
@@ -333,9 +342,9 @@ export const StudentShowcase: React.FC<StudentShowcaseProps> = ({
             return (
               <div
                 key={student.id}
-                className="group relative bg-[#FAF8F5] rounded-3xl border border-[#F0EBE1] hover:border-red-300 shadow-[0_4px_25px_rgba(0,0,0,0.05)] hover:shadow-[0_16px_40px_rgba(220,38,38,0.12)] p-5 sm:p-6 flex flex-col items-center justify-between text-center transition-all duration-300 hover:-translate-y-1"
+                className="group relative bg-[#FAF8F5] rounded-3xl border border-[#F0EBE1] hover:border-red-400 p-5 shadow-[0_4px_25px_rgba(0,0,0,0.05)] hover:shadow-[0_16px_36px_rgba(220,38,38,0.12)] transition-all duration-300 hover:-translate-y-1.5 flex flex-col items-center justify-between text-center overflow-hidden"
               >
-                {/* ── Top Left: Batch & Class Tags ── */}
+                {/* Top Left: Batch & Class Tags */}
                 <div className="absolute top-3.5 left-3.5 z-20 flex flex-col items-start gap-1">
                   <span
                     className={`px-2 py-0.5 rounded-md text-[10px] font-black uppercase tracking-wider shadow-2xs border ${
@@ -353,7 +362,7 @@ export const StudentShowcase: React.FC<StudentShowcaseProps> = ({
                   )}
                 </div>
 
-                {/* ── Top Right: Score Ribbon Badge ── */}
+                {/* Top Right: Score Ribbon */}
                 <div className="absolute top-3.5 right-3.5 z-20">
                   {isNeet ? (
                     <div className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-gradient-to-r from-emerald-600 to-teal-700 text-white text-[10px] font-black shadow-md tracking-wider uppercase">
@@ -390,14 +399,14 @@ export const StudentShowcase: React.FC<StudentShowcaseProps> = ({
                   )}
                 </div>
 
-                {/* ── Portrait Stage (Every Student Has Real Cutout Face) ── */}
-                <div className="relative w-full h-[280px] sm:h-[300px] flex items-center justify-center mb-2 mt-4">
+                {/* Portrait */}
+                <div className="relative w-full h-[280px] flex items-center justify-center mb-2 mt-4">
                   {student.imagePath && (
-                    <div className="relative z-10 w-full h-full flex items-center justify-center pointer-events-none transition-transform duration-500 ease-out group-hover:scale-105">
+                    <div className="relative z-10 w-full h-full flex items-center justify-center pointer-events-none">
                       <img
                         src={student.imagePath}
                         alt={`${student.name} – Ahuja Career Institute`}
-                        className="w-full h-full object-contain select-none drop-shadow-[0_12px_20px_rgba(0,0,0,0.12)]"
+                        className="w-full h-full object-contain select-none drop-shadow-[0_12px_20px_rgba(0,0,0,0.12)] group-hover:scale-105 transition-transform duration-300"
                         loading="lazy"
                         draggable={false}
                       />
@@ -405,13 +414,11 @@ export const StudentShowcase: React.FC<StudentShowcaseProps> = ({
                   )}
                 </div>
 
-                {/* ── Student Information Beneath ── */}
+                {/* Student Info */}
                 <div className="w-full space-y-2 pt-3 border-t border-[#EAE4D8] flex flex-col items-center">
-                  <h3 className="text-base sm:text-lg font-black text-gray-900 uppercase tracking-tight leading-tight group-hover:text-red-600 transition-colors">
+                  <h3 className="text-base font-black text-gray-900 group-hover:text-red-600 transition-colors uppercase tracking-tight leading-tight">
                     {student.name}
                   </h3>
-
-                  {/* Exam / School Mention */}
                   {(student.exam || student.school) && (
                     <div className="text-[11px] font-semibold text-gray-500 flex items-center justify-center gap-1">
                       {student.school ? (
@@ -425,7 +432,6 @@ export const StudentShowcase: React.FC<StudentShowcaseProps> = ({
                     </div>
                   )}
 
-                  {/* ── MARKS MENTION (From JSON & Official Records) ── */}
                   {hasMarks ? (
                     <div className="w-full space-y-1.5 pt-1">
                       <div className="text-[10px] uppercase font-extrabold tracking-wider text-gray-500 flex items-center justify-center gap-1">
@@ -434,10 +440,8 @@ export const StudentShowcase: React.FC<StudentShowcaseProps> = ({
                       </div>
                       <div className="flex flex-wrap items-center justify-center gap-1.5">
                         {Object.entries(student.marks!).map(([subject, score]) => {
-                          const rank = student.ranks?.[subject];
                           let colorClasses = 'bg-sky-50 text-sky-900 border-sky-200';
                           let pillScoreColor = 'text-sky-700';
-
                           if (subject === 'Physics') {
                             colorClasses = 'bg-sky-50 text-sky-900 border-sky-200';
                             pillScoreColor = 'text-sky-700';
@@ -460,12 +464,12 @@ export const StudentShowcase: React.FC<StudentShowcaseProps> = ({
                             colorClasses = 'bg-indigo-50 text-indigo-900 border-indigo-200';
                             pillScoreColor = 'text-indigo-700';
                           }
+                          const rank = student.ranks ? student.ranks[subject] : undefined;
 
                           return (
                             <div
                               key={subject}
-                              className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl text-xs font-black border shadow-2xs transition-all ${colorClasses}`}
-                              title={`${subject}: ${score}/100${rank ? ` • Official Subject Rank #${rank}` : ''}`}
+                              className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl text-xs font-black border shadow-2xs transition-all hover:scale-105 ${colorClasses}`}
                             >
                               <span className="uppercase text-[10px] font-bold tracking-wide">{subject}</span>
                               <span className={`text-[13px] font-black bg-white px-1.5 py-0.2 rounded-md shadow-2xs ${pillScoreColor}`}>
@@ -482,14 +486,12 @@ export const StudentShowcase: React.FC<StudentShowcaseProps> = ({
                       </div>
                     </div>
                   ) : student.scoreDisplay ? (
-                    /* Score Display Pill for Standee & Board Achievers */
                     <div className="pt-1">
                       <span className="inline-block px-3 py-1 bg-red-50 border border-red-200 text-red-700 font-black text-xs rounded-xl shadow-2xs">
                         {student.scoreDisplay}
                       </span>
                     </div>
                   ) : (
-                    /* Subjects pills */
                     <div className="flex flex-wrap items-center justify-center gap-1 min-h-[26px] pt-1">
                       {student.subjects.map((subject) => (
                         <span
@@ -504,9 +506,65 @@ export const StudentShowcase: React.FC<StudentShowcaseProps> = ({
                 </div>
               </div>
             );
-          })}
-        </div>
+          };
+
+          return (
+            <>
+              {/* Mobile View: 2 Cards per page with Normal Pagination */}
+              <div className="sm:hidden space-y-4 pt-2">
+                <div className="grid grid-cols-1 gap-5">
+                  {mobileStudents.map(renderStudentCard)}
+                </div>
+
+                {/* Normal Pagination on Mobile */}
+                {totalMobilePages > 1 && (
+                  <div className="flex items-center justify-between bg-white border border-gray-200 rounded-2xl px-3.5 py-2.5 shadow-xs">
+                    <button
+                      onClick={() => setMobilePage((p) => Math.max(1, p - 1))}
+                      disabled={currentMobilePage === 1}
+                      className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl border border-gray-200 bg-gray-50 hover:bg-gray-100 text-xs font-bold text-gray-700 disabled:opacity-30 disabled:pointer-events-none transition cursor-pointer"
+                    >
+                      <ChevronLeft className="w-3.5 h-3.5" />
+                      <span>Prev</span>
+                    </button>
+
+                    <div className="flex items-center gap-1">
+                      {Array.from({ length: totalMobilePages }, (_, i) => i + 1).map((pageNum) => (
+                        <button
+                          key={pageNum}
+                          onClick={() => setMobilePage(pageNum)}
+                          className={`w-7 h-7 rounded-lg text-xs font-black transition cursor-pointer ${
+                            currentMobilePage === pageNum
+                              ? 'bg-red-600 text-white shadow-xs'
+                              : 'text-gray-600 hover:bg-gray-100'
+                          }`}
+                        >
+                          {pageNum}
+                        </button>
+                      ))}
+                    </div>
+
+                    <button
+                      onClick={() => setMobilePage((p) => Math.min(totalMobilePages, p + 1))}
+                      disabled={currentMobilePage === totalMobilePages}
+                      className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl border border-gray-200 bg-gray-50 hover:bg-gray-100 text-xs font-bold text-gray-700 disabled:opacity-30 disabled:pointer-events-none transition cursor-pointer"
+                    >
+                      <span>Next</span>
+                      <ChevronRight className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                )}
+              </div>
+
+              {/* Desktop Grid (sm and above): Standard 4-Column Grid */}
+              <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 pt-2 items-stretch">
+                {displayedStudents.map(renderStudentCard)}
+              </div>
+            </>
+          );
+        })()
       )}
+
 
       {/* ── View More CTA Button (Redirects to Scoreboard Page) ── */}
       {onViewMore && (
