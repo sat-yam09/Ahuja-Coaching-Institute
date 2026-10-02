@@ -66,7 +66,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setActiveTab, onInquireCli
           <div className="relative pt-6 max-w-4xl mx-auto">
             <div className="relative rounded-3xl overflow-hidden shadow-xl border border-gray-200 group">
               <img
-                src="/assets/gallery/gallery-director-office.jpg"
+                src="/assets/Professional%20Office%20Portrait.png"
                 alt="Director Desk & Academic Governance at Ahuja Career Institute"
                 className="w-full h-64 sm:h-96 object-cover group-hover:scale-102 transition duration-700"
               />
