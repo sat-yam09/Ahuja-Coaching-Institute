@@ -68,14 +68,14 @@ export interface ShowcaseStudent {
   name: string;
   imagePath?: string;
   subjects: string[];
-  category: 'Foundation' | '12th Science';
+  category: string;
   marks?: Record<string, number>;
   ranks?: Record<string, number>;
   topScore?: number;
   scoreDisplay?: string;
   exam?: string;
   school?: string;
-  year?: '2025-26' | '2024-25';
+  year?: string;
   grade?: string;
 }
 
