@@ -10,6 +10,7 @@ const FILTER_TABS = [
   { id: 'All', label: 'All' },
   { id: '12th Science', label: '12th Science' },
   { id: '10th Board', label: '10th Board' },
+  { id: '9th Foundation', label: '9th Class' },
   { id: '8th Foundation', label: '8th Foundation' },
   { id: 'Physics', label: 'Physics' },
   { id: 'Maths', label: 'Maths' },
@@ -19,24 +20,18 @@ const FILTER_TABS = [
   { id: 'NEET UG', label: 'NEET UG' },
 ] as const;
 
-// Compact sliding pagination range for mobile (e.g. [1, 2, '...', 10] or [1, '...', 5, '...', 10])
+// Compact sliding pagination range for desktop, tablet, and mobile
 const getPaginationRange = (current: number, total: number): (number | string)[] => {
-  if (total <= 5) {
+  if (total <= 7) {
     return Array.from({ length: total }, (_, i) => i + 1);
   }
-  if (current === 1) {
-    return [1, 2, '...', total];
+  if (current <= 3) {
+    return [1, 2, 3, 4, '...', total];
   }
-  if (current === 2) {
-    return [1, 2, 3, '...', total];
+  if (current >= total - 2) {
+    return [1, '...', total - 3, total - 2, total - 1, total];
   }
-  if (current === total) {
-    return [1, '...', total - 1, total];
-  }
-  if (current === total - 1) {
-    return [1, '...', total - 2, total - 1, total];
-  }
-  return [1, '...', current, '...', total];
+  return [1, '...', current - 1, current, current + 1, '...', total];
 };
 
 interface StudentShowcaseProps {
@@ -62,17 +57,29 @@ export const StudentShowcase: React.FC<StudentShowcaseProps> = ({
   const [activeFilter, setActiveFilter] = useState<string>('All');
   const [sortBy, setSortBy] = useState<'default' | 'marks' | 'year' | 'class' | 'name'>('default');
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const [mobilePage, setMobilePage] = useState<number>(1);
-  const MOBILE_PAGE_SIZE = 8;
+  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [isDesktopOrTablet, setIsDesktopOrTablet] = useState<boolean>(true);
   const cardsContainerRef = useRef<HTMLDivElement>(null);
 
-  // Reset mobile page whenever filters or search criteria change
+  // Responsive page size: 12 cards for desktop/tablet (3 rows on desktop 4-column grid), 8 cards for mobile
   useEffect(() => {
-    setMobilePage(1);
+    const checkScreen = () => {
+      if (typeof window !== 'undefined') {
+        setIsDesktopOrTablet(window.innerWidth >= 640);
+      }
+    };
+    checkScreen();
+    window.addEventListener('resize', checkScreen);
+    return () => window.removeEventListener('resize', checkScreen);
+  }, []);
+
+  // Reset page whenever filters or search criteria change
+  useEffect(() => {
+    setCurrentPage(1);
   }, [selectedYear, activeFilter, searchQuery, sortBy]);
 
-  const handleMobilePageChange = (newPage: number) => {
-    setMobilePage(newPage);
+  const handlePageChange = (newPage: number) => {
+    setCurrentPage(newPage);
     if (cardsContainerRef.current) {
       cardsContainerRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
@@ -83,7 +90,7 @@ export const StudentShowcase: React.FC<StudentShowcaseProps> = ({
     if (tabId === 'All') return true;
     if (tabId === '12th Science') return s.category === '12th Science' || Boolean(s.grade && s.grade.includes('12th'));
     if (tabId === '10th Board') return Boolean(s.grade && s.grade.includes('10th')) || s.subjects.includes('10th Board') || s.subjects.includes('10th');
-    if (tabId === '9th Foundation') return Boolean(s.grade && s.grade.includes('9th')) || s.subjects.includes('9th Foundation') || s.subjects.includes('9th');
+    if (tabId === '9th Foundation' || tabId === '9th Class') return Boolean(s.grade && s.grade.includes('9th')) || s.subjects.includes('9th Foundation') || s.subjects.includes('9th') || s.category === '9th Foundation';
     if (tabId === '8th Foundation') return Boolean(s.grade && s.grade.includes('8th')) || s.subjects.includes('8th Foundation') || s.subjects.includes('8th');
     if (tabId === 'Foundation') return s.category === 'Foundation' || Boolean(s.grade && (s.grade.includes('8th') || s.grade.includes('9th') || s.grade.includes('10th')));
     return s.subjects.includes(tabId);
@@ -357,13 +364,14 @@ export const StudentShowcase: React.FC<StudentShowcaseProps> = ({
           </button>
         </div>
       ) : (
-        /* ── Card Grid: Mobile Paginated Grid + Desktop 4-Col Grid ── */
+        /* ── Card Grid: Responsive Paginated Grid (12 items / 3 rows on desktop, 8 on mobile) ── */
         (() => {
-          const totalMobilePages = Math.ceil(displayedStudents.length / MOBILE_PAGE_SIZE);
-          const currentMobilePage = Math.min(mobilePage, Math.max(1, totalMobilePages));
-          const mobileStudents = displayedStudents.slice(
-            (currentMobilePage - 1) * MOBILE_PAGE_SIZE,
-            currentMobilePage * MOBILE_PAGE_SIZE
+          const pageSize = isDesktopOrTablet ? 12 : 8;
+          const totalPages = Math.ceil(displayedStudents.length / pageSize);
+          const safeCurrentPage = Math.min(currentPage, Math.max(1, totalPages));
+          const paginatedStudents = displayedStudents.slice(
+            (safeCurrentPage - 1) * pageSize,
+            safeCurrentPage * pageSize
           );
 
           const renderStudentCard = (student: ShowcaseStudent) => {
@@ -541,84 +549,77 @@ export const StudentShowcase: React.FC<StudentShowcaseProps> = ({
           };
 
           return (
-            <>
-              {/* Mobile View: 8 Cards per page with Smart Pagination */}
-              <div className="sm:hidden space-y-5 pt-2">
-                <div className="grid grid-cols-1 gap-5">
-                  {mobileStudents.map(renderStudentCard)}
-                </div>
+            <div className="space-y-6 sm:space-y-8 pt-2">
+              {/* Responsive Cards Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-8 items-stretch">
+                {paginatedStudents.map(renderStudentCard)}
+              </div>
 
-                {/* Smart Sliding Pagination on Mobile (1, 2, ... Next) */}
-                {totalMobilePages > 1 && (
-                  <div className="flex flex-col items-center gap-2 pt-2">
-                    <div className="flex items-center justify-between w-full bg-white border border-gray-200 rounded-2xl px-2.5 py-2 shadow-xs">
-                      {/* Prev Button */}
-                      <button
-                        onClick={() => handleMobilePageChange(Math.max(1, currentMobilePage - 1))}
-                        disabled={currentMobilePage === 1}
-                        className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl border border-gray-200 bg-gray-50 hover:bg-gray-100 text-xs font-bold text-gray-700 disabled:opacity-30 disabled:pointer-events-none transition cursor-pointer"
-                        aria-label="Previous Page"
-                      >
-                        <ChevronLeft className="w-3.5 h-3.5" />
-                        <span>Prev</span>
-                      </button>
+              {/* Smart Sliding Pagination for Desktop, Tablet, and Mobile */}
+              {totalPages > 1 && (
+                <div className="flex flex-col items-center gap-2.5 pt-4">
+                  <div className="flex items-center justify-between w-full max-w-sm sm:max-w-md bg-white border border-gray-200 rounded-2xl px-3 py-2 sm:px-4 sm:py-2.5 shadow-xs">
+                    {/* Prev Button */}
+                    <button
+                      onClick={() => handlePageChange(Math.max(1, safeCurrentPage - 1))}
+                      disabled={safeCurrentPage === 1}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl border border-gray-200 bg-gray-50 hover:bg-gray-100 text-xs sm:text-sm font-bold text-gray-700 disabled:opacity-30 disabled:pointer-events-none transition cursor-pointer"
+                      aria-label="Previous Page"
+                    >
+                      <ChevronLeft className="w-4 h-4" />
+                      <span className="hidden xs:inline">Prev</span>
+                    </button>
 
-                      {/* Sliding Page Numbers */}
-                      <div className="flex items-center gap-1">
-                        {getPaginationRange(currentMobilePage, totalMobilePages).map((pageItem, idx) => {
-                          if (typeof pageItem === 'string') {
-                            return (
-                              <span
-                                key={`ellipsis-${idx}`}
-                                className="w-5 text-center text-xs font-bold text-gray-400 select-none"
-                              >
-                                …
-                              </span>
-                            );
-                          }
-                          const isCurrent = currentMobilePage === pageItem;
+                    {/* Sliding Page Numbers */}
+                    <div className="flex items-center gap-1 sm:gap-1.5">
+                      {getPaginationRange(safeCurrentPage, totalPages).map((pageItem, idx) => {
+                        if (typeof pageItem === 'string') {
                           return (
-                            <button
-                              key={`page-${pageItem}`}
-                              onClick={() => handleMobilePageChange(pageItem)}
-                              className={`w-8 h-8 rounded-xl text-xs font-black transition cursor-pointer ${
-                                isCurrent
-                                  ? 'bg-red-600 text-white shadow-xs'
-                                  : 'text-gray-700 hover:bg-gray-100'
-                              }`}
-                              aria-label={`Go to page ${pageItem}`}
-                              aria-current={isCurrent ? 'page' : undefined}
+                            <span
+                              key={`ellipsis-${idx}`}
+                              className="w-5 sm:w-6 text-center text-xs sm:text-sm font-bold text-gray-400 select-none"
                             >
-                              {pageItem}
-                            </button>
+                              …
+                            </span>
                           );
-                        })}
-                      </div>
-
-                      {/* Next Button */}
-                      <button
-                        onClick={() => handleMobilePageChange(Math.min(totalMobilePages, currentMobilePage + 1))}
-                        disabled={currentMobilePage === totalMobilePages}
-                        className="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl border border-gray-200 bg-gray-50 hover:bg-gray-100 text-xs font-bold text-gray-700 disabled:opacity-30 disabled:pointer-events-none transition cursor-pointer"
-                        aria-label="Next Page"
-                      >
-                        <span>Next</span>
-                        <ChevronRight className="w-3.5 h-3.5" />
-                      </button>
+                        }
+                        const isCurrent = safeCurrentPage === pageItem;
+                        return (
+                          <button
+                            key={`page-${pageItem}`}
+                            onClick={() => handlePageChange(pageItem)}
+                            className={`w-8 h-8 sm:w-9 sm:h-9 rounded-xl text-xs sm:text-sm font-black transition cursor-pointer ${
+                              isCurrent
+                                ? 'bg-red-600 text-white shadow-md shadow-red-600/20 ring-2 ring-red-600/20'
+                                : 'text-gray-700 hover:bg-gray-100'
+                            }`}
+                            aria-label={`Go to page ${pageItem}`}
+                            aria-current={isCurrent ? 'page' : undefined}
+                          >
+                            {pageItem}
+                          </button>
+                        );
+                      })}
                     </div>
 
-                    <p className="text-[11px] font-bold text-gray-400">
-                      Page {currentMobilePage} of {totalMobilePages} • Showing {mobileStudents.length} of {displayedStudents.length} achievers
-                    </p>
+                    {/* Next Button */}
+                    <button
+                      onClick={() => handlePageChange(Math.min(totalPages, safeCurrentPage + 1))}
+                      disabled={safeCurrentPage === totalPages}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl border border-gray-200 bg-gray-50 hover:bg-gray-100 text-xs sm:text-sm font-bold text-gray-700 disabled:opacity-30 disabled:pointer-events-none transition cursor-pointer"
+                      aria-label="Next Page"
+                    >
+                      <span className="hidden xs:inline">Next</span>
+                      <ChevronRight className="w-4 h-4" />
+                    </button>
                   </div>
-                )}
-              </div>
 
-              {/* Desktop Grid (sm and above): Standard 4-Column Grid */}
-              <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 pt-2 items-stretch">
-                {displayedStudents.map(renderStudentCard)}
-              </div>
-            </>
+                  <p className="text-xs font-bold text-gray-400">
+                    Page {safeCurrentPage} of {totalPages} • Showing {paginatedStudents.length} of {displayedStudents.length} achievers
+                  </p>
+                </div>
+              )}
+            </div>
           );
         })()
       )}
