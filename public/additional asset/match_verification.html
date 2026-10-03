@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Ahuja Student Image Matching Verification</title>
+<style>
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0f1117; color: #fff; padding: 24px; }
+h1 { color: #f87171; text-align: center; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+.card { background: #1a1e28; border: 1px solid #333a4d; border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+.pair { display: flex; gap: 10px; justify-content: space-around; align-items: center; }
+.pair img { width: 140px; height: 140px; object-fit: cover; border-radius: 8px; border: 2px solid #444; }
+.badge { background: #ef4444; color: #fff; padding: 4px 8px; border-radius: 6px; font-weight: bold; font-size: 11px; align-self: flex-start; }
+.info { font-size: 13px; line-height: 1.4; }
+.score { color: #10b981; font-weight: bold; }
+</style>
+</head>
+<body>
+<h1>Ahuja Image Matching Results (43 ChatGPT Images vs Student Database)</h1>
+<div class="grid">
+
+    <div class="card">
+      <div class="badge">#01 — Std. 12th Science</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_09_34 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/student/Falgun patel.jpeg" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Falgun Patel</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 12th Science</span><br>
+        Match Confidence: <span class="score">0.8935</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/student/Falgun patel.jpeg</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="badge">#02 — Std. 12th Science</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_09_47 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/student/Rudra purohi.jpeg" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Rudra Purohi</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 12th Science</span><br>
+        Match Confidence: <span class="score">0.9138</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/student/Rudra purohi.jpeg</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="badge">#03 — Std. 12th Science</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_09_52 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/student/Falgun patel.jpeg" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Falgun Patel</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 12th Science</span><br>
+        Match Confidence: <span class="score">0.9325</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/student/Falgun patel.jpeg</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="badge">#04 — Std. 12th Science</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_09_59 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/student/Mahi bavne.jpeg" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Mahi Bavne</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 12th Science</span><br>
+        Match Confidence: <span class="score">0.9214</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/student/Mahi bavne.jpeg</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="badge">#05 — Std. 12th Science</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_10_06 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/student/Falgun patel.jpeg" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Falgun Patel</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 12th Science</span><br>
+        Match Confidence: <span class="score">0.9064</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/student/Falgun patel.jpeg</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="badge">#06 — Std. 12th Science</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_10_11 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/student/Dhruti panchal.jpeg" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Dhruti Panchal</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 12th Science</span><br>
+        Match Confidence: <span class="score">0.9172</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/student/Dhruti panchal.jpeg</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="badge">#07 — Std. 12th Science (Maths)</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_10_26 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/Maths/Riya Prajapati.png" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Riya Prajapati</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 12th Science (Maths)</span><br>
+        Match Confidence: <span class="score">0.9178</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/Maths/Riya Prajapati.png</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="badge">#08 — Std. 12th Science</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_10_32 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/student/Manav shethe.jpeg" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Manav Shethe</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 12th Science</span><br>
+        Match Confidence: <span class="score">0.8543</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/student/Manav shethe.jpeg</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="badge">#09 — Std. 12th Science (Physics)</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_10_37 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/Physics/Astha Rai.png" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Astha Rai</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 12th Science (Physics)</span><br>
+        Match Confidence: <span class="score">0.9158</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/Physics/Astha Rai.png</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="badge">#10 — Std. 12th Science</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_10_43 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/student/Dhruti panchal.jpeg" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Dhruti Panchal</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 12th Science</span><br>
+        Match Confidence: <span class="score">0.9379</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/student/Dhruti panchal.jpeg</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="badge">#11 — Std. 8th-10th Foundation</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_11_02 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/8_9_!0/Karsh Gajjar.png" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Karsh Gajjar</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 8th-10th Foundation</span><br>
+        Match Confidence: <span class="score">0.8617</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/8_9_!0/Karsh Gajjar.png</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="badge">#12 — Std. 12th Science (Maths)</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_11_07 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/Maths/Riya Prajapati.png" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Riya Prajapati</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 12th Science (Maths)</span><br>
+        Match Confidence: <span class="score">0.9320</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/Maths/Riya Prajapati.png</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="badge">#13 — Std. 12th Science</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_11_26 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/student/Mahi bavne.jpeg" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Mahi Bavne</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 12th Science</span><br>
+        Match Confidence: <span class="score">0.8858</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/student/Mahi bavne.jpeg</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="badge">#14 — Std. 12th Science (Physics)</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_11_32 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/Physics/Riya Prajapati.png" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Riya Prajapati</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 12th Science (Physics)</span><br>
+        Match Confidence: <span class="score">0.9080</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/Physics/Riya Prajapati.png</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="badge">#15 — Std. 12th Science (Maths)</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_11_36 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/Maths/Helly Patel.png" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Helly Patel</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 12th Science (Maths)</span><br>
+        Match Confidence: <span class="score">0.9157</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/Maths/Helly Patel.png</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="badge">#16 — Std. 12th Science</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_11_56 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/student/Seema chaudhary.jpeg" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Seema Chaudhary</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 12th Science</span><br>
+        Match Confidence: <span class="score">0.9173</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/student/Seema chaudhary.jpeg</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="badge">#17 — Std. 12th Science</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_12_07 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/student/Kasak prajapati.jpeg" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Kasak Prajapati</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 12th Science</span><br>
+        Match Confidence: <span class="score">0.9360</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/student/Kasak prajapati.jpeg</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="badge">#18 — Std. 8th-10th Foundation</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_12_13 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/8_9_!0/Karsh Gajjar.png" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Karsh Gajjar</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 8th-10th Foundation</span><br>
+        Match Confidence: <span class="score">0.8941</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/8_9_!0/Karsh Gajjar.png</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="badge">#19 — Std. 12th Science</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_12_27 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/student/Falgun patel.jpeg" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Falgun Patel</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 12th Science</span><br>
+        Match Confidence: <span class="score">0.8959</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/student/Falgun patel.jpeg</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="badge">#20 — Std. 12th Science</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_12_34 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/student/Falgun patel.jpeg" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Falgun Patel</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 12th Science</span><br>
+        Match Confidence: <span class="score">0.9131</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/student/Falgun patel.jpeg</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="badge">#21 — Std. 12th Science</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_12_38 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/student/Falgun patel.jpeg" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Falgun Patel</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 12th Science</span><br>
+        Match Confidence: <span class="score">0.9077</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/student/Falgun patel.jpeg</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="badge">#22 — Std. 12th Science</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_12_43 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/student/Vrinda patel.jpeg" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Vrinda Patel</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 12th Science</span><br>
+        Match Confidence: <span class="score">0.9109</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/student/Vrinda patel.jpeg</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="badge">#23 — Std. 12th Science</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_12_48 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/student/Falgun patel.jpeg" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Falgun Patel</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 12th Science</span><br>
+        Match Confidence: <span class="score">0.8820</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/student/Falgun patel.jpeg</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="badge">#24 — Std. 8th-10th Foundation</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_12_53 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/8_9_!0/Karsh Gajjar.png" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Karsh Gajjar</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 8th-10th Foundation</span><br>
+        Match Confidence: <span class="score">0.9213</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/8_9_!0/Karsh Gajjar.png</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="badge">#25 — Std. 12th Science</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_12_59 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/student/Falgun patel.jpeg" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Falgun Patel</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 12th Science</span><br>
+        Match Confidence: <span class="score">0.9335</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/student/Falgun patel.jpeg</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="badge">#26 — Std. 12th Science</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_13_04 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/student/Falgun patel.jpeg" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Falgun Patel</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 12th Science</span><br>
+        Match Confidence: <span class="score">0.8636</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/student/Falgun patel.jpeg</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="badge">#27 — Std. 12th Science</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_13_10 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/student/Vrinda patel.jpeg" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Vrinda Patel</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 12th Science</span><br>
+        Match Confidence: <span class="score">0.9078</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/student/Vrinda patel.jpeg</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="badge">#28 — Std. 12th Science</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_13_16 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/student/Falgun patel.jpeg" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Falgun Patel</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 12th Science</span><br>
+        Match Confidence: <span class="score">0.9377</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/student/Falgun patel.jpeg</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="badge">#29 — Std. 12th Science</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_13_21 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/student/Falgun patel.jpeg" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Falgun Patel</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 12th Science</span><br>
+        Match Confidence: <span class="score">0.9325</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/student/Falgun patel.jpeg</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="badge">#30 — Std. 12th Science</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_13_27 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/student/Falgun patel.jpeg" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Falgun Patel</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 12th Science</span><br>
+        Match Confidence: <span class="score">0.9189</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/student/Falgun patel.jpeg</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="badge">#31 — Std. 12th Science</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_13_32 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/student/Falgun patel.jpeg" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Falgun Patel</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 12th Science</span><br>
+        Match Confidence: <span class="score">0.8814</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/student/Falgun patel.jpeg</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="badge">#32 — Std. 12th Science</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_13_37 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/student/Falgun patel.jpeg" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Falgun Patel</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 12th Science</span><br>
+        Match Confidence: <span class="score">0.8852</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/student/Falgun patel.jpeg</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="badge">#33 — Std. 12th Science</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_13_42 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/student/Varshil mehta.jpeg" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Varshil Mehta</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 12th Science</span><br>
+        Match Confidence: <span class="score">0.9235</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/student/Varshil mehta.jpeg</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="badge">#34 — Std. 12th Science</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_13_47 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/student/Falgun patel.jpeg" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Falgun Patel</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 12th Science</span><br>
+        Match Confidence: <span class="score">0.8448</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/student/Falgun patel.jpeg</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="badge">#35 — Std. 12th Science</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_13_52 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/student/Dhvani prajapati.jpeg" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Dhvani Prajapati</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 12th Science</span><br>
+        Match Confidence: <span class="score">0.8945</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/student/Dhvani prajapati.jpeg</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="badge">#36 — Std. 12th Science (Maths)</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_13_57 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/Maths/Riya Prajapati.png" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Riya Prajapati</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 12th Science (Maths)</span><br>
+        Match Confidence: <span class="score">0.9331</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/Maths/Riya Prajapati.png</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="badge">#37 — Std. 12th Science</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_14_02 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/student/Falgun patel.jpeg" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Falgun Patel</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 12th Science</span><br>
+        Match Confidence: <span class="score">0.9116</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/student/Falgun patel.jpeg</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="badge">#38 — Std. 12th Science</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_14_09 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/student/Falgun patel.jpeg" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Falgun Patel</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 12th Science</span><br>
+        Match Confidence: <span class="score">0.9011</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/student/Falgun patel.jpeg</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="badge">#39 — Std. 12th Science</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_14_14 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/student/Falgun patel.jpeg" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Falgun Patel</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 12th Science</span><br>
+        Match Confidence: <span class="score">0.8678</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/student/Falgun patel.jpeg</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="badge">#40 — Std. 12th Science</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_14_21 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/student/Vrinda patel.jpeg" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Vrinda Patel</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 12th Science</span><br>
+        Match Confidence: <span class="score">0.8983</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/student/Vrinda patel.jpeg</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="badge">#41 — Std. 12th Science</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_14_34 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/student/Rahul Pandey.jpeg" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Rahul Pandey</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 12th Science</span><br>
+        Match Confidence: <span class="score">0.9047</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/student/Rahul Pandey.jpeg</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="badge">#42 — Std. 12th Science</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_14_39 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/student/Dhruti panchal.jpeg" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Dhruti Panchal</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 12th Science</span><br>
+        Match Confidence: <span class="score">0.9438</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/student/Dhruti panchal.jpeg</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="badge">#43 — Std. 12th Science</div>
+      <div class="pair">
+        <div>
+          <img src="/assets/Ahuja/Ahuja/ChatGPT Image Sep 11, 2026, 03_14_44 PM.png" alt="ChatGPT Image">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">ChatGPT Portrait</div>
+        </div>
+        <div>
+          <img src="/student/student/Falgun patel.jpeg" alt="Reference">
+          <div style="font-size: 10px; color: #aaa; text-align: center; margin-top: 4px;">Original Reference</div>
+        </div>
+      </div>
+      <div class="info">
+        <strong style="color: #60a5fa; font-size: 15px;">Falgun Patel</strong><br>
+        Class: <span style="color: #cbd5e1;">Std. 12th Science</span><br>
+        Match Confidence: <span class="score">0.9417</span><br>
+        <span style="font-size: 10px; color: #64748b;">Orig: student/student/Falgun patel.jpeg</span>
+      </div>
+    </div>
+    
+</div>
+</body>
+</html>

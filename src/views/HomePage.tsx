@@ -112,7 +112,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           <div className="relative pt-6 max-w-4xl mx-auto">
             <div className="relative rounded-3xl overflow-hidden shadow-xl border border-gray-200 group">
               <img
-                src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=1400"
+                src="/assets/hero-students.jpg"
                 alt="Students studying at Ahuja Career Institute"
                 className="w-full h-64 sm:h-96 object-cover group-hover:scale-102 transition duration-700"
               />
@@ -208,7 +208,7 @@ export const HomePage: React.FC<HomePageProps> = ({
             <div className="bg-gradient-to-br from-[#1E2024] to-[#141517] rounded-3xl border border-gray-800 shadow-2xl overflow-hidden grid grid-cols-1 sm:grid-cols-12 h-full">
               <div className="sm:col-span-5 relative min-h-[300px] sm:min-h-full">
                 <img
-                  src="/assets/Founder - Rajkumar Ahuja.jpeg"
+                  src="/assets/Directors/Founder - Rajkumar Ahuja.jpeg"
                   alt="Late Rajkumar Ahuja Sir - Founder"
                   className="w-full h-full object-cover object-top absolute inset-0"
                 />
@@ -344,7 +344,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           <div className="lg:col-span-5">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-gray-900 border-2 border-gray-700/80 group max-w-md mx-auto">
               <img
-                src="/assets/Director - Sunil Ahuja.jpeg"
+                src="/assets/Directors/Director - Sunil Ahuja.jpeg"
                 alt="Director Sunil Ahuja - Ahuja Career Institute"
                 className="w-full h-80 sm:h-96 object-cover object-top group-hover:scale-103 transition-transform duration-500"
               />
@@ -416,10 +416,11 @@ export const HomePage: React.FC<HomePageProps> = ({
         </div>
       </section>
 
-      {/* 5. STUDENT SHOWCASE — Editorial Portrait Gallery (Preview of 8, No Filter Bar on Home) */}
+      {/* 5. STUDENT SHOWCASE — Editorial Portrait Wall of Fame */}
       <StudentShowcase
-        previewLimit={8}
         showFilters={false}
+        showPagination={false}
+        previewLimit={8}
         onViewMore={() => setActiveTab('scoreboard')}
       />
 

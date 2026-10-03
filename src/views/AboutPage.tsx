@@ -66,7 +66,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setActiveTab, onInquireCli
           <div className="relative pt-6 max-w-4xl mx-auto">
             <div className="relative rounded-3xl overflow-hidden shadow-xl border border-gray-200 group">
               <img
-                src="/assets/Professional%20Office%20Portrait.png"
+                src="/assets/Directors/Professional Office Portrait.png"
                 alt="Director Desk & Academic Governance at Ahuja Career Institute"
                 className="w-full h-64 sm:h-96 object-cover group-hover:scale-102 transition duration-700"
               />
@@ -118,7 +118,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setActiveTab, onInquireCli
                 <div className="flex items-center space-x-3.5">
                   <div className="relative shrink-0">
                     <img
-                      src="/assets/Founder - Rajkumar Ahuja.jpeg"
+                      src="/assets/Directors/Founder - Rajkumar Ahuja.jpeg"
                       alt="Late Rajkumar Ahuja Sir - Founder"
                       className="w-16 h-16 sm:w-18 sm:h-18 rounded-xl object-cover object-top border-2 border-red-500/40 shadow-md"
                     />
@@ -158,7 +158,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setActiveTab, onInquireCli
                 <div className="flex items-center space-x-3.5">
                   <div className="relative shrink-0">
                     <img
-                      src="/assets/Director - Sunil Ahuja.jpeg"
+                      src="/assets/Directors/Director - Sunil Ahuja.jpeg"
                       alt="Sunil Ahuja - Director"
                       className="w-16 h-16 sm:w-18 sm:h-18 rounded-xl object-cover object-top border-2 border-red-500/40 shadow-md"
                     />

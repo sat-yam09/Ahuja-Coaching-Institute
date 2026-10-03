@@ -68,7 +68,7 @@ export const ScoreboardPage: React.FC<ScoreboardPageProps> = ({ onInquireClick }
           id="student-records-grid"
           showHeading={true}
           title="Verified Student Achievers Roster"
-          subtitle="Explore our verified rankers with individual subject distinction records and authentic portraits across batches."
+          subtitle="Explore our verified rankers with individual subject distinction records across batches."
         />
       </div>
 
