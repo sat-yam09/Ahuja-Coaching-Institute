@@ -325,10 +325,6 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setActiveTab, onInquireCli
           <div className="grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-6">
             {/* Bento Card 1: 1998 Inception & Founder's Genesis (Large Featured 7-Cols) */}
             <div className="col-span-1 md:col-span-12 lg:col-span-7 bg-gradient-to-br from-[#1E2129] via-[#1A1C23] to-[#14161C] border border-gray-800 hover:border-red-500/60 p-6 sm:p-8 rounded-3xl relative overflow-hidden group shadow-xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1">
-              {/* Year Watermark */}
-              <span className="font-mono text-7xl sm:text-8xl font-black text-white/[0.04] absolute -bottom-4 -right-2 pointer-events-none select-none">
-                1998
-              </span>
               {/* Ambient Red Glow */}
               <div className="absolute top-0 right-0 w-48 h-48 bg-red-600/10 rounded-full blur-2xl pointer-events-none" />
 
@@ -384,10 +380,6 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setActiveTab, onInquireCli
 
             {/* Bento Card 2: 2005 Expansion to Jawaharchowk (5-Cols) */}
             <div className="col-span-1 md:col-span-12 lg:col-span-5 bg-[#1E2129] border border-gray-800 hover:border-red-500/60 p-6 sm:p-8 rounded-3xl relative overflow-hidden group shadow-xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1">
-              {/* Year Watermark */}
-              <span className="font-mono text-7xl sm:text-8xl font-black text-white/[0.04] absolute -bottom-4 -right-2 pointer-events-none select-none">
-                2005
-              </span>
 
               <div className="space-y-4 relative z-10">
                 {/* Header Row */}
@@ -435,9 +427,6 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setActiveTab, onInquireCli
 
             {/* Bento Card 3: 2014 Vastral Flagship Campus (4-Cols) */}
             <div className="col-span-1 md:col-span-6 lg:col-span-4 bg-[#1E2129] border border-gray-800 hover:border-red-500/60 p-6 sm:p-7 rounded-3xl relative overflow-hidden group shadow-xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1">
-              <span className="font-mono text-7xl font-black text-white/[0.04] absolute -bottom-4 -right-2 pointer-events-none select-none">
-                2014
-              </span>
 
               <div className="space-y-4 relative z-10">
                 {/* Header Row */}
@@ -482,9 +471,6 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setActiveTab, onInquireCli
 
             {/* Bento Card 4: 2020 Maninagar HQ & Digital Analytics (4-Cols) */}
             <div className="col-span-1 md:col-span-6 lg:col-span-4 bg-[#1E2129] border border-gray-800 hover:border-red-500/60 p-6 sm:p-7 rounded-3xl relative overflow-hidden group shadow-xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1">
-              <span className="font-mono text-7xl font-black text-white/[0.04] absolute -bottom-4 -right-2 pointer-events-none select-none">
-                2020
-              </span>
 
               <div className="space-y-4 relative z-10">
                 {/* Header Row */}
@@ -529,9 +515,6 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setActiveTab, onInquireCli
 
             {/* Bento Card 5: 2025-26 27+ Years Legacy (4-Cols Featured) */}
             <div className="col-span-1 md:col-span-12 lg:col-span-4 bg-gradient-to-br from-[#232732] via-[#1E2129] to-[#15171D] border-2 border-red-500/50 hover:border-red-500 p-6 sm:p-7 rounded-3xl relative overflow-hidden group shadow-2xl shadow-red-950/30 transition-all duration-300 flex flex-col justify-between ring-2 ring-red-500/20 hover:-translate-y-1">
-              <span className="font-mono text-7xl font-black text-white/[0.04] absolute -bottom-4 -right-2 pointer-events-none select-none">
-                2026
-              </span>
               <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/15 rounded-full blur-xl pointer-events-none" />
 
               <div className="space-y-4 relative z-10">
