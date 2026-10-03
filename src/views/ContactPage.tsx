@@ -30,12 +30,12 @@ export const ContactPage: React.FC = () => {
           We're here to answer any questions you have about our programs, admissions, or centers.
         </p>
 
-        {/* Hero Stock Image */}
+        {/* Counseling Office Image */}
         <div className="relative rounded-3xl overflow-hidden shadow-lg border border-gray-200 max-w-2xl mx-auto group">
           <img
-            src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200"
-            alt="Campus Reception and Counseling Desks"
-            className="w-full h-48 sm:h-60 object-cover group-hover:scale-102 transition duration-500"
+            src="/assets/contact-counseling.jpg"
+            alt="Ahuja Career Institute Counseling Office – Admissions & Academic Guidance Desk"
+            className="w-full h-48 sm:h-60 object-cover object-center group-hover:scale-102 transition duration-500"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent flex items-end p-5">
             <p className="text-white text-xs sm:text-sm font-bold">

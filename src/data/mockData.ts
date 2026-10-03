@@ -1422,7 +1422,7 @@ export const resultStudents: ResultStudent[] = [
     school: 'Nelson School GSEB',
     category: 'Foundation',
     year: '2024-25',
-    avatarUrl: '/student/converted/Luv Advani.png',
+    avatarUrl: '/Converted Student of 25-26/8,9,10/Luv Advani.png',
     instituteBranch: 'Maninagar Head Office',
   },
   {
@@ -1528,78 +1528,6 @@ export const journeyTimeline = [
 
 export const learningSpaces: GalleryItem[] = [
   {
-    id: 'gal-director-office',
-    title: "Director Sunil Ahuja's Mentorship Desk",
-    category: 'Director Office',
-    imageUrl: '/assets/Professional%20Office%20Portrait.png',
-    description: 'Director Sunil Ahuja at the Maninagar Head Office executive desk, conducting personalized academic roadmapping, parent counseling, and mentorship.',
-    location: 'Head Office Executive Desk',
-    badge: 'Academic Leadership',
-  },
-  {
-    id: 'gal-reception',
-    title: 'Admissions & Academic Counseling Lounge',
-    category: 'Campus Infrastructure',
-    imageUrl: '/assets/gallery/reception.webp',
-    description: 'Welcoming reception and student counseling desk at Ahuja Career Institute providing transparent academic roadmaps and batch enrollments.',
-    location: 'Main Reception Campus',
-    badge: 'Student Care',
-  },
-  {
-    id: 'gal-office',
-    title: 'Executive Mentorship & Doubt Resolution Chamber',
-    category: 'Director Office',
-    imageUrl: '/assets/gallery/office.webp',
-    description: 'Quiet, focused mentorship environment for one-on-one student discussions, progress tracking, and personalized exam strategy.',
-    location: 'Counseling & Mentorship Desk',
-    badge: 'Personal Mentorship',
-  },
-  {
-    id: 'gal-classroom-1',
-    title: 'Senior Batch Lecture Hall & Interactive Board',
-    category: 'Smart Classroom',
-    imageUrl: '/assets/gallery/classroom1.webp',
-    description: 'Fully equipped modern lecture hall with digital projection, comfortable ergonomic student seating, and unobstructed board visibility.',
-    location: 'Maninagar Head Office',
-    badge: 'High-Tech Classroom',
-  },
-  {
-    id: 'gal-classroom-2',
-    title: 'Focused Problem-Solving & Daily DPP Hall',
-    category: 'Classroom Batch',
-    imageUrl: '/assets/gallery/classroom2.webp',
-    description: 'Collaborative classroom atmosphere designed for daily practice problem discussions, mini-tests, and active doubt clearance.',
-    location: 'Lecture Hall B',
-    badge: 'DPP & Practice',
-  },
-  {
-    id: 'gal-classroom-3',
-    title: 'Foundation Science & Mathematics Wing',
-    category: 'Classroom Batch',
-    imageUrl: '/assets/gallery/classroom3.webp',
-    description: 'Dedicated foundation classroom for 8th, 9th, and 10th standard learners with step-by-step concept building and interactive faculty support.',
-    location: 'Vastral Campus',
-    badge: 'Foundation Wing',
-  },
-  {
-    id: 'gal-classroom-4',
-    title: 'Board Exam Preparation & Mock Test Hall',
-    category: 'Classroom Batch',
-    imageUrl: '/assets/gallery/classroom4.webp',
-    description: 'Disciplined test environment simulating actual GSEB, CBSE, JEE, and NEET test conditions with timed paper series.',
-    location: 'Main Examination Wing',
-    badge: 'Test Center',
-  },
-  {
-    id: 'gal-classroom-5',
-    title: 'Advanced Competitive Drills & Speed Solving',
-    category: 'Smart Classroom',
-    imageUrl: '/assets/gallery/classroom5.webp',
-    description: 'Special batch classroom for top rankers with high-level MCQ solving, time management strategies, and peer problem solving.',
-    location: 'Lecture Hall C',
-    badge: 'Rankers Batch',
-  },
-  {
     id: 'gal-bohr-chemistry',
     title: "NEET & JEE Chemistry: Bohr's Model Lecture",
     category: 'Smart Classroom',
@@ -1607,6 +1535,15 @@ export const learningSpaces: GalleryItem[] = [
     description: "Interactive digital panel lecture illustrating Bohr's Model for Hydrogen Atom with color-coded orbital levels and high-focus student batch.",
     location: 'Takshshila Square Campus',
     badge: 'Live Session',
+  },
+  {
+    id: 'gal-director-office',
+    title: "Director Sunil Ahuja's Mentorship Desk",
+    category: 'Director Office',
+    imageUrl: '/assets/Directors/Professional Office Portrait.png',
+    description: 'Director Sunil Ahuja at the Maninagar Head Office executive desk, conducting personalized academic roadmapping, parent counseling, and mentorship.',
+    location: 'Head Office Executive Desk',
+    badge: 'Academic Leadership',
   },
   {
     id: 'gal-smart-physics',
@@ -1618,6 +1555,24 @@ export const learningSpaces: GalleryItem[] = [
     badge: 'Live Session',
   },
   {
+    id: 'gal-reception',
+    title: 'Admissions & Academic Counseling Lounge',
+    category: 'Campus Infrastructure',
+    imageUrl: '/assets/gallery/reception.webp',
+    description: 'Welcoming reception and student counseling desk at Ahuja Career Institute providing transparent academic roadmaps and batch enrollments.',
+    location: 'Main Reception Campus',
+    badge: 'Student Care',
+  },
+  {
+    id: 'gal-classroom-1',
+    title: 'Senior Batch Lecture Hall & Interactive Board',
+    category: 'Smart Classroom',
+    imageUrl: '/assets/gallery/classroom1.webp',
+    description: 'Fully equipped modern lecture hall with digital projection, comfortable ergonomic student seating, and unobstructed board visibility.',
+    location: 'Maninagar Head Office',
+    badge: 'High-Tech Classroom',
+  },
+  {
     id: 'gal-maths-leibnitz',
     title: 'Higher Calculus: Newton-Leibnitz Theorem',
     category: 'Smart Classroom',
@@ -1627,6 +1582,15 @@ export const learningSpaces: GalleryItem[] = [
     badge: 'Live Session',
   },
   {
+    id: 'gal-office',
+    title: 'Executive Mentorship & Doubt Resolution Chamber',
+    category: 'Director Office',
+    imageUrl: '/assets/gallery/office.webp',
+    description: 'Quiet, focused mentorship environment for one-on-one student discussions, progress tracking, and personalized exam strategy.',
+    location: 'Counseling & Mentorship Desk',
+    badge: 'Personal Mentorship',
+  },
+  {
     id: 'gal-geometry-classroom',
     title: 'Mathematics Geometry & Board Exam Proofs',
     category: 'Classroom Batch',
@@ -1634,6 +1598,24 @@ export const learningSpaces: GalleryItem[] = [
     description: 'Senior faculty mentor delivering step-by-step geometric triangle proofs on the main board with dedicated wireless audio and individual attention.',
     location: 'Vastral Campus Lecture Hall',
     badge: 'Offline Batch',
+  },
+  {
+    id: 'gal-classroom-5',
+    title: 'Advanced Competitive Drills & Speed Solving',
+    category: 'Smart Classroom',
+    imageUrl: '/assets/gallery/classroom5.webp',
+    description: 'Special batch classroom for top rankers with high-level MCQ solving, time management strategies, and peer problem solving.',
+    location: 'Lecture Hall C',
+    badge: 'Rankers Batch',
+  },
+  {
+    id: 'gal-classroom-4',
+    title: 'Board Exam Preparation & Mock Test Hall',
+    category: 'Classroom Batch',
+    imageUrl: '/assets/gallery/classroom4.webp',
+    description: 'Disciplined test environment simulating actual GSEB, CBSE, JEE, and NEET test conditions with timed paper series.',
+    location: 'Main Examination Wing',
+    badge: 'Test Center',
   },
 ];
 
@@ -1809,133 +1791,129 @@ export const faqItems: FAQItem[] = [
    ══════════════════════════════════════════════════════════ */
 export const showcaseStudents: ShowcaseStudent[] = [
 
-  // ── 2025-26 - Std. 12th Science ──
-  { "id": "std-43", "name": "Dhairya Patel", "imagePath": "/student/converted/Dhairya Patel.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "Chemistry", "Maths", "12th Science"], "topScore": 99, "scoreDisplay": "99/100 Top Score", "marks": { "Physics": 99, "Chemistry": 96, "Maths": 93 }, "ranks": { "Physics": 1, "Chemistry": 1, "Maths": 3 }, "exam": "12th Science Board Examination" },
-  { "id": "std-09", "name": "Astha Rai", "imagePath": "/student/converted/Astha Rai.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "Chemistry", "Maths", "12th Science"], "topScore": 97, "scoreDisplay": "97/100 Top Score", "marks": { "Physics": 97, "Chemistry": 87, "Maths": 88 }, "ranks": { "Physics": 2, "Chemistry": 10, "Maths": 9 }, "exam": "12th Science Board Examination" },
-  { "id": "sc-20", "name": "Om Parmar", "imagePath": "/student/Chemistry/Om parmar.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "Chemistry"], "topScore": 95, "scoreDisplay": "95/100 Top Score", "marks": { "Physics": 95, "Chemistry": 88 }, "ranks": { "Physics": 3, "Chemistry": 8 }, "exam": "12th Science Board Examination" },
-  { "id": "std-15", "name": "Mahi Patel", "imagePath": "/student/converted/Mahi Patel.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "Chemistry", "Maths", "12th Science"], "topScore": 94, "scoreDisplay": "94/100 Top Score", "marks": { "Physics": 86, "Chemistry": 89, "Maths": 94 }, "ranks": { "Physics": 17, "Chemistry": 7, "Maths": 1 }, "exam": "12th Science Board Examination" },
-  { "id": "sc-08", "name": "Preet Patel", "imagePath": "/student/Chemistry/Preet Patel.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "Maths", "Chemistry"], "topScore": 94, "scoreDisplay": "94/100 Top Score", "marks": { "Physics": 94, "Maths": 90, "Chemistry": 86 }, "ranks": { "Physics": 5, "Maths": 7, "Chemistry": 14 }, "exam": "12th Science Board Examination" },
-  { "id": "std-16", "name": "Seema Chaudhry", "imagePath": "/student/converted/Seema Chaudhry.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "Chemistry", "Biology", "12th Science"], "topScore": 94, "scoreDisplay": "94/100 Top Score", "marks": { "Physics": 94, "Chemistry": 91, "Biology": 90 }, "ranks": { "Physics": 4, "Chemistry": 5, "Biology": 2 }, "exam": "12th Science Board Examination" },
-  { "id": "sc-18", "name": "Kunj Patel", "imagePath": "/student/Chemistry/Kunj Patel.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Maths", "Chemistry"], "topScore": 93, "scoreDisplay": "93/100 Top Score", "marks": { "Maths": 93, "Chemistry": 91 }, "ranks": { "Maths": 4, "Chemistry": 4 }, "exam": "12th Science Board Examination" },
-  { "id": "std-25", "name": "Manan Bura", "imagePath": "/student/converted/Manan Bura.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "Chemistry", "Maths", "12th Science"], "topScore": 93, "scoreDisplay": "93/100 Top Score", "marks": { "Physics": 93, "Chemistry": 87, "Maths": 93 }, "ranks": { "Physics": 6, "Chemistry": 12, "Maths": 2 }, "exam": "12th Science Board Examination" },
-  { "id": "std-37", "name": "Meet Mojidra", "imagePath": "/student/converted/Meet Mojidra.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "12th Science"], "topScore": 93, "scoreDisplay": "93/100 Top Score", "marks": { "Physics": 93 }, "ranks": { "Physics": 7 }, "exam": "12th Science Board Examination" },
-  { "id": "sc-27", "name": "Diya Patel", "imagePath": "/student/Chemistry/Diya Patel.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Chemistry"], "topScore": 92, "scoreDisplay": "92/100 Top Score", "marks": { "Chemistry": 92 }, "ranks": { "Chemistry": 2 }, "exam": "12th Science Board Examination" },
-  { "id": "sc-19", "name": "Hanna Pathan", "imagePath": "/student/Chemistry/hanna Pathan.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "Chemistry"], "topScore": 92, "scoreDisplay": "92/100 Top Score", "marks": { "Physics": 92, "Chemistry": 86 }, "ranks": { "Physics": 9, "Chemistry": 13 }, "exam": "12th Science Board Examination" },
-  { "id": "std-14", "name": "Helly Patel", "imagePath": "/student/converted/Helly Patel.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Maths", "12th Science"], "topScore": 92, "scoreDisplay": "92/100 Top Score", "marks": { "Maths": 92 }, "ranks": { "Maths": 5 }, "exam": "12th Science Board Examination" },
-  { "id": "sc-13", "name": "Prathana Shah", "imagePath": "/student/Maths/Prathana Shah.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "Maths"], "topScore": 92, "scoreDisplay": "92/100 Top Score", "marks": { "Physics": 92, "Maths": 92 }, "ranks": { "Physics": 10, "Maths": 6 }, "exam": "12th Science Board Examination" },
-  { "id": "sc-15", "name": "Srusti Soni", "imagePath": "/student/Maths/Srusti Soni.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "Maths"], "topScore": 92, "scoreDisplay": "92/100 Top Score", "marks": { "Physics": 92, "Maths": 86 }, "ranks": { "Physics": 8, "Maths": 12 }, "exam": "12th Science Board Examination" },
-  { "id": "std-27", "name": "Shena Mistry", "imagePath": "/student/converted/Shena Mistry.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "Chemistry", "Maths", "12th Science"], "topScore": 91, "scoreDisplay": "91/100 Top Score", "marks": { "Physics": 91, "Chemistry": 86, "Maths": 86 }, "ranks": { "Physics": 11, "Chemistry": 16, "Maths": 11 }, "exam": "12th Science Board Examination" },
-  { "id": "sc-05", "name": "Dhyana Chavda", "imagePath": "/student/Biology/Dhyana Chavda.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Biology", "Chemistry", "Physics"], "topScore": 90, "scoreDisplay": "90/100 Top Score", "marks": { "Physics": 84, "Biology": 90, "Chemistry": 86 }, "ranks": { "Physics": 24, "Biology": 3, "Chemistry": 15 }, "exam": "12th Science Board Examination" },
-  { "id": "sc-14", "name": "Riya Prajapati", "imagePath": "/student/Maths/Riya Prajapati.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "Maths"], "topScore": 90, "scoreDisplay": "90/100 Top Score", "marks": { "Physics": 90, "Maths": 85 }, "ranks": { "Physics": 13, "Maths": 13 }, "exam": "12th Science Board Examination" },
-  { "id": "std-38", "name": "Tirth Jirawala", "imagePath": "/student/converted/Tirth Jirawala.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Maths", "12th Science"], "topScore": 90, "scoreDisplay": "90/100 Top Score", "marks": { "Maths": 90 }, "ranks": { "Maths": 8 }, "exam": "12th Science Board Examination" },
-  { "id": "std-34", "name": "Raj Bhavsar", "imagePath": "/student/converted/Raj Bhavsar.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Chemistry", "Biology", "12th Science"], "topScore": 89, "scoreDisplay": "89/100 Top Score", "marks": { "Chemistry": 87, "Biology": 89 }, "ranks": { "Chemistry": 11, "Biology": 4 }, "exam": "12th Science Board Examination" },
-  { "id": "std-29", "name": "Divyaesh Rana", "imagePath": "/student/converted/Divyaesh Rana.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "12th Science"], "topScore": 88, "scoreDisplay": "88/100 Top Score", "marks": { "Physics": 88 }, "ranks": { "Physics": 14 }, "exam": "12th Science Board Examination" },
-  { "id": "std-28", "name": "Divyaraj Rathod", "imagePath": "/student/converted/Divyaraj Rathod.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "Chemistry", "Maths", "12th Science"], "topScore": 88, "scoreDisplay": "88/100 Top Score", "marks": { "Physics": 81, "Chemistry": 88, "Maths": 88 }, "ranks": { "Physics": 28, "Chemistry": 9, "Maths": 10 }, "exam": "12th Science Board Examination" },
-  { "id": "sc-28", "name": "Jahanvi Agarwal", "imagePath": "/student/Biology/Jahanvi Agarwal.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Biology"], "topScore": 88, "scoreDisplay": "88/100 Top Score", "marks": { "Biology": 88 }, "ranks": { "Biology": 6 }, "exam": "12th Science Board Examination" },
-  { "id": "std-05", "name": "Shlok Maurya", "imagePath": "/student/converted/Shlok Maurya.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "12th Science"], "topScore": 87, "scoreDisplay": "87/100 Top Score", "marks": { "Physics": 87 }, "ranks": { "Physics": 16 }, "exam": "12th Science Board Examination" },
-  { "id": "std-35", "name": "Dhvani Prajapati", "imagePath": "/student/converted/Dhvani Prajapati.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "12th Science"], "topScore": 86, "scoreDisplay": "86/100 Top Score", "marks": { "Physics": 86 }, "ranks": { "Physics": 18 }, "exam": "12th Science Board Examination" },
-  { "id": "sc-16", "name": "Hitanshi Khalas", "imagePath": "/student/Biology/Hitanshi Khalas.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Chemistry", "Biology"], "topScore": 85, "scoreDisplay": "85/100 Top Score", "marks": { "Biology": 84, "Chemistry": 85 }, "ranks": { "Biology": 7, "Chemistry": 17 }, "exam": "12th Science Board Examination" },
-  { "id": "sc-10", "name": "Bhavy Prajapati", "imagePath": "/student/Maths/Bhavy Prajapati.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "Maths"], "topScore": 84, "scoreDisplay": "84/100 Top Score", "marks": { "Physics": 84, "Maths": 83 }, "ranks": { "Physics": 20, "Maths": 15 }, "exam": "12th Science Board Examination" },
-  { "id": "std-04", "name": "Kanan Solanki", "imagePath": "/student/converted/Kanan Solanki.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "Maths", "12th Science"], "topScore": 84, "scoreDisplay": "84/100 Top Score", "marks": { "Physics": 84, "Maths": 82 }, "ranks": { "Physics": 21, "Maths": 16 }, "exam": "12th Science Board Examination" },
-  { "id": "sc-24", "name": "Kasak Prajapati", "imagePath": "/student/Physics/Kasak Prajapati.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics"], "topScore": 84, "scoreDisplay": "84/100 Top Score", "marks": { "Physics": 84 }, "ranks": { "Physics": 22 }, "exam": "12th Science Board Examination" },
-  { "id": "std-30", "name": "Falgun Patel", "imagePath": "/student/converted/Falgun Patel.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "Maths", "12th Science"], "topScore": 83, "scoreDisplay": "83/100 Top Score", "marks": { "Physics": 81, "Maths": 83 }, "ranks": { "Physics": 29, "Maths": 14 }, "exam": "12th Science Board Examination" },
-  { "id": "sc-29", "name": "Ayushi Mishra", "imagePath": "/student/Physics/Ayushi Mishra.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["Physics"], "topScore": 81, "scoreDisplay": "81/100 Top Score", "marks": { "Physics": 81 }, "ranks": { "Physics": 30 }, "exam": "12th Science Board Examination" },
+  // ── 2025-26 - Std. 10th GSEB Board Toppers ──
+  { "id": "std-2526-luv-advani", "name": "Luv Advani", "imagePath": "/Converted Student of 25-26/8,9,10/Luv Advani.png", "grade": "Std. 10th GSEB", "category": "10th Board", "year": "2025-26", "subjects": ["Maths", "Science", "Social Science", "English", "10th Board", "Foundation"], "topScore": 100, "scoreDisplay": "99.56 PR GSEB 10th", "school": "Nelson's Uttam Nagar", "marks": { "Maths": 97, "Science": 100, "Social Science": 99, "English": 91 }, "ranks": { "Science": 1 }, "exam": "Std. 10th GSEB Board Topper (99.56 PR)" },
+  { "id": "std-2526-vruddhi-brahmakar", "name": "Vruddhi Brahmakar", "imagePath": "/Converted Student of 25-26/8,9,10/Vruddhi Brahmakar.png", "grade": "Std. 10th GSEB", "category": "10th Board", "year": "2025-26", "subjects": ["Maths", "Science", "Social Science", "English", "10th Board", "Foundation"], "topScore": 100, "scoreDisplay": "99.36 PR GSEB 10th", "school": "Nelson's Punit Ashram", "marks": { "Maths": 96, "Science": 100, "Social Science": 100, "English": 88 }, "ranks": { "Science": 1, "Social Science": 1 }, "exam": "Std. 10th GSEB Board Topper (99.36 PR)" },
+  { "id": "std-2526-ferin-mistry", "name": "Ferin Mistry", "imagePath": "/Converted Student of 25-26/8,9,10/Ferin Mistry.png", "grade": "Std. 10th GSEB", "category": "10th Board", "year": "2025-26", "subjects": ["Maths", "Science", "Social Science", "English", "10th Board", "Foundation"], "topScore": 99, "scoreDisplay": "99.28 PR GSEB 10th", "school": "Saint Blaze", "marks": { "Maths": 96, "Science": 99, "Social Science": 95, "English": 92 }, "ranks": { "Science": 2 }, "exam": "Std. 10th GSEB Board Topper (99.28 PR)" },
+  { "id": "std-2526-rethika-mudaliar", "name": "Rethika Mudaliar", "imagePath": "/Converted Student of 25-26/8,9,10/Rethika Mudaliar.png", "grade": "Std. 10th GSEB", "category": "10th Board", "year": "2025-26", "subjects": ["Maths", "Science", "Social Science", "English", "10th Board", "Foundation"], "topScore": 97, "scoreDisplay": "97.49 PR GSEB 10th", "school": "Nelson's Punit Ashram", "marks": { "Maths": 97, "Science": 95, "Social Science": 95, "English": 86 }, "ranks": { "Maths": 1 }, "exam": "Std. 10th GSEB High Achiever (97.49 PR)" },
+  { "id": "std-2526-vansh-brahmakar", "name": "Vansh Brahmakar", "imagePath": "/Converted Student of 25-26/8,9,10/Vansh Brahmakar.png", "grade": "Std. 10th GSEB", "category": "10th Board", "year": "2025-26", "subjects": ["Maths", "Science", "Social Science", "English", "10th Board", "Foundation"], "topScore": 99, "scoreDisplay": "97.08 PR GSEB 10th", "school": "Nelson's Punit Ashram", "marks": { "Maths": 93, "Science": 98, "Social Science": 99, "English": 85 }, "ranks": { "Social Science": 2 }, "exam": "Std. 10th GSEB High Achiever (97.08 PR)" },
+  { "id": "std-2526-dhruva-patel", "name": "Dhruva Patel", "imagePath": "/Converted Student of 25-26/8,9,10/Dhruva Patel.png", "grade": "Std. 10th GSEB", "category": "10th Board", "year": "2025-26", "subjects": ["Maths", "Science", "Social Science", "English", "10th Board", "Foundation"], "topScore": 97, "scoreDisplay": "95.10 PR GSEB 10th", "school": "Herbon School", "marks": { "Science": 97, "Social Science": 94, "Maths": 86, "English": 85 }, "exam": "Std. 10th GSEB Board Achiever (95.10 PR)" },
+  { "id": "std-2526-umang-yadav", "name": "Umang Yadav", "imagePath": "/Converted Student of 25-26/8,9,10/Umang Yadav.png", "grade": "Std. 10th GSEB", "category": "10th Board", "year": "2025-26", "subjects": ["Maths", "Science", "Social Science", "English", "10th Board", "Foundation"], "topScore": 95, "scoreDisplay": "94.78 PR GSEB 10th", "school": "Vedant Public", "marks": { "Maths": 92, "Science": 94, "Social Science": 95, "English": 80 }, "exam": "Std. 10th GSEB Board Achiever (94.78 PR)" },
+  { "id": "std-2526-rudra-purohit", "name": "Rudra Purohit", "imagePath": "/Converted Student of 25-26/8,9,10/Rudra Purohit.png", "grade": "Std. 10th GSEB", "category": "10th Board", "year": "2025-26", "subjects": ["Maths", "Science", "Social Science", "English", "10th Board", "Foundation"], "topScore": 98, "scoreDisplay": "94.12 PR GSEB 10th", "school": "Crystal International", "marks": { "Science": 98, "Social Science": 88, "Maths": 87, "English": 85 }, "exam": "Std. 10th GSEB Board Achiever (94.12 PR)" },
+  { "id": "std-2526-hitansh-mahajan", "name": "Hitansh Mahajan", "imagePath": "/Converted Student of 25-26/8,9,10/Hitansh Mahajan.png", "grade": "Std. 10th GSEB", "category": "10th Board", "year": "2025-26", "subjects": ["Maths", "Science", "Social Science", "English", "10th Board", "Foundation"], "topScore": 96, "scoreDisplay": "93.26 PR GSEB 10th", "school": "United Public School", "marks": { "Science": 96, "Social Science": 91, "Maths": 84, "English": 82 }, "exam": "Std. 10th GSEB Board Achiever (93.26 PR)" },
+  { "id": "std-2526-saanvi-jain", "name": "Saanvi Jain", "imagePath": "/Converted Student of 25-26/8,9,10/Saanvi Jain.png", "grade": "Std. 10th GSEB", "category": "10th Board", "year": "2025-26", "subjects": ["Maths", "Science", "Social Science", "English", "10th Board", "Foundation"], "topScore": 97, "scoreDisplay": "93.09 PR GSEB 10th", "school": "Nelson's Punit Ashram", "marks": { "Maths": 92, "Science": 97, "Social Science": 85, "English": 85 }, "exam": "Std. 10th GSEB Board Achiever (93.09 PR)" },
+  { "id": "std-2526-rahul-pandey", "name": "Rahul Pandey", "imagePath": "/Converted Student of 25-26/8,9,10/Rahul Pandey.png", "grade": "Std. 10th GSEB", "category": "10th Board", "year": "2025-26", "subjects": ["Maths", "Science", "10th Board", "Foundation"], "topScore": 91, "scoreDisplay": "90.08 PR GSEB 10th", "school": "Pragati School", "marks": { "Maths": 91, "Science": 87 }, "exam": "Std. 10th GSEB Board Achiever (90.08 PR)" },
+  { "id": "std-2526-manav-shethe", "name": "Manav Shethe", "imagePath": "/Converted Student of 25-26/8,9,10/Manav Shethe.png", "grade": "Std. 10th GSEB", "category": "10th Board", "year": "2025-26", "subjects": ["Maths", "Science", "English", "10th Board", "Foundation"], "topScore": 97, "scoreDisplay": "88.90 PR GSEB 10th", "school": "Diwan Ballubhai School", "marks": { "Science": 97, "Maths": 87, "English": 80 }, "exam": "Std. 10th GSEB Board Achiever (88.90 PR)" },
+  { "id": "std-2526-rainy-chauhan", "name": "Rainy Chauhan", "imagePath": "/Converted Student of 25-26/8,9,10/Rainy Chauhan.png", "grade": "Std. 10th GSEB", "category": "10th Board", "year": "2025-26", "subjects": ["Maths", "Science", "English", "10th Board", "Foundation"], "topScore": 90, "scoreDisplay": "88.08 PR GSEB 10th", "school": "Sattva International School", "marks": { "English": 90, "Maths": 89, "Science": 85 }, "exam": "Std. 10th GSEB Board Achiever (88.08 PR)" },
+  { "id": "std-2526-varshil-mehta", "name": "Varshil Mehta", "imagePath": "/Converted Student of 25-26/8,9,10/Varshil Mehta.png", "grade": "Std. 10th GSEB", "category": "10th Board", "year": "2025-26", "subjects": ["Maths", "Social Science", "10th Board", "Foundation"], "topScore": 88, "scoreDisplay": "85.94 PR GSEB 10th", "school": "Nelson School", "marks": { "Social Science": 88, "Maths": 84 }, "exam": "Std. 10th GSEB Board Achiever (85.94 PR)" },
+  { "id": "std-2526-mahi-bavne", "name": "Mahi Bavne", "imagePath": "/Converted Student of 25-26/8,9,10/Mahi Bavne.png", "grade": "Std. 10th GSEB", "category": "10th Board", "year": "2025-26", "subjects": ["Maths", "Science", "English", "10th Board", "Foundation"], "topScore": 82, "scoreDisplay": "83.46 PR GSEB 10th", "school": "Herbon School", "marks": { "English": 82, "Maths": 81, "Science": 80 }, "exam": "Std. 10th GSEB Board Achiever (83.46 PR)" },
+  { "id": "std-2526-vrinda-patel", "name": "Vrinda Patel", "imagePath": "/Converted Student of 25-26/8,9,10/Vrinda Patel.png", "grade": "Std. 10th GSEB", "category": "10th Board", "year": "2025-26", "subjects": ["Science", "10th Board", "Foundation"], "topScore": 88, "scoreDisplay": "80.87 PR GSEB 10th", "school": "Lotus School", "marks": { "Science": 88 }, "exam": "Std. 10th GSEB Board Achiever (80.87 PR)" },
+  { "id": "std-2526-nishit-pandit", "name": "Nishit Pandit", "imagePath": "/Converted Student of 25-26/8,9,10/Nishit Pandit.png", "grade": "Std. 10th GSEB", "category": "10th Board", "year": "2025-26", "subjects": ["Maths", "10th Board", "Foundation"], "topScore": 86, "scoreDisplay": "86/100 Maths GSEB 10th", "school": "Doon Premium School", "marks": { "Maths": 86 }, "exam": "Std. 10th GSEB Board Achiever (Maths 86)" },
 
-  // ── 2025-26 - Std. 10th Board Toppers ──
-  { "id": "std-saanvi-jain-10", "name": "Saanvi Jain", "imagePath": "/student/converted/Saanvi Jain.png", "grade": "Std. 10th Board", "category": "10th Board", "year": "2025-26", "subjects": ["10th Board", "10th", "Foundation"], "topScore": 96.8, "scoreDisplay": "96.80% GSEB", "school": "Subharati Primary", "exam": "Std. 10th GSEB Topper (96.80%)" },
-  { "id": "std-dhruti-panchal-10", "name": "Dhruti Panchal", "imagePath": "/student/converted/Dhruti Panchal.png", "grade": "Std. 10th Board", "category": "10th Board", "year": "2025-26", "subjects": ["10th Board", "10th", "Foundation"], "topScore": 95.6, "scoreDisplay": "95.60% GSEB", "school": "Hebron School", "exam": "Std. 10th GSEB Topper (95.60%)" },
-  { "id": "std-maahi-gupta-10", "name": "Maahi Gupta", "imagePath": "/student/converted/Maahi Gupta.png", "grade": "Std. 10th Board", "category": "10th Board", "year": "2025-26", "subjects": ["10th Board", "10th", "Foundation"], "topScore": 94.2, "scoreDisplay": "94.20% GSEB", "school": "Subharati Primary", "exam": "Std. 10th GSEB Topper (94.20%)" },
-  { "id": "std-meet-gupta-10", "name": "Meet Gupta", "imagePath": "/student/converted/Meet Gupta.png", "grade": "Std. 10th Board", "category": "10th Board", "year": "2025-26", "subjects": ["10th Board", "10th", "Foundation"], "topScore": 93.8, "scoreDisplay": "93.80% GSEB", "school": "Subharati Primary", "exam": "Std. 10th GSEB Topper (93.80%)" },
-  { "id": "std-ishita-10", "name": "Ishita Khambadkar", "imagePath": "/student/converted/Ishita khambadkar.png", "grade": "Std. 10th Board", "category": "10th Board", "year": "2025-26", "subjects": ["10th Board", "10th", "Foundation"], "topScore": 92.4, "scoreDisplay": "92.40% GSEB", "school": "Subharati Primary", "exam": "Std. 10th GSEB Topper (92.40%)" },
-  { "id": "std-bhavya-10", "name": "Bhavya Agrawal", "imagePath": "/student/converted/Bhavya Agrawal.png", "grade": "Std. 10th Board", "category": "10th Board", "year": "2025-26", "subjects": ["10th Board", "10th", "Foundation"], "topScore": 91.6, "scoreDisplay": "91.60% GSEB", "school": "Subharati Primary", "exam": "Std. 10th GSEB Topper (91.60%)" },
-  { "id": "std-karsh-10", "name": "Karsh Gajjar", "imagePath": "/student/converted/Karsh Gajjar.png", "grade": "Std. 10th Board", "category": "10th Board", "year": "2025-26", "subjects": ["10th Board", "10th", "Foundation"], "topScore": 90.2, "scoreDisplay": "90.20% GSEB", "school": "Subharati Primary", "exam": "Std. 10th GSEB Topper (90.20%)" },
+  // ── 2025-26 - Std. 8th GSEB Foundation Achievers ──
+  { "id": "std-2526-maahi-gupta", "name": "Maahi Gupta", "imagePath": "/Converted Student of 25-26/8,9,10/Maahi Gupta.png", "grade": "Std. 8th GSEB", "category": "8th Foundation", "year": "2025-26", "subjects": ["Maths", "Science", "Social Science", "English", "8th Foundation", "Foundation"], "topScore": 100, "scoreDisplay": "96.40% GSEB (1st Rank in School)", "school": "Subharati Primary school", "marks": { "Maths": 96, "Science": 100, "Social Science": 99, "English": 92 }, "ranks": { "Science": 1 }, "exam": "1st Rank in School • 96.40% (GSEB 8th)" },
+  { "id": "std-2526-meet-gupta", "name": "Meet Gupta", "imagePath": "/Converted Student of 25-26/8,9,10/Meet Gupta.png", "grade": "Std. 8th GSEB", "category": "8th Foundation", "year": "2025-26", "subjects": ["Maths", "Science", "Social Science", "English", "8th Foundation", "Foundation"], "topScore": 98, "scoreDisplay": "95.20% GSEB", "school": "Subharati Primary school", "marks": { "Maths": 97, "Science": 98, "Social Science": 96, "English Text": 94, "English GMR": 91 }, "exam": "Std. 8th GSEB Star Topper (95.20%)" },
+  { "id": "std-2526-ishita-khambadkar", "name": "Ishita khambadkar", "imagePath": "/Converted Student of 25-26/8,9,10/Ishita khambadkar.png", "grade": "Std. 8th GSEB", "category": "8th Foundation", "year": "2025-26", "subjects": ["Maths", "Science", "Social Science", "English", "8th Foundation", "Foundation"], "topScore": 99, "scoreDisplay": "94.40% GSEB", "school": "Subharati Primary", "marks": { "Maths": 95, "Science": 99, "Social Science": 96, "English Text": 94, "English GMR": 88 }, "ranks": { "Science": 1 }, "exam": "Std. 8th GSEB Topper (94.40%)" },
+  { "id": "std-2526-bhavya-agrawal", "name": "Bhavya Agrawal", "imagePath": "/Converted Student of 25-26/8,9,10/Bhavya Agrawal.png", "grade": "Std. 8th GSEB", "category": "8th Foundation", "year": "2025-26", "subjects": ["Maths", "Science", "Social Science", "English", "8th Foundation", "Foundation"], "topScore": 97, "scoreDisplay": "94% GSEB", "school": "Subharati Primary school", "marks": { "Maths": 97, "Science": 96, "Social Science": 96, "English Text": 92, "English GMR": 89 }, "ranks": { "Maths": 1 }, "exam": "Std. 8th GSEB Topper (94%)" },
+  { "id": "std-2526-karsh-gajjar", "name": "Karsh Gajjar", "imagePath": "/Converted Student of 25-26/8,9,10/Karsh Gajjar.png", "grade": "Std. 8th GSEB", "category": "8th Foundation", "year": "2025-26", "subjects": ["Maths", "Science", "Social Science", "English", "8th Foundation", "Foundation"], "topScore": 94, "scoreDisplay": "91.40% GSEB", "school": "Subharati Primary", "marks": { "Maths": 94, "Science": 94, "Social Science": 90, "English Text": 89, "English GMR": 90 }, "exam": "Std. 8th GSEB Achiever (91.40%)" },
+  { "id": "std-2526-aksh-soni", "name": "Aksh Soni", "imagePath": "/Converted Student of 25-26/8,9,10/Aksh Soni.png", "grade": "Std. 8th GSEB", "category": "8th Foundation", "year": "2025-26", "subjects": ["Maths", "Science", "Social Science", "English", "8th Foundation", "Foundation"], "topScore": 97, "scoreDisplay": "89.00% GSEB", "school": "Divine Buds", "marks": { "Maths": 82, "Science": 97, "Social Science": 96, "English": 81 }, "exam": "Std. 8th GSEB Achiever (89.00%)" },
 
-  // ── 2025-26 - Std. 8th Foundation Achievers ──
-  { "id": "std-aksh-soni-26", "name": "Aksh Soni", "imagePath": "/student/converted/Aksh Soni.png", "grade": "Std. 8th Class", "category": "8th Foundation", "year": "2025-26", "subjects": ["8th Foundation", "8th", "Foundation"], "topScore": 89.0, "scoreDisplay": "89.00% GSEB", "school": "Divine Buds", "exam": "Std. 8th GSEB Topper (89.00%)" },
-  { "id": "std-karsh-gajjar-26", "name": "Karsh Gajjar", "imagePath": "/student/converted/Karsh Gajjar.png", "grade": "Std. 8th Class", "category": "8th Foundation", "year": "2025-26", "subjects": ["8th Foundation", "8th", "Foundation"], "topScore": 91.4, "scoreDisplay": "91.40% GSEB", "school": "Subharati Primary", "exam": "Std. 8th GSEB Topper (91.40%)" },
-  { "id": "std-bhavya-agrawal-26", "name": "Bhavya Agrawal", "imagePath": "/student/converted/Bhavya Agrawal.png", "grade": "Std. 8th Class", "category": "8th Foundation", "year": "2025-26", "subjects": ["8th Foundation", "8th", "Foundation"], "topScore": 94.0, "scoreDisplay": "94.00% GSEB", "school": "Subharati Primary", "exam": "Std. 8th GSEB Topper (94.00%)" },
-  { "id": "std-ishita-khambadkar-26", "name": "Ishita Khambadkar", "imagePath": "/student/converted/Ishita khambadkar.png", "grade": "Std. 8th Class", "category": "8th Foundation", "year": "2025-26", "subjects": ["8th Foundation", "8th", "Foundation"], "topScore": 94.4, "scoreDisplay": "94.40% GSEB", "school": "Subharati Primary", "exam": "Std. 8th GSEB Topper (94.40%)" },
-  { "id": "std-meet-gupta-26", "name": "Meet Gupta", "imagePath": "/student/converted/Meet Gupta.png", "grade": "Std. 8th Class", "category": "8th Foundation", "year": "2025-26", "subjects": ["8th Foundation", "8th", "Foundation"], "topScore": 95.2, "scoreDisplay": "95.20% GSEB", "school": "Subharati Primary", "exam": "Std. 8th GSEB Topper (95.20%)" },
-  { "id": "std-maahi-gupta-26", "name": "Maahi Gupta", "imagePath": "/student/converted/Maahi Gupta.png", "grade": "Std. 8th Class", "category": "8th Foundation", "year": "2025-26", "subjects": ["8th Foundation", "8th", "Foundation"], "topScore": 96.4, "scoreDisplay": "96.40% GSEB", "school": "Subharati Primary", "exam": "Std. 8th GSEB Topper (96.40%)" },
-  { "id": "std-12", "name": "Dhruva Patel", "imagePath": "/student/converted/Dhruva Patel.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["12th Science"], "scoreDisplay": "12th Science Achiever", "exam": "12th Science Board Examination" },
-  { "id": "std-26", "name": "Hitansh Mahajan", "imagePath": "/student/converted/Hitansh Mahajan.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["12th Science"], "scoreDisplay": "12th Science Achiever", "exam": "12th Science Board Examination" },
-  { "id": "cv-04", "name": "Mahi Bavne", "imagePath": "/student/converted/Mahi Bavne.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["12th Science"], "scoreDisplay": "12th Science Achiever", "exam": "12th Science Board Examination" },
-  { "id": "std-20", "name": "Manav Shethe", "imagePath": "/student/converted/Manav Shethe.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["12th Science"], "scoreDisplay": "12th Science Achiever", "exam": "12th Science Board Examination" },
-  { "id": "std-41", "name": "Nishit Pandit", "imagePath": "/student/converted/Nishit Pandit.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["12th Science"], "scoreDisplay": "12th Science Achiever", "exam": "12th Science Board Examination" },
-  { "id": "std-39", "name": "Rahul Pandey", "imagePath": "/student/converted/Rahul Pandey.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["12th Science"], "scoreDisplay": "12th Science Achiever", "exam": "12th Science Board Examination" },
-  { "id": "cv-08", "name": "Rainy Chauhan", "imagePath": "/student/converted/Rainy Chauhan.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["12th Science"], "scoreDisplay": "12th Science Achiever", "exam": "12th Science Board Examination" },
-  { "id": "std-31", "name": "Rudra Purohit", "imagePath": "/student/converted/Rudra Purohit.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["12th Science"], "scoreDisplay": "12th Science Achiever", "exam": "12th Science Board Examination" },
-  { "id": "std-33", "name": "Varshil Mehta", "imagePath": "/student/converted/Varshil Mehta.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["12th Science"], "scoreDisplay": "12th Science Achiever", "exam": "12th Science Board Examination" },
-  { "id": "std-22", "name": "Vrinda Patel", "imagePath": "/student/converted/Vrinda Patel.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["12th Science"], "scoreDisplay": "12th Science Achiever", "exam": "12th Science Board Examination" },
+  // ── 2025-26 - Std. 12th Science Board Champions ──
+  {"id": "std-2526-dhairya-patel", "name": "Dhairya Patel", "imagePath": "/Converted Student of 25-26/Physics/Dhairya Patel.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "Chemistry", "Maths", "12th Science"], "topScore": 99, "scoreDisplay": "99/100 Physics (Rank 1)", "marks": {"Physics": 99, "Chemistry": 96, "Maths": 93}, "ranks": {"Physics": 1, "Chemistry": 1, "Maths": 3}, "exam": "12th Science Board Examination"},
+  {"id": "std-2526-astha-rai", "name": "Astha Rai", "imagePath": "/Converted Student of 25-26/Physics/Astha Rai.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "Chemistry", "Maths", "12th Science"], "topScore": 97, "scoreDisplay": "97/100 Physics (Rank 2)", "marks": {"Physics": 97, "Maths": 88, "Chemistry": 87}, "ranks": {"Physics": 2, "Maths": 9, "Chemistry": 10}, "exam": "12th Science Board Examination"},
+  {"id": "std-2526-om-parmar", "name": "Om Parmar", "imagePath": "/Converted Student of 25-26/Physics/Om parmar.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "Chemistry", "12th Science"], "topScore": 95, "scoreDisplay": "95/100 Physics (Rank 3)", "marks": {"Physics": 95, "Chemistry": 88}, "ranks": {"Physics": 3, "Chemistry": 8}, "exam": "12th Science Board Examination"},
+  {"id": "std-2526-seema-chaudhary", "name": "Seema Chaudhary", "imagePath": "/Converted Student of 25-26/Physics/Seema Chaudhary.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "Chemistry", "Biology", "12th Science"], "topScore": 94, "scoreDisplay": "94/100 Physics (Rank 4)", "marks": {"Physics": 94, "Chemistry": 91, "Biology": 90}, "ranks": {"Physics": 4, "Chemistry": 5, "Biology": 2}, "exam": "12th Science Board Examination"},
+  {"id": "std-2526-mahi-patel", "name": "Mahi Patel", "imagePath": "/Converted Student of 25-26/Maths/Mahi Patel.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Maths", "Chemistry", "Physics", "12th Science"], "topScore": 94, "scoreDisplay": "94/100 Maths (Rank 1)", "marks": {"Maths": 94, "Chemistry": 89, "Physics": 86}, "ranks": {"Maths": 1, "Chemistry": 7, "Physics": 17}, "exam": "12th Science Board Examination"},
+  {"id": "std-2526-preet-patel", "name": "Preet Patel", "imagePath": "/Converted Student of 25-26/Physics/Preet Patel.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "Maths", "Chemistry", "12th Science"], "topScore": 94, "scoreDisplay": "94/100 Physics (Rank 5)", "marks": {"Physics": 94, "Maths": 90, "Chemistry": 86}, "ranks": {"Physics": 5, "Maths": 7, "Chemistry": 14}, "exam": "12th Science Board Examination"},
+  {"id": "std-2526-kunj-patel", "name": "Kunj Patel", "imagePath": "/Converted Student of 25-26/Chemistry/Kunj Patel.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Maths", "Chemistry", "12th Science"], "topScore": 93, "scoreDisplay": "93/100 Maths & 91/100 Chem", "marks": {"Maths": 93, "Chemistry": 91}, "ranks": {"Maths": 4, "Chemistry": 4}, "exam": "12th Science Board Examination"},
+  {"id": "std-2526-manan-burra", "name": "Manan Burra", "imagePath": "/Converted Student of 25-26/Physics/Manan Burra.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "Maths", "Chemistry", "12th Science"], "topScore": 93, "scoreDisplay": "93/100 Physics & Maths", "marks": {"Physics": 93, "Maths": 93, "Chemistry": 87}, "ranks": {"Physics": 6, "Maths": 2, "Chemistry": 12}, "exam": "12th Science Board Examination"},
+  {"id": "std-2526-meet-mojidra", "name": "Meet Mojidra", "imagePath": "/Converted Student of 25-26/Physics/Meet Mojidra.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "Chemistry", "12th Science"], "topScore": 93, "scoreDisplay": "93/100 Physics & 80/100 Chem", "marks": {"Physics": 93, "Chemistry": 80}, "ranks": {"Physics": 7}, "exam": "12th Science Board Examination"},
+  {"id": "std-2526-diya-patel", "name": "Diya Patel", "imagePath": "/Converted Student of 25-26/Chemistry/Diya Patel.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Chemistry", "12th Science"], "topScore": 92, "scoreDisplay": "92/100 Chemistry (Rank 2)", "marks": {"Chemistry": 92}, "ranks": {"Chemistry": 2}, "exam": "12th Science Board Examination"},
+  {"id": "std-2526-hanna-pathan", "name": "Hanna Pathan", "imagePath": "/Converted Student of 25-26/Physics/hanna Pathan.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "Chemistry", "12th Science"], "topScore": 92, "scoreDisplay": "92/100 Physics (Rank 9)", "marks": {"Physics": 92, "Chemistry": 86}, "ranks": {"Physics": 9, "Chemistry": 13}, "exam": "12th Science Board Examination"},
+  {"id": "std-2526-helly-patel", "name": "Helly Patel", "imagePath": "/Converted Student of 25-26/Maths/Helly Patel.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Maths", "12th Science"], "topScore": 92, "scoreDisplay": "92/100 Maths (Rank 5)", "marks": {"Maths": 92}, "ranks": {"Maths": 5}, "exam": "12th Science Board Examination"},
+  {"id": "std-2526-prathana-shah", "name": "Prathana Shah", "imagePath": "/Converted Student of 25-26/Physics/Prathana Shah.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "Maths", "12th Science"], "topScore": 92, "scoreDisplay": "92/100 Physics & Maths", "marks": {"Physics": 92, "Maths": 92}, "ranks": {"Physics": 10, "Maths": 6}, "exam": "12th Science Board Examination"},
+  {"id": "std-2526-srusti-soni", "name": "Srusti Soni", "imagePath": "/Converted Student of 25-26/Physics/Srusti Soni.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "Maths", "12th Science"], "topScore": 92, "scoreDisplay": "92/100 Physics (Rank 8)", "marks": {"Physics": 92, "Maths": 86}, "ranks": {"Physics": 8, "Maths": 12}, "exam": "12th Science Board Examination"},
+  {"id": "std-2526-shena-mistry", "name": "Shena Mistry", "imagePath": "/Converted Student of 25-26/Physics/Shena Mistry.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "Chemistry", "Maths", "12th Science"], "topScore": 91, "scoreDisplay": "91/100 Physics (Rank 11)", "marks": {"Physics": 91, "Chemistry": 86, "Maths": 86}, "ranks": {"Physics": 11, "Chemistry": 16, "Maths": 11}, "exam": "12th Science Board Examination"},
+  {"id": "std-2526-dhyana-chavda", "name": "Dhyana Chavda", "imagePath": "/Converted Student of 25-26/Biology/Dhyana Chavda.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Biology", "Chemistry", "Physics", "12th Science"], "topScore": 90, "scoreDisplay": "90/100 Biology (Rank 3)", "marks": {"Biology": 90, "Chemistry": 86, "Physics": 84}, "ranks": {"Biology": 3, "Chemistry": 15, "Physics": 24}, "exam": "12th Science Board Examination"},
+  {"id": "std-2526-riya-prajapati", "name": "Riya Prajapati", "imagePath": "/Converted Student of 25-26/Physics/Riya Prajapati.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "Maths", "12th Science"], "topScore": 90, "scoreDisplay": "90/100 Physics (Rank 13)", "marks": {"Physics": 90, "Maths": 85}, "ranks": {"Physics": 13, "Maths": 13}, "exam": "12th Science Board Examination"},
+  {"id": "std-2526-tirth-jirawala", "name": "Tirth Jirawala", "imagePath": "/Converted Student of 25-26/Maths/Tirth Jirawala.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Maths", "12th Science"], "topScore": 90, "scoreDisplay": "90/100 Maths (Rank 8)", "marks": {"Maths": 90}, "ranks": {"Maths": 8}, "exam": "12th Science Board Examination"},
+  {"id": "std-2526-raj-bhavsar", "name": "Raj Bhavsar", "imagePath": "/Converted Student of 25-26/Biology/Raj Bhavsar.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Biology", "Chemistry", "12th Science"], "topScore": 89, "scoreDisplay": "89/100 Biology (Rank 4)", "marks": {"Biology": 89, "Chemistry": 87}, "ranks": {"Biology": 4, "Chemistry": 11}, "exam": "12th Science Board Examination"},
+  {"id": "std-2526-divyaesh-rana", "name": "Divyaesh Rana", "imagePath": "/Converted Student of 25-26/Physics/Divyaesh Rana.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "12th Science"], "topScore": 88, "scoreDisplay": "88/100 Physics (Rank 14)", "marks": {"Physics": 88}, "ranks": {"Physics": 14}, "exam": "12th Science Board Examination"},
+  {"id": "std-2526-divyaraj-rathod", "name": "Divyaraj Rathod", "imagePath": "/Converted Student of 25-26/Chemistry/Divyaraj Rathod.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Chemistry", "Maths", "Physics", "12th Science"], "topScore": 88, "scoreDisplay": "88/100 Chem & Maths", "marks": {"Chemistry": 88, "Maths": 88, "Physics": 81}, "ranks": {"Chemistry": 9, "Maths": 10, "Physics": 28}, "exam": "12th Science Board Examination"},
+  {"id": "std-2526-jahanvi-agarwal", "name": "Jahanvi Agarwal", "imagePath": "/Converted Student of 25-26/Biology/Jahanvi Agarwal.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Biology", "12th Science"], "topScore": 88, "scoreDisplay": "88/100 Biology (Rank 6)", "marks": {"Biology": 88}, "ranks": {"Biology": 6}, "exam": "12th Science Board Examination"},
+  {"id": "std-2526-shlok-maurya", "name": "Shlok Maurya", "imagePath": "/Converted Student of 25-26/Physics/Shlok Maurya.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "12th Science"], "topScore": 87, "scoreDisplay": "87/100 Physics (Rank 16)", "marks": {"Physics": 87}, "ranks": {"Physics": 16}, "exam": "12th Science Board Examination"},
+  {"id": "std-2526-dhvani-prajapati", "name": "Dhvani Prajapati", "imagePath": "/Converted Student of 25-26/Physics/Dhvani Prajapati.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "Biology", "12th Science"], "topScore": 86, "scoreDisplay": "86/100 Physics & 79/100 Bio", "marks": {"Physics": 86, "Biology": 79}, "ranks": {"Physics": 18}, "exam": "12th Science Board Examination"},
+  {"id": "std-2526-hitanshi-khalas", "name": "Hitanshi Khalas", "imagePath": "/Converted Student of 25-26/Biology/Hitanshi Khalas.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Chemistry", "Biology", "12th Science"], "topScore": 85, "scoreDisplay": "85/100 Chemistry & 84/100 Bio", "marks": {"Chemistry": 85, "Biology": 84}, "ranks": {"Chemistry": 17, "Biology": 7}, "exam": "12th Science Board Examination"},
+  {"id": "std-2526-bhavy-prajapati", "name": "Bhavy Prajapati", "imagePath": "/Converted Student of 25-26/Physics/Bhavy Prajapati.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "Maths", "12th Science"], "topScore": 84, "scoreDisplay": "84/100 Physics (Rank 20)", "marks": {"Physics": 84, "Maths": 83}, "ranks": {"Physics": 20, "Maths": 15}, "exam": "12th Science Board Examination"},
+  {"id": "std-2526-kanan-solanki", "name": "Kanan Solanki", "imagePath": "/Converted Student of 25-26/Physics/Kanan Solanki.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "Maths", "12th Science"], "topScore": 84, "scoreDisplay": "84/100 Physics (Rank 21)", "marks": {"Physics": 84, "Maths": 82}, "ranks": {"Physics": 21, "Maths": 16}, "exam": "12th Science Board Examination"},
+  {"id": "std-2526-kasak-prajapati", "name": "Kasak Prajapati", "imagePath": "/Converted Student of 25-26/Physics/Kasak Prajapati.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "Biology", "12th Science"], "topScore": 84, "scoreDisplay": "84/100 Physics & 79/100 Bio", "marks": {"Physics": 84, "Biology": 79}, "ranks": {"Physics": 22}, "exam": "12th Science Board Examination"},
+  {"id": "std-2526-falgun-patel", "name": "Falgun Patel", "imagePath": "/Converted Student of 25-26/Maths/Falgun Patel.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "Maths", "12th Science"], "topScore": 83, "scoreDisplay": "83/100 Maths (Rank 14)", "marks": {"Maths": 83, "Physics": 81}, "ranks": {"Maths": 14, "Physics": 29}, "exam": "12th Science Board Examination"},
+  {"id": "std-2526-ayushi-mishra", "name": "Ayushi Mishra", "imagePath": "/Converted Student of 25-26/Physics/Ayushi Mishra.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "12th Science"], "topScore": 81, "scoreDisplay": "81/100 Physics (Rank 30)", "marks": {"Physics": 81}, "ranks": {"Physics": 30}, "exam": "12th Science Board Examination"},
 
-  // ── 2024-25 - Std. 10th Board Toppers (Brochure 23X33 & 8_9_!0 Results) ──
-  { "id": "std-luv-advani", "name": "Luv Advani", "imagePath": "/student/converted/Luv Advani.png", "grade": "Std. 10th Board", "category": "10th Board", "year": "2024-25", "subjects": ["10th Board", "10th", "Foundation", "Maths", "Science"], "topScore": 100, "scoreDisplay": "99.56 PR GSEB 10th", "school": "Nelson's Uttam Nagar", "marks": { "Maths": 97, "Science": 100, "Social Science": 99, "English": 91 }, "ranks": { "Science": 1 }, "exam": "10th GSEB State Top Ranker (99.56 PR)" },
-  { "id": "std-vruddhi-brahmakar", "name": "Vruddhi Brahmakar", "imagePath": "/student/converted/Vruddhi Brahmakar.png", "grade": "Std. 10th Board", "category": "10th Board", "year": "2024-25", "subjects": ["10th Board", "10th", "Foundation", "Maths", "Science"], "topScore": 100, "scoreDisplay": "99.36 PR GSEB 10th", "school": "Nelson's Punit Ashram", "marks": { "Maths": 96, "Science": 100, "Social Science": 100, "English": 88 }, "ranks": { "Science": 1, "Social Science": 1 }, "exam": "10th GSEB State Merit (99.36 PR)" },
-  { "id": "std-ferin-mistry", "name": "Ferin Mistry", "imagePath": "/student/converted/Ferin Mistry.png", "grade": "Std. 10th Board", "category": "10th Board", "year": "2024-25", "subjects": ["10th Board", "10th", "Foundation", "Maths", "Science"], "topScore": 99, "scoreDisplay": "99.28 PR GSEB 10th", "school": "Saint Blaze", "marks": { "Maths": 96, "Science": 99, "Social Science": 95, "English": 92 }, "exam": "10th GSEB State Merit (99.28 PR)" },
-  { "id": "std-01", "name": "Darshil Bhati", "imagePath": "/student/converted/Darshil Bhati.png", "grade": "Std. 10th Board", "category": "10th Board", "year": "2024-25", "subjects": ["10th Board", "10th", "Foundation"], "topScore": 99, "scoreDisplay": "98.62%ile GSEB 10th", "school": "Best High School", "exam": "Std. 10th Gujarat Board Topper" },
-  { "id": "std-02", "name": "Priyanshu Prajapati", "imagePath": "/student/converted/Priyanshu Prajapati.png", "grade": "Std. 10th Board", "category": "10th Board", "year": "2024-25", "subjects": ["10th Board", "10th", "Foundation"], "topScore": 98, "scoreDisplay": "98.31%ile GSEB 10th", "school": "Divine Buds School", "exam": "Std. 10th Gujarat Board Topper" },
-  { "id": "std-preksha-patel", "name": "Preksha Patel", "grade": "Std. 10th Board", "category": "10th Board", "year": "2024-25", "subjects": ["10th Board", "10th", "Foundation"], "topScore": 97, "scoreDisplay": "97.27%ile GSEB 10th", "school": "Devasya International", "exam": "10th Gujarat Board Results 2024-25" },
-  { "id": "std-rethika-mudaliar", "name": "Rethika Mudaliar", "imagePath": "/student/converted/Rethika Mudaliar.png", "grade": "Std. 10th Board", "category": "10th Board", "year": "2024-25", "subjects": ["10th Board", "10th", "Foundation", "Maths", "Science"], "topScore": 97, "scoreDisplay": "97.49 PR GSEB 10th", "school": "Nelson's Punit Ashram", "marks": { "Maths": 97, "Science": 95, "Social Science": 95, "English": 86 }, "exam": "10th GSEB High Achiever (97.49 PR)" },
-  { "id": "std-vansh-brahmakar", "name": "Vansh Brahmakar", "imagePath": "/student/converted/Vansh Brahmakar.png", "grade": "Std. 10th Board", "category": "10th Board", "year": "2024-25", "subjects": ["10th Board", "10th", "Foundation", "Maths", "Science"], "topScore": 99, "scoreDisplay": "97.08 PR GSEB 10th", "school": "Nelson's Punit Ashram", "marks": { "Maths": 93, "Science": 98, "Social Science": 99, "English": 85 }, "exam": "10th GSEB High Achiever (97.08 PR)" },
-  { "id": "std-03", "name": "Dwij Tripathi", "imagePath": "/student/converted/Dwij Tripathi.png", "grade": "Std. 10th Board", "category": "10th Board", "year": "2024-25", "subjects": ["10th Board", "10th", "Foundation"], "topScore": 97, "scoreDisplay": "96.63%ile GSEB 10th", "school": "DIPS School", "exam": "Std. 10th Gujarat Board Topper" },
-  { "id": "std-sayaan-shaikh", "name": "Sayaan Shaikh", "grade": "Std. 10th Board", "category": "10th Board", "year": "2024-25", "subjects": ["10th Board", "10th", "Foundation"], "topScore": 96, "scoreDisplay": "96.35%ile GSEB 10th", "school": "Best High School", "exam": "10th Gujarat Board Results 2024-25" },
-  { "id": "top-jaival-vora", "name": "Jaival Vora", "imagePath": "/student/converted/Jaival Vora.png", "grade": "Std. 10th Board", "category": "10th Board", "year": "2024-25", "subjects": ["10th Board", "10th", "Foundation"], "topScore": 96, "scoreDisplay": "96.34%ile GSEB 10th", "school": "Best High School", "exam": "10th Gujarat Board Topper" },
-  { "id": "std-prathmesh", "name": "Prathmesh Kanthariya", "grade": "Std. 10th Board", "category": "10th Board", "year": "2024-25", "subjects": ["10th Board", "10th", "Foundation"], "topScore": 95, "scoreDisplay": "95.19%ile GSEB 10th", "school": "Best High School", "exam": "10th Gujarat Board Results 2024-25" },
-  { "id": "std-umang-yadav", "name": "Umang Yadav", "imagePath": "/student/converted/Umang Yadav.png", "grade": "Std. 10th Board", "category": "10th Board", "year": "2024-25", "subjects": ["10th Board", "10th", "Foundation", "Maths", "Science"], "topScore": 95, "scoreDisplay": "94.78 PR GSEB 10th", "school": "Vedant Public", "marks": { "Maths": 92, "Science": 94, "Social Science": 95, "English": 80 }, "exam": "10th GSEB Achiever (94.78 PR)" },
-  { "id": "std-devansh", "name": "Devansh Gajjar", "grade": "Std. 10th Board", "category": "10th Board", "year": "2024-25", "subjects": ["10th Board", "10th", "Foundation"], "topScore": 94, "scoreDisplay": "94.40%ile GSEB 10th", "school": "Divine Buds", "exam": "10th Gujarat Board Results 2024-25" },
-  { "id": "std-taksh", "name": "Taksh Shah", "grade": "Std. 10th Board", "category": "10th Board", "year": "2024-25", "subjects": ["10th Board", "10th", "Foundation"], "topScore": 94, "scoreDisplay": "94.40%ile GSEB 10th", "school": "PBD Joshi High School", "exam": "10th Gujarat Board Results 2024-25" },
-  { "id": "std-kathan", "name": "Kathan Gajjar", "grade": "Std. 10th Board", "category": "10th Board", "year": "2024-25", "subjects": ["10th Board", "10th", "Foundation"], "topScore": 94, "scoreDisplay": "94.07%ile GSEB 10th", "school": "Divine Buds", "exam": "10th Gujarat Board Results 2024-25" },
-  { "id": "std-dhyani", "name": "Dhyani Prajapati", "grade": "Std. 10th Board", "category": "10th Board", "year": "2024-25", "subjects": ["10th Board", "10th", "Foundation"], "topScore": 93, "scoreDisplay": "93.24%ile GSEB 10th", "school": "Devasya International", "exam": "10th Gujarat Board Results 2024-25" },
-  { "id": "std-trusha", "name": "Trusha Panchal", "grade": "Std. 10th Board", "category": "10th Board", "year": "2024-25", "subjects": ["10th Board", "10th", "Foundation"], "topScore": 93, "scoreDisplay": "93.07%ile GSEB 10th", "school": "United Public School", "exam": "10th Gujarat Board Results 2024-25" },
-  { "id": "std-sanjay", "name": "Sanjay Koli", "grade": "Std. 10th Board", "category": "10th Board", "year": "2024-25", "subjects": ["10th Board", "10th", "Foundation"], "topScore": 93, "scoreDisplay": "92.89%ile GSEB 10th", "school": "Arpan School", "exam": "10th Gujarat Board Results 2024-25" },
-  { "id": "std-arkaan", "name": "Arkaan Patel", "grade": "Std. 10th Board", "category": "10th Board", "year": "2024-25", "subjects": ["10th Board", "10th", "Foundation"], "topScore": 91, "scoreDisplay": "91.43%ile GSEB 10th", "school": "DIPS", "exam": "10th Gujarat Board Results 2024-25" },
-  { "id": "std-rishika", "name": "Rishika Desai", "grade": "Std. 10th Board", "category": "10th Board", "year": "2024-25", "subjects": ["10th Board", "10th", "Foundation"], "topScore": 91, "scoreDisplay": "91.06%ile GSEB 10th", "school": "Devysya International", "exam": "10th Gujarat Board Results 2024-25" },
-  { "id": "std-rudra-patel", "name": "Rudra Patel", "grade": "Std. 10th Board", "category": "10th Board", "year": "2024-25", "subjects": ["10th Board", "10th", "Foundation"], "topScore": 90, "scoreDisplay": "90.07%ile GSEB 10th", "school": "Devasya International", "exam": "10th Gujarat Board Results 2024-25" },
-  { "id": "std-10", "name": "Hetsi Pitroda", "imagePath": "/student/converted/Hetsi Pitroda.png", "grade": "Std. 10th Board", "category": "10th Board", "year": "2024-25", "subjects": ["10th Board", "10th", "Foundation"], "topScore": 96, "scoreDisplay": "89.40% CBSE 10th", "school": "Divine Gurukulam", "exam": "Std. 10th Central Board Topper (89.40%)" },
-  { "id": "std-07", "name": "Kavya Patel", "imagePath": "/student/converted/Kavya Patel.png", "grade": "Std. 10th Board", "category": "10th Board", "year": "2024-25", "subjects": ["10th Board", "10th", "Foundation"], "topScore": 96, "scoreDisplay": "89.40% CBSE 10th", "school": "Divine Gurukulam", "exam": "Std. 10th Central Board Topper (89.40%)" },
-  { "id": "std-abhishek", "name": "Abhishek Kushawah", "grade": "Std. 10th Board", "category": "10th Board", "year": "2024-25", "subjects": ["10th Board", "10th", "Foundation"], "topScore": 85, "scoreDisplay": "84.50% CBSE 10th", "school": "Adani Vidyalaya", "exam": "Std. 10th Central Board Results" },
+  // ══════════════════════════════════════════════════════════
+  // ── 2024-25 BATCH ACHIEVERS (Individual Converted Popouts) ──
+  // ══════════════════════════════════════════════════════════
 
-  // ── 2024-25 - Std. 9th Standard Results (Brochure 23X33 & Official Stars) ──
-  { "id": "std-dhruti-panchal", "name": "Dhruti Panchal", "imagePath": "/student/converted/Dhruti Panchal.png", "grade": "Std. 9th Class", "category": "9th Foundation", "year": "2024-25", "subjects": ["9th Foundation", "9th", "Foundation"], "topScore": 96, "scoreDisplay": "96.25% GSEB 9th", "school": "Hebron School GSEB", "exam": "Std. 9th GSEB Topper (96.25%)" },
-  { "id": "std-luv-9th", "name": "Luv Advani", "imagePath": "/student/converted/Luv Advani.png", "grade": "Std. 9th Class", "category": "9th Foundation", "year": "2024-25", "subjects": ["9th Foundation", "9th", "Foundation"], "topScore": 88, "scoreDisplay": "87.50% GSEB 9th", "school": "Nelson School GSEB", "exam": "Std. 9th GSEB Achiever (87.50%)" },
-  { "id": "std-yashvi-patel", "name": "Yashvi Patel", "grade": "Std. 9th Class", "category": "9th Foundation", "year": "2024-25", "subjects": ["9th Foundation", "9th", "Foundation"], "topScore": 86, "scoreDisplay": "86.25% GSEB 9th", "school": "Arpan International School GSEB", "exam": "Std. 9th GSEB Achiever (86.25%)" },
+  // ── 2024-25 - Std. 12th Science: Physics Champions ──
+  { "id": "std-2425-smit-parikh", "name": "Smit Parikh", "imagePath": "/Converted Student of 24-25/2024-25 Physics/Smit Parikh.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["Physics", "JEE", "JEE Main", "12th Science"], "topScore": 97, "scoreDisplay": "97/100 Physics & 99.38%tile JEE", "marks": { "Physics": 97 }, "exam": "12th Science Board & JEE Main Star" },
+  { "id": "std-2425-ayaz-malek", "name": "Ayaz Malek", "imagePath": "/Converted Student of 24-25/2024-25 Physics/Ayaz Malek.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["Physics", "12th Science"], "topScore": 95, "scoreDisplay": "95/100 Physics", "marks": { "Physics": 95 }, "exam": "12th Science Board Examination" },
+  { "id": "std-2425-shivam-bhatt", "name": "Shivam Bhatt", "imagePath": "/Converted Student of 24-25/2024-25 Physics/Shivam Bhatt.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["Physics", "JEE", "JEE Main", "12th Science"], "topScore": 95, "scoreDisplay": "95/100 Physics & 98.85%tile JEE", "marks": { "Physics": 95 }, "exam": "12th Science Board & JEE Main" },
+  { "id": "std-2425-yug-mistry", "name": "Yug Mistry", "imagePath": "/Converted Student of 24-25/2024-25 Physics/Yug Mistry.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["Physics", "12th Science"], "topScore": 90, "scoreDisplay": "90/100 Physics", "marks": { "Physics": 90 }, "exam": "12th Science Board Examination" },
+  { "id": "std-2425-nil-solanki", "name": "Nil Solanki", "imagePath": "/Converted Student of 24-25/2024-25 Physics/Nil Solanki.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["Physics", "12th Science"], "topScore": 87, "scoreDisplay": "87/100 Physics", "marks": { "Physics": 87 }, "exam": "12th Science Board Examination" },
+  { "id": "std-2425-krisha-vora", "name": "Krisha Vora", "imagePath": "/Converted Student of 24-25/2024-25 Physics/Krisha Vora.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["Physics", "JEE", "JEE Main", "12th Science"], "topScore": 86, "scoreDisplay": "86/100 Physics & 94.96%tile JEE", "marks": { "Physics": 86 }, "exam": "12th Science Board & JEE Main" },
 
-  // ── 2024-25 - Std. 8th GSEB Foundation Achievers (from Brochure 23X33 & 8_9_!0) ──
-  { "id": "std-navya-patel", "name": "Navya Patel", "grade": "Std. 8th Foundation", "category": "8th Foundation", "year": "2024-25", "subjects": ["8th Foundation", "8th", "Foundation"], "topScore": 99, "scoreDisplay": "99.25% GSEB 8th", "school": "Arpan School GSEB", "exam": "Std. 8th GSEB State Star Topper (99.25%)" },
-  { "id": "std-maahi-gupta", "name": "Maahi Gupta", "imagePath": "/student/converted/Maahi Gupta.png", "grade": "Std. 8th Foundation", "category": "8th Foundation", "year": "2024-25", "subjects": ["8th Foundation", "8th", "Foundation", "Maths", "Science"], "topScore": 100, "scoreDisplay": "96.40% • 1st Rank in School", "school": "Subharati Primary School", "marks": { "Maths": 96, "Science": 100, "Social Science": 99, "English": 92 }, "ranks": { "Science": 1 }, "exam": "1st Rank in School • 96.40% (GSEB 8th)" },
-  { "id": "std-archi-panchal", "name": "Archi Panchal", "grade": "Std. 8th Foundation", "category": "8th Foundation", "year": "2024-25", "subjects": ["8th Foundation", "8th", "Foundation"], "topScore": 95, "scoreDisplay": "95.25% GSEB 8th", "school": "Arpan School GSEB", "exam": "Std. 8th GSEB Results" },
-  { "id": "std-meet-gupta", "name": "Meet Gupta", "imagePath": "/student/converted/Meet Gupta.png", "grade": "Std. 8th Foundation", "category": "8th Foundation", "year": "2024-25", "subjects": ["8th Foundation", "8th", "Foundation", "Maths", "Science"], "topScore": 98, "scoreDisplay": "95.20% GSEB 8th", "school": "Subharati Primary School", "marks": { "Maths": 97, "Science": 98, "Social Science": 96, "English Text": 94, "English GMR": 91 }, "exam": "Std. 8th GSEB Star Topper (95.20%)" },
-  { "id": "std-creena-mecwan", "name": "Creena Mecwan", "grade": "Std. 8th Foundation", "category": "8th Foundation", "year": "2024-25", "subjects": ["8th Foundation", "8th", "Foundation"], "topScore": 94, "scoreDisplay": "94.29% ICSE 8th", "school": "Seventh Day ICSE", "exam": "Std. 8th ICSE Results" },
-  { "id": "std-vishwa-gajjar", "name": "Vishwa Gajjar", "grade": "Std. 8th Foundation", "category": "8th Foundation", "year": "2024-25", "subjects": ["8th Foundation", "8th", "Foundation"], "topScore": 94, "scoreDisplay": "94.25% GSEB 8th", "school": "Divine Buds GSEB", "exam": "Std. 8th GSEB Results" },
-  { "id": "std-ishita-khambadkar", "name": "Ishita Khambadkar", "imagePath": "/student/converted/Ishita khambadkar.png", "grade": "Std. 8th Foundation", "category": "8th Foundation", "year": "2024-25", "subjects": ["8th Foundation", "8th", "Foundation", "Maths", "Science"], "topScore": 99, "scoreDisplay": "94.40% GSEB 8th", "school": "Subharati Primary School", "marks": { "Maths": 95, "Science": 99, "Social Science": 96, "English Text": 94, "English GMR": 88 }, "exam": "Std. 8th GSEB Topper (94.40%)" },
-  { "id": "std-bhavya-agrawal", "name": "Bhavya Agrawal", "imagePath": "/student/converted/Bhavya Agrawal.png", "grade": "Std. 8th Foundation", "category": "8th Foundation", "year": "2024-25", "subjects": ["8th Foundation", "8th", "Foundation", "Maths", "Science"], "topScore": 97, "scoreDisplay": "94.00% GSEB 8th", "school": "Subharati Primary School", "marks": { "Maths": 97, "Science": 96, "Social Science": 96, "English Text": 92, "English GMR": 89 }, "exam": "Std. 8th GSEB Topper (94.00%)" },
-  { "id": "std-sisel", "name": "Sisel Christain", "grade": "Std. 8th Foundation", "category": "8th Foundation", "year": "2024-25", "subjects": ["8th Foundation", "8th", "Foundation"], "topScore": 92, "scoreDisplay": "92.00% ICSE 8th", "school": "Seventh Day ICSE", "exam": "Std. 8th ICSE Results" },
-  { "id": "std-karsh-gajjar", "name": "Karsh Gajjar", "imagePath": "/student/converted/Karsh Gajjar.png", "grade": "Std. 8th Foundation", "category": "8th Foundation", "year": "2024-25", "subjects": ["8th Foundation", "8th", "Foundation", "Maths", "Science"], "topScore": 94, "scoreDisplay": "91.40% GSEB 8th", "school": "Subharati Primary School", "marks": { "Maths": 94, "Science": 94, "Social Science": 90, "English Text": 89, "English GMR": 90 }, "exam": "Std. 8th GSEB Achiever (91.40%)" },
-  { "id": "std-caren", "name": "Caren Mecwan", "grade": "Std. 8th Foundation", "category": "8th Foundation", "year": "2024-25", "subjects": ["8th Foundation", "8th", "Foundation"], "topScore": 90, "scoreDisplay": "90.14% ICSE 8th", "school": "Seventh Day ICSE", "exam": "Std. 8th ICSE Results" },
-  { "id": "std-rishona", "name": "Rishona Mecwan", "grade": "Std. 8th Foundation", "category": "8th Foundation", "year": "2024-25", "subjects": ["8th Foundation", "8th", "Foundation"], "topScore": 90, "scoreDisplay": "89.75% GSEB 8th", "school": "Hebron School GSEB", "exam": "Std. 8th GSEB Results" },
-  { "id": "std-aksh-soni", "name": "Aksh Soni", "imagePath": "/student/converted/Aksh Soni.png", "grade": "Std. 8th Foundation", "category": "8th Foundation", "year": "2024-25", "subjects": ["8th Foundation", "8th", "Foundation", "Maths", "Science"], "topScore": 97, "scoreDisplay": "89.00% GSEB 8th", "school": "Divine Buds", "marks": { "Maths": 82, "Science": 97, "Social Science": 96, "English": 81 }, "exam": "Std. 8th GSEB Achiever (89.00%)" },
+  // ── 2024-25 - Std. 12th Science: Maths Champions ──
+  { "id": "std-2425-manshi-panchal", "name": "Manshi Panchal", "imagePath": "/Converted Student of 24-25/2024-25 Maths/Manshi Panchal.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["Maths", "12th Science"], "topScore": 99, "scoreDisplay": "99/100 Maths Topper", "marks": { "Maths": 99 }, "exam": "12th Science Mathematics Topper" },
+  { "id": "std-2425-daksh-prajapati", "name": "Daksh Prajapati", "imagePath": "/Converted Student of 24-25/2024-25 Maths/Daksh Prajapati.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["Maths", "12th Science"], "topScore": 97, "scoreDisplay": "97/100 Maths", "marks": { "Maths": 97 }, "exam": "12th Science Board Examination" },
+  { "id": "std-2425-saumya-shukal", "name": "Saumya Shukal", "imagePath": "/Converted Student of 24-25/2024-25 Maths/Saumya Shukal.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["Maths", "12th Science"], "topScore": 97, "scoreDisplay": "97/100 Maths", "marks": { "Maths": 97 }, "exam": "12th Science Board Examination" },
 
-  // ── 2024-25 - Std. 7th Standard Results (Brochure 23X33) ──
-  { "id": "std-vritika", "name": "Vritika Yadav", "grade": "Std. 7th Class", "category": "Foundation", "year": "2024-25", "subjects": ["Foundation", "7th"], "topScore": 88, "scoreDisplay": "88.44% CBSE 7th", "school": "Vedant International CBSE", "exam": "Std. 7th CBSE Results" },
-  { "id": "std-jeel-patel", "name": "Jeel Patel", "grade": "Std. 7th Class", "category": "Foundation", "year": "2024-25", "subjects": ["Foundation", "7th"], "topScore": 83, "scoreDisplay": "82.75% GSEB 7th", "school": "Nelson School GSEB", "exam": "Std. 7th GSEB Results" },
+  // ── 2024-25 - Std. 12th Science: Chemistry Champions ──
+  { "id": "std-2425-krisha-vaghela", "name": "Krisha Vaghela", "imagePath": "/Converted Student of 24-25/2024-25 Chemistry/Krisha Vaghela.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["Chemistry", "12th Science"], "topScore": 100, "scoreDisplay": "100/100 Perfect Chemistry", "marks": { "Chemistry": 100 }, "exam": "12th Science Perfect Score (100/100)" },
+  { "id": "std-2425-mann-desai", "name": "Mann Desai", "imagePath": "/Converted Student of 24-25/2024-25 Chemistry/Mann Desai.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["Chemistry", "12th Science"], "topScore": 98, "scoreDisplay": "98/100 Chemistry", "marks": { "Chemistry": 98 }, "exam": "12th Science Board Examination" },
+  { "id": "std-2425-saloni-vaghela", "name": "Saloni Vaghela", "imagePath": "/Converted Student of 24-25/2024-25 Chemistry/Saloni Vaghela.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["Chemistry", "12th Science"], "topScore": 98, "scoreDisplay": "98/100 Chemistry", "marks": { "Chemistry": 98 }, "exam": "12th Science Board Examination" },
+  { "id": "std-2425-kaushal-yadav", "name": "Kaushal Yadav", "imagePath": "/Converted Student of 24-25/2024-25 Chemistry/Kaushal Yadav.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["Chemistry", "12th Science"], "topScore": 96, "scoreDisplay": "96/100 Chemistry", "marks": { "Chemistry": 96 }, "exam": "12th Science Board Examination" },
+  { "id": "std-2425-rishabh-rajput", "name": "Rishabh Rajput", "imagePath": "/Converted Student of 24-25/2024-25 Chemistry/Rishabh Rajput.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["Chemistry", "12th Science"], "topScore": 96, "scoreDisplay": "96/100 Chemistry", "marks": { "Chemistry": 96 }, "exam": "12th Science Board Examination" },
 
-  // ── 2024-25 - Std. 12th Science (4 JEE Toppers, 4 NEET Toppers & Subject Toppers) ──
-  // 4 JEE Main Toppers (from official brochure)
-  { "id": "top-smit-parikh", "name": "Smit Parikh", "imagePath": "/student/converted/Smit Parikh.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["JEE Main", "Physics", "12th Science"], "topScore": 99.38, "scoreDisplay": "99.38%ile JEE Main", "marks": { "Physics": 97 }, "ranks": { "Physics": 1 }, "exam": "JEE Main 99.38%ile & 12th Science Physics Topper" },
-  { "id": "top-keval-dholakiya", "name": "Keval Dholakiya", "imagePath": "/student/converted/Keval Dholakiya.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["JEE Main", "12th Science"], "topScore": 99.28, "scoreDisplay": "99.28%ile JEE Main", "exam": "JEE Main State High Ranker" },
-  { "id": "top-shivam-bhatt", "name": "Shivam Bhatt", "imagePath": "/student/converted/Shivam Bhatt.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["JEE Main", "Maths", "Physics", "12th Science"], "topScore": 98.85, "scoreDisplay": "98.85%ile JEE Main", "marks": { "Physics": 95 }, "exam": "JEE Main High Scorer (Phy 95/100)" },
-  { "id": "top-krisha-vora", "name": "Krisha Vora", "imagePath": "/student/converted/Krisha Vora.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["JEE Main", "Physics", "12th Science"], "topScore": 94.96, "scoreDisplay": "94.96%ile JEE Main", "marks": { "Physics": 86 }, "exam": "JEE Main Star & Board Physics Topper" },
+  // ── 2024-25 - Std. 12th Science: Biology Champions ──
+  { "id": "std-2425-happy-parmar", "name": "Happy Parmar", "imagePath": "/Converted Student of 24-25/2024-25 Biology/Happy Parmar.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["Biology", "12th Science"], "topScore": 95, "scoreDisplay": "95/100 Biology", "marks": { "Biology": 95 }, "exam": "12th Science Board Examination" },
+  { "id": "std-2425-jaimini-patel", "name": "Jaimini Patel", "imagePath": "/Converted Student of 24-25/2024-25 Biology/Jamini Patel.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["Biology", "12th Science"], "topScore": 94, "scoreDisplay": "94/100 Biology", "marks": { "Biology": 94 }, "exam": "12th Science Board Examination" },
+  { "id": "std-2425-meet-patel", "name": "Meet Patel", "imagePath": "/Converted Student of 24-25/2024-25 Biology/Meet Patel.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["Biology", "12th Science"], "topScore": 90, "scoreDisplay": "90/100 Biology", "marks": { "Biology": 90 }, "exam": "12th Science Board Examination" },
+  { "id": "std-2425-shrut-italia", "name": "Shrut Italia", "imagePath": "/Converted Student of 24-25/2024-25 Biology/Shrut Italia.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["Biology", "NEET", "NEET UG", "12th Science"], "topScore": 90, "scoreDisplay": "90/100 Biology & 475/720 NEET", "marks": { "Biology": 90 }, "exam": "12th Science Board & NEET UG" },
 
-  // 4 NEET UG Toppers (from official brochure)
-  { "id": "top-ved-pandit", "name": "Ved Pandit", "imagePath": "/student/converted/Ved Pandit.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["NEET UG", "Biology", "12th Science"], "topScore": 645, "scoreDisplay": "645/720 NEET UG", "exam": "NEET UG High Scorer (645/720)" },
-  { "id": "top-dhairya-sheth", "name": "Dhairya Sheth", "imagePath": "/student/converted/Dhairya Sheth.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["NEET UG", "Biology", "12th Science"], "topScore": 645, "scoreDisplay": "645/720 NEET UG", "exam": "NEET UG High Scorer (645/720)" },
-  { "id": "top-nakshatra-shah", "name": "Nakshatra Shah", "imagePath": "/student/converted/Nakshatra Shah.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["NEET UG", "Biology", "12th Science"], "topScore": 575, "scoreDisplay": "575/720 NEET UG", "exam": "NEET UG Medical Qualifier" },
-  { "id": "top-shrut-italia", "name": "Shrut Italia", "imagePath": "/student/converted/Shrut Italia.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["NEET UG", "Biology", "12th Science"], "topScore": 475, "scoreDisplay": "475/720 NEET UG", "marks": { "Biology": 90 }, "exam": "NEET UG Qualifier & Bio 90/100" },
+  // ── 2024-25 - JEE Main Rankers ──
+  { "id": "std-2425-keval-dholakiya-jee", "name": "Keval Dholakiya", "imagePath": "/Converted Student of 24-25/2024-25 JEE AND NEEt/Keval Dholakiya JEE.png", "grade": "Std. 12th Science", "category": "JEE", "year": "2024-25", "subjects": ["JEE", "JEE Main", "12th Science"], "topScore": 99, "scoreDisplay": "99.28 %tile JEE Main", "exam": "JEE Main 2024-25 High Scorer" },
 
-  // 12th Science Board Subject Champions
-  { "id": "std-17", "name": "Manshi Panchal", "imagePath": "/student/converted/Manshi Panchal.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["Maths", "12th Science"], "topScore": 99, "scoreDisplay": "99/100 Maths Topper", "marks": { "Maths": 99 }, "ranks": { "Maths": 1 }, "exam": "12th Science Mathematics Topper" },
-  { "id": "top-khushi", "name": "Khushi Amin", "imagePath": "/student/converted/Khushi Amin.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["Biology", "12th Science"], "topScore": 98, "scoreDisplay": "98/100 Bio Topper", "marks": { "Biology": 98 }, "ranks": { "Biology": 1 }, "exam": "12th Science Biology Topper" },
-  { "id": "top-aneri", "name": "Aneri Prajapati", "imagePath": "/student/converted/Aneri Prajapati.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2024-25", "subjects": ["Chemistry", "12th Science"], "topScore": 90, "scoreDisplay": "90/100 Chem Topper", "marks": { "Chemistry": 90 }, "ranks": { "Chemistry": 1 }, "exam": "12th Science Chemistry Topper" },
+  // ── 2024-25 - NEET UG Rankers ──
+  { "id": "std-2425-ved-pandit-neet", "name": "Ved Pandit", "imagePath": "/Converted Student of 24-25/2024-25 JEE AND NEEt/Ved Pandit NEET.png", "grade": "Std. 12th Science", "category": "NEET", "year": "2024-25", "subjects": ["NEET", "NEET UG", "12th Science"], "topScore": 95, "scoreDisplay": "645/720 NEET UG", "exam": "NEET UG High Scorer (645/720)" },
+  { "id": "std-2425-dhairya-sheth-neet", "name": "Dhairya Sheth", "imagePath": "/Converted Student of 24-25/2024-25 JEE AND NEEt/Dharya Seth NEET.png", "grade": "Std. 12th Science", "category": "NEET", "year": "2024-25", "subjects": ["NEET", "NEET UG", "12th Science"], "topScore": 95, "scoreDisplay": "645/720 NEET UG", "exam": "NEET UG High Scorer (645/720)" },
+  { "id": "std-2425-nakshatra-shah-neet", "name": "Nakshatra Shah", "imagePath": "/Converted Student of 24-25/2024-25 JEE AND NEEt/Nakshata Shah NEET.png", "grade": "Std. 12th Science", "category": "NEET", "year": "2024-25", "subjects": ["NEET", "NEET UG", "12th Science"], "topScore": 90, "scoreDisplay": "575/720 NEET UG", "exam": "NEET UG Achiever (575/720)" },
+
+  // ── 2024-25 - Std. 10th GSEB Board ──
+  { "id": "std-2425-darshil-bhati", "name": "Darshil Bhati", "imagePath": "/Converted Student of 24-25/2024-25 10th Guj & Central/Darshil Bhati.png", "grade": "Std. 10th GSEB", "category": "10th Board", "year": "2024-25", "subjects": ["10th Board", "Foundation"], "topScore": 99, "scoreDisplay": "98.62 PR GSEB 10th", "school": "Best High School", "exam": "10th GSEB Board Topper (98.62 PR)" },
+  { "id": "std-2425-priyanshu-prajapati", "name": "Priyanshu Prajapati", "imagePath": "/Converted Student of 24-25/2024-25 10th Guj & Central/Priyanshu Prajapati.png", "grade": "Std. 10th GSEB", "category": "10th Board", "year": "2024-25", "subjects": ["10th Board", "Foundation"], "topScore": 98, "scoreDisplay": "98.31 PR GSEB 10th", "school": "Divine Buds School", "exam": "10th GSEB Board Topper (98.31 PR)" },
+  { "id": "std-2425-preksha-patel", "name": "Preksha Patel", "imagePath": "/Converted Student of 24-25/2024-25 10th Guj & Central/Preksha Patel.png", "grade": "Std. 10th GSEB", "category": "10th Board", "year": "2024-25", "subjects": ["10th Board", "Foundation"], "topScore": 97, "scoreDisplay": "97.27 PR GSEB 10th", "exam": "10th GSEB High Achiever (97.27 PR)" },
+  { "id": "std-2425-dwij-tripathi", "name": "Dwij Tripathi", "imagePath": "/Converted Student of 24-25/2024-25 10th Guj & Central/Dwij Tripathi.png", "grade": "Std. 10th GSEB", "category": "10th Board", "year": "2024-25", "subjects": ["10th Board", "Foundation"], "topScore": 97, "scoreDisplay": "96.63 PR GSEB 10th", "school": "Doon International / DPS", "exam": "10th GSEB High Achiever (96.63 PR)" },
+  { "id": "std-2425-sayaan-shaikh", "name": "Sayaan Shaikh", "imagePath": "/Converted Student of 24-25/2024-25 10th Guj & Central/Sayaan Shaikh.png", "grade": "Std. 10th GSEB", "category": "10th Board", "year": "2024-25", "subjects": ["10th Board", "Foundation"], "topScore": 96, "scoreDisplay": "96.35 PR GSEB 10th", "exam": "10th GSEB Board Achiever (96.35 PR)" },
+
+  // ── 2024-25 - Std. 10th Central Board ──
+  { "id": "std-2425-hetsi-pitroda", "name": "Hetsi Pitroda", "imagePath": "/Converted Student of 24-25/2024-25 10th Guj & Central/Hetsi Pitroda.png", "grade": "Std. 10th Central", "category": "10th Board", "year": "2024-25", "subjects": ["10th Board", "Foundation"], "topScore": 89, "scoreDisplay": "89.40% CBSE 10th", "school": "Divine Gurukulam", "exam": "10th Central Board Achiever (89.40%)" },
+  { "id": "std-2425-kavya-patel", "name": "Kavya Patel", "imagePath": "/Converted Student of 24-25/2024-25 10th Guj & Central/Kavya Patel.png", "grade": "Std. 10th Central", "category": "10th Board", "year": "2024-25", "subjects": ["10th Board", "Foundation"], "topScore": 89, "scoreDisplay": "89.40% CBSE 10th", "school": "Divine Gurukulam", "exam": "10th Central Board Achiever (89.40%)" },
+  { "id": "std-2425-abhishek-kushawah", "name": "Abhishek Kushawah", "imagePath": "/Converted Student of 24-25/2024-25 10th Guj & Central/Abhishek Kushawah.png", "grade": "Std. 10th Central", "category": "10th Board", "year": "2024-25", "subjects": ["10th Board", "Foundation"], "topScore": 85, "scoreDisplay": "84.50% CBSE 10th", "exam": "10th Central Board Achiever (84.50%)" },
+
+  // ── 2024-25 - Std. 9th Standard Foundation ──
+  { "id": "std-2425-dhruti-panchal", "name": "Dhruti Panchal", "imagePath": "/Converted Student of 24-25/2024-25 9th 8th 7th/Dhruti Panchal 9th.png", "grade": "Std. 9th Foundation", "category": "9th Foundation", "year": "2024-25", "subjects": ["9th Foundation", "Foundation"], "topScore": 96, "scoreDisplay": "96.25% (9th Std)", "school": "Hebron School GSEB", "exam": "Std. 9th Foundation Topper (96.25%)" },
+  { "id": "std-2425-luv-advani", "name": "Luv Advani", "imagePath": "/Converted Student of 24-25/2024-25 9th 8th 7th/Luv Adwani 9th.png", "grade": "Std. 9th Foundation", "category": "9th Foundation", "year": "2024-25", "subjects": ["9th Foundation", "Foundation"], "topScore": 88, "scoreDisplay": "87.50% (9th Std)", "exam": "Std. 9th Foundation Achiever (87.50%)" },
+  { "id": "std-2425-yashvi-patel", "name": "Yashvi Patel", "imagePath": "/Converted Student of 24-25/2024-25 9th 8th 7th/Yashvi Patel 9th.png", "grade": "Std. 9th Foundation", "category": "9th Foundation", "year": "2024-25", "subjects": ["9th Foundation", "Foundation"], "topScore": 86, "scoreDisplay": "86.25% (9th Std)", "school": "Arpan International School GSEB", "exam": "Std. 9th Foundation Achiever (86.25%)" },
+
+  // ── 2024-25 - Std. 8th Standard Foundation ──
+  { "id": "std-2425-navya-patel", "name": "Navya Patel", "imagePath": "/Converted Student of 24-25/2024-25 9th 8th 7th/Navya Patel 8th.png", "grade": "Std. 8th Foundation", "category": "8th Foundation", "year": "2024-25", "subjects": ["8th Foundation", "Foundation"], "topScore": 99, "scoreDisplay": "99.25% (8th Std Star)", "school": "Bright School", "exam": "Std. 8th Foundation Star (99.25%)" },
+  { "id": "std-2425-archi-panchal", "name": "Archi Panchal", "imagePath": "/Converted Student of 24-25/2024-25 9th 8th 7th/Archi Panchal 8th.png", "grade": "Std. 8th Foundation", "category": "8th Foundation", "year": "2024-25", "subjects": ["8th Foundation", "Foundation"], "topScore": 95, "scoreDisplay": "95.25% (8th Std)", "exam": "Std. 8th Foundation Topper (95.25%)" },
+  { "id": "std-2425-creena-mecwan", "name": "Creena Mecwan", "imagePath": "/Converted Student of 24-25/2024-25 9th 8th 7th/Creena Mecwan 8th.png", "grade": "Std. 8th Foundation", "category": "8th Foundation", "year": "2024-25", "subjects": ["8th Foundation", "Foundation"], "topScore": 94, "scoreDisplay": "94.29% (8th Std)", "exam": "Std. 8th Foundation Achiever (94.29%)" },
+
+  // ── 2024-25 - Std. 7th Standard Foundation ──
+  { "id": "std-2425-vritika-yadav", "name": "Vritika Yadav", "imagePath": "/Converted Student of 24-25/2024-25 9th 8th 7th/Vritiak Yadav 7th.png", "grade": "Std. 7th Foundation", "category": "Foundation", "year": "2024-25", "subjects": ["Foundation"], "topScore": 88, "scoreDisplay": "88.44% (7th Std)", "exam": "Std. 7th Foundation Achiever (88.44%)" },
+  { "id": "std-2425-ishita-khambadkar", "name": "Ishita Khambadkar", "imagePath": "/Converted Student of 24-25/2024-25 9th 8th 7th/Ishita Khambadkar 7th.png", "grade": "Std. 7th Foundation", "category": "Foundation", "year": "2024-25", "subjects": ["Foundation"], "topScore": 84, "scoreDisplay": "84.40% (7th Std)", "exam": "Std. 7th Foundation Achiever (84.40%)" },
+  { "id": "std-2425-jeel-patel", "name": "Jeel Patel", "imagePath": "/Converted Student of 24-25/2024-25 9th 8th 7th/Jeel Patel 7th.png", "grade": "Std. 7th Foundation", "category": "Foundation", "year": "2024-25", "subjects": ["Foundation"], "topScore": 83, "scoreDisplay": "82.75% (7th Std)", "exam": "Std. 7th Foundation Achiever (82.75%)" },
 ];
 
 export const subjectMeritRecords: Record<string, { rank: number; name: string; score: number }[]> = {
@@ -2233,6 +2211,16 @@ export const subjectMeritRecords: Record<string, { rank: number; name: string; s
       "rank": 8,
       "name": "AFFIYA SHAIKH",
       "score": 80
+    },
+    {
+      "rank": 9,
+      "name": "KASAK PRAJAPATI",
+      "score": 79
+    },
+    {
+      "rank": 9,
+      "name": "DHVANI PRAJAPATI",
+      "score": 79
     }
   ],
   Chemistry: [
@@ -2320,6 +2308,11 @@ export const subjectMeritRecords: Record<string, { rank: number; name: string; s
       "rank": 17,
       "name": "HITANSHI KHALAS",
       "score": 85
+    },
+    {
+      "rank": 18,
+      "name": "MEET MOJIDRA",
+      "score": 80
     }
   ],
 };

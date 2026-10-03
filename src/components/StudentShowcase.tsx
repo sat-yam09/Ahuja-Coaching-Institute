@@ -8,10 +8,10 @@ import { showcaseStudents } from '../data/mockData';
 // Primary active filter tabs with counts
 const FILTER_TABS = [
   { id: 'All', label: 'All' },
-  { id: '12th Science', label: '12th Science' },
   { id: '10th Board', label: '10th Board' },
-  { id: '9th Foundation', label: '9th Class' },
+  { id: '9th Foundation', label: '9th Foundation' },
   { id: '8th Foundation', label: '8th Foundation' },
+  { id: '12th Science', label: '12th Science' },
   { id: 'Physics', label: 'Physics' },
   { id: 'Maths', label: 'Maths' },
   { id: 'Chemistry', label: 'Chemistry' },
@@ -42,6 +42,7 @@ interface StudentShowcaseProps {
   onViewMore?: () => void;
   previewLimit?: number;
   showFilters?: boolean;
+  showPagination?: boolean;
 }
 
 export const StudentShowcase: React.FC<StudentShowcaseProps> = ({
@@ -52,10 +53,11 @@ export const StudentShowcase: React.FC<StudentShowcaseProps> = ({
   onViewMore,
   previewLimit,
   showFilters = true,
+  showPagination = true,
 }) => {
-  const [selectedYear, setSelectedYear] = useState<'All' | '2025-26' | '2024-25'>('All');
+  const [selectedYear, setSelectedYear] = useState<'All' | '2025-26' | '2024-25'>('2025-26');
   const [activeFilter, setActiveFilter] = useState<string>('All');
-  const [sortBy, setSortBy] = useState<'default' | 'marks' | 'year' | 'class' | 'name'>('default');
+  const [sortBy, setSortBy] = useState<'default' | 'marks' | 'year' | 'class' | 'name'>('class');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [isDesktopOrTablet, setIsDesktopOrTablet] = useState<boolean>(true);
@@ -91,8 +93,18 @@ export const StudentShowcase: React.FC<StudentShowcaseProps> = ({
     if (tabId === '12th Science') return s.category === '12th Science' || Boolean(s.grade && s.grade.includes('12th'));
     if (tabId === '10th Board') return Boolean(s.grade && s.grade.includes('10th')) || s.subjects.includes('10th Board') || s.subjects.includes('10th');
     if (tabId === '9th Foundation' || tabId === '9th Class') return Boolean(s.grade && s.grade.includes('9th')) || s.subjects.includes('9th Foundation') || s.subjects.includes('9th') || s.category === '9th Foundation';
-    if (tabId === '8th Foundation') return Boolean(s.grade && s.grade.includes('8th')) || s.subjects.includes('8th Foundation') || s.subjects.includes('8th');
-    if (tabId === 'Foundation') return s.category === 'Foundation' || Boolean(s.grade && (s.grade.includes('8th') || s.grade.includes('9th') || s.grade.includes('10th')));
+    if (tabId === '8th Foundation') return Boolean(s.grade && s.grade.includes('8th')) || s.subjects.includes('8th Foundation') || s.subjects.includes('8th') || s.category === '8th Foundation';
+    if (tabId === 'Foundation') return s.category === 'Foundation' || Boolean(s.grade && (s.grade.includes('7th') || s.grade.includes('8th') || s.grade.includes('9th') || s.grade.includes('10th')));
+    if (tabId === 'JEE Main' || tabId === 'JEE') return s.category === 'JEE' || s.subjects.includes('JEE') || s.subjects.includes('JEE Main');
+    if (tabId === 'NEET UG' || tabId === 'NEET') return s.category === 'NEET' || s.subjects.includes('NEET') || s.subjects.includes('NEET UG');
+
+    // Strict filter for individual science subjects: Maths, Chemistry, Physics, Biology
+    // ONLY includes 12th Science students. Excludes any 10th or 8th students.
+    if (['Maths', 'Chemistry', 'Physics', 'Biology'].includes(tabId)) {
+      const is12thScience = s.category === '12th Science' || Boolean(s.grade && s.grade.includes('12th'));
+      return is12thScience && s.subjects.includes(tabId);
+    }
+
     return s.subjects.includes(tabId);
   };
 
@@ -137,6 +149,15 @@ export const StudentShowcase: React.FC<StudentShowcaseProps> = ({
 
   // Sort students according to selected sort criteria
   const sortedStudents = [...filteredStudents].sort((a, b) => {
+    // If filtering by a specific subject and default sort is active, rank by that subject's score descending
+    if (['Maths', 'Chemistry', 'Physics', 'Biology'].includes(activeFilter) && sortBy === 'default') {
+      const markA = (a.marks && a.marks[activeFilter]) || 0;
+      const markB = (b.marks && b.marks[activeFilter]) || 0;
+      if (markA !== markB) {
+        return markB - markA;
+      }
+    }
+
     if (sortBy === 'marks') {
       const scoreA = a.topScore && a.topScore > 100 ? 99.5 : (a.topScore || 0);
       const scoreB = b.topScore && b.topScore > 100 ? 99.5 : (b.topScore || 0);
@@ -174,10 +195,11 @@ export const StudentShowcase: React.FC<StudentShowcaseProps> = ({
     return 0;
   });
 
-  const displayedStudents = previewLimit
-    ? sortedStudents.slice(0, previewLimit)
+  const effectiveLimit = previewLimit || (!showPagination ? 8 : undefined);
+  const displayedStudents = effectiveLimit
+    ? sortedStudents.slice(0, effectiveLimit)
     : sortedStudents;
-  const hasMore = previewLimit ? sortedStudents.length > previewLimit : false;
+  const hasMore = effectiveLimit ? sortedStudents.length > effectiveLimit : false;
 
   return (
     <section id={id} ref={cardsContainerRef} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8 scroll-mt-24">
@@ -217,13 +239,11 @@ export const StudentShowcase: React.FC<StudentShowcaseProps> = ({
         </div>
       )}
 
-      {/* ── Search & Filter Pill Bar (With Academic Year Dropdown) ── */}
+      {/* ── Search & Filter Pill Bar ── */}
       {showFilters && (
         <div className="bg-gray-50 p-4 sm:p-6 rounded-3xl border border-gray-200 space-y-4 shadow-xs">
-          {/* Top Controls: Batch Dropdown, Sort Dropdown & Search Input */}
           <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 sm:gap-4">
             <div className="flex flex-wrap items-center gap-3">
-              {/* Academic Batch Dropdown Filter */}
               <div className="flex items-center gap-2">
                 <span className="text-xs font-bold text-gray-600 uppercase tracking-wider flex items-center gap-1.5 shrink-0">
                   <Calendar className="w-4 h-4 text-red-600" />
@@ -254,7 +274,6 @@ export const StudentShowcase: React.FC<StudentShowcaseProps> = ({
                 )}
               </div>
 
-              {/* Sort Controls */}
               <div className="flex items-center gap-2">
                 <span className="text-xs font-bold text-gray-600 uppercase tracking-wider flex items-center gap-1.5 shrink-0">
                   <SlidersHorizontal className="w-4 h-4 text-red-600" />
@@ -278,7 +297,6 @@ export const StudentShowcase: React.FC<StudentShowcaseProps> = ({
               </div>
             </div>
 
-            {/* Search Box */}
             <div className="relative flex-1 max-w-lg">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
               <input
@@ -300,7 +318,6 @@ export const StudentShowcase: React.FC<StudentShowcaseProps> = ({
             </div>
           </div>
 
-          {/* Filter Pills with Dynamic Counts */}
           <div className="flex flex-wrap items-center gap-2 pt-1 border-t border-gray-200/70">
             {FILTER_TABS.map((tab) => {
               const count = getTabCount(tab.id);
@@ -323,7 +340,6 @@ export const StudentShowcase: React.FC<StudentShowcaseProps> = ({
               );
             })}
 
-            {/* Optional Direct Scoreboard Link inside Filter Bar */}
             {onViewMore && (
               <button
                 onClick={onViewMore}
@@ -338,7 +354,7 @@ export const StudentShowcase: React.FC<StudentShowcaseProps> = ({
         </div>
       )}
 
-      {/* ── No Results State ── */}
+      {/* ── Cards Grid ── */}
       {filteredStudents.length === 0 ? (
         <div className="p-10 sm:p-14 bg-white rounded-3xl border border-gray-200 text-center space-y-4 shadow-sm">
           <div className="w-12 h-12 rounded-full bg-gray-100 text-gray-400 flex items-center justify-center mx-auto">
@@ -356,7 +372,8 @@ export const StudentShowcase: React.FC<StudentShowcaseProps> = ({
             onClick={() => {
               setSearchQuery('');
               setActiveFilter('All');
-              setSelectedYear('All');
+              setSelectedYear('2025-26');
+              setSortBy('class');
             }}
             className="px-4 py-2 bg-gray-900 text-white text-xs font-bold rounded-xl hover:bg-red-600 transition cursor-pointer"
           >
@@ -364,7 +381,6 @@ export const StudentShowcase: React.FC<StudentShowcaseProps> = ({
           </button>
         </div>
       ) : (
-        /* ── Card Grid: Responsive Paginated Grid (12 items / 3 rows on desktop, 8 on mobile) ── */
         (() => {
           const pageSize = isDesktopOrTablet ? 12 : 8;
           const totalPages = Math.ceil(displayedStudents.length / pageSize);
@@ -379,12 +395,25 @@ export const StudentShowcase: React.FC<StudentShowcaseProps> = ({
             const isNeet = student.scoreDisplay && student.scoreDisplay.includes('NEET');
             const isJee = student.scoreDisplay && (student.scoreDisplay.includes('JEE') || student.scoreDisplay.includes('%ile'));
 
+            const isSubjectFilter = ['Maths', 'Chemistry', 'Physics', 'Biology'].includes(activeFilter);
+            const activeSubjectScore = isSubjectFilter && student.marks ? student.marks[activeFilter] : undefined;
+            const activeSubjectRank = isSubjectFilter && student.ranks ? student.ranks[activeFilter] : undefined;
+
+            const cardImage = (() => {
+              if (isSubjectFilter && student.year === '2025-26') {
+                let filename = `${student.name}.png`;
+                if (student.name === 'Hanna Pathan') filename = 'hanna Pathan.png';
+                if (student.name === 'Om Parmar') filename = 'Om parmar.png';
+                return `/Converted Student of 25-26/${activeFilter}/${filename}`;
+              }
+              return student.imagePath;
+            })();
+
             return (
               <div
                 key={student.id}
                 className="group relative bg-[#FAF8F5] rounded-3xl border border-[#F0EBE1] hover:border-red-400 p-5 shadow-[0_4px_25px_rgba(0,0,0,0.05)] hover:shadow-[0_16px_36px_rgba(220,38,38,0.12)] transition-all duration-300 hover:-translate-y-1.5 flex flex-col items-center justify-between text-center overflow-hidden"
               >
-                {/* Top Left: Batch & Class Tags */}
                 <div className="absolute top-3.5 left-3.5 z-20 flex flex-col items-start gap-1">
                   <span
                     className={`px-2 py-0.5 rounded-md text-[10px] font-black uppercase tracking-wider shadow-2xs border ${
@@ -402,9 +431,13 @@ export const StudentShowcase: React.FC<StudentShowcaseProps> = ({
                   )}
                 </div>
 
-                {/* Top Right: Score Ribbon */}
                 <div className="absolute top-3.5 right-3.5 z-20">
-                  {isNeet ? (
+                  {isSubjectFilter && activeSubjectScore ? (
+                    <div className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-gradient-to-r from-red-600 to-rose-600 text-white text-[10px] font-black shadow-md tracking-wider uppercase">
+                      <Trophy className="w-3 h-3 text-amber-300" />
+                      <span>{activeFilter}: {activeSubjectScore}/100{activeSubjectRank ? ` (#${activeSubjectRank})` : ''}</span>
+                    </div>
+                  ) : isNeet ? (
                     <div className="flex items-center gap-1 px-2.5 py-1 rounded-full bg-gradient-to-r from-emerald-600 to-teal-700 text-white text-[10px] font-black shadow-md tracking-wider uppercase">
                       <Trophy className="w-3 h-3 text-amber-300" />
                       <span>{student.scoreDisplay}</span>
@@ -441,10 +474,10 @@ export const StudentShowcase: React.FC<StudentShowcaseProps> = ({
 
                 {/* Portrait */}
                 <div className="relative w-full h-[280px] flex items-center justify-center mb-2 mt-4">
-                  {student.imagePath && (
+                  {cardImage && (
                     <div className="relative z-10 w-full h-full flex items-center justify-center pointer-events-none">
                       <img
-                        src={student.imagePath}
+                        src={cardImage}
                         alt={`${student.name} – Ahuja Career Institute`}
                         className="w-full h-full object-contain select-none drop-shadow-[0_12px_20px_rgba(0,0,0,0.12)] group-hover:scale-105 transition-transform duration-300"
                         loading="lazy"
@@ -454,8 +487,7 @@ export const StudentShowcase: React.FC<StudentShowcaseProps> = ({
                   )}
                 </div>
 
-                {/* Student Info */}
-                <div className="w-full space-y-2 pt-3 border-t border-[#EAE4D8] flex flex-col items-center">
+                <div className="w-full space-y-2 pt-3 border-t border-[#EAE4D8] flex flex-col items-center mt-auto">
                   <h3 className="text-base font-black text-gray-900 group-hover:text-red-600 transition-colors uppercase tracking-tight leading-tight">
                     {student.name}
                   </h3>
@@ -550,16 +582,13 @@ export const StudentShowcase: React.FC<StudentShowcaseProps> = ({
 
           return (
             <div className="space-y-6 sm:space-y-8 pt-2">
-              {/* Responsive Cards Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 lg:gap-8 items-stretch">
                 {paginatedStudents.map(renderStudentCard)}
               </div>
 
-              {/* Smart Sliding Pagination for Desktop, Tablet, and Mobile */}
-              {totalPages > 1 && (
+              {showPagination && totalPages > 1 && (
                 <div className="flex flex-col items-center gap-2.5 pt-4">
                   <div className="flex items-center justify-between w-full max-w-sm sm:max-w-md bg-white border border-gray-200 rounded-2xl px-3 py-2 sm:px-4 sm:py-2.5 shadow-xs">
-                    {/* Prev Button */}
                     <button
                       onClick={() => handlePageChange(Math.max(1, safeCurrentPage - 1))}
                       disabled={safeCurrentPage === 1}
@@ -570,7 +599,6 @@ export const StudentShowcase: React.FC<StudentShowcaseProps> = ({
                       <span className="hidden xs:inline">Prev</span>
                     </button>
 
-                    {/* Sliding Page Numbers */}
                     <div className="flex items-center gap-1 sm:gap-1.5">
                       {getPaginationRange(safeCurrentPage, totalPages).map((pageItem, idx) => {
                         if (typeof pageItem === 'string') {
@@ -602,7 +630,6 @@ export const StudentShowcase: React.FC<StudentShowcaseProps> = ({
                       })}
                     </div>
 
-                    {/* Next Button */}
                     <button
                       onClick={() => handlePageChange(Math.min(totalPages, safeCurrentPage + 1))}
                       disabled={safeCurrentPage === totalPages}

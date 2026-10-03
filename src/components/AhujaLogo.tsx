@@ -47,7 +47,7 @@ export const AhujaLogo: React.FC<AhujaLogoProps> = ({
           <img
             src="/contact.webp"
             alt="Ahuja Career Institute Crest"
-            className="sm:hidden h-8 w-8 object-contain select-none"
+            className="sm:hidden h-10 w-10 object-contain select-none"
             loading="eager"
           />
           {/* Desktop/Tablet view: full authentic logo with Since 1998, Crest & Typography */}
