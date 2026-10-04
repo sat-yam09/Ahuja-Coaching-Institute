@@ -112,7 +112,12 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onInquireClick }) 
         {/* Bottom Copyright */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-gray-400 gap-4">
           <p>© 2026 Ahuja Career Institute (Est. 1998). All rights reserved.</p>
-          <p className="text-gray-400 font-mono">Official Academic Specification</p>
+          <p className="text-gray-400 font-medium">
+            Developed by{' '}
+            <span className="text-gray-200 font-semibold hover:text-white transition-colors">
+              Converge Digitals
+            </span>
+          </p>
         </div>
       </div>
     </footer>

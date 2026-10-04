@@ -219,8 +219,8 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setActiveTab, onInquireCli
           <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 card-hover-effect flex flex-col group">
             <div className="h-44 sm:h-48 overflow-hidden relative">
               <img
-                src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=600"
-                alt="Conceptual Mastery"
+                src="/assets/pillar-conceptual-mastery.jpg"
+                alt="Conceptual Mastery - Indian Student Diligently Studying Concepts"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
@@ -248,8 +248,8 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setActiveTab, onInquireCli
           <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 card-hover-effect flex flex-col group">
             <div className="h-44 sm:h-48 overflow-hidden relative">
               <img
-                src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=600"
-                alt="Unwavering Discipline"
+                src="/assets/pillar-unwavering-discipline.jpg"
+                alt="Unwavering Discipline - Focused Indian Students in Coaching Classroom"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
@@ -277,8 +277,8 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setActiveTab, onInquireCli
           <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 card-hover-effect flex flex-col group">
             <div className="h-44 sm:h-48 overflow-hidden relative">
               <img
-                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=600"
-                alt="Student-Centric Growth"
+                src="/assets/pillar-student-centric-growth.jpg"
+                alt="Student-Centric Growth - Indian Students Mentorship & Collaborative Learning"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
