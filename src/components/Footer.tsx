@@ -19,13 +19,13 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onInquireClick }) 
           <div className="lg:col-span-4 space-y-4">
             <AhujaLogo variant="footer" size="lg" />
             <p className="text-xs text-gray-400 leading-relaxed max-w-md pt-2">
-              Building Strong Foundations, Achieving Top Results. Trusted name for 27+ years in empowering students from Std. 6th to 12th (Science &amp; Commerce), JEE, and NEET. Founded in 1998 by Late Rajkumar Ahuja Sir.
+              Building Strong Foundations, Achieving Top Results. Trusted name for 27+ years in empowering students from Std. 6th to 12th (Science &amp; Commerce), JEE Main, and NEET UG. Founded in 1998 by Late Shri R.A. Ahuja Sir.
             </p>
             
             <div className="pt-2 flex items-center gap-3">
               <button
                 onClick={onInquireClick}
-                className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg text-sm transition shadow-sm hover:shadow-md flex items-center gap-1.5 active:scale-98"
+                className="px-4 py-2 bg-red-600 hover:bg-red-700 text-white font-semibold rounded-lg text-sm transition shadow-sm hover:shadow-md flex items-center gap-1.5 active:scale-98 cursor-pointer"
               >
                 Inquire Admissions <ArrowRight className="w-3.5 h-3.5" />
               </button>
@@ -39,27 +39,37 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onInquireClick }) 
             </h4>
             <ul className="space-y-2 text-xs text-gray-400">
               <li>
-                <button onClick={() => setActiveTab('home')} className="hover:text-red-400 transition">
+                <button onClick={() => setActiveTab('home')} className="hover:text-red-400 transition cursor-pointer">
                   Home
                 </button>
               </li>
               <li>
-                <button onClick={() => setActiveTab('about')} className="hover:text-red-400 transition">
-                  About Us (Est. 1998)
+                <button onClick={() => setActiveTab('about')} className="hover:text-red-400 transition cursor-pointer">
+                  About Us (Since 1998)
                 </button>
               </li>
               <li>
-                <button onClick={() => setActiveTab('courses')} className="hover:text-red-400 transition">
+                <button onClick={() => setActiveTab('courses')} className="hover:text-red-400 transition cursor-pointer">
                   Academic Programs
                 </button>
               </li>
               <li>
-                <button onClick={() => setActiveTab('scoreboard')} className="hover:text-red-400 transition">
-                  Toppers &amp; Results
+                <button onClick={() => setActiveTab('faculty')} className="hover:text-red-400 transition cursor-pointer">
+                  Faculty &amp; Mentors
                 </button>
               </li>
               <li>
-                <button onClick={() => setActiveTab('contact')} className="hover:text-red-400 transition">
+                <button onClick={() => setActiveTab('scoreboard')} className="hover:text-red-400 transition cursor-pointer">
+                  Success Stories &amp; Results
+                </button>
+              </li>
+              <li>
+                <button onClick={() => setActiveTab('gallery')} className="hover:text-red-400 transition cursor-pointer">
+                  Campus Gallery
+                </button>
+              </li>
+              <li>
+                <button onClick={() => setActiveTab('contact')} className="hover:text-red-400 transition cursor-pointer">
                   Contact &amp; Campuses
                 </button>
               </li>
@@ -78,11 +88,11 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onInquireClick }) 
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-red-500 flex-shrink-0" />
-                <span>74053 28676 / 97243 28989 / (079) 48909397</span>
+                <span>74053 28676 / 97243 28989 <span className="text-amber-500 text-[10px]">[To Verify]</span></span>
               </li>
               <li className="flex items-center gap-2">
                 <Clock className="w-4 h-4 text-red-500 flex-shrink-0" />
-                <span>3:00 PM - 9:00 PM (Mon - Sat)</span>
+                <span>10:00 AM - 6:00 PM (Mon - Sat) <span className="text-amber-500 text-[10px]">[To Verify]</span></span>
               </li>
             </ul>
           </div>
@@ -99,11 +109,11 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onInquireClick }) 
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-red-500 flex-shrink-0" />
-                <span>97243 19900 / 98792 28189 / (079) 48909398</span>
+                <span>97243 19900 / 98792 28189 <span className="text-amber-500 text-[10px]">[To Verify]</span></span>
               </li>
               <li className="flex items-center gap-2">
                 <Clock className="w-4 h-4 text-red-500 flex-shrink-0" />
-                <span>3:00 PM - 9:00 PM (Mon - Sat)</span>
+                <span>10:00 AM - 6:00 PM (Mon - Sat) <span className="text-amber-500 text-[10px]">[To Verify]</span></span>
               </li>
             </ul>
           </div>
@@ -111,7 +121,7 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onInquireClick }) 
 
         {/* Bottom Copyright */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-gray-400 gap-4">
-          <p>© 2026 Ahuja Career Institute (Est. 1998). All rights reserved.</p>
+          <p>© 2026 Ahuja Career Institute (Since 1998). All rights reserved.</p>
           <p className="text-gray-400 font-medium">
             Developed by{' '}
             <span className="text-gray-200 font-semibold hover:text-white transition-colors">

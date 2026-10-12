@@ -39,7 +39,7 @@ export const ContactPage: React.FC = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent flex items-end p-5">
             <p className="text-white text-xs sm:text-sm font-bold">
-              Visit our counseling desks at Maninagar Head Office and Vastral Branch (Mon - Sat: 3 PM - 9 PM).
+              Visit our counseling desks at Maninagar Head Office and Vastral Branch (Mon - Sat: 10 AM - 6 PM).
             </p>
           </div>
         </div>
@@ -58,11 +58,20 @@ export const ContactPage: React.FC = () => {
           {/* Center 1: Maninagar (HQ) */}
           <div className="bg-white rounded-3xl border border-gray-200 overflow-hidden shadow-xs hover:shadow-md transition card-hover-effect flex flex-col justify-between">
             <div>
-              {/* Map Placeholder Graphic Header */}
-              <div className="h-44 bg-gradient-to-br from-gray-100 to-gray-200 border-b border-gray-100 flex flex-col items-center justify-center text-gray-400 relative">
-                <MapPin className="w-10 h-10 text-red-500 mb-1 animate-bounce" />
-                <span className="text-xs font-bold text-gray-600 uppercase tracking-wider">Maninagar HQ Campus</span>
-                <span className="text-[10px] text-gray-400">Takshshila Square</span>
+              {/* Campus Exterior Photo Header */}
+              <div className="h-48 sm:h-52 overflow-hidden relative border-b border-gray-100 group">
+                <img
+                  src="/assets/centers/maninagar-exterior.jpg"
+                  alt="Maninagar HQ Campus Exterior - Takshshila Square"
+                  className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                <span className="absolute top-3 left-3 px-2.5 py-1 bg-red-600 text-white text-[10px] font-bold rounded-lg shadow-md uppercase tracking-wider">
+                  Head Office
+                </span>
+                <span className="absolute bottom-2.5 left-3 text-xs font-bold text-white drop-shadow-sm">
+                  Takshshila Square Campus
+                </span>
               </div>
 
               <div className="p-6 sm:p-7 space-y-4">
@@ -77,11 +86,11 @@ export const ContactPage: React.FC = () => {
                 <div className="space-y-1.5 pt-2 border-t border-gray-100 text-xs text-gray-500">
                   <div className="flex items-center gap-2">
                     <Clock className="w-3.5 h-3.5 text-gray-400" />
-                    <span>Timings: 3:00 PM - 9:00 PM (Mon - Sat)</span>
+                    <span>Timings: 10:00 AM - 6:00 PM (Mon - Sat)</span>
                   </div>
                   <div className="flex items-center gap-2 text-gray-600 font-medium">
                     <Phone className="w-3.5 h-3.5 text-red-500" />
-                    <span>Landline: (079) 48909397 • Alt: +91 97243 28989</span>
+                    <span>Mobile: +91 74053 28676 • Alt: +91 97243 28989</span>
                   </div>
                 </div>
               </div>
@@ -95,7 +104,7 @@ export const ContactPage: React.FC = () => {
                 <PhoneCall className="w-4 h-4" /> Call Now (+91 74053 28676)
               </a>
               <a
-                href="https://maps.google.com"
+                href="https://maps.google.com/?q=Takshshila+Square+Krishnabaug+Cross+Road+Maninagar+Ahmedabad"
                 target="_blank"
                 rel="noreferrer"
                 className="w-full py-3 bg-white hover:bg-gray-50 text-gray-800 border border-gray-300 font-semibold rounded-xl text-xs sm:text-sm transition flex items-center justify-center gap-2 text-center"
@@ -108,11 +117,20 @@ export const ContactPage: React.FC = () => {
           {/* Center 2: Vastral Branch */}
           <div className="bg-white rounded-3xl border border-gray-200 overflow-hidden shadow-xs hover:shadow-md transition card-hover-effect flex flex-col justify-between">
             <div>
-              {/* Map Placeholder Graphic Header */}
-              <div className="h-44 bg-gradient-to-br from-gray-100 to-gray-200 border-b border-gray-100 flex flex-col items-center justify-center text-gray-400 relative">
-                <MapPin className="w-10 h-10 text-red-500 mb-1 animate-bounce" />
-                <span className="text-xs font-bold text-gray-600 uppercase tracking-wider">Vastral Branch Campus</span>
-                <span className="text-[10px] text-gray-400">Avadh Pride, Metro Pillar 140</span>
+              {/* Campus Exterior Photo Header */}
+              <div className="h-48 sm:h-52 overflow-hidden relative border-b border-gray-100 group">
+                <img
+                  src="/assets/centers/vastral-exterior.jpg"
+                  alt="Vastral Branch Campus Exterior"
+                  className="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
+                <span className="absolute top-3 left-3 px-2.5 py-1 bg-gray-900 text-white text-[10px] font-bold rounded-lg shadow-md uppercase tracking-wider">
+                  Vastral Branch
+                </span>
+                <span className="absolute bottom-2.5 left-3 text-xs font-bold text-white drop-shadow-sm">
+                  Avadh Pride (Metro Pillar 140)
+                </span>
               </div>
 
               <div className="p-6 sm:p-7 space-y-4">
@@ -127,11 +145,11 @@ export const ContactPage: React.FC = () => {
                 <div className="space-y-1.5 pt-2 border-t border-gray-100 text-xs text-gray-500">
                   <div className="flex items-center gap-2">
                     <Clock className="w-3.5 h-3.5 text-gray-400" />
-                    <span>Timings: 3:00 PM - 9:00 PM (Mon - Sat)</span>
+                    <span>Timings: 10:00 AM - 6:00 PM (Mon - Sat)</span>
                   </div>
                   <div className="flex items-center gap-2 text-gray-600 font-medium">
                     <Phone className="w-3.5 h-3.5 text-red-500" />
-                    <span>Landline: (079) 48909398 • Alt: +91 98792 28189</span>
+                    <span>Mobile: +91 97243 19900 • Alt: +91 98792 28189</span>
                   </div>
                 </div>
               </div>
@@ -145,7 +163,7 @@ export const ContactPage: React.FC = () => {
                 <PhoneCall className="w-4 h-4" /> Call Now (+91 97243 19900)
               </a>
               <a
-                href="https://maps.google.com"
+                href="https://maps.google.com/?q=Avadh+Pride+Nirant+Cross+Road+Vastral+Ahmedabad"
                 target="_blank"
                 rel="noreferrer"
                 className="w-full py-3 bg-white hover:bg-gray-50 text-gray-800 border border-gray-300 font-semibold rounded-xl text-xs sm:text-sm transition flex items-center justify-center gap-2 text-center"
@@ -198,7 +216,7 @@ export const ContactPage: React.FC = () => {
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="e.g. Rahul Sharma"
+                  placeholder="e.g. John Doe"
                   className="w-full px-4 py-3 bg-gray-900 rounded-xl border border-gray-700 text-sm font-medium focus:outline-hidden focus:border-red-500 text-white placeholder-gray-500"
                 />
               </div>
@@ -228,7 +246,7 @@ export const ContactPage: React.FC = () => {
                   onChange={(e) => setCohort(e.target.value)}
                   className="w-full px-4 py-3 bg-gray-900 rounded-xl border border-gray-700 text-sm font-medium focus:outline-hidden focus:border-red-500 text-white"
                 >
-                  <option value="11th & 12th Science (JEE/NEET)">11th &amp; 12th Science (JEE/NEET)</option>
+                  <option value="11th & 12th Science (JEE & NEET)">11th &amp; 12th Science (JEE &amp; NEET)</option>
                   <option value="11th & 12th Commerce">11th &amp; 12th Commerce</option>
                   <option value="Foundation (8th to 10th)">Foundation (Std. 8th to 10th)</option>
                   <option value="Secondary (6th & 7th)">Secondary (Std. 6th &amp; 7th)</option>
@@ -295,9 +313,8 @@ export const ContactPage: React.FC = () => {
                   >
                     <span>{faq.question}</span>
                     <ChevronDown
-                      className={`w-4 h-4 text-red-600 transition-transform duration-300 flex-shrink-0 ${
-                        isOpen ? 'rotate-180' : ''
-                      }`}
+                      className={`w-4 h-4 text-red-600 transition-transform duration-300 flex-shrink-0 ${isOpen ? 'rotate-180' : ''
+                        }`}
                     />
                   </button>
                   {isOpen && (

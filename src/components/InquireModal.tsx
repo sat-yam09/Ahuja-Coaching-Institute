@@ -11,6 +11,27 @@ interface InquireModalProps {
   defaultBranch?: string;
 }
 
+const PROGRAM_CLASS_MAP: Record<string, { label: string; value: string }[]> = {
+  '11th & 12th Science (JEE/NEET)': [
+    { label: 'Class 11th', value: '11th Standard' },
+    { label: 'Class 12th', value: '12th Standard' },
+    { label: 'Repeater / Dropper', value: '12th Pass / Repeater' },
+  ],
+  '11th & 12th Commerce': [
+    { label: 'Class 11th', value: '11th Standard' },
+    { label: 'Class 12th', value: '12th Standard' },
+  ],
+  'JEE Main & Advanced / NEET UG': [
+    { label: 'Class 11th', value: '11th Standard' },
+    { label: 'Class 12th', value: '12th Standard' },
+    { label: 'Repeater / Dropper', value: '12th Pass / Repeater' },
+  ],
+  'Std. 6th to 10th Foundation': [
+    { label: 'Class 9th to 10th', value: 'Class 9-10' },
+    { label: 'Class 6th to 8th', value: 'Class 6-8' },
+  ],
+};
+
 export const InquireModal: React.FC<InquireModalProps> = ({
   isOpen,
   onClose,
@@ -24,6 +45,14 @@ export const InquireModal: React.FC<InquireModalProps> = ({
   const [studentClass, setStudentClass] = useState('11th Standard');
   const [submitted, setSubmitted] = useState(false);
   const [bookingId, setBookingId] = useState('');
+
+  const handleProgramChange = (newProgram: string) => {
+    setTargetCohort(newProgram);
+    const validClasses = PROGRAM_CLASS_MAP[newProgram] || [];
+    if (!validClasses.some((c) => c.value === studentClass)) {
+      setStudentClass(validClasses[0]?.value || '11th Standard');
+    }
+  };
 
   if (!isOpen) return null;
 
@@ -111,7 +140,7 @@ export const InquireModal: React.FC<InquireModalProps> = ({
                     required
                     value={studentName}
                     onChange={(e) => setStudentName(e.target.value)}
-                    placeholder="e.g. Saloni Vaghela"
+                    placeholder="e.g. John Doe"
                     className="w-full pl-10 pr-3 py-2.5 bg-gray-50 text-gray-900 rounded-xl border border-gray-200 focus:bg-white focus:outline-hidden focus:border-red-600 focus:ring-2 focus:ring-red-600/10 text-sm font-medium transition"
                   />
                 </div>
@@ -144,7 +173,7 @@ export const InquireModal: React.FC<InquireModalProps> = ({
                     <Calendar className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-red-600 pointer-events-none z-10" />
                     <select
                       value={targetCohort}
-                      onChange={(e) => setTargetCohort(e.target.value)}
+                      onChange={(e) => handleProgramChange(e.target.value)}
                       className="w-full pl-10 pr-8 py-2.5 bg-gray-50 text-gray-900 rounded-xl border border-gray-200 focus:bg-white focus:outline-hidden focus:border-red-600 focus:ring-2 focus:ring-red-600/10 text-xs font-medium appearance-none transition"
                     >
                       <option value="11th & 12th Science (JEE/NEET)">11th &amp; 12th Science</option>
@@ -166,11 +195,11 @@ export const InquireModal: React.FC<InquireModalProps> = ({
                       onChange={(e) => setStudentClass(e.target.value)}
                       className="w-full px-3.5 pr-8 py-2.5 bg-gray-50 text-gray-900 rounded-xl border border-gray-200 focus:bg-white focus:outline-hidden focus:border-red-600 focus:ring-2 focus:ring-red-600/10 text-xs font-medium appearance-none transition"
                     >
-                      <option value="11th Standard">Class 11th</option>
-                      <option value="12th Standard">Class 12th</option>
-                      <option value="12th Pass / Repeater">Repeater / Dropper</option>
-                      <option value="Class 9-10">Class 9th to 10th</option>
-                      <option value="Class 6-8">Class 6th to 8th</option>
+                      {(PROGRAM_CLASS_MAP[targetCohort] || PROGRAM_CLASS_MAP['11th & 12th Science (JEE/NEET)']).map((c) => (
+                        <option key={c.value} value={c.value}>
+                          {c.label}
+                        </option>
+                      ))}
                     </select>
                     <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
                   </div>

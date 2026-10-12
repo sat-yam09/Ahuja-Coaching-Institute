@@ -4,6 +4,7 @@ import React from 'react';
 import { PageTab } from '../types';
 import {
   aboutStats,
+  facultyMembers,
 } from '../data/mockData';
 import {
   ArrowRight,
@@ -16,6 +17,7 @@ import {
   Trophy,
   MapPin,
   CheckCircle2,
+  GraduationCap,
 } from 'lucide-react';
 
 interface AboutPageProps {
@@ -32,7 +34,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setActiveTab, onInquireCli
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-red-200 bg-red-50 text-red-700 text-xs sm:text-sm font-bold shadow-xs">
             <Sparkles className="w-4 h-4 text-red-600" />
-            <span>ESTABLISHED 1998 • 27+ YEARS OF EXCELLENCE</span>
+            <span>SINCE 1998 • 27+ YEARS OF EXCELLENCE</span>
           </div>
 
           {/* Headline */}
@@ -73,7 +75,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setActiveTab, onInquireCli
               <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent flex flex-col justify-end p-6 sm:p-8 text-left">
                 <div className="flex flex-wrap gap-2 mb-2">
                   <span className="px-3 py-1 bg-red-600 text-white text-xs font-bold rounded-full">
-                    Est. 1998 Ahmedabad
+                    Since 1998 Ahmedabad
                   </span>
                   <span className="px-3 py-1 bg-black/50 backdrop-blur-md text-white text-xs font-medium rounded-full">
                     Maninagar HQ &amp; Vastral Campuses
@@ -112,14 +114,14 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setActiveTab, onInquireCli
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-stretch">
-            {/* Card 1: Late Rajkumar Ahuja Sir (Founder) */}
+            {/* Card 1: Late Shri R.A. Ahuja Sir (Founder) */}
             <div className="bg-gray-900/90 p-4 sm:p-5 rounded-2xl border border-gray-800 shadow-xl flex flex-col justify-between space-y-3 hover:border-gray-700 transition">
               <div className="space-y-3">
                 <div className="flex items-center space-x-3.5">
                   <div className="relative shrink-0">
                     <img
                       src="/assets/Directors/Founder - Rajkumar Ahuja.jpeg"
-                      alt="Late Rajkumar Ahuja Sir - Founder"
+                      alt="Late Shri R.A. Ahuja Sir - Founder"
                       className="w-16 h-16 sm:w-18 sm:h-18 rounded-xl object-cover object-top border-2 border-red-500/40 shadow-md"
                     />
                     <span className="absolute -bottom-1 -right-1 px-1.5 py-0.2 bg-red-600 text-white text-[9px] font-bold rounded shadow-xs">
@@ -128,10 +130,10 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setActiveTab, onInquireCli
                   </div>
                   <div>
                     <h3 className="text-base sm:text-lg font-extrabold text-white leading-tight">
-                      Late Rajkumar Ahuja Sir
+                      Late Shri R.A. Ahuja Sir
                     </h3>
                     <p className="text-[11px] font-bold text-red-400 uppercase tracking-wide mt-0.5">
-                      The Visionary Founder (Est. 1998)
+                      The Visionary Founder (Since 1998)
                     </p>
                     <p className="text-[10px] sm:text-[11px] text-gray-400">
                       Pioneer of Concept-First Coaching in Ahmedabad
@@ -200,7 +202,71 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setActiveTab, onInquireCli
         </div>
       </section>
 
-      {/* 3. OUR CORE PHILOSOPHY - All 3 Cards with Photo Headers in Unified Theme */}
+      {/* 3. EXPERT FACULTY PANEL */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center space-y-3 mb-10 sm:mb-12">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-red-200 bg-red-50 text-red-700 text-xs font-bold uppercase tracking-wider">
+            <GraduationCap className="w-4 h-4 text-red-600" />
+            <span>Master Faculty Panel</span>
+          </div>
+          <h2 className="text-2xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
+            Learn From Our <span className="text-red-600">Expert Faculty</span>
+          </h2>
+          <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto">
+            Seasoned subject experts, department heads, and mentors committed to conceptual clarity, rigorous problem-solving, and continuous academic guidance.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+          {facultyMembers.map((fac) => (
+            <div
+              key={fac.name}
+              className="bg-white rounded-2xl border border-gray-200 p-5 shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between space-y-4 group"
+            >
+              <div className="space-y-3.5">
+                <div className="relative w-full aspect-4/3 rounded-xl overflow-hidden bg-gray-100 border border-gray-100">
+                  <img
+                    src={fac.avatarUrl}
+                    alt={fac.name}
+                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <span className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-md bg-black/75 backdrop-blur-xs text-white text-[10px] font-bold">
+                    {fac.experience}
+                  </span>
+                </div>
+
+                <div>
+                  <div className="flex items-center justify-between gap-1 mb-1">
+                    <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-red-50 text-red-700 border border-red-100">
+                      {fac.category}
+                    </span>
+                    <span className="text-[11px] text-gray-500 font-medium">
+                      {fac.education}
+                    </span>
+                  </div>
+                  <h3 className="text-base font-extrabold text-gray-900 leading-snug">
+                    {fac.name}
+                  </h3>
+                  <p className="text-xs font-semibold text-red-600 mt-0.5">
+                    {fac.role}
+                  </p>
+                </div>
+
+                <p className="text-xs text-gray-600 leading-relaxed font-normal">
+                  {fac.bio}
+                </p>
+              </div>
+
+              <div className="pt-3 border-t border-gray-100 flex items-center justify-between text-[11px]">
+                <span className="text-gray-500 font-medium">Classroom &amp; Doubts</span>
+                <span className="font-bold text-red-600">Specialized Lead</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 4. OUR CORE PHILOSOPHY - All 3 Cards with Photo Headers in Unified Theme */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6">
         <div className="text-center space-y-2 mb-8">
           <div className="inline-block px-3 py-1 bg-red-50 border border-red-100 text-red-600 text-[11px] font-bold uppercase tracking-wider rounded-full">
@@ -347,14 +413,14 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setActiveTab, onInquireCli
                     Humble Beginnings in Ghodasar
                   </h3>
                   <p className="text-xs sm:text-sm text-gray-300 leading-relaxed font-normal">
-                    Founded by Late Rajkumar Ahuja Sir with a small home setup in Ghodasar. Pioneered concept-first pedagogy over rote learning, instilling rigorous discipline and personalized mentoring that produced our first generation of Gujarat board toppers.
+                    Founded by Late Shri R.A. Ahuja Sir with a small home setup in Ghodasar. Pioneered concept-first pedagogy over rote learning, instilling rigorous discipline and personalized mentoring that produced our first generation of Gujarat board toppers.
                   </p>
                 </div>
 
                 {/* Founder Quote Pill */}
                 <div className="p-3.5 rounded-xl bg-black/40 border border-gray-800/80 text-xs italic text-gray-300 font-medium">
                   "Life is Great but it never grows great until it is focused, dedicated &amp; disciplined."
-                  <span className="block text-[11px] text-red-400 font-semibold not-italic mt-1">— Late Rajkumar Ahuja Sir (Founder)</span>
+                  <span className="block text-[11px] text-red-400 font-semibold not-italic mt-1">— Late Shri R.A. Ahuja Sir (Founder)</span>
                 </div>
 
                 {/* Highlight Pills */}
@@ -536,7 +602,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setActiveTab, onInquireCli
                     27+ Years of Excellence
                   </h3>
                   <p className="text-xs sm:text-sm text-gray-300 leading-relaxed font-normal">
-                    Over 22,000+ students guided with hundreds of 100/100 perfect board &amp; competitive exam scores. Continuing Late Rajkumar Ahuja Sir’s vision under Sunil Ahuja’s academic leadership.
+                    Over 22,000+ students guided with hundreds of 100/100 perfect board &amp; competitive exam scores. Continuing Late Shri R.A. Ahuja Sir’s vision under Sunil Ahuja’s academic leadership.
                   </p>
                 </div>
 

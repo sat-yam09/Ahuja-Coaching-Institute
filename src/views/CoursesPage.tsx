@@ -121,7 +121,7 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({
           <span className="text-red-600">Your Target Exam</span>
         </h1>
         <p className="text-sm sm:text-base text-gray-600 leading-relaxed max-w-2xl mx-auto">
-          Empowering students from Std. 6th to 12th (Science &amp; Commerce), JEE, and NEET with uncompromised dedication and proven methodologies.
+          Empowering students from Std. 6th to 12th (Science &amp; Commerce), JEE/NEET with uncompromised dedication and proven methodologies.
         </p>
 
         {/* Hero Stock Image */}
@@ -213,11 +213,10 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({
               <button
                 key={course.id}
                 onClick={() => handleSelectCourse(course.id)}
-                className={`w-full sm:w-auto px-3 sm:px-5 py-2.5 sm:py-3 rounded-2xl sm:rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center justify-center sm:justify-start gap-1.5 sm:gap-2 text-center sm:text-left ${
-                  isSelected
+                className={`w-full sm:w-auto px-3 sm:px-5 py-2.5 sm:py-3 rounded-2xl sm:rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center justify-center sm:justify-start gap-1.5 sm:gap-2 text-center sm:text-left ${isSelected
                     ? 'bg-red-600 text-white shadow-md shadow-red-600/25 ring-2 ring-red-500/20 scale-[1.02]'
                     : 'bg-white text-gray-700 hover:border-red-500 hover:text-red-600 border border-gray-300 shadow-2xs hover:bg-red-50/40'
-                }`}
+                  }`}
               >
                 {getCourseIcon(course.id)}
                 <span className="truncate">{course.title}</span>
@@ -302,7 +301,7 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({
             </div>
           </div>
 
-          {/* Special Morning Batch Notice for Nelson's / Punit Ashram students */}
+          {/* Special Morning Batch Notice for students of morning-shift schools */}
           {selectedCourse.id === 'foundation-6-10' && (
             <div className="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-amber-900 flex items-start gap-3">
               <Sparkles className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
@@ -311,7 +310,7 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({
                   Special Morning Batches: 9:00 AM – 11:15 AM
                 </span>
                 <p className="text-amber-800 leading-relaxed">
-                  Dedicated morning timetable for Std 8th, 9th &amp; 10th students of Nelson's School and Punit Ashram School to avoid any clash with school hours.
+                  Dedicated morning timetable for Std 8th, 9th &amp; 10th students of reputed local morning-shift schools to avoid any clash with school hours.
                 </p>
               </div>
             </div>
@@ -339,19 +338,17 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({
                   <button
                     key={s.subject}
                     onClick={() => setOpenSyllabusSubject(s.subject)}
-                    className={`w-full sm:w-auto px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl sm:rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center justify-between sm:justify-start gap-1.5 sm:gap-2 ${
-                      isSubActive
+                    className={`w-full sm:w-auto px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl sm:rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer flex items-center justify-between sm:justify-start gap-1.5 sm:gap-2 ${isSubActive
                         ? 'bg-red-600 text-white shadow-md shadow-red-600/25 ring-2 ring-red-500/20 scale-[1.01]'
                         : 'bg-white text-gray-700 hover:border-red-500 hover:text-red-600 border border-gray-300 shadow-2xs hover:bg-gray-50'
-                    }`}
+                      }`}
                   >
                     <div className="flex items-center gap-1.5 min-w-0">
                       <BookOpen className={`w-3.5 h-3.5 flex-shrink-0 ${isSubActive ? 'text-white' : 'text-red-600'}`} />
                       <span className="truncate">{s.subject}</span>
                     </div>
-                    <span className={`text-[10px] px-1.5 py-0.5 rounded-md font-semibold flex-shrink-0 ${
-                      isSubActive ? 'bg-white/20 text-white' : 'bg-gray-100 text-gray-600'
-                    }`}>
+                    <span className={`text-[10px] px-1.5 py-0.5 rounded-md font-semibold flex-shrink-0 ${isSubActive ? 'bg-white/20 text-white' : 'bg-gray-100 text-gray-600'
+                      }`}>
                       {s.topics.length}
                     </span>
                   </button>
@@ -363,27 +360,70 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({
               const currentSubjectObj = selectedCourse.syllabus.find((s) => s.subject === openSyllabusSubject) || selectedCourse.syllabus[0];
               if (!currentSubjectObj) return null;
               return (
-                <div className="bg-gray-50/80 p-4 sm:p-6 rounded-2xl border border-gray-200 space-y-3 animate-fadeIn mt-3">
-                  <div className="flex items-center justify-between">
+                <div className="bg-gray-50/80 p-4 sm:p-6 rounded-2xl border border-gray-200 space-y-4 animate-fadeIn mt-3">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-gray-200 pb-3">
                     <h4 className="font-bold text-xs sm:text-sm text-gray-900 flex items-center gap-2">
                       <BookOpen className="w-4 h-4 text-red-600" />
-                      <span>{currentSubjectObj.subject} Modules &amp; Coverage</span>
+                      <span>{currentSubjectObj.subject} — Chapter-wise Curriculum</span>
                     </h4>
-                    <span className="text-[11px] sm:text-xs font-semibold text-red-600 bg-red-50 px-2.5 py-0.5 rounded-full border border-red-100">
-                      Standard {selectedCourse.title}
-                    </span>
+                    <div className="flex items-center gap-2">
+                      {currentSubjectObj.chapters && currentSubjectObj.chapters.length > 0 && (
+                        <span className="text-[11px] font-semibold text-gray-500 font-mono">
+                          {currentSubjectObj.chapters.length} Chapters
+                        </span>
+                      )}
+                      <span className="text-[11px] sm:text-xs font-semibold text-red-600 bg-red-50 px-2.5 py-0.5 rounded-full border border-red-100">
+                        Standard {selectedCourse.title}
+                      </span>
+                    </div>
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5 pt-1">
-                    {currentSubjectObj.topics.map((topic, tIdx) => (
-                      <div
-                        key={tIdx}
-                        className="flex items-center gap-2.5 text-xs sm:text-sm text-gray-700 bg-white p-2.5 sm:p-3 rounded-xl border border-gray-200 shadow-2xs hover:border-red-200 transition"
-                      >
-                        <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
-                        <span className="font-medium">{topic}</span>
-                      </div>
-                    ))}
-                  </div>
+
+                  {currentSubjectObj.chapters && currentSubjectObj.chapters.length > 0 ? (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1">
+                      {currentSubjectObj.chapters.map((ch) => (
+                        <div
+                          key={ch.chapterNum}
+                          className="bg-white p-3.5 sm:p-4 rounded-xl border border-gray-200 shadow-2xs hover:border-red-300 transition space-y-2"
+                        >
+                          <div className="flex items-center gap-2">
+                            <span className="px-2 py-0.5 rounded-md bg-red-600 text-white font-mono text-[11px] font-bold shrink-0">
+                              Ch. {ch.chapterNum}
+                            </span>
+                            <h5 className="font-bold text-xs sm:text-sm text-gray-900">
+                              {ch.chapterName}
+                            </h5>
+                          </div>
+                          <div className="flex flex-wrap gap-1.5 pt-0.5">
+                            {ch.focusTopics.map((top, topIdx) => (
+                              <span
+                                key={topIdx}
+                                className="inline-flex items-center gap-1 text-[11px] px-2 py-0.5 rounded-md bg-gray-100 text-gray-700 font-medium"
+                              >
+                                <CheckCircle2 className="w-3 h-3 text-emerald-600 shrink-0" />
+                                {top}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5 pt-1">
+                      {currentSubjectObj.topics.map((topic, tIdx) => (
+                        <div
+                          key={tIdx}
+                          className="flex items-center gap-2.5 text-xs sm:text-sm text-gray-700 bg-white p-2.5 sm:p-3 rounded-xl border border-gray-200 shadow-2xs hover:border-red-200 transition"
+                        >
+                          <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                          <span className="font-medium">{topic}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  <p className="text-[11px] text-gray-500 italic text-right pt-1">
+                    * Chapter schedules &amp; weekly question sets mapped directly to Board &amp; Entrance test benchmarks.
+                  </p>
                 </div>
               );
             })()}
@@ -397,12 +437,13 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({
             >
               Inquire For Batch Admission
             </button>
-            <button
-              onClick={() => onViewSyllabus(selectedCourse)}
+            <a
+              href={selectedCourse.syllabusPdfUrl || `/assets/syllabus/${selectedCourse.id}-syllabus.pdf`}
+              download={`${selectedCourse.title.replace(/\s+/g, '_')}_Syllabus.pdf`}
               className="w-full sm:w-auto px-6 py-3.5 bg-white hover:bg-gray-50 text-gray-800 border border-gray-300 font-bold rounded-xl text-sm transition flex items-center justify-center gap-2 shadow-xs cursor-pointer text-center"
             >
-              <Download className="w-4 h-4 text-red-600" /> Download Program PDF
-            </button>
+              <Download className="w-4 h-4 text-red-600" /> Download Full Syllabus PDF
+            </a>
           </div>
         </div>
       </section>
@@ -428,11 +469,10 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({
               return (
                 <div
                   key={idx}
-                  className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
-                    isOpen
+                  className={`rounded-2xl border transition-all duration-300 overflow-hidden ${isOpen
                       ? 'bg-[#22262E] border-red-500 shadow-xl ring-2 ring-red-500/20'
                       : 'bg-white/5 border-white/10 hover:bg-white/10'
-                  }`}
+                    }`}
                 >
                   {/* Accordion Question/Header */}
                   <button
@@ -440,9 +480,8 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({
                     className="w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4 cursor-pointer"
                   >
                     <div className="flex items-center gap-3.5 sm:gap-4">
-                      <span className={`font-mono font-bold text-sm px-2.5 py-1 rounded-lg ${
-                        isOpen ? 'bg-red-600 text-white' : 'bg-white/10 text-red-400'
-                      }`}>
+                      <span className={`font-mono font-bold text-sm px-2.5 py-1 rounded-lg ${isOpen ? 'bg-red-600 text-white' : 'bg-white/10 text-red-400'
+                        }`}>
                         {item.num}
                       </span>
                       <span className="font-bold text-base sm:text-lg text-white">
