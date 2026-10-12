@@ -78,7 +78,7 @@ export const HomePage: React.FC<HomePageProps> = ({
           {/* Badge with Hindi Motto */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-red-200 bg-red-50 text-red-700 text-xs sm:text-sm font-bold shadow-xs animate-fadeIn">
             <Sparkles className="w-4 h-4 text-red-600" aria-hidden="true" />
-            <span>{brandTagline.hindi} • 27+ Years Legacy (Est. 1998)</span>
+            <span>{brandTagline.hindi} • 27+ Years Legacy (Since 1998)</span>
           </div>
 
           {/* Headline */}
@@ -98,7 +98,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               onClick={onInquireClick}
               className="px-7 py-3.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl text-sm transition-all shadow-md shadow-red-600/20 active:scale-98 flex items-center gap-2 cursor-pointer"
             >
-              Inquire for 2026-27 <ArrowRight className="w-4 h-4" />
+              Inquire for Std 6th to 12th <ArrowRight className="w-4 h-4" />
             </button>
             <button
               onClick={() => setActiveTab('scoreboard')}
@@ -182,13 +182,13 @@ export const HomePage: React.FC<HomePageProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           <div className="lg:col-span-6 space-y-5">
             <div className="inline-block px-3 py-1 bg-red-600/20 border border-red-500/30 text-red-400 text-xs font-bold uppercase tracking-wider rounded-full">
-              ESTABLISHED 1998
+              SINCE 1998
             </div>
             <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
               A Legacy of <span className="text-red-500">27+ Years</span>
             </h2>
             <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
-              Founded in 1998 on the vision of <strong className="text-white font-bold">Late Rajkumar Ahuja Sir</strong>, Ahuja Career Institute has been a beacon of academic excellence in Ahmedabad. Our philosophy centers on providing quality education with unwavering dedication, discipline, and personal mentorship.
+              Founded in 1998 on the vision of <strong className="text-white font-bold">Late Shri R.A. Ahuja Sir</strong>, Ahuja Career Institute has been a beacon of academic excellence in Ahmedabad. Our philosophy centers on providing quality education with unwavering dedication, discipline, and personal mentorship.
             </p>
             <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
               We believe in nurturing talent and instilling a lifelong passion for learning, empowering over 22,000 students to secure admissions in premier engineering and medical institutions across India.
@@ -209,7 +209,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               <div className="sm:col-span-5 relative min-h-[300px] sm:min-h-full">
                 <img
                   src="/assets/Directors/Founder - Rajkumar Ahuja.jpeg"
-                  alt="Late Rajkumar Ahuja Sir - Founder"
+                  alt="Late Shri R.A. Ahuja Sir - Founder"
                   className="w-full h-full object-cover object-top absolute inset-0"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#141517] via-transparent to-transparent sm:bg-gradient-to-r sm:from-transparent sm:to-[#1E2024]/30" />
@@ -221,10 +221,10 @@ export const HomePage: React.FC<HomePageProps> = ({
               <div className="sm:col-span-7 p-6 sm:p-7 flex flex-col justify-between space-y-5">
                 <div>
                   <h3 className="text-xl sm:text-2xl font-extrabold text-white">
-                    Late Rajkumar Ahuja Sir
+                    Late Shri R.A. Ahuja Sir
                   </h3>
                   <p className="text-xs font-bold text-red-400 uppercase tracking-wider mt-1">
-                    The Visionary Founder (Est. 1998)
+                    The Visionary Founder (Since 1998)
                   </p>
                   <p className="text-xs text-gray-400 mt-1.5 leading-relaxed">
                     Pioneer of Concept-First Coaching in Ahmedabad
@@ -240,11 +240,11 @@ export const HomePage: React.FC<HomePageProps> = ({
                 </div>
 
                 <div className="flex items-center justify-between text-xs text-gray-400 border-t border-gray-800/80 pt-3">
-                  <span className="flex items-center gap-1.5 text-gray-300">
-                    <Sparkles className="w-3.5 h-3.5 text-red-500" />
-                    Academic Excellence Legacy
+                  <span className="inline-flex items-center gap-1.5 text-gray-300">
+                    <Sparkles className="w-3.5 h-3.5 text-red-500 shrink-0" />
+                    <span>Academic Excellence Legacy</span>
                   </span>
-                  <span className="font-mono text-red-400 font-bold">1998 — Present</span>
+                  <span className="font-mono text-red-400 font-bold text-right">1998 — Present</span>
                 </div>
               </div>
             </div>
@@ -271,7 +271,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                 <FlaskConical className="w-6 h-6" />
               </div>
               <div className="space-y-2">
-                <h3 className="text-xl font-bold text-gray-900">Science (JEE/NEET)</h3>
+                <h3 className="text-xl font-bold text-gray-900">Science (JEE &amp; NEET)</h3>
                 <p className="text-sm text-gray-600 leading-relaxed">
                   Rigorous preparation for engineering (JEE Main/Advanced) and medical (NEET UG) entrance exams with expert faculty and proven test systems.
                 </p>
@@ -338,37 +338,57 @@ export const HomePage: React.FC<HomePageProps> = ({
         </div>
       </section>
 
-      {/* 4. VISIONARY LEADERSHIP & MENTORSHIP (Midnight Obsidian Background) */}
+      {/* 4. EXPERT FACULTY & ACADEMIC LEADERSHIP (Midnight Obsidian Background) */}
       <section className="mx-4 sm:mx-6 lg:mx-8 max-w-7xl lg:mx-auto bg-[#18191B] text-white rounded-3xl p-8 sm:p-12 border border-gray-800 shadow-2xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           <div className="lg:col-span-5">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl bg-gray-900 border-2 border-gray-700/80 group max-w-md mx-auto">
               <img
                 src="/assets/Directors/Director - Sunil Ahuja.jpeg"
-                alt="Director Sunil Ahuja - Ahuja Career Institute"
+                alt="Director Sunil Ahuja & Senior Faculty - Ahuja Career Institute"
                 className="w-full h-80 sm:h-96 object-cover object-top group-hover:scale-103 transition-transform duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent flex flex-col justify-end p-5 sm:p-6">
-                <span className="text-white text-xs font-bold bg-red-600 px-3 py-1 rounded-md shadow-xs self-start mb-1.5">
-                  Institute Director
-                </span>
-                <h3 className="text-lg sm:text-xl font-extrabold text-white">Sunil Ahuja</h3>
-                <p className="text-xs text-red-400 font-semibold">Director, Ahuja Career Institute</p>
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex flex-col justify-end p-5 sm:p-6">
+                <div className="flex items-center gap-2 mb-1.5">
+                  <span className="text-white text-xs font-bold bg-red-600 px-3 py-1 rounded-md shadow-xs">
+                    Academic Directorate &amp; Faculty
+                  </span>
+                </div>
+                <h3 className="text-lg sm:text-xl font-extrabold text-white">Master Faculty &amp; Mentors</h3>
+                <p className="text-xs text-red-400 font-semibold mb-3">Led by Director Sunil Ahuja</p>
+
+                {/* Faculty Avatars Row */}
+                <div className="flex items-center gap-1.5 pt-2 border-t border-white/10">
+                  <div className="flex -space-x-2 overflow-hidden">
+                    {facultyMembers.slice(0, 5).map((fac, idx) => (
+                      <img
+                        key={idx}
+                        src={fac.avatarUrl}
+                        alt={fac.name}
+                        className="inline-block h-7 w-7 rounded-full ring-2 ring-gray-900 object-cover bg-amber-100"
+                        title={`${fac.name} (${fac.role})`}
+                      />
+                    ))}
+                  </div>
+                  <span className="text-[11px] font-bold text-gray-300 ml-1.5">
+                    +{facultyMembers.length}+ Senior Educators
+                  </span>
+                </div>
               </div>
             </div>
           </div>
 
           <div className="lg:col-span-7 space-y-5">
             <div className="inline-block px-3 py-1 bg-red-600/20 border border-red-500/30 text-red-400 text-xs font-bold uppercase tracking-wider rounded-full">
-              ACADEMIC GOVERNANCE &amp; PERSONAL CARE
+              ACADEMIC EXCELLENCE &amp; FACULTY LEADERSHIP
             </div>
 
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight">
-              Guided by <span className="text-red-500">Director Sunil Ahuja</span>
+              Coached by Ahmedabad’s <span className="text-red-500">Expert Faculty Team</span>
             </h2>
 
             <p className="text-sm text-gray-300 leading-relaxed">
-              Under the active direction of Sunil Ahuja, Ahuja Career Institute maintains an uncompromising standard of conceptual clarity, regular homework monitoring, and dedicated 1-on-1 doubt solving desks for every single student.
+              Under the active mentorship of Director Sunil Ahuja and our veteran subject specialists, Ahuja Career Institute maintains an uncompromising standard of conceptual clarity, regular homework monitoring, and dedicated 1-on-1 doubt solving desks for every single student.
             </p>
 
             <div className="bg-gray-900/90 p-5 rounded-2xl border border-gray-800 space-y-2 relative shadow-md">
@@ -376,7 +396,7 @@ export const HomePage: React.FC<HomePageProps> = ({
               <p className="text-xs sm:text-sm font-semibold text-gray-200 leading-relaxed italic px-3 pt-1">
                 "Our mission is to nurture intellectual discipline and deep conceptual clarity so every student achieves their highest ambition across Board and competitive entrance exams."
               </p>
-              <p className="text-[11px] font-bold text-red-400 text-right px-3">— Sunil Ahuja, Director</p>
+              <p className="text-[11px] font-bold text-red-400 text-right px-3">— Faculty Mentorship &amp; Academic Wing</p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
@@ -390,26 +410,27 @@ export const HomePage: React.FC<HomePageProps> = ({
               </div>
               <div className="flex items-center space-x-2 text-xs text-gray-300">
                 <CheckCircle2 className="w-4 h-4 text-red-500 shrink-0" />
-                <span>Maninagar H.O. &amp; Vastral Branches</span>
+                <span>Dedicated Subject H.O.D.s (Sci &amp; Comm)</span>
               </div>
               <div className="flex items-center space-x-2 text-xs text-gray-300">
                 <CheckCircle2 className="w-4 h-4 text-red-500 shrink-0" />
-                <span>Special Morning Batches Available</span>
+                <span>Maninagar H.O. &amp; Vastral Branches</span>
               </div>
             </div>
 
             <div className="pt-2 flex flex-wrap items-center gap-3">
               <button
-                onClick={onInquireClick}
-                className="px-6 py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold text-xs sm:text-sm rounded-xl transition shadow-md shadow-red-600/20 cursor-pointer"
+                onClick={() => setActiveTab('faculty')}
+                className="px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-bold text-xs sm:text-sm rounded-xl transition shadow-md shadow-red-600/20 flex items-center gap-2 cursor-pointer group active:scale-98"
               >
-                Inquire For Admissions
+                <span>Meet Our Faculty Team</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
               <button
-                onClick={() => setActiveTab('courses')}
-                className="px-5 py-2.5 bg-gray-800 hover:bg-gray-700 text-gray-200 border border-gray-700 font-bold text-xs sm:text-sm rounded-xl transition cursor-pointer"
+                onClick={onInquireClick}
+                className="px-5 py-3 bg-gray-800 hover:bg-gray-700 text-gray-200 border border-gray-700 font-bold text-xs sm:text-sm rounded-xl transition cursor-pointer"
               >
-                Explore Courses
+                Inquire for Std 6th to 12th
               </button>
             </div>
           </div>
@@ -591,7 +612,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                   required
                   value={demoName}
                   onChange={(e) => setDemoName(e.target.value)}
-                  placeholder="e.g. Rahul Sharma"
+                  placeholder="e.g. John Doe"
                   className="w-full px-4 py-3 bg-gray-900 text-white placeholder-gray-500 rounded-xl border border-gray-700 text-sm focus:border-red-500 focus:outline-hidden transition"
                 />
               </div>
@@ -618,7 +639,7 @@ export const HomePage: React.FC<HomePageProps> = ({
                   onChange={(e) => setDemoCohort(e.target.value)}
                   className="w-full px-4 py-3 bg-gray-900 text-white rounded-xl border border-gray-700 text-sm focus:border-red-500 focus:outline-hidden transition"
                 >
-                  <option value="11th & 12th Science (JEE/NEET)">11th &amp; 12th Science (JEE/NEET)</option>
+                  <option value="11th & 12th Science (JEE & NEET)">11th &amp; 12th Science (JEE &amp; NEET)</option>
                   <option value="11th & 12th Commerce">11th &amp; 12th Commerce</option>
                   <option value="Std. 8th to 10th Foundation">Std. 8th to 10th Foundation</option>
                   <option value="Crash Course / Test Series">Crash Course / Test Series</option>

@@ -27,7 +27,7 @@ export const ScoreboardPage: React.FC<ScoreboardPageProps> = ({ onInquireClick }
             Hall of <span className="text-red-600">Fame</span> &amp; Academic Milestones
           </h1>
           <p className="text-sm sm:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Every percentile and distinction here reflects relentless discipline, individual teacher mentorship, and concept-first coaching across 12th Science, 10th Board, JEE, and NEET.
+            Every percentile and distinction here reflects relentless discipline, individual teacher mentorship, and concept-first coaching across 12th Science, 10th Board, JEE Main, and NEET UG.
           </p>
         </div>
       </section>

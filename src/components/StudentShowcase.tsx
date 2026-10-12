@@ -242,19 +242,19 @@ export const StudentShowcase: React.FC<StudentShowcaseProps> = ({
       {/* ── Search & Filter Pill Bar ── */}
       {showFilters && (
         <div className="bg-gray-50 p-4 sm:p-6 rounded-3xl border border-gray-200 space-y-4 shadow-xs">
-          <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 sm:gap-4">
-            <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-3 sm:gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:items-center gap-2.5 sm:gap-3">
               <div className="flex items-center gap-2">
                 <span className="text-xs font-bold text-gray-600 uppercase tracking-wider flex items-center gap-1.5 shrink-0">
                   <Calendar className="w-4 h-4 text-red-600" />
-                  <span className="hidden sm:inline">Batch:</span>
+                  <span>Batch:</span>
                 </span>
-                <div className="relative flex-1 sm:flex-initial">
+                <div className="relative flex-1">
                   <select
                     value={selectedYear}
                     onChange={(e) => setSelectedYear(e.target.value as 'All' | '2025-26' | '2024-25')}
                     aria-label="Filter by Academic Batch"
-                    className="w-full sm:w-auto appearance-none pl-3.5 pr-9 py-2.5 bg-white rounded-xl border border-gray-300 text-xs sm:text-sm font-black text-gray-900 focus:outline-hidden focus:border-red-600 focus:ring-2 focus:ring-red-600/15 cursor-pointer shadow-xs"
+                    className="w-full appearance-none pl-3.5 pr-9 py-2.5 bg-white rounded-xl border border-gray-300 text-xs sm:text-sm font-black text-gray-900 focus:outline-hidden focus:border-red-600 focus:ring-2 focus:ring-red-600/15 cursor-pointer shadow-xs"
                   >
                     <option value="All">All Batches (2024–26)</option>
                     <option value="2025-26">2025–26 Results (Latest Board)</option>
@@ -266,7 +266,7 @@ export const StudentShowcase: React.FC<StudentShowcaseProps> = ({
                 {selectedYear !== 'All' && (
                   <button
                     onClick={() => setSelectedYear('All')}
-                    className="px-2.5 py-1 text-[11px] font-bold text-red-600 hover:text-red-700 bg-red-50 hover:bg-red-100 rounded-lg transition border border-red-200 cursor-pointer"
+                    className="px-2.5 py-1 text-[11px] font-bold text-red-600 hover:text-red-700 bg-red-50 hover:bg-red-100 rounded-lg transition border border-red-200 cursor-pointer shrink-0"
                     title="Reset batch filter"
                   >
                     Clear
@@ -277,14 +277,14 @@ export const StudentShowcase: React.FC<StudentShowcaseProps> = ({
               <div className="flex items-center gap-2">
                 <span className="text-xs font-bold text-gray-600 uppercase tracking-wider flex items-center gap-1.5 shrink-0">
                   <SlidersHorizontal className="w-4 h-4 text-red-600" />
-                  <span className="hidden sm:inline">Sort:</span>
+                  <span>Sort:</span>
                 </span>
-                <div className="relative flex-1 sm:flex-initial">
+                <div className="relative flex-1">
                   <select
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value as any)}
                     aria-label="Sort Achievers"
-                    className="w-full sm:w-auto appearance-none pl-3.5 pr-9 py-2.5 bg-white rounded-xl border border-gray-300 text-xs sm:text-sm font-black text-gray-900 focus:outline-hidden focus:border-red-600 focus:ring-2 focus:ring-red-600/15 cursor-pointer shadow-xs"
+                    className="w-full appearance-none pl-3.5 pr-9 py-2.5 bg-white rounded-xl border border-gray-300 text-xs sm:text-sm font-black text-gray-900 focus:outline-hidden focus:border-red-600 focus:ring-2 focus:ring-red-600/15 cursor-pointer shadow-xs"
                   >
                     <option value="default">Year, Class &amp; Marks</option>
                     <option value="marks">Highest Marks (Top Score)</option>
@@ -507,8 +507,8 @@ export const StudentShowcase: React.FC<StudentShowcaseProps> = ({
                   {hasMarks ? (
                     <div className="w-full space-y-1.5 pt-1">
                       <div className="text-[10px] uppercase font-extrabold tracking-wider text-gray-500 flex items-center justify-center gap-1">
-                        <span>Official Subject Marks</span>
-                        <span className="text-red-600 font-black">(/100)</span>
+                        <span>Subject Marks</span>
+                        <span className="text-red-600 font-bold">(Out of 100)</span>
                       </div>
                       <div className="flex flex-wrap items-center justify-center gap-1.5">
                         {Object.entries(student.marks!).map(([subject, score]) => {

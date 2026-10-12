@@ -53,7 +53,7 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onInquireClick }) => {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-red-200 bg-red-50 text-red-700 text-xs sm:text-sm font-bold shadow-xs">
             <Building2 className="w-4 h-4 text-red-600" />
-            <span>CAMPUSES &amp; LEARNING SPACES • EST. 1998</span>
+            <span>CAMPUSES &amp; LEARNING SPACES • SINCE 1998</span>
           </div>
 
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight leading-[1.12]">
@@ -187,83 +187,87 @@ export const GalleryPage: React.FC<GalleryPageProps> = ({ onInquireClick }) => {
         <div
           role="dialog"
           aria-modal="true"
-          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 animate-fadeIn"
+          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex flex-col justify-between p-3 sm:p-6 animate-fadeIn"
           onClick={closeLightbox}
         >
+          {/* Top Bar */}
           <div
-            className="relative max-w-4xl w-full bg-[#18191B] border border-gray-800 rounded-3xl overflow-hidden shadow-2xl flex flex-col max-h-[90vh]"
+            className="flex items-center justify-between text-white max-w-6xl w-full mx-auto pb-2 sm:pb-3 z-10"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Modal Header */}
-            <div className="p-4 sm:p-5 border-b border-gray-800 flex items-center justify-between text-white bg-gray-900/90">
-              <div className="flex items-center gap-2">
-                <span className="px-2.5 py-0.5 rounded-md bg-red-600 text-white text-xs font-bold font-mono">
-                  {galleryItems[activeLightboxIndex].category}
+            <div className="flex items-center gap-2">
+              <span className="px-2.5 py-1 rounded-md bg-red-600 text-white text-xs font-bold font-mono">
+                {galleryItems[activeLightboxIndex].category}
+              </span>
+              {galleryItems[activeLightboxIndex].location && (
+                <span className="text-xs text-gray-300 flex items-center gap-1">
+                  <MapPin className="w-3.5 h-3.5 text-red-400" />
+                  {galleryItems[activeLightboxIndex].location}
                 </span>
-                {galleryItems[activeLightboxIndex].location && (
-                  <span className="text-xs text-gray-400 flex items-center gap-1">
-                    <MapPin className="w-3.5 h-3.5 text-red-400" />
-                    {galleryItems[activeLightboxIndex].location}
-                  </span>
-                )}
+              )}
+            </div>
+
+            <button
+              onClick={closeLightbox}
+              className="p-2 rounded-full text-gray-300 hover:text-white hover:bg-white/10 transition cursor-pointer"
+              aria-label="Close Preview"
+            >
+              <X className="w-6 h-6 sm:w-7 sm:h-7" />
+            </button>
+          </div>
+
+          {/* Centered Image Container - Uncropped & fit to viewport */}
+          <div
+            className="relative flex-1 flex items-center justify-center w-full max-w-6xl mx-auto my-auto overflow-hidden min-h-0 py-2"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <img
+              src={galleryItems[activeLightboxIndex].imageUrl}
+              alt={galleryItems[activeLightboxIndex].title}
+              className="max-h-[72vh] max-w-full w-auto h-auto object-contain select-none rounded-xl shadow-2xl"
+            />
+
+            {/* Prev / Next Arrows */}
+            <button
+              onClick={prevLightbox}
+              className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 p-2.5 sm:p-3 rounded-full bg-black/70 hover:bg-red-600 text-white transition cursor-pointer border border-white/20 shadow-lg"
+              aria-label="Previous photo"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+            <button
+              onClick={nextLightbox}
+              className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 p-2.5 sm:p-3 rounded-full bg-black/70 hover:bg-red-600 text-white transition cursor-pointer border border-white/20 shadow-lg"
+              aria-label="Next photo"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+          </div>
+
+          {/* Bottom Bar / Caption */}
+          <div
+            className="max-w-6xl w-full mx-auto pt-2 sm:pt-3 z-10"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="bg-gray-900/90 border border-gray-800 rounded-2xl p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-white backdrop-blur-md">
+              <div>
+                <h3 className="text-base sm:text-lg font-bold text-white">
+                  {galleryItems[activeLightboxIndex].title}
+                </h3>
+                <p className="text-xs sm:text-sm text-gray-300 mt-0.5 leading-relaxed">
+                  {galleryItems[activeLightboxIndex].description}
+                </p>
               </div>
 
               <button
-                onClick={closeLightbox}
-                className="p-1.5 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800 transition cursor-pointer"
-                aria-label="Close Preview"
+                onClick={() => {
+                  closeLightbox();
+                  onInquireClick();
+                }}
+                className="px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl text-xs sm:text-sm whitespace-nowrap transition shadow-md shadow-red-600/25 shrink-0 cursor-pointer self-start sm:self-auto"
               >
-                <X className="w-6 h-6" />
+                Inquire For Admissions
               </button>
-            </div>
-
-            {/* Modal Image Display */}
-            <div className="relative bg-black flex items-center justify-center overflow-hidden flex-1 min-h-[300px] max-h-[60vh]">
-              <img
-                src={galleryItems[activeLightboxIndex].imageUrl}
-                alt={galleryItems[activeLightboxIndex].title}
-                className="max-h-full max-w-full object-contain"
-              />
-
-              {/* Prev / Next Arrows */}
-              <button
-                onClick={prevLightbox}
-                className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/60 hover:bg-red-600 text-white transition cursor-pointer border border-white/10"
-                aria-label="Previous photo"
-              >
-                <ChevronLeft className="w-5 h-5" />
-              </button>
-              <button
-                onClick={nextLightbox}
-                className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/60 hover:bg-red-600 text-white transition cursor-pointer border border-white/10"
-                aria-label="Next photo"
-              >
-                <ChevronRight className="w-5 h-5" />
-              </button>
-            </div>
-
-            {/* Modal Caption Footer */}
-            <div className="p-5 sm:p-6 bg-[#18191B] border-t border-gray-800 space-y-2 text-white">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                <div>
-                  <h3 className="text-lg sm:text-xl font-bold text-white">
-                    {galleryItems[activeLightboxIndex].title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-gray-300 mt-1 leading-relaxed">
-                    {galleryItems[activeLightboxIndex].description}
-                  </p>
-                </div>
-
-                <button
-                  onClick={() => {
-                    closeLightbox();
-                    onInquireClick();
-                  }}
-                  className="px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl text-xs sm:text-sm whitespace-nowrap transition shadow-md shadow-red-600/25 shrink-0 cursor-pointer"
-                >
-                  Inquire For Admissions
-                </button>
-              </div>
             </div>
           </div>
         </div>

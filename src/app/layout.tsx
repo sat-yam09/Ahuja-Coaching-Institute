@@ -2,9 +2,9 @@ import type { Metadata, Viewport } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Ahuja Career Institute | Premier Coaching for JEE, NEET & Boards',
+  title: 'Ahuja Career Institute | Premier Coaching for JEE Main, NEET UG & Boards',
   description:
-    'Comprehensive coaching for CBSE, GSEB, ICSE, JEE and NEET with expert faculty, personalized mentoring, and a proven track record of success since 1998.',
+    'Comprehensive coaching for CBSE, GSEB, ICSE, JEE Main and NEET UG with expert faculty, personalized mentoring, and a proven track record of success since 1998.',
   keywords: [
     'Ahuja Career Institute',
     'JEE Coaching Ahmedabad',

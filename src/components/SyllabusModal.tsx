@@ -16,6 +16,12 @@ export const SyllabusModal: React.FC<SyllabusModalProps> = ({ course, onClose, o
   if (!course) return null;
 
   const handleDownload = () => {
+    const link = document.createElement('a');
+    link.href = course.syllabusPdfUrl || `/assets/syllabus/${course.id}-syllabus.pdf`;
+    link.download = `${course.title.replace(/\s+/g, '_')}_Syllabus.pdf`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
     setDownloaded(true);
     setTimeout(() => {
       setDownloaded(false);
@@ -59,26 +65,56 @@ export const SyllabusModal: React.FC<SyllabusModalProps> = ({ course, onClose, o
 
           <div>
             <h4 className="text-xs font-bold text-red-600 uppercase tracking-wider mb-3 flex items-center gap-2">
-              <FileText className="w-4 h-4" /> Detailed Subject-Wise Modules
+              <FileText className="w-4 h-4" /> Detailed Subject-Wise Modules &amp; Chapters
             </h4>
 
-            <div className="space-y-3">
+            <div className="space-y-4">
               {course.syllabus.map((sub, idx) => (
-                <div key={idx} className="bg-gray-50 rounded-2xl p-5 border border-gray-200">
-                  <h5 className="font-bold text-gray-900 text-sm border-b border-gray-200 pb-2.5 mb-3 flex items-center gap-2">
-                    <span className="w-6 h-6 rounded-lg bg-red-600 text-white text-xs flex items-center justify-center font-bold">
-                      {idx + 1}
+                <div key={idx} className="bg-gray-50 rounded-2xl p-5 border border-gray-200 space-y-3">
+                  <h5 className="font-bold text-gray-900 text-sm border-b border-gray-200 pb-2.5 flex items-center justify-between">
+                    <span className="flex items-center gap-2">
+                      <span className="w-6 h-6 rounded-lg bg-red-600 text-white text-xs flex items-center justify-center font-bold">
+                        {idx + 1}
+                      </span>
+                      {sub.subject}
                     </span>
-                    {sub.subject}
+                    {sub.chapters && sub.chapters.length > 0 && (
+                      <span className="text-xs text-gray-500 font-medium font-mono">
+                        {sub.chapters.length} Chapters
+                      </span>
+                    )}
                   </h5>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                    {sub.topics.map((topic, tIdx) => (
-                      <div key={tIdx} className="flex items-center gap-2 text-xs text-gray-700 bg-white p-2.5 rounded-xl border border-gray-200">
-                        <ChevronRight className="w-3.5 h-3.5 text-red-600 flex-shrink-0" />
-                        <span className="font-medium">{topic}</span>
-                      </div>
-                    ))}
-                  </div>
+
+                  {sub.chapters && sub.chapters.length > 0 ? (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                      {sub.chapters.map((ch) => (
+                        <div key={ch.chapterNum} className="p-3 bg-white rounded-xl border border-gray-200 space-y-1.5 shadow-2xs">
+                          <div className="flex items-center gap-2">
+                            <span className="px-1.5 py-0.5 rounded text-[10px] font-bold bg-red-100 text-red-700 font-mono shrink-0">
+                              Ch. {ch.chapterNum}
+                            </span>
+                            <span className="font-bold text-gray-900 text-xs">{ch.chapterName}</span>
+                          </div>
+                          <div className="flex flex-wrap gap-1">
+                            {ch.focusTopics.map((ft, ftIdx) => (
+                              <span key={ftIdx} className="text-[10px] bg-gray-100 text-gray-700 px-2 py-0.5 rounded-md font-medium">
+                                {ft}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      {sub.topics.map((topic, tIdx) => (
+                        <div key={tIdx} className="flex items-center gap-2 text-xs text-gray-700 bg-white p-2.5 rounded-xl border border-gray-200">
+                          <ChevronRight className="w-3.5 h-3.5 text-red-600 flex-shrink-0" />
+                          <span className="font-medium">{topic}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
@@ -102,7 +138,7 @@ export const SyllabusModal: React.FC<SyllabusModalProps> = ({ course, onClose, o
         <div className="p-4 bg-gray-50 border-t border-gray-200 flex flex-wrap items-center justify-between gap-3 flex-shrink-0">
           <button
             onClick={handleDownload}
-            className={`px-4 py-2.5 rounded-xl text-xs font-bold transition flex items-center gap-2 ${
+            className={`px-4 py-2.5 rounded-xl text-xs font-bold transition flex items-center gap-2 cursor-pointer ${
               downloaded
                 ? 'bg-emerald-600 text-white'
                 : 'bg-white hover:bg-gray-100 text-gray-800 border border-gray-300 shadow-2xs'

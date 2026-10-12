@@ -6,6 +6,7 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { HomePage } from './views/HomePage';
 import { CoursesPage } from './views/CoursesPage';
+import { FacultyPage } from './views/FacultyPage';
 import { AboutPage } from './views/AboutPage';
 import { ScoreboardPage } from './views/ScoreboardPage';
 import { GalleryPage } from './views/GalleryPage';
@@ -19,7 +20,7 @@ interface AppProps {
 
 const TAB_CONFIG: Record<PageTab, { title: string; path: string }> = {
   home: {
-    title: 'Ahuja Career Institute | Premier Coaching for JEE, NEET & Boards',
+    title: 'Ahuja Career Institute | Premier Coaching for JEE Main, NEET UG & Boards',
     path: '/',
   },
   about: {
@@ -29,6 +30,10 @@ const TAB_CONFIG: Record<PageTab, { title: string; path: string }> = {
   courses: {
     title: 'Courses & Programs | Ahuja Career Institute',
     path: '/courses',
+  },
+  faculty: {
+    title: 'Expert Faculty & Mentors | Ahuja Career Institute',
+    path: '/faculty',
   },
   achievements: {
     title: 'Success Stories & Rankers | Ahuja Career Institute',
@@ -52,6 +57,7 @@ const getTabFromPath = (pathname: string): PageTab => {
   const cleanPath = pathname.replace(/\/+$/, '') || '/';
   if (cleanPath === '/about') return 'about';
   if (cleanPath === '/courses') return 'courses';
+  if (cleanPath === '/faculty') return 'faculty';
   if (cleanPath === '/achievements' || cleanPath === '/scoreboard') return 'scoreboard';
   if (cleanPath === '/gallery') return 'gallery';
   if (cleanPath === '/contact') return 'contact';
@@ -137,6 +143,12 @@ export default function App({ initialTab }: AppProps) {
             initialCourseId={selectedCourseIdForPage}
             onInquireClick={(title) => handleOpenInquire(title)}
             onViewSyllabus={(course) => setSelectedSyllabusCourse(course)}
+          />
+        )}
+
+        {activeTab === 'faculty' && (
+          <FacultyPage
+            onInquireClick={(facultyContext) => handleOpenInquire(facultyContext)}
           />
         )}
 

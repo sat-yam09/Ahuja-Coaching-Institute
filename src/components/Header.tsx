@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Menu, X, Sparkles, Home, Info, BookOpen, Trophy, Image as ImageIcon, PhoneCall } from 'lucide-react';
+import { Menu, X, Sparkles, Home, Info, BookOpen, Trophy, Image as ImageIcon, PhoneCall, GraduationCap } from 'lucide-react';
 import { AhujaLogo } from './AhujaLogo';
 import { PageTab } from '../types';
 
@@ -18,6 +18,7 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, onInqui
     { id: 'home', label: 'Home', icon: Home },
     { id: 'about', label: 'About', icon: Info },
     { id: 'courses', label: 'Courses', icon: BookOpen },
+    { id: 'faculty', label: 'Faculty', icon: GraduationCap },
     { id: 'achievements', label: 'Success Stories', icon: Trophy },
     { id: 'gallery', label: 'Gallery', icon: ImageIcon },
     { id: 'contact', label: 'Contact', icon: PhoneCall },

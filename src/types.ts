@@ -1,4 +1,4 @@
-export type PageTab = 'home' | 'courses' | 'about' | 'achievements' | 'scoreboard' | 'gallery' | 'contact';
+export type PageTab = 'home' | 'courses' | 'faculty' | 'about' | 'achievements' | 'scoreboard' | 'gallery' | 'contact';
 
 export interface Course {
   id: string;
@@ -19,15 +19,21 @@ export interface Course {
   syllabus: {
     subject: string;
     topics: string[];
+    chapters?: {
+      chapterNum: number;
+      chapterName: string;
+      focusTopics: string[];
+    }[];
   }[];
   features: string[];
+  syllabusPdfUrl?: string;
 }
 
 export interface FacultyMember {
   id: string;
   name: string;
   role: string;
-  category: 'Science Board' | 'Junior Division' | 'JEE/NEET' | 'Leadership';
+  category: 'Science Board' | 'Junior Division' | 'JEE/NEET' | 'Leadership' | 'Commerce';
   experience: string;
   education: string;
   bio: string;
