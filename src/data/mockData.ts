@@ -1938,7 +1938,7 @@ export const showcaseStudents: ShowcaseStudent[] = [
   { "id": "std-2526-dhairya-patel", "name": "Dhairya Patel", "imagePath": "/Converted Student of 25-26/Physics/Dhairya Patel.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "Chemistry", "Maths", "12th Science"], "topScore": 99, "scoreDisplay": "99/100 Physics (Rank 1)", "marks": { "Physics": 99, "Chemistry": 96, "Maths": 93 }, "ranks": { "Physics": 1, "Chemistry": 1, "Maths": 3 }, "exam": "12th Science Board Examination" },
   { "id": "std-2526-astha-rai", "name": "Astha Rai", "imagePath": "/Converted Student of 25-26/Physics/Astha Rai.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "Chemistry", "Maths", "12th Science"], "topScore": 97, "scoreDisplay": "97/100 Physics (Rank 2)", "marks": { "Physics": 97, "Maths": 88, "Chemistry": 87 }, "ranks": { "Physics": 2, "Maths": 9, "Chemistry": 10 }, "exam": "12th Science Board Examination" },
   { "id": "std-2526-om-parmar", "name": "Om Parmar", "imagePath": "/Converted Student of 25-26/Physics/Om parmar.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "Chemistry", "12th Science"], "topScore": 95, "scoreDisplay": "95/100 Physics (Rank 3)", "marks": { "Physics": 95, "Chemistry": 88 }, "ranks": { "Physics": 3, "Chemistry": 8 }, "exam": "12th Science Board Examination" },
-  { "id": "std-2526-dhvani-prajapati-board", "name": "Dhvani Prajapati", "imagePath": "/Converted Student of 25-26/Physics/Dhvani Prajapati.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "Chemistry", "Biology", "12th Science"], "topScore": 94, "scoreDisplay": "94/100 Physics (Rank 4)", "marks": { "Physics": 94, "Chemistry": 91, "Biology": 90 }, "ranks": { "Physics": 4, "Chemistry": 5, "Biology": 2 }, "exam": "12th Science Board Examination" },
+  { "id": "std-2526-seema-chaudhary", "name": "Seema Chaudhary", "imagePath": "/Converted Student of 25-26/Physics/Seema Chaudhary.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "Chemistry", "Biology", "12th Science"], "topScore": 94, "scoreDisplay": "94/100 Physics (Rank 4)", "marks": { "Physics": 94, "Chemistry": 91, "Biology": 90 }, "ranks": { "Physics": 4, "Chemistry": 5, "Biology": 2 }, "exam": "12th Science Board Examination" },
   { "id": "std-2526-mahi-patel", "name": "Mahi Patel", "imagePath": "/Converted Student of 25-26/Maths/Mahi Patel.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Maths", "Chemistry", "Physics", "12th Science"], "topScore": 94, "scoreDisplay": "94/100 Maths (Rank 1)", "marks": { "Maths": 94, "Chemistry": 89, "Physics": 86 }, "ranks": { "Maths": 1, "Chemistry": 7, "Physics": 17 }, "exam": "12th Science Board Examination" },
   { "id": "std-2526-preet-patel", "name": "Preet Patel", "imagePath": "/Converted Student of 25-26/Physics/Preet Patel.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Physics", "Maths", "Chemistry", "12th Science"], "topScore": 94, "scoreDisplay": "94/100 Physics (Rank 5)", "marks": { "Physics": 94, "Maths": 90, "Chemistry": 86 }, "ranks": { "Physics": 5, "Maths": 7, "Chemistry": 14 }, "exam": "12th Science Board Examination" },
   { "id": "std-2526-kunj-patel", "name": "Kunj Patel", "imagePath": "/Converted Student of 25-26/Chemistry/Kunj Patel.png", "grade": "Std. 12th Science", "category": "12th Science", "year": "2025-26", "subjects": ["Maths", "Chemistry", "12th Science"], "topScore": 93, "scoreDisplay": "93/100 Maths & 91/100 Chem", "marks": { "Maths": 93, "Chemistry": 91 }, "ranks": { "Maths": 4, "Chemistry": 4 }, "exam": "12th Science Board Examination" },
@@ -2051,7 +2051,7 @@ export const subjectMeritRecords: Record<string, { rank: number; name: string; s
     },
     {
       "rank": 4,
-      "name": "DHVANI PRAJAPATI",
+      "name": "SEEMA CHAUDHARY",
       "score": 94
     },
     {
@@ -2295,7 +2295,7 @@ export const subjectMeritRecords: Record<string, { rank: number; name: string; s
     },
     {
       "rank": 2,
-      "name": "DHVANI PRAJAPATI",
+      "name": "SEEMA CHAUDHARY",
       "score": 90
     },
     {
@@ -2362,7 +2362,7 @@ export const subjectMeritRecords: Record<string, { rank: number; name: string; s
     },
     {
       "rank": 5,
-      "name": "DHVANI PRAJAPATI",
+      "name": "SEEMA CHAUDHARY",
       "score": 91
     },
     {

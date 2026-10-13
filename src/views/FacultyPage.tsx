@@ -66,91 +66,86 @@ export const FacultyPage: React.FC<FacultyPageProps> = ({ onInquireClick }) => {
 
   return (
     <div className="space-y-16 sm:space-y-24 pb-20 bg-white text-gray-900">
-      {/* 1. HERO SECTION (Authentic Indian Classroom Teaching Focus) */}
-      <section className="relative pt-10 sm:pt-16 pb-12 sm:pb-16 overflow-hidden bg-gradient-to-b from-red-50/50 via-white to-white border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-            {/* Left Column: Headlines & Pedagogy Value */}
-            <div className="lg:col-span-7 space-y-5 text-left">
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-red-200 bg-red-50 text-red-700 text-xs font-bold shadow-2xs">
-                <GraduationCap className="w-4 h-4 text-red-600" />
-                <span>Classroom Teaching Excellence • Since 1998</span>
-              </div>
+      {/* 1. HERO SECTION (Centered Layout matching Courses, About, and Contact pages) */}
+      <section className="relative pt-12 sm:pt-20 pb-12 sm:pb-16 overflow-hidden bg-gradient-to-b from-red-50/50 via-white to-white border-b border-gray-100">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-red-200 bg-red-50 text-red-700 text-xs sm:text-sm font-bold uppercase tracking-wider shadow-xs">
+            <GraduationCap className="w-4 h-4 text-red-600" />
+            <span>Classroom Teaching Excellence • Since 1998</span>
+          </div>
 
-              {/* Headline */}
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight leading-[1.15]">
-                Learn Directly From <br className="hidden sm:inline" />
-                <span className="text-red-600">Ahmedabad's Master Mentors</span>
-              </h1>
+          {/* Headline */}
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight leading-[1.12]">
+            Learn Directly From <br />
+            <span className="text-red-600">Ahmedabad's Master Mentors</span>
+          </h1>
 
-              {/* Subtitle */}
-              <p className="text-sm sm:text-base text-gray-600 max-w-2xl font-normal leading-relaxed">
-                Conceptual mastery begins with dedicated classroom teaching. Our senior educators break down complex physics derivations, organic mechanisms, calculus proofs, and board theory in live interactive sessions with individual doubt desks.
-              </p>
+          {/* Subtitle */}
+          <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed">
+            Conceptual mastery begins with dedicated classroom teaching. Our senior educators break down complex physics derivations, organic mechanisms, calculus proofs, and board theory in live interactive sessions with individual doubt desks.
+          </p>
 
-              {/* Teaching Pillars */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
-                <div className="flex items-center gap-2 text-xs text-gray-800 font-semibold bg-white p-2.5 rounded-xl border border-gray-200 shadow-2xs">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>Concept-First Pedagogy</span>
-                </div>
-                <div className="flex items-center gap-2 text-xs text-gray-800 font-semibold bg-white p-2.5 rounded-xl border border-gray-200 shadow-2xs">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>Daily Doubt Desks</span>
-                </div>
-                <div className="flex items-center gap-2 text-xs text-gray-800 font-semibold bg-white p-2.5 rounded-xl border border-gray-200 shadow-2xs">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>Maninagar &amp; Vastral</span>
-                </div>
-              </div>
-
-              {/* CTA Buttons */}
-              <div className="pt-2 flex flex-wrap items-center gap-3">
-                <button
-                  onClick={() => onInquireClick()}
-                  className="px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl text-xs sm:text-sm transition shadow-md shadow-red-600/25 active:scale-98 cursor-pointer flex items-center gap-2"
-                >
-                  <span>Attend Free Demo Class</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-                <a
-                  href="tel:+917405328676"
-                  className="px-5 py-3 bg-white hover:bg-gray-50 text-gray-800 border border-gray-300 font-bold rounded-xl text-xs sm:text-sm transition shadow-2xs flex items-center gap-2 cursor-pointer"
-                >
-                  <PhoneCall className="w-4 h-4 text-red-600" />
-                  <span>Call +91 74053 28676</span>
-                </a>
-              </div>
+          {/* Teaching Pillars */}
+          <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 pt-1">
+            <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-800 font-semibold bg-white px-3.5 py-2 rounded-xl border border-gray-200 shadow-2xs">
+              <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+              <span>Concept-First Pedagogy</span>
             </div>
+            <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-800 font-semibold bg-white px-3.5 py-2 rounded-xl border border-gray-200 shadow-2xs">
+              <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+              <span>Daily Doubt Desks</span>
+            </div>
+            <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-800 font-semibold bg-white px-3.5 py-2 rounded-xl border border-gray-200 shadow-2xs">
+              <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+              <span>Maninagar &amp; Vastral Campuses</span>
+            </div>
+          </div>
 
-            {/* Right Column: Classroom Teaching Visual */}
-            <div className="lg:col-span-5 relative">
-              <div className="relative rounded-3xl overflow-hidden border-2 border-red-100 shadow-xl bg-gray-900 group">
-                <img
-                  src="/assets/faculty-hero-teaching.jpg"
-                  alt="Faculty teaching Indian students in modern classroom at Ahuja Career Institute"
-                  className="w-full h-[320px] sm:h-[380px] object-cover group-hover:scale-102 transition duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
+          {/* CTA Buttons */}
+          <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
+            <button
+              onClick={() => onInquireClick()}
+              className="px-6 py-3.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl text-xs sm:text-sm transition shadow-md shadow-red-600/25 active:scale-98 cursor-pointer flex items-center gap-2"
+            >
+              <span>Attend Free Demo Class</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+            <a
+              href="tel:+917405328676"
+              className="px-5 py-3.5 bg-white hover:bg-gray-50 text-gray-800 border border-gray-300 font-bold rounded-xl text-xs sm:text-sm transition shadow-2xs flex items-center gap-2 cursor-pointer"
+            >
+              <PhoneCall className="w-4 h-4 text-red-600" />
+              <span>Call +91 74053 28676</span>
+            </a>
+          </div>
 
-                {/* Floating Top Badge */}
-                <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1.5 rounded-full bg-red-600/95 backdrop-blur-xs text-white text-xs font-bold shadow-md flex items-center gap-1.5">
-                    <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
-                    Live Offline Classroom
-                  </span>
-                </div>
+          {/* Hero Stock Image Showcase (Centered with Proper Text Overlay) */}
+          <div className="relative pt-4 max-w-3xl sm:max-w-4xl mx-auto">
+            <div className="relative rounded-3xl overflow-hidden shadow-xl border border-gray-200 bg-gray-900 group">
+              <img
+                src="/assets/faculty-hero-teaching.jpg"
+                alt="Faculty teaching students in modern classroom at Ahuja Career Institute"
+                className="w-full h-64 sm:h-80 md:h-96 object-cover object-center group-hover:scale-102 transition duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none" />
 
-                {/* Bottom Overlay Label */}
-                <div className="absolute bottom-4 left-4 right-4 text-white space-y-1">
-                  <p className="text-sm font-extrabold tracking-tight">
-                    Dedicated Faculty Mentorship
-                  </p>
-                  <p className="text-xs text-gray-300 font-normal">
-                    Interactive board sessions, step-by-step problem solving &amp; continuous assessment.
-                  </p>
-                </div>
+              {/* Floating Top Badge */}
+              <div className="absolute top-4 left-4">
+                <span className="px-3 py-1.5 rounded-full bg-red-600/95 backdrop-blur-xs text-white text-xs font-bold shadow-md flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+                  Live Offline Classroom Teaching
+                </span>
+              </div>
+
+              {/* Bottom Overlay Label */}
+              <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 text-white text-left space-y-1">
+                <p className="text-base sm:text-lg font-extrabold tracking-tight">
+                  Dedicated Faculty Mentorship &amp; Interactive Classroom Pedagogy
+                </p>
+                <p className="text-xs sm:text-sm text-gray-200 font-normal">
+                  Interactive board sessions, daily doubt desks, step-by-step problem solving &amp; personalized academic care across Maninagar and Vastral.
+                </p>
               </div>
             </div>
           </div>
