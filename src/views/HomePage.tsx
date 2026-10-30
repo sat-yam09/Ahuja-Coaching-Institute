@@ -420,10 +420,15 @@ export const HomePage: React.FC<HomePageProps> = ({
 
             <div className="pt-2 flex flex-wrap items-center gap-3">
               <button
-                onClick={() => setActiveTab('faculty')}
+                onClick={() => {
+                  setActiveTab('about');
+                  setTimeout(() => {
+                    document.getElementById('star-faculties')?.scrollIntoView({ behavior: 'smooth' });
+                  }, 100);
+                }}
                 className="px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-bold text-xs sm:text-sm rounded-xl transition shadow-md shadow-red-600/20 flex items-center gap-2 cursor-pointer group active:scale-98"
               >
-                <span>Meet Our Faculty Team</span>
+                <span>Meet Our Star Faculties</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </button>
               <button

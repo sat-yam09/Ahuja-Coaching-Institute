@@ -45,32 +45,43 @@ export const ContactPage: React.FC = () => {
         </div>
       </section>
 
-      {/* 2. OUR CENTERS SECTION (Matches Screenshot 2: Center cards with map preview headers) */}
+      {/* 2. OUR CENTERS SECTION (Showing Verified Google Maps for both Branches) */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6">
         <div className="space-y-2 mb-8 text-center sm:text-left">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50 text-red-600 border border-red-200 text-xs font-bold uppercase tracking-wider">
+            <MapPin className="w-3.5 h-3.5" /> Ahmedabad Campuses
+          </div>
           <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
-            Our Centers
+            Our Centers &amp; Branch Locations
           </h2>
-          <p className="text-xs sm:text-sm text-gray-500">Visit our fully-equipped campuses across Ahmedabad.</p>
+          <p className="text-xs sm:text-sm text-gray-500">Visit our fully-equipped campuses across Ahmedabad with verified Google Maps navigation.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Center 1: Maninagar (HQ) */}
           <div className="bg-white rounded-3xl border border-gray-200 overflow-hidden shadow-xs hover:shadow-md transition card-hover-effect flex flex-col justify-between">
             <div>
-              {/* Campus Exterior Photo Header */}
-              <div className="h-48 sm:h-52 overflow-hidden relative border-b border-gray-100 group">
+              {/* Branch Google Map Image */}
+              <div className="h-60 sm:h-68 overflow-hidden relative border-b border-gray-100 group bg-gray-100">
                 <img
-                  src="/assets/centers/maninagar-exterior.jpg"
-                  alt="Maninagar HQ Campus Exterior - Takshshila Square"
-                  className="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                  src="/assets/centers/maninagar-map.png"
+                  alt="Ahuja Career Institute Maninagar (HQ) Google Map Location"
+                  className="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-                <span className="absolute top-3 left-3 px-2.5 py-1 bg-red-600 text-white text-[10px] font-bold rounded-lg shadow-md uppercase tracking-wider">
-                  Head Office
-                </span>
+                
+                {/* Badges */}
+                <div className="absolute top-3 left-3 flex items-center gap-1.5">
+                  <span className="px-2.5 py-1 bg-red-600 text-white text-[10px] font-bold rounded-lg shadow-md uppercase tracking-wider">
+                    Head Office
+                  </span>
+                  <span className="px-2.5 py-1 bg-black/60 backdrop-blur-xs text-white text-[10px] font-semibold rounded-lg">
+                    📍 Google Maps Location
+                  </span>
+                </div>
+
                 <span className="absolute bottom-2.5 left-3 text-xs font-bold text-white drop-shadow-sm">
-                  Takshshila Square Campus
+                  Takshshila Square • Near P Bhagat Tarachand
                 </span>
               </div>
 
@@ -117,19 +128,27 @@ export const ContactPage: React.FC = () => {
           {/* Center 2: Vastral Branch */}
           <div className="bg-white rounded-3xl border border-gray-200 overflow-hidden shadow-xs hover:shadow-md transition card-hover-effect flex flex-col justify-between">
             <div>
-              {/* Campus Exterior Photo Header */}
-              <div className="h-48 sm:h-52 overflow-hidden relative border-b border-gray-100 group">
+              {/* Branch Google Map Image */}
+              <div className="h-60 sm:h-68 overflow-hidden relative border-b border-gray-100 group bg-gray-100">
                 <img
-                  src="/assets/centers/vastral-exterior.jpg"
-                  alt="Vastral Branch Campus Exterior"
-                  className="w-full h-full object-cover object-top group-hover:scale-105 transition duration-500"
+                  src="/assets/centers/vastral-map.png"
+                  alt="Ahuja Career Institute Vastral Branch Google Map Location"
+                  className="w-full h-full object-cover object-center group-hover:scale-105 transition duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-                <span className="absolute top-3 left-3 px-2.5 py-1 bg-gray-900 text-white text-[10px] font-bold rounded-lg shadow-md uppercase tracking-wider">
-                  Vastral Branch
-                </span>
+                
+                {/* Badges */}
+                <div className="absolute top-3 left-3 flex items-center gap-1.5">
+                  <span className="px-2.5 py-1 bg-gray-900 text-white text-[10px] font-bold rounded-lg shadow-md uppercase tracking-wider">
+                    Vastral Branch
+                  </span>
+                  <span className="px-2.5 py-1 bg-black/60 backdrop-blur-xs text-white text-[10px] font-semibold rounded-lg">
+                    📍 Google Maps Location
+                  </span>
+                </div>
+
                 <span className="absolute bottom-2.5 left-3 text-xs font-bold text-white drop-shadow-sm">
-                  Avadh Pride (Metro Pillar 140)
+                  Avadh Pride • Near Cinépolis (Kankubag Mall)
                 </span>
               </div>
 

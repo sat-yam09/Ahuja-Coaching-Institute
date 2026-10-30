@@ -16,9 +16,8 @@ export const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab, onInqui
 
   const navLinks: { id: PageTab; label: string; icon: React.ComponentType<{ className?: string }> }[] = [
     { id: 'home', label: 'Home', icon: Home },
-    { id: 'about', label: 'About', icon: Info },
+    { id: 'about', label: 'About Us', icon: Info },
     { id: 'courses', label: 'Courses', icon: BookOpen },
-    { id: 'faculty', label: 'Faculty', icon: GraduationCap },
     { id: 'achievements', label: 'Success Stories', icon: Trophy },
     { id: 'gallery', label: 'Gallery', icon: ImageIcon },
     { id: 'contact', label: 'Contact', icon: PhoneCall },

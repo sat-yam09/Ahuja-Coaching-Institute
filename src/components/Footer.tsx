@@ -54,8 +54,16 @@ export const Footer: React.FC<FooterProps> = ({ setActiveTab, onInquireClick }) 
                 </button>
               </li>
               <li>
-                <button onClick={() => setActiveTab('faculty')} className="hover:text-red-400 transition cursor-pointer">
-                  Faculty &amp; Mentors
+                <button
+                  onClick={() => {
+                    setActiveTab('about');
+                    setTimeout(() => {
+                      document.getElementById('star-faculties')?.scrollIntoView({ behavior: 'smooth' });
+                    }, 100);
+                  }}
+                  className="hover:text-red-400 transition cursor-pointer"
+                >
+                  Our Star Faculties
                 </button>
               </li>
               <li>
