@@ -6,7 +6,6 @@ import { Course } from '../types';
 import {
   ChevronDown,
   ChevronUp,
-  Download,
   CheckCircle2,
   HelpCircle,
   FileText,
@@ -433,17 +432,16 @@ export const CoursesPage: React.FC<CoursesPageProps> = ({
           <div className="flex flex-col sm:flex-row gap-3 pt-2">
             <button
               onClick={() => onInquireClick(selectedCourse.title)}
-              className="w-full sm:w-auto px-6 py-3.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl text-sm transition shadow-md shadow-red-600/20 active:scale-98 cursor-pointer text-center"
+              className="w-full sm:w-auto px-7 py-3.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl text-sm transition shadow-md shadow-red-600/20 active:scale-98 cursor-pointer text-center flex items-center justify-center gap-2"
             >
-              Inquire For Batch Admission
+              Inquire For Batch Admission <ArrowRight className="w-4 h-4" />
             </button>
-            <a
-              href={selectedCourse.syllabusPdfUrl || `/assets/syllabus/${selectedCourse.id}-syllabus.pdf`}
-              download={`${selectedCourse.title.replace(/\s+/g, '_')}_Syllabus.pdf`}
+            <button
+              onClick={() => onInquireClick(`${selectedCourse.title} - Book Free Demo Class`)}
               className="w-full sm:w-auto px-6 py-3.5 bg-white hover:bg-gray-50 text-gray-800 border border-gray-300 font-bold rounded-xl text-sm transition flex items-center justify-center gap-2 shadow-xs cursor-pointer text-center"
             >
-              <Download className="w-4 h-4 text-red-600" /> Download Full Syllabus PDF
-            </a>
+              <Sparkles className="w-4 h-4 text-red-600" /> Book Free Demo Class
+            </button>
           </div>
         </div>
       </section>

@@ -6,7 +6,6 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { HomePage } from './views/HomePage';
 import { CoursesPage } from './views/CoursesPage';
-import { FacultyPage } from './views/FacultyPage';
 import { AboutPage } from './views/AboutPage';
 import { ScoreboardPage } from './views/ScoreboardPage';
 import { GalleryPage } from './views/GalleryPage';
@@ -55,9 +54,8 @@ const TAB_CONFIG: Record<PageTab, { title: string; path: string }> = {
 
 const getTabFromPath = (pathname: string): PageTab => {
   const cleanPath = pathname.replace(/\/+$/, '') || '/';
-  if (cleanPath === '/about') return 'about';
+  if (cleanPath === '/about' || cleanPath === '/faculty') return 'about';
   if (cleanPath === '/courses') return 'courses';
-  if (cleanPath === '/faculty') return 'faculty';
   if (cleanPath === '/achievements' || cleanPath === '/scoreboard') return 'scoreboard';
   if (cleanPath === '/gallery') return 'gallery';
   if (cleanPath === '/contact') return 'contact';
@@ -146,16 +144,10 @@ export default function App({ initialTab }: AppProps) {
           />
         )}
 
-        {activeTab === 'faculty' && (
-          <FacultyPage
-            onInquireClick={(facultyContext) => handleOpenInquire(facultyContext)}
-          />
-        )}
-
-        {activeTab === 'about' && (
+        {(activeTab === 'about' || activeTab === 'faculty') && (
           <AboutPage
             setActiveTab={setActiveTab}
-            onInquireClick={() => handleOpenInquire()}
+            onInquireClick={(context) => handleOpenInquire(context)}
           />
         )}
 

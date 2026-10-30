@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
-import { X, Download, FileText, Check, ChevronRight } from 'lucide-react';
+import React from 'react';
+import { X, FileText, Check, ChevronRight } from 'lucide-react';
 import { Course } from '../types';
 
 interface SyllabusModalProps {
@@ -11,22 +11,7 @@ interface SyllabusModalProps {
 }
 
 export const SyllabusModal: React.FC<SyllabusModalProps> = ({ course, onClose, onBookDemo }) => {
-  const [downloaded, setDownloaded] = useState(false);
-
   if (!course) return null;
-
-  const handleDownload = () => {
-    const link = document.createElement('a');
-    link.href = course.syllabusPdfUrl || `/assets/syllabus/${course.id}-syllabus.pdf`;
-    link.download = `${course.title.replace(/\s+/g, '_')}_Syllabus.pdf`;
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    setDownloaded(true);
-    setTimeout(() => {
-      setDownloaded(false);
-    }, 4000);
-  };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-fadeIn">
@@ -137,22 +122,10 @@ export const SyllabusModal: React.FC<SyllabusModalProps> = ({ course, onClose, o
 
         <div className="p-4 bg-gray-50 border-t border-gray-200 flex flex-wrap items-center justify-between gap-3 flex-shrink-0">
           <button
-            onClick={handleDownload}
-            className={`px-4 py-2.5 rounded-xl text-xs font-bold transition flex items-center gap-2 cursor-pointer ${
-              downloaded
-                ? 'bg-emerald-600 text-white'
-                : 'bg-white hover:bg-gray-100 text-gray-800 border border-gray-300 shadow-2xs'
-            }`}
+            onClick={onClose}
+            className="px-4 py-2.5 rounded-xl text-xs font-bold text-gray-700 bg-white hover:bg-gray-100 border border-gray-300 shadow-2xs transition cursor-pointer"
           >
-            {downloaded ? (
-              <>
-                <Check className="w-4 h-4" /> Syllabus PDF Downloaded!
-              </>
-            ) : (
-              <>
-                <Download className="w-4 h-4 text-red-600" /> Download Full Syllabus PDF
-              </>
-            )}
+            Close
           </button>
 
           <button
@@ -160,7 +133,7 @@ export const SyllabusModal: React.FC<SyllabusModalProps> = ({ course, onClose, o
               onClose();
               onBookDemo(course.title);
             }}
-            className="px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl text-xs sm:text-sm transition shadow-md shadow-red-600/20 active:scale-98"
+            className="px-6 py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl text-xs sm:text-sm transition shadow-md shadow-red-600/20 active:scale-98 cursor-pointer"
           >
             Book Free Demo Class
           </button>

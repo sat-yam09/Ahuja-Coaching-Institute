@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { PageTab } from '../types';
 import {
   aboutStats,
@@ -18,14 +18,37 @@ import {
   MapPin,
   CheckCircle2,
   GraduationCap,
+  Search,
 } from 'lucide-react';
+
+type FacultyFilter = 'All' | 'JEE/NEET' | 'Science Board' | 'Junior Division' | 'Commerce';
 
 interface AboutPageProps {
   setActiveTab: (tab: PageTab) => void;
-  onInquireClick: () => void;
+  onInquireClick: (context?: string) => void;
 }
 
 export const AboutPage: React.FC<AboutPageProps> = ({ setActiveTab, onInquireClick }) => {
+  const [selectedCategory, setSelectedCategory] = useState<FacultyFilter>('All');
+  const [facultySearch, setFacultySearch] = useState<string>('');
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.location.hash.includes('facult')) {
+      setTimeout(() => {
+        document.getElementById('star-faculties')?.scrollIntoView({ behavior: 'smooth' });
+      }, 150);
+    }
+  }, []);
+
+  const filteredFaculty = facultyMembers.filter((fac) => {
+    const matchesCat = selectedCategory === 'All' || fac.category === selectedCategory;
+    const matchesQuery =
+      facultySearch.trim() === '' ||
+      fac.name.toLowerCase().includes(facultySearch.toLowerCase()) ||
+      fac.role.toLowerCase().includes(facultySearch.toLowerCase()) ||
+      fac.specialization.some((s) => s.toLowerCase().includes(facultySearch.toLowerCase()));
+    return matchesCat && matchesQuery;
+  });
   return (
     <div className="space-y-16 sm:space-y-24 pb-16 bg-white text-gray-900">
       {/* 1. HERO SECTION (Unified Hero Layout matching HomePage, Courses, and Contact) */}
@@ -191,7 +214,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setActiveTab, onInquireCli
               <div className="pt-2 border-t border-gray-800/80 flex items-center justify-between text-[11px] text-gray-400">
                 <span>Direction: Academic Excellence</span>
                 <button
-                  onClick={onInquireClick}
+                  onClick={() => onInquireClick()}
                   className="text-red-400 hover:text-red-300 font-bold transition flex items-center gap-1 cursor-pointer"
                 >
                   Connect with Mentors <ArrowRight className="w-3 h-3" />
@@ -202,67 +225,231 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setActiveTab, onInquireCli
         </div>
       </section>
 
-      {/* 3. EXPERT FACULTY PANEL */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center space-y-3 mb-10 sm:mb-12">
+      {/* 3. OUR STAR FACULTIES (Merged & Preprocessed with Red Popout Ring) */}
+      <section id="star-faculties" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24 space-y-8">
+        <div className="text-center space-y-3">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-red-200 bg-red-50 text-red-700 text-xs font-bold uppercase tracking-wider">
             <GraduationCap className="w-4 h-4 text-red-600" />
-            <span>Master Faculty Panel</span>
+            <span>Academic Wing • Ahuja Star Mentors</span>
           </div>
           <h2 className="text-2xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
-            Learn From Our <span className="text-red-600">Expert Faculty</span>
+            Our <span className="text-red-600">Star Faculties</span> &amp; Mentors
           </h2>
           <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto">
-            Seasoned subject experts, department heads, and mentors committed to conceptual clarity, rigorous problem-solving, and continuous academic guidance.
+            Ahmedabad’s seasoned subject authorities across Physics, Chemistry, Mathematics, Biology, and Commerce — delivering conceptual depth, error-correction drills, and 1-on-1 mentorship since 1998.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-          {facultyMembers.map((fac) => (
-            <div
-              key={fac.name}
-              className="bg-white rounded-2xl border border-gray-200 p-5 shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between space-y-4 group"
+        {/* Filter Tabs & Search Controls */}
+        <div className="bg-[#FAF8F5] p-3 sm:p-4 rounded-2xl border border-[#F0EBE1] shadow-2xs space-y-3">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
+            {/* Filter Tabs */}
+            <div className="flex flex-wrap items-center gap-1.5 w-full sm:w-auto">
+              {(
+                [
+                  { id: 'All', label: 'All Faculty', count: facultyMembers.length },
+                  { id: 'JEE/NEET', label: 'JEE / NEET', count: facultyMembers.filter((f) => f.category === 'JEE/NEET').length },
+                  { id: 'Science Board', label: 'Science Board', count: facultyMembers.filter((f) => f.category === 'Science Board').length },
+                  { id: 'Junior Division', label: 'Junior Division', count: facultyMembers.filter((f) => f.category === 'Junior Division').length },
+                  { id: 'Commerce', label: 'Commerce', count: facultyMembers.filter((f) => f.category === 'Commerce').length },
+                ] as const
+              ).map((tab) => {
+                const isSelected = selectedCategory === tab.id;
+                return (
+                  <button
+                    key={tab.id}
+                    onClick={() => setSelectedCategory(tab.id as FacultyFilter)}
+                    className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                      isSelected
+                        ? 'bg-red-600 text-white shadow-md shadow-red-600/25 scale-102'
+                        : 'bg-white text-gray-700 hover:text-red-600 hover:border-red-400 border border-gray-200'
+                    }`}
+                  >
+                    <span>{tab.label}</span>
+                    <span className={`ml-1.5 text-[10px] ${isSelected ? 'text-white/90' : 'text-gray-400'}`}>
+                      ({tab.count})
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Quick Search */}
+            <div className="relative w-full sm:w-64">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+              <input
+                type="text"
+                value={facultySearch}
+                onChange={(e) => setFacultySearch(e.target.value)}
+                placeholder="Search faculty or subject..."
+                className="w-full pl-9 pr-8 py-2 bg-white rounded-xl border border-gray-300 text-xs font-medium focus:outline-hidden focus:border-red-600 focus:ring-1 focus:ring-red-600 transition"
+              />
+              {facultySearch && (
+                <button
+                  onClick={() => setFacultySearch('')}
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-700 text-xs p-1"
+                >
+                  ✕
+                </button>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* Faculty Grid (Rendered with Red Popout Ring Just Like Students) */}
+        {filteredFaculty.length === 0 ? (
+          <div className="p-10 bg-white rounded-3xl border border-gray-200 text-center space-y-3">
+            <GraduationCap className="w-10 h-10 text-gray-400 mx-auto" />
+            <h3 className="text-base font-bold text-gray-900">No faculty members found</h3>
+            <p className="text-xs text-gray-500">Try switching category tabs or clearing your search filter.</p>
+            <button
+              onClick={() => {
+                setSelectedCategory('All');
+                setFacultySearch('');
+              }}
+              className="px-4 py-2 bg-red-600 text-white rounded-xl text-xs font-bold hover:bg-red-700 transition"
             >
-              <div className="space-y-3.5">
-                <div className="relative w-full aspect-4/3 rounded-xl overflow-hidden bg-gray-100 border border-gray-100">
-                  <img
-                    src={fac.avatarUrl}
-                    alt={fac.name}
-                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <span className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-md bg-black/75 backdrop-blur-xs text-white text-[10px] font-bold">
-                    {fac.experience}
+              Reset Filters
+            </button>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            {filteredFaculty.map((fac) => (
+              <div
+                key={fac.id}
+                className="group relative bg-[#FAF8F5] rounded-3xl border border-[#F0EBE1] hover:border-red-400 p-5 shadow-[0_4px_25px_rgba(0,0,0,0.05)] hover:shadow-[0_16px_36px_rgba(220,38,38,0.14)] transition-all duration-300 hover:-translate-y-1.5 flex flex-col items-center justify-between text-center overflow-hidden"
+              >
+                {/* Top Badges */}
+                <div className="absolute top-3.5 left-3.5 z-20 flex flex-col items-start gap-1">
+                  <span className="px-2 py-0.5 rounded-md text-[10px] font-black uppercase tracking-wider shadow-2xs border bg-red-50 text-red-700 border-red-200">
+                    {fac.category}
                   </span>
                 </div>
 
-                <div>
-                  <div className="flex items-center justify-between gap-1 mb-1">
-                    <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-red-50 text-red-700 border border-red-100">
-                      {fac.category}
-                    </span>
-                    <span className="text-[11px] text-gray-500 font-medium">
-                      {fac.education}
-                    </span>
-                  </div>
-                  <h3 className="text-base font-extrabold text-gray-900 leading-snug">
-                    {fac.name}
-                  </h3>
-                  <p className="text-xs font-semibold text-red-600 mt-0.5">
-                    {fac.role}
-                  </p>
+                <div className="absolute top-3.5 right-3.5 z-20">
+                  <span className="px-2 py-0.5 rounded-md text-[10px] font-black text-gray-700 bg-white/95 border border-gray-200 shadow-2xs flex items-center gap-1">
+                    <Sparkles className="w-3 h-3 text-amber-500" />
+                    <span>{fac.experience}</span>
+                  </span>
                 </div>
 
-                <p className="text-xs text-gray-600 leading-relaxed font-normal">
-                  {fac.bio}
-                </p>
-              </div>
+                {/* Faculty Portrait (Popout with Red Circle Ring) */}
+                <div className="relative w-full h-[270px] sm:h-[285px] flex items-center justify-center mb-2 mt-4">
+                  <div className="relative z-10 w-full h-full flex items-center justify-center pointer-events-none">
+                    <img
+                      src={fac.avatarUrl}
+                      alt={`${fac.name} – Star Faculty at Ahuja Career Institute`}
+                      className="w-full h-full object-contain select-none drop-shadow-[0_12px_24px_rgba(220,38,38,0.18)] group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                      draggable={false}
+                    />
+                  </div>
+                </div>
 
-              <div className="pt-3 border-t border-gray-100 flex items-center justify-between text-[11px]">
-                <span className="text-gray-500 font-medium">Classroom &amp; Doubts</span>
-                <span className="font-bold text-red-600">Specialized Lead</span>
+                {/* Faculty Details Content */}
+                <div className="w-full space-y-2.5 pt-3 border-t border-[#EAE4D8] flex flex-col items-center mt-auto">
+                  <div>
+                    <h3 className="text-base font-black text-gray-900 group-hover:text-red-600 transition-colors uppercase tracking-tight leading-tight">
+                      {fac.name}
+                    </h3>
+                    <p className="text-xs font-bold text-red-600 uppercase tracking-wide mt-0.5">
+                      {fac.role}
+                    </p>
+                    <p className="text-[11px] text-gray-500 font-medium">
+                      {fac.education}
+                    </p>
+                  </div>
+
+                  {/* Specializations Pills */}
+                  {fac.specialization && fac.specialization.length > 0 && (
+                    <div className="flex flex-wrap items-center justify-center gap-1">
+                      {fac.specialization.slice(0, 2).map((spec, sIdx) => (
+                        <span
+                          key={sIdx}
+                          className="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-red-50 text-red-800 border border-red-100"
+                        >
+                          {spec}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Top Achievement */}
+                  {fac.achievements && fac.achievements.length > 0 && (
+                    <div className="w-full bg-white/80 p-2 rounded-xl border border-gray-200/80 text-[11px] text-gray-700 font-medium flex items-center justify-center gap-1.5 shadow-2xs">
+                      <Trophy className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+                      <span className="truncate">{fac.achievements[0]}</span>
+                    </div>
+                  )}
+
+                  {/* Action CTA */}
+                  <button
+                    onClick={() => onInquireClick(`${fac.name} (${fac.role})`)}
+                    className="w-full py-2 px-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl text-xs transition shadow-xs hover:shadow-md flex items-center justify-center gap-1.5 active:scale-98 cursor-pointer mt-1"
+                  >
+                    <span>Connect with Mentor</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                </div>
               </div>
+            ))}
+          </div>
+        )}
+
+        {/* How Our Faculty Delivers Results (Mentorship Methodology) */}
+        <div className="bg-[#18191B] text-white rounded-3xl p-6 sm:p-8 border border-gray-800 shadow-xl space-y-6">
+          <div className="text-center space-y-1">
+            <span className="text-[10px] font-bold text-red-400 uppercase tracking-widest font-mono">
+              PROVEN PEDAGOGICAL SYSTEM
+            </span>
+            <h3 className="text-xl sm:text-2xl font-extrabold text-white">
+              How Our Faculty Delivers <span className="text-red-400">Consistent Top Ranks</span>
+            </h3>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div className="bg-gray-900/90 p-4 sm:p-5 rounded-2xl border border-gray-800 space-y-2">
+              <div className="w-8 h-8 rounded-xl bg-red-600/20 text-red-400 flex items-center justify-center font-bold text-xs font-mono">
+                01
+              </div>
+              <h4 className="text-sm font-bold text-white">Visual &amp; Conceptual Depth</h4>
+              <p className="text-xs text-gray-400 leading-relaxed">
+                Lectures emphasize fundamental mechanics with smart interactive visuals rather than formula memorization.
+              </p>
             </div>
-          ))}
+
+            <div className="bg-gray-900/90 p-4 sm:p-5 rounded-2xl border border-gray-800 space-y-2">
+              <div className="w-8 h-8 rounded-xl bg-red-600/20 text-red-400 flex items-center justify-center font-bold text-xs font-mono">
+                02
+              </div>
+              <h4 className="text-sm font-bold text-white">Diagnostic Error Audits</h4>
+              <p className="text-xs text-gray-400 leading-relaxed">
+                After every test, faculties audit answer sheets to classify conceptual gaps vs calculation slips, prescribing custom drill sheets.
+              </p>
+            </div>
+
+            <div className="bg-gray-900/90 p-4 sm:p-5 rounded-2xl border border-gray-800 space-y-2">
+              <div className="w-8 h-8 rounded-xl bg-red-600/20 text-red-400 flex items-center justify-center font-bold text-xs font-mono">
+                03
+              </div>
+              <h4 className="text-sm font-bold text-white">Daily 1-on-1 Doubt Desks</h4>
+              <p className="text-xs text-gray-400 leading-relaxed">
+                Dedicated personal teacher slots before and after sessions guarantee that no question remains unresolved before the next chapter.
+              </p>
+            </div>
+          </div>
+
+          <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-gray-800/80 text-xs">
+            <span className="text-gray-400">
+              Want to experience a lecture first-hand before enrolling?
+            </span>
+            <button
+              onClick={() => onInquireClick('Free Demo Lecture with Faculty')}
+              className="px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl transition shadow-md shadow-red-600/25 active:scale-98 cursor-pointer flex items-center gap-1.5"
+            >
+              <Sparkles className="w-4 h-4" /> Attend A Free Demo Lecture
+            </button>
+          </div>
         </div>
       </section>
 
@@ -638,7 +825,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ setActiveTab, onInquireCli
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <button
-              onClick={onInquireClick}
+              onClick={() => onInquireClick()}
               className="px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl text-sm transition shadow-md shadow-red-600/20 cursor-pointer"
             >
               Inquire For Admissions
