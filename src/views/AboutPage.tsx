@@ -1,844 +1,705 @@
-'use client';
-
-import React, { useState, useEffect } from 'react';
-import { PageTab } from '../types';
-import {
-  aboutStats,
-  facultyMembers,
-} from '../data/mockData';
-import {
-  ArrowRight,
-  Compass,
-  Target,
-  Sparkles,
-  Building2,
-  Shield,
-  BookOpen,
-  Trophy,
-  MapPin,
-  CheckCircle2,
-  GraduationCap,
-  Search,
-} from 'lucide-react';
-
-type FacultyFilter = 'All' | 'JEE/NEET' | 'Science Board' | 'Junior Division' | 'Commerce';
-
-interface AboutPageProps {
-  setActiveTab: (tab: PageTab) => void;
-  onInquireClick: (context?: string) => void;
-}
-
-export const AboutPage: React.FC<AboutPageProps> = ({ setActiveTab, onInquireClick }) => {
-  const [selectedCategory, setSelectedCategory] = useState<FacultyFilter>('All');
-  const [facultySearch, setFacultySearch] = useState<string>('');
-
-  useEffect(() => {
-    if (typeof window !== 'undefined' && window.location.hash.includes('facult')) {
-      setTimeout(() => {
-        document.getElementById('star-faculties')?.scrollIntoView({ behavior: 'smooth' });
-      }, 150);
-    }
-  }, []);
-
-  const filteredFaculty = facultyMembers.filter((fac) => {
-    const matchesCat = selectedCategory === 'All' || fac.category === selectedCategory;
-    const matchesQuery =
-      facultySearch.trim() === '' ||
-      fac.name.toLowerCase().includes(facultySearch.toLowerCase()) ||
-      fac.role.toLowerCase().includes(facultySearch.toLowerCase()) ||
-      fac.specialization.some((s) => s.toLowerCase().includes(facultySearch.toLowerCase()));
-    return matchesCat && matchesQuery;
-  });
-  return (
-    <div className="space-y-16 sm:space-y-24 pb-16 bg-white text-gray-900">
-      {/* 1. HERO SECTION (Unified Hero Layout matching HomePage, Courses, and Contact) */}
-      <section className="relative pt-12 sm:pt-20 pb-4 overflow-hidden bg-gradient-to-b from-red-50/40 via-white to-white">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-red-200 bg-red-50 text-red-700 text-xs sm:text-sm font-bold shadow-xs">
-            <Sparkles className="w-4 h-4 text-red-600" />
-            <span>SINCE 1998 • 27+ YEARS OF EXCELLENCE</span>
-          </div>
-
-          {/* Headline */}
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight leading-[1.12]">
-            Our Legacy of <br />
-            <span className="text-red-600">Empowering Students</span>
-          </h1>
-
-          {/* Subtitle */}
-          <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed">
-            For over two decades, Ahuja Career Institute has been the cornerstone of academic success, blending traditional discipline with modern educational methodologies across Ahmedabad.
-          </p>
-
-          {/* Action Buttons */}
-          <div className="pt-2 flex flex-wrap items-center justify-center gap-3.5">
-            <button
-              onClick={() => setActiveTab('courses')}
-              className="px-7 py-3.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl text-sm transition-all shadow-md shadow-red-600/20 active:scale-98 flex items-center gap-2 cursor-pointer"
-            >
-              Explore Programs <ArrowRight className="w-4 h-4" />
-            </button>
-            <a
-              href="#journey-timeline-section"
-              className="px-6 py-3.5 bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold rounded-xl text-sm transition cursor-pointer"
-            >
-              View 27-Year Journey ↓
-            </a>
-          </div>
-
-          {/* Hero Image Showcase */}
-          <div className="relative pt-6 max-w-4xl mx-auto">
-            <div className="relative rounded-3xl overflow-hidden shadow-xl border border-gray-200 group">
-              <img
-                src="/assets/Directors/Professional Office Portrait.png"
-                alt="Director Desk & Academic Governance at Ahuja Career Institute"
-                className="w-full h-64 sm:h-96 object-cover group-hover:scale-102 transition duration-700"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent flex flex-col justify-end p-6 sm:p-8 text-left">
-                <div className="flex flex-wrap gap-2 mb-2">
-                  <span className="px-3 py-1 bg-red-600 text-white text-xs font-bold rounded-full">
-                    Since 1998 Ahmedabad
-                  </span>
-                  <span className="px-3 py-1 bg-black/50 backdrop-blur-md text-white text-xs font-medium rounded-full">
-                    Maninagar HQ &amp; Vastral Campuses
-                  </span>
-                </div>
-                <p className="text-white text-base sm:text-xl font-bold">
-                  27 Years of Concept-First Coaching, Individual Mentorship &amp; Proven Academic Pedagogy
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 2. STATS BAR & VISIONARY LEADERSHIP (Midnight Obsidian Background - Compact Layout) */}
-      <section className="mx-4 sm:mx-6 lg:mx-8 max-w-6xl lg:mx-auto bg-[#18191B] text-white rounded-3xl p-5 sm:p-7 border border-gray-800 shadow-2xl space-y-6">
-        {/* Stats Grid */}
-        <div className="bg-gray-900/90 rounded-2xl border border-gray-800 p-4 sm:p-5 grid grid-cols-1 sm:grid-cols-3 gap-3 text-center shadow-md">
-          {aboutStats.map((st, i) => (
-            <div key={i} className="space-y-0.5">
-              <div className="text-xl sm:text-2xl font-extrabold text-red-500">{st.value}</div>
-              <div className="text-[10px] sm:text-[11px] text-gray-300 font-bold uppercase tracking-wider">{st.label}</div>
-            </div>
-          ))}
-        </div>
-
-        {/* Visionary Leadership: Founder & Director Grid */}
-        <div className="space-y-5">
-          <div className="text-center space-y-1">
-            <span className="text-[10px] font-bold text-red-400 uppercase tracking-widest font-mono">
-              LEADERSHIP &amp; GUIDING LIGHT
-            </span>
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-white">
-              The Minds Shaping Our <span className="text-red-500">27-Year Legacy</span>
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-stretch">
-            {/* Card 1: Late Shri R.A. Ahuja Sir (Founder) */}
-            <div className="bg-gray-900/90 p-4 sm:p-5 rounded-2xl border border-gray-800 shadow-xl flex flex-col justify-between space-y-3 hover:border-gray-700 transition">
-              <div className="space-y-3">
-                <div className="flex items-center space-x-3.5">
-                  <div className="relative shrink-0">
-                    <img
-                      src="/assets/Directors/Founder - Rajkumar Ahuja.jpeg"
-                      alt="Late Shri R.A. Ahuja Sir - Founder"
-                      className="w-16 h-16 sm:w-18 sm:h-18 rounded-xl object-cover object-top border-2 border-red-500/40 shadow-md"
-                    />
-                    <span className="absolute -bottom-1 -right-1 px-1.5 py-0.2 bg-red-600 text-white text-[9px] font-bold rounded shadow-xs">
-                      Founder
-                    </span>
-                  </div>
-                  <div>
-                    <h3 className="text-base sm:text-lg font-extrabold text-white leading-tight">
-                      Late Shri R.A. Ahuja Sir
-                    </h3>
-                    <p className="text-[11px] font-bold text-red-400 uppercase tracking-wide mt-0.5">
-                      The Visionary Founder (Since 1998)
-                    </p>
-                    <p className="text-[10px] sm:text-[11px] text-gray-400">
-                      Pioneer of Concept-First Coaching in Ahmedabad
-                    </p>
-                  </div>
-                </div>
-
-                <div className="bg-[#121316] p-2.5 sm:p-3 rounded-xl border border-gray-800/80">
-                  <p className="text-xs text-gray-200 italic font-medium leading-snug">
-                    "Life is Great but it never grows great until it is focused, dedicated &amp; disciplined."
-                  </p>
-                </div>
-              </div>
-
-              <div className="pt-2 border-t border-gray-800/80 flex items-center justify-between text-[11px] text-gray-400">
-                <span>Core Pillar: Dedicated Pedagogy</span>
-                <span className="text-red-400 font-bold font-mono">1998 — Everlasting</span>
-              </div>
-            </div>
-
-            {/* Card 2: Sunil Ahuja (Director) */}
-            <div className="bg-gray-900/90 p-4 sm:p-5 rounded-2xl border border-gray-800 shadow-xl flex flex-col justify-between space-y-3 hover:border-gray-700 transition">
-              <div className="space-y-3">
-                <div className="flex items-center space-x-3.5">
-                  <div className="relative shrink-0">
-                    <img
-                      src="/assets/Directors/Director - Sunil Ahuja.jpeg"
-                      alt="Sunil Ahuja - Director"
-                      className="w-16 h-16 sm:w-18 sm:h-18 rounded-xl object-cover object-top border-2 border-red-500/40 shadow-md"
-                    />
-                    <span className="absolute -bottom-1 -right-1 px-1.5 py-0.2 bg-red-600 text-white text-[9px] font-bold rounded shadow-xs">
-                      Director
-                    </span>
-                  </div>
-                  <div>
-                    <h3 className="text-base sm:text-lg font-extrabold text-white leading-tight">
-                      Sunil Ahuja
-                    </h3>
-                    <p className="text-[11px] font-bold text-red-400 uppercase tracking-wide mt-0.5">
-                      Director, Ahuja Career Institute
-                    </p>
-                    <p className="text-[10px] sm:text-[11px] text-gray-400">
-                      Academic Leadership &amp; Student Mentorship
-                    </p>
-                  </div>
-                </div>
-
-                <div className="bg-[#121316] p-2.5 sm:p-3 rounded-xl border border-gray-800/80">
-                  <p className="text-xs text-gray-200 italic font-medium leading-snug">
-                    "Every student possesses immense potential. With structured doubt clearing and personal care, top ranks become natural."
-                  </p>
-                </div>
-              </div>
-
-              <div className="pt-2 border-t border-gray-800/80 flex items-center justify-between text-[11px] text-gray-400">
-                <span>Direction: Academic Excellence</span>
-                <button
-                  onClick={() => onInquireClick()}
-                  className="text-red-400 hover:text-red-300 font-bold transition flex items-center gap-1 cursor-pointer"
-                >
-                  Connect with Mentors <ArrowRight className="w-3 h-3" />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 3. OUR STAR FACULTIES (Merged & Preprocessed with Red Popout Ring) */}
-      <section id="star-faculties" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24 space-y-8">
-        <div className="text-center space-y-3">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-red-200 bg-red-50 text-red-700 text-xs font-bold uppercase tracking-wider">
-            <GraduationCap className="w-4 h-4 text-red-600" />
-            <span>Academic Wing • Ahuja Star Mentors</span>
-          </div>
-          <h2 className="text-2xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
-            Our <span className="text-red-600">Star Faculties</span> &amp; Mentors
-          </h2>
-          <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto">
-            Ahmedabad’s seasoned subject authorities across Physics, Chemistry, Mathematics, Biology, and Commerce — delivering conceptual depth, error-correction drills, and 1-on-1 mentorship since 1998.
-          </p>
-        </div>
-
-        {/* Filter Tabs & Search Controls */}
-        <div className="bg-[#FAF8F5] p-3 sm:p-4 rounded-2xl border border-[#F0EBE1] shadow-2xs space-y-3">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
-            {/* Filter Tabs */}
-            <div className="flex flex-wrap items-center gap-1.5 w-full sm:w-auto">
-              {(
-                [
-                  { id: 'All', label: 'All Faculty', count: facultyMembers.length },
-                  { id: 'JEE/NEET', label: 'JEE / NEET', count: facultyMembers.filter((f) => f.category === 'JEE/NEET').length },
-                  { id: 'Science Board', label: 'Science Board', count: facultyMembers.filter((f) => f.category === 'Science Board').length },
-                  { id: 'Junior Division', label: 'Junior Division', count: facultyMembers.filter((f) => f.category === 'Junior Division').length },
-                  { id: 'Commerce', label: 'Commerce', count: facultyMembers.filter((f) => f.category === 'Commerce').length },
-                ] as const
-              ).map((tab) => {
-                const isSelected = selectedCategory === tab.id;
-                return (
-                  <button
-                    key={tab.id}
-                    onClick={() => setSelectedCategory(tab.id as FacultyFilter)}
-                    className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
-                      isSelected
-                        ? 'bg-red-600 text-white shadow-md shadow-red-600/25 scale-102'
-                        : 'bg-white text-gray-700 hover:text-red-600 hover:border-red-400 border border-gray-200'
-                    }`}
-                  >
-                    <span>{tab.label}</span>
-                    <span className={`ml-1.5 text-[10px] ${isSelected ? 'text-white/90' : 'text-gray-400'}`}>
-                      ({tab.count})
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Quick Search */}
-            <div className="relative w-full sm:w-64">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-              <input
-                type="text"
-                value={facultySearch}
-                onChange={(e) => setFacultySearch(e.target.value)}
-                placeholder="Search faculty or subject..."
-                className="w-full pl-9 pr-8 py-2 bg-white rounded-xl border border-gray-300 text-xs font-medium focus:outline-hidden focus:border-red-600 focus:ring-1 focus:ring-red-600 transition"
-              />
-              {facultySearch && (
-                <button
-                  onClick={() => setFacultySearch('')}
-                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-700 text-xs p-1"
-                >
-                  ✕
-                </button>
-              )}
-            </div>
-          </div>
-        </div>
-
-        {/* Faculty Grid (Rendered with Red Popout Ring Just Like Students) */}
-        {filteredFaculty.length === 0 ? (
-          <div className="p-10 bg-white rounded-3xl border border-gray-200 text-center space-y-3">
-            <GraduationCap className="w-10 h-10 text-gray-400 mx-auto" />
-            <h3 className="text-base font-bold text-gray-900">No faculty members found</h3>
-            <p className="text-xs text-gray-500">Try switching category tabs or clearing your search filter.</p>
-            <button
-              onClick={() => {
-                setSelectedCategory('All');
-                setFacultySearch('');
-              }}
-              className="px-4 py-2 bg-red-600 text-white rounded-xl text-xs font-bold hover:bg-red-700 transition"
-            >
-              Reset Filters
-            </button>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-            {filteredFaculty.map((fac) => (
-              <div
-                key={fac.id}
-                className="group relative bg-[#FAF8F5] rounded-3xl border border-[#F0EBE1] hover:border-red-400 p-5 shadow-[0_4px_25px_rgba(0,0,0,0.05)] hover:shadow-[0_16px_36px_rgba(220,38,38,0.14)] transition-all duration-300 hover:-translate-y-1.5 flex flex-col items-center justify-between text-center overflow-hidden"
-              >
-                {/* Top Badges */}
-                <div className="absolute top-3.5 left-3.5 z-20 flex flex-col items-start gap-1">
-                  <span className="px-2 py-0.5 rounded-md text-[10px] font-black uppercase tracking-wider shadow-2xs border bg-red-50 text-red-700 border-red-200">
-                    {fac.category}
-                  </span>
-                </div>
-
-                <div className="absolute top-3.5 right-3.5 z-20">
-                  <span className="px-2 py-0.5 rounded-md text-[10px] font-black text-gray-700 bg-white/95 border border-gray-200 shadow-2xs flex items-center gap-1">
-                    <Sparkles className="w-3 h-3 text-amber-500" />
-                    <span>{fac.experience}</span>
-                  </span>
-                </div>
-
-                {/* Faculty Portrait (Popout with Red Circle Ring) */}
-                <div className="relative w-full h-[270px] sm:h-[285px] flex items-center justify-center mb-2 mt-4">
-                  <div className="relative z-10 w-full h-full flex items-center justify-center pointer-events-none">
-                    <img
-                      src={fac.avatarUrl}
-                      alt={`${fac.name} – Star Faculty at Ahuja Career Institute`}
-                      className="w-full h-full object-contain select-none drop-shadow-[0_12px_24px_rgba(220,38,38,0.18)] group-hover:scale-105 transition-transform duration-300"
-                      loading="lazy"
-                      draggable={false}
-                    />
-                  </div>
-                </div>
-
-                {/* Faculty Details Content */}
-                <div className="w-full space-y-2.5 pt-3 border-t border-[#EAE4D8] flex flex-col items-center mt-auto">
-                  <div>
-                    <h3 className="text-base font-black text-gray-900 group-hover:text-red-600 transition-colors uppercase tracking-tight leading-tight">
-                      {fac.name}
-                    </h3>
-                    <p className="text-xs font-bold text-red-600 uppercase tracking-wide mt-0.5">
-                      {fac.role}
-                    </p>
-                    <p className="text-[11px] text-gray-500 font-medium">
-                      {fac.education}
-                    </p>
-                  </div>
-
-                  {/* Specializations Pills */}
-                  {fac.specialization && fac.specialization.length > 0 && (
-                    <div className="flex flex-wrap items-center justify-center gap-1">
-                      {fac.specialization.slice(0, 2).map((spec, sIdx) => (
-                        <span
-                          key={sIdx}
-                          className="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-red-50 text-red-800 border border-red-100"
-                        >
-                          {spec}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-
-                  {/* Top Achievement */}
-                  {fac.achievements && fac.achievements.length > 0 && (
-                    <div className="w-full bg-white/80 p-2 rounded-xl border border-gray-200/80 text-[11px] text-gray-700 font-medium flex items-center justify-center gap-1.5 shadow-2xs">
-                      <Trophy className="w-3.5 h-3.5 text-amber-500 shrink-0" />
-                      <span className="truncate">{fac.achievements[0]}</span>
-                    </div>
-                  )}
-
-                  {/* Action CTA */}
-                  <button
-                    onClick={() => onInquireClick(`${fac.name} (${fac.role})`)}
-                    className="w-full py-2 px-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl text-xs transition shadow-xs hover:shadow-md flex items-center justify-center gap-1.5 active:scale-98 cursor-pointer mt-1"
-                  >
-                    <span>Connect with Mentor</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-
-        {/* How Our Faculty Delivers Results (Mentorship Methodology) */}
-        <div className="bg-[#18191B] text-white rounded-3xl p-6 sm:p-8 border border-gray-800 shadow-xl space-y-6">
-          <div className="text-center space-y-1">
-            <span className="text-[10px] font-bold text-red-400 uppercase tracking-widest font-mono">
-              PROVEN PEDAGOGICAL SYSTEM
-            </span>
-            <h3 className="text-xl sm:text-2xl font-extrabold text-white">
-              How Our Faculty Delivers <span className="text-red-400">Consistent Top Ranks</span>
-            </h3>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            <div className="bg-gray-900/90 p-4 sm:p-5 rounded-2xl border border-gray-800 space-y-2">
-              <div className="w-8 h-8 rounded-xl bg-red-600/20 text-red-400 flex items-center justify-center font-bold text-xs font-mono">
-                01
-              </div>
-              <h4 className="text-sm font-bold text-white">Visual &amp; Conceptual Depth</h4>
-              <p className="text-xs text-gray-400 leading-relaxed">
-                Lectures emphasize fundamental mechanics with smart interactive visuals rather than formula memorization.
-              </p>
-            </div>
-
-            <div className="bg-gray-900/90 p-4 sm:p-5 rounded-2xl border border-gray-800 space-y-2">
-              <div className="w-8 h-8 rounded-xl bg-red-600/20 text-red-400 flex items-center justify-center font-bold text-xs font-mono">
-                02
-              </div>
-              <h4 className="text-sm font-bold text-white">Diagnostic Error Audits</h4>
-              <p className="text-xs text-gray-400 leading-relaxed">
-                After every test, faculties audit answer sheets to classify conceptual gaps vs calculation slips, prescribing custom drill sheets.
-              </p>
-            </div>
-
-            <div className="bg-gray-900/90 p-4 sm:p-5 rounded-2xl border border-gray-800 space-y-2">
-              <div className="w-8 h-8 rounded-xl bg-red-600/20 text-red-400 flex items-center justify-center font-bold text-xs font-mono">
-                03
-              </div>
-              <h4 className="text-sm font-bold text-white">Daily 1-on-1 Doubt Desks</h4>
-              <p className="text-xs text-gray-400 leading-relaxed">
-                Dedicated personal teacher slots before and after sessions guarantee that no question remains unresolved before the next chapter.
-              </p>
-            </div>
-          </div>
-
-          <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-gray-800/80 text-xs">
-            <span className="text-gray-400">
-              Want to experience a lecture first-hand before enrolling?
-            </span>
-            <button
-              onClick={() => onInquireClick('Free Demo Lecture with Faculty')}
-              className="px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl transition shadow-md shadow-red-600/25 active:scale-98 cursor-pointer flex items-center gap-1.5"
-            >
-              <Sparkles className="w-4 h-4" /> Attend A Free Demo Lecture
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* 4. OUR CORE PHILOSOPHY - All 3 Cards with Photo Headers in Unified Theme */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6">
-        <div className="text-center space-y-2 mb-8">
-          <div className="inline-block px-3 py-1 bg-red-50 border border-red-100 text-red-600 text-[11px] font-bold uppercase tracking-wider rounded-full">
-            Our Guiding Foundations
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
-            Our Core <span className="text-red-600">Philosophy</span>
-          </h2>
-          <p className="text-xs sm:text-sm text-gray-600 max-w-xl mx-auto">
-            The values that drive every class, mentor session, and test evaluation.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Card 1: Conceptual Mastery */}
-          <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 card-hover-effect flex flex-col group">
-            <div className="h-44 sm:h-48 overflow-hidden relative">
-              <img
-                src="/assets/pillar-conceptual-mastery.jpg"
-                alt="Conceptual Mastery - Indian Student Diligently Studying Concepts"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
-              <span className="absolute top-3 left-3 px-2.5 py-0.5 bg-white/95 backdrop-blur-xs text-red-600 text-[10px] font-extrabold rounded-md shadow-xs flex items-center gap-1">
-                <Sparkles className="w-3 h-3" /> Pillar 01
-              </span>
-            </div>
-            <div className="p-5 space-y-2.5 flex-1 flex flex-col justify-between">
-              <div className="space-y-1.5">
-                <h3 className="text-base sm:text-lg font-bold text-gray-900 group-hover:text-red-600 transition-colors">
-                  Conceptual Mastery
-                </h3>
-                <p className="text-xs text-gray-600 leading-relaxed">
-                  We prioritize deep understanding over rote learning, ensuring students grasp the fundamental mechanics of every subject.
-                </p>
-              </div>
-              <div className="pt-2.5 border-t border-gray-100 flex items-center justify-between text-[11px] font-semibold text-gray-400">
-                <span>Core Pedagogy</span>
-                <span className="text-red-500 font-bold">Deep Foundation</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Card 2: Unwavering Discipline */}
-          <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 card-hover-effect flex flex-col group">
-            <div className="h-44 sm:h-48 overflow-hidden relative">
-              <img
-                src="/assets/pillar-unwavering-discipline.jpg"
-                alt="Unwavering Discipline - Focused Indian Students in Coaching Classroom"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
-              <span className="absolute top-3 left-3 px-2.5 py-0.5 bg-white/95 backdrop-blur-xs text-red-600 text-[10px] font-extrabold rounded-md shadow-xs flex items-center gap-1">
-                <Shield className="w-3 h-3" /> Pillar 02
-              </span>
-            </div>
-            <div className="p-5 space-y-2.5 flex-1 flex flex-col justify-between">
-              <div className="space-y-1.5">
-                <h3 className="text-base sm:text-lg font-bold text-gray-900 group-hover:text-red-600 transition-colors">
-                  Unwavering Discipline
-                </h3>
-                <p className="text-xs text-gray-600 leading-relaxed">
-                  A structured environment that instills punctuality, focus, and the resilience required to conquer competitive exams and board exams.
-                </p>
-              </div>
-              <div className="pt-2.5 border-t border-gray-100 flex items-center justify-between text-[11px] font-semibold text-gray-400">
-                <span>Academic Rigor</span>
-                <span className="text-red-500 font-bold">Focus &amp; Punctuality</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Card 3: Student-Centric Growth */}
-          <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 card-hover-effect flex flex-col group">
-            <div className="h-44 sm:h-48 overflow-hidden relative">
-              <img
-                src="/assets/pillar-student-centric-growth.jpg"
-                alt="Student-Centric Growth - Indian Students Mentorship & Collaborative Learning"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
-              <span className="absolute top-3 left-3 px-2.5 py-0.5 bg-white/95 backdrop-blur-xs text-red-600 text-[10px] font-extrabold rounded-md shadow-xs flex items-center gap-1">
-                <Target className="w-3 h-3" /> Pillar 03
-              </span>
-            </div>
-            <div className="p-5 space-y-2.5 flex-1 flex flex-col justify-between">
-              <div className="space-y-1.5">
-                <h3 className="text-base sm:text-lg font-bold text-gray-900 group-hover:text-red-600 transition-colors">
-                  Student-Centric Growth
-                </h3>
-                <p className="text-xs text-gray-600 leading-relaxed">
-                  Personalized mentoring pathways designed to identify individual strengths and systematically eliminate weaknesses.
-                </p>
-              </div>
-              <div className="pt-2.5 border-t border-gray-100 flex items-center justify-between text-[11px] font-semibold text-gray-400">
-                <span>Personal Care</span>
-                <span className="text-red-500 font-bold">Mentorship Desks</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-      {/* 4. OUR 27+ YEAR JOURNEY: BENTO GRID TIMELINE (Modern, Elegant, Non-Scrolljacked) */}
-      <section id="journey-timeline-section" className="mx-4 sm:mx-6 lg:mx-8 max-w-6xl lg:mx-auto">
-        <div className="bg-[#18191B] text-white rounded-3xl p-6 sm:p-10 lg:p-12 border border-gray-800 shadow-2xl space-y-8 sm:space-y-10">
-          {/* Section Header */}
-          <div className="text-center space-y-2.5 max-w-2xl mx-auto">
-            <div className="inline-block px-3.5 py-1 bg-red-600/20 text-red-400 border border-red-500/30 text-[11px] font-bold uppercase tracking-wider rounded-full font-mono">
-              1998 — 2026 • 27-YEAR LEGACY BENTO
-            </div>
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
-              Our 27+ Year <span className="text-red-500">Journey</span>
-            </h2>
-            <p className="text-xs sm:text-sm text-gray-400 leading-relaxed">
-              Explore the key evolutionary milestones that established Ahuja Career Institute as Ahmedabad's trusted hub of academic excellence.
-            </p>
-          </div>
-
-          {/* Bento Grid Layout (12 Columns Desktop, Responsive Stack on Mobile) */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-6">
-            {/* Bento Card 1: 1998 Inception & Founder's Genesis (Large Featured 7-Cols) */}
-            <div className="col-span-1 md:col-span-12 lg:col-span-7 bg-gradient-to-br from-[#1E2129] via-[#1A1C23] to-[#14161C] border border-gray-800 hover:border-red-500/60 p-6 sm:p-8 rounded-3xl relative overflow-hidden group shadow-xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1">
-              {/* Ambient Red Glow */}
-              <div className="absolute top-0 right-0 w-48 h-48 bg-red-600/10 rounded-full blur-2xl pointer-events-none" />
-
-              <div className="space-y-5 relative z-10">
-                {/* Header Row */}
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="px-3.5 py-1 bg-red-600 text-white font-mono font-black text-sm rounded-xl shadow-xs">
-                      1998
-                    </span>
-                  </div>
-                  <div className="w-10 h-10 rounded-2xl bg-red-600/15 border border-red-500/30 flex items-center justify-center text-red-500 shadow-sm">
-                    <BookOpen className="w-5 h-5" />
-                  </div>
-                </div>
-
-                {/* Title & Story */}
-                <div className="space-y-2.5">
-                  <h3 className="text-xl sm:text-2xl font-extrabold text-white group-hover:text-red-400 transition-colors">
-                    Humble Beginnings in Ghodasar
-                  </h3>
-                  <p className="text-xs sm:text-sm text-gray-300 leading-relaxed font-normal">
-                    Founded by Late Shri R.A. Ahuja Sir with a small home setup in Ghodasar. Pioneered concept-first pedagogy over rote learning, instilling rigorous discipline and personalized mentoring that produced our first generation of Gujarat board toppers.
-                  </p>
-                </div>
-
-                {/* Founder Quote Pill */}
-                <div className="p-3.5 rounded-xl bg-black/40 border border-gray-800/80 text-xs italic text-gray-300 font-medium">
-                  "Life is Great but it never grows great until it is focused, dedicated &amp; disciplined."
-                  <span className="block text-[11px] text-red-400 font-semibold not-italic mt-1">— Late Shri R.A. Ahuja Sir (Founder)</span>
-                </div>
-
-                {/* Highlight Pills */}
-                <div className="flex flex-wrap gap-2 pt-1">
-                  <span className="px-2.5 py-1 rounded-lg text-xs bg-[#121316] text-gray-300 border border-gray-800 flex items-center gap-1">
-                    <MapPin className="w-3.5 h-3.5 text-red-400" /> Ghodasar Home Batch
-                  </span>
-                  <span className="px-2.5 py-1 rounded-lg text-xs bg-[#121316] text-gray-300 border border-gray-800 flex items-center gap-1">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-red-500" /> Concept-First Pedagogy
-                  </span>
-                  <span className="px-2.5 py-1 rounded-lg text-xs bg-[#121316] text-gray-300 border border-gray-800 flex items-center gap-1">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-red-500" /> 1-on-1 Mentorship
-                  </span>
-                </div>
-              </div>
-
-              {/* Bottom Card Footer */}
-              <div className="pt-4 mt-4 border-t border-gray-800/80 flex items-center justify-between text-xs text-gray-400 relative z-10">
-                <span className="font-bold text-red-400">100% Board Pass Rate (1st Batch)</span>
-                <span className="text-[11px] font-mono text-gray-500">The Inception of Excellence</span>
-              </div>
-            </div>
-
-            {/* Bento Card 2: 2005 Expansion to Jawaharchowk (5-Cols) */}
-            <div className="col-span-1 md:col-span-12 lg:col-span-5 bg-[#1E2129] border border-gray-800 hover:border-red-500/60 p-6 sm:p-8 rounded-3xl relative overflow-hidden group shadow-xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1">
-
-              <div className="space-y-4 relative z-10">
-                {/* Header Row */}
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="px-3.5 py-1 bg-red-950/80 text-red-400 border border-red-800/40 font-mono font-black text-sm rounded-xl">
-                      2005
-                    </span>
-                  </div>
-                  <div className="w-10 h-10 rounded-2xl bg-red-600/15 border border-red-500/30 flex items-center justify-center text-red-500 shadow-sm">
-                    <Compass className="w-5 h-5" />
-                  </div>
-                </div>
-
-                {/* Title & Story */}
-                <div className="space-y-2">
-                  <h3 className="text-xl sm:text-2xl font-extrabold text-white group-hover:text-red-400 transition-colors">
-                    Expansion to Jawaharchowk
-                  </h3>
-                  <p className="text-xs sm:text-sm text-gray-300 leading-relaxed font-normal">
-                    Expanded into Jawaharchowk to accommodate surging demand. Introduced structured batch systems, regular weekend test series, and specialized board &amp; entrance tracks across Gujarat.
-                  </p>
-                </div>
-
-                {/* Highlight Pills */}
-                <div className="flex flex-wrap gap-2 pt-1">
-                  <span className="px-2.5 py-1 rounded-lg text-xs bg-[#121316] text-gray-300 border border-gray-800 flex items-center gap-1">
-                    <MapPin className="w-3.5 h-3.5 text-red-400" /> Jawaharchowk, Maninagar
-                  </span>
-                  <span className="px-2.5 py-1 rounded-lg text-xs bg-[#121316] text-gray-300 border border-gray-800 flex items-center gap-1">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-red-500" /> Weekend Test Series
-                  </span>
-                  <span className="px-2.5 py-1 rounded-lg text-xs bg-[#121316] text-gray-300 border border-gray-800 flex items-center gap-1">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-red-500" /> Board Specialization
-                  </span>
-                </div>
-              </div>
-
-              {/* Bottom Card Footer */}
-              <div className="pt-4 mt-4 border-t border-gray-800/80 flex items-center justify-between text-xs text-gray-400 relative z-10">
-                <span className="font-bold text-red-400">500+ Students Milestone</span>
-                <span className="text-[11px] font-mono text-gray-500">Systematic Testing</span>
-              </div>
-            </div>
-
-            {/* Bento Card 3: 2014 Vastral Flagship Campus (4-Cols) */}
-            <div className="col-span-1 md:col-span-6 lg:col-span-4 bg-[#1E2129] border border-gray-800 hover:border-red-500/60 p-6 sm:p-7 rounded-3xl relative overflow-hidden group shadow-xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1">
-
-              <div className="space-y-4 relative z-10">
-                {/* Header Row */}
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="px-3 py-1 bg-red-950/80 text-red-400 border border-red-800/40 font-mono font-black text-xs sm:text-sm rounded-xl">
-                      2014
-                    </span>
-                  </div>
-                  <div className="w-9 h-9 rounded-xl bg-red-600/15 border border-red-500/30 flex items-center justify-center text-red-500 shadow-sm">
-                    <Building2 className="w-4 h-4" />
-                  </div>
-                </div>
-
-                {/* Title & Story */}
-                <div className="space-y-2">
-                  <h3 className="text-lg sm:text-xl font-extrabold text-white group-hover:text-red-400 transition-colors">
-                    Vastral Flagship Campus
-                  </h3>
-                  <p className="text-xs sm:text-sm text-gray-300 leading-relaxed font-normal">
-                    Built our premier campus at 502 Avadh Pride, Nirant Cross Road. Features spacious lecture halls, dedicated faculty doubt desks, and Science &amp; Commerce divisions.
-                  </p>
-                </div>
-
-                {/* Highlight Pills */}
-                <div className="flex flex-wrap gap-1.5 pt-1">
-                  <span className="px-2 py-0.5 rounded-md text-[11px] bg-[#121316] text-gray-300 border border-gray-800 flex items-center gap-1">
-                    <MapPin className="w-3 h-3 text-red-400" /> Nirant Cross Road
-                  </span>
-                  <span className="px-2 py-0.5 rounded-md text-[11px] bg-[#121316] text-gray-300 border border-gray-800 flex items-center gap-1">
-                    <CheckCircle2 className="w-3 h-3 text-red-500" /> Doubt Resolution Desks
-                  </span>
-                </div>
-              </div>
-
-              {/* Bottom Card Footer */}
-              <div className="pt-3.5 mt-3.5 border-t border-gray-800/80 flex items-center justify-between text-xs text-gray-400 relative z-10">
-                <span className="font-bold text-red-400">5,000+ Alumni</span>
-                <span className="text-[10px] font-mono text-gray-500">Flagship Center</span>
-              </div>
-            </div>
-
-            {/* Bento Card 4: 2020 Maninagar HQ & Digital Analytics (4-Cols) */}
-            <div className="col-span-1 md:col-span-6 lg:col-span-4 bg-[#1E2129] border border-gray-800 hover:border-red-500/60 p-6 sm:p-7 rounded-3xl relative overflow-hidden group shadow-xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1">
-
-              <div className="space-y-4 relative z-10">
-                {/* Header Row */}
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="px-3 py-1 bg-red-950/80 text-red-400 border border-red-800/40 font-mono font-black text-xs sm:text-sm rounded-xl">
-                      2020
-                    </span>
-                  </div>
-                  <div className="w-9 h-9 rounded-xl bg-red-600/15 border border-red-500/30 flex items-center justify-center text-red-500 shadow-sm">
-                    <Sparkles className="w-4 h-4" />
-                  </div>
-                </div>
-
-                {/* Title & Story */}
-                <div className="space-y-2">
-                  <h3 className="text-lg sm:text-xl font-extrabold text-white group-hover:text-red-400 transition-colors">
-                    Maninagar HQ &amp; Smart Tech
-                  </h3>
-                  <p className="text-xs sm:text-sm text-gray-300 leading-relaxed font-normal">
-                    Inaugurated modern Head Office at Takshshila Square, Krishnabaug. Integrated smart interactive screens, recorded video lectures, and digital test analytics for NEET &amp; JEE.
-                  </p>
-                </div>
-
-                {/* Highlight Pills */}
-                <div className="flex flex-wrap gap-1.5 pt-1">
-                  <span className="px-2 py-0.5 rounded-md text-[11px] bg-[#121316] text-gray-300 border border-gray-800 flex items-center gap-1">
-                    <MapPin className="w-3 h-3 text-red-400" /> Takshshila Square HQ
-                  </span>
-                  <span className="px-2 py-0.5 rounded-md text-[11px] bg-[#121316] text-gray-300 border border-gray-800 flex items-center gap-1">
-                    <CheckCircle2 className="w-3 h-3 text-red-500" /> Hybrid Learning
-                  </span>
-                </div>
-              </div>
-
-              {/* Bottom Card Footer */}
-              <div className="pt-3.5 mt-3.5 border-t border-gray-800/80 flex items-center justify-between text-xs text-gray-400 relative z-10">
-                <span className="font-bold text-red-400">15,000+ Enrolled</span>
-                <span className="text-[10px] font-mono text-gray-500">Digital Analytics</span>
-              </div>
-            </div>
-
-            {/* Bento Card 5: 2025-26 27+ Years Legacy (4-Cols Featured) */}
-            <div className="col-span-1 md:col-span-12 lg:col-span-4 bg-gradient-to-br from-[#232732] via-[#1E2129] to-[#15171D] border-2 border-red-500/50 hover:border-red-500 p-6 sm:p-7 rounded-3xl relative overflow-hidden group shadow-2xl shadow-red-950/30 transition-all duration-300 flex flex-col justify-between ring-2 ring-red-500/20 hover:-translate-y-1">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/15 rounded-full blur-xl pointer-events-none" />
-
-              <div className="space-y-4 relative z-10">
-                {/* Header Row */}
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="px-3 py-1 bg-red-600 text-white font-mono font-black text-xs sm:text-sm rounded-xl shadow-xs">
-                      2025–26
-                    </span>
-                  </div>
-                  <div className="w-9 h-9 rounded-xl bg-red-600 border border-red-400/50 flex items-center justify-center text-white shadow-lg shadow-red-600/30">
-                    <Trophy className="w-4 h-4" />
-                  </div>
-                </div>
-
-                {/* Title & Story */}
-                <div className="space-y-2">
-                  <h3 className="text-lg sm:text-xl font-extrabold text-white group-hover:text-red-400 transition-colors">
-                    27+ Years of Excellence
-                  </h3>
-                  <p className="text-xs sm:text-sm text-gray-300 leading-relaxed font-normal">
-                    Over 22,000+ students guided with hundreds of 100/100 perfect board &amp; competitive exam scores. Continuing Late Shri R.A. Ahuja Sir’s vision under Sunil Ahuja’s academic leadership.
-                  </p>
-                </div>
-
-                {/* Highlight Pills */}
-                <div className="flex flex-wrap gap-1.5 pt-1">
-                  <span className="px-2 py-0.5 rounded-md text-[11px] bg-[#121316] text-gray-300 border border-gray-800 flex items-center gap-1">
-                    <MapPin className="w-3 h-3 text-red-400" /> Maninagar &amp; Vastral
-                  </span>
-                  <span className="px-2 py-0.5 rounded-md text-[11px] bg-[#121316] text-gray-300 border border-gray-800 flex items-center gap-1">
-                    <CheckCircle2 className="w-3 h-3 text-red-500" /> 22,000+ Alumni Network
-                  </span>
-                </div>
-              </div>
-
-              {/* Bottom Card Footer */}
-              <div className="pt-3.5 mt-3.5 border-t border-gray-800/80 flex items-center justify-between text-xs text-gray-400 relative z-10">
-                <span className="font-bold text-red-400">22,000+ Students Guided</span>
-                <span className="text-[10px] font-mono text-gray-400">Silver Jubilee</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. CTA SECTION */}
-      <section className="max-w-4xl mx-auto px-4 text-center pt-2">
-        <div className="bg-slate-50 p-8 sm:p-10 rounded-3xl border border-gray-200 shadow-xs space-y-5">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
-            Ready To Experience The Ahuja Difference?
-          </h2>
-          <p className="text-sm text-gray-600 max-w-md mx-auto">
-            Take the first step towards academic excellence with Ahmedabad's trusted institute since 1998.
-          </p>
-          <div className="flex flex-wrap justify-center gap-3">
-            <button
-              onClick={() => onInquireClick()}
-              className="px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl text-sm transition shadow-md shadow-red-600/20 cursor-pointer"
-            >
-              Inquire For Admissions
-            </button>
-            <button
-              onClick={() => setActiveTab('contact')}
-              className="px-6 py-3 bg-white hover:bg-gray-50 text-gray-800 font-semibold rounded-xl text-sm transition border border-gray-300 cursor-pointer shadow-xs"
-            >
-              Contact Campuses
-            </button>
-          </div>
-        </div>
-      </section>
-    </div>
-  );
-};
+'use client';
+
+import React, { useEffect } from 'react';
+import { PageTab } from '../types';
+import {
+  aboutStats,
+  facultyMembers,
+} from '../data/mockData';
+import {
+  ArrowRight,
+  Compass,
+  Target,
+  Sparkles,
+  Building2,
+  Shield,
+  BookOpen,
+  Trophy,
+  MapPin,
+  CheckCircle2,
+  GraduationCap,
+} from 'lucide-react';
+
+interface AboutPageProps {
+  setActiveTab: (tab: PageTab) => void;
+  onInquireClick: (context?: string) => void;
+}
+
+export const AboutPage: React.FC<AboutPageProps> = ({ setActiveTab, onInquireClick }) => {
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.location.hash.includes('facult')) {
+      setTimeout(() => {
+        document.getElementById('star-faculties')?.scrollIntoView({ behavior: 'smooth' });
+      }, 150);
+    }
+  }, []);
+  return (
+    <div className="space-y-16 sm:space-y-24 pb-16 bg-white text-gray-900">
+      {/* 1. HERO SECTION (Unified Hero Layout matching HomePage, Courses, and Contact) */}
+      <section className="relative pt-12 sm:pt-20 pb-4 overflow-hidden bg-gradient-to-b from-red-50/40 via-white to-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-red-200 bg-red-50 text-red-700 text-xs sm:text-sm font-bold shadow-xs">
+            <Sparkles className="w-4 h-4 text-red-600" />
+            <span>SINCE 1998 • 27+ YEARS OF EXCELLENCE</span>
+          </div>
+
+          {/* Headline */}
+          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 tracking-tight leading-[1.12]">
+            Our Legacy of <br />
+            <span className="text-red-600">Empowering Students</span>
+          </h1>
+
+          {/* Subtitle */}
+          <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto font-normal leading-relaxed">
+            For over two decades, Ahuja Career Institute has been the cornerstone of academic success, blending traditional discipline with modern educational methodologies across Ahmedabad.
+          </p>
+
+          {/* Action Buttons */}
+          <div className="pt-2 flex flex-wrap items-center justify-center gap-3.5">
+            <button
+              onClick={() => setActiveTab('courses')}
+              className="px-7 py-3.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl text-sm transition-all shadow-md shadow-red-600/20 active:scale-98 flex items-center gap-2 cursor-pointer"
+            >
+              Explore Programs <ArrowRight className="w-4 h-4" />
+            </button>
+            <a
+              href="#journey-timeline-section"
+              className="px-6 py-3.5 bg-gray-100 hover:bg-gray-200 text-gray-800 font-semibold rounded-xl text-sm transition cursor-pointer"
+            >
+              View 27-Year Journey ↓
+            </a>
+          </div>
+
+          {/* Hero Image Showcase */}
+          <div className="relative pt-6 max-w-4xl mx-auto">
+            <div className="relative rounded-3xl overflow-hidden shadow-xl border border-gray-200 group">
+              <img
+                src="/assets/Directors/Professional Office Portrait.png"
+                alt="Director Desk & Academic Governance at Ahuja Career Institute"
+                className="w-full h-64 sm:h-96 object-cover group-hover:scale-102 transition duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent flex flex-col justify-end p-6 sm:p-8 text-left">
+                <div className="flex flex-wrap gap-2 mb-2">
+                  <span className="px-3 py-1 bg-red-600 text-white text-xs font-bold rounded-full">
+                    Since 1998 Ahmedabad
+                  </span>
+                  <span className="px-3 py-1 bg-black/50 backdrop-blur-md text-white text-xs font-medium rounded-full">
+                    Maninagar HQ &amp; Vastral Campuses
+                  </span>
+                </div>
+                <p className="text-white text-base sm:text-xl font-bold">
+                  27 Years of Concept-First Coaching, Individual Mentorship &amp; Proven Academic Pedagogy
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. STATS BAR & VISIONARY LEADERSHIP (Midnight Obsidian Background - Compact Layout) */}
+      <section className="mx-4 sm:mx-6 lg:mx-8 max-w-6xl lg:mx-auto bg-[#18191B] text-white rounded-3xl p-5 sm:p-7 border border-gray-800 shadow-2xl space-y-6">
+        {/* Stats Grid */}
+        <div className="bg-gray-900/90 rounded-2xl border border-gray-800 p-4 sm:p-5 grid grid-cols-1 sm:grid-cols-3 gap-3 text-center shadow-md">
+          {aboutStats.map((st, i) => (
+            <div key={i} className="space-y-0.5">
+              <div className="text-xl sm:text-2xl font-extrabold text-red-500">{st.value}</div>
+              <div className="text-[10px] sm:text-[11px] text-gray-300 font-bold uppercase tracking-wider">{st.label}</div>
+            </div>
+          ))}
+        </div>
+
+        {/* Visionary Leadership: Founder & Director Grid */}
+        <div className="space-y-5">
+          <div className="text-center space-y-1">
+            <span className="text-[10px] font-bold text-red-400 uppercase tracking-widest font-mono">
+              LEADERSHIP &amp; GUIDING LIGHT
+            </span>
+            <h2 className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-white">
+              The Minds Shaping Our <span className="text-red-500">27-Year Legacy</span>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 items-stretch">
+            {/* Card 1: Late Shri R.A. Ahuja Sir (Founder) */}
+            <div className="bg-gray-900/90 p-4 sm:p-5 rounded-2xl border border-gray-800 shadow-xl flex flex-col justify-between space-y-3 hover:border-gray-700 transition">
+              <div className="space-y-3">
+                <div className="flex items-center space-x-3.5">
+                  <div className="relative shrink-0">
+                    <img
+                      src="/assets/Directors/Founder - Rajkumar Ahuja.jpeg"
+                      alt="Late Shri R.A. Ahuja Sir - Founder"
+                      className="w-16 h-16 sm:w-18 sm:h-18 rounded-xl object-cover object-top border-2 border-red-500/40 shadow-md"
+                    />
+                    <span className="absolute -bottom-1 -right-1 px-1.5 py-0.2 bg-red-600 text-white text-[9px] font-bold rounded shadow-xs">
+                      Founder
+                    </span>
+                  </div>
+                  <div>
+                    <h3 className="text-base sm:text-lg font-extrabold text-white leading-tight">
+                      Late Shri R.A. Ahuja Sir
+                    </h3>
+                    <p className="text-[11px] font-bold text-red-400 uppercase tracking-wide mt-0.5">
+                      The Visionary Founder (Since 1998)
+                    </p>
+                    <p className="text-[10px] sm:text-[11px] text-gray-400">
+                      Pioneer of Concept-First Coaching in Ahmedabad
+                    </p>
+                  </div>
+                </div>
+
+                <div className="bg-[#121316] p-2.5 sm:p-3 rounded-xl border border-gray-800/80">
+                  <p className="text-xs text-gray-200 italic font-medium leading-snug">
+                    "Life is Great but it never grows great until it is focused, dedicated &amp; disciplined."
+                  </p>
+                </div>
+              </div>
+
+              <div className="pt-2 border-t border-gray-800/80 flex items-center justify-between text-[11px] text-gray-400">
+                <span>Core Pillar: Dedicated Pedagogy</span>
+                <span className="text-red-400 font-bold font-mono">1998 — Everlasting</span>
+              </div>
+            </div>
+
+            {/* Card 2: Sunil Ahuja (Director) */}
+            <div className="bg-gray-900/90 p-4 sm:p-5 rounded-2xl border border-gray-800 shadow-xl flex flex-col justify-between space-y-3 hover:border-gray-700 transition">
+              <div className="space-y-3">
+                <div className="flex items-center space-x-3.5">
+                  <div className="relative shrink-0">
+                    <img
+                      src="/assets/Directors/Director - Sunil Ahuja.jpeg"
+                      alt="Sunil Ahuja - Director"
+                      className="w-16 h-16 sm:w-18 sm:h-18 rounded-xl object-cover object-top border-2 border-red-500/40 shadow-md"
+                    />
+                    <span className="absolute -bottom-1 -right-1 px-1.5 py-0.2 bg-red-600 text-white text-[9px] font-bold rounded shadow-xs">
+                      Director
+                    </span>
+                  </div>
+                  <div>
+                    <h3 className="text-base sm:text-lg font-extrabold text-white leading-tight">
+                      Sunil Ahuja
+                    </h3>
+                    <p className="text-[11px] font-bold text-red-400 uppercase tracking-wide mt-0.5">
+                      Director, Ahuja Career Institute
+                    </p>
+                    <p className="text-[10px] sm:text-[11px] text-gray-400">
+                      Academic Leadership &amp; Student Mentorship
+                    </p>
+                  </div>
+                </div>
+
+                <div className="bg-[#121316] p-2.5 sm:p-3 rounded-xl border border-gray-800/80">
+                  <p className="text-xs text-gray-200 italic font-medium leading-snug">
+                    "Every student possesses immense potential. With structured doubt clearing and personal care, top ranks become natural."
+                  </p>
+                </div>
+              </div>
+
+              <div className="pt-2 border-t border-gray-800/80 flex items-center justify-between text-[11px] text-gray-400">
+                <span>Direction: Academic Excellence</span>
+                <button
+                  onClick={() => onInquireClick()}
+                  className="text-red-400 hover:text-red-300 font-bold transition flex items-center gap-1 cursor-pointer"
+                >
+                  Connect with Mentors <ArrowRight className="w-3 h-3" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. OUR STAR FACULTIES (Merged & Preprocessed with Red Popout Ring) */}
+      <section id="star-faculties" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24 space-y-8">
+        <div className="text-center space-y-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-red-200 bg-red-50 text-red-700 text-xs font-bold uppercase tracking-wider">
+            <GraduationCap className="w-4 h-4 text-red-600" />
+            <span>Academic Wing • Ahuja Star Mentors</span>
+          </div>
+          <h2 className="text-2xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
+            Our <span className="text-red-600">Star Faculties</span> &amp; Mentors
+          </h2>
+          <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto">
+            Ahmedabad’s seasoned subject authorities across Physics, Chemistry, Mathematics, Biology, and Commerce — delivering conceptual depth, error-correction drills, and 1-on-1 mentorship since 1998.
+          </p>
+        </div>
+
+        {/* Faculty Grid (Rendered with Red Popout Ring Just Like Students) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+          {facultyMembers.map((fac) => (
+            <div
+              key={fac.id}
+              className="group relative bg-[#FAF8F5] rounded-3xl border border-[#F0EBE1] hover:border-red-400 p-5 shadow-[0_4px_25px_rgba(0,0,0,0.05)] hover:shadow-[0_16px_36px_rgba(220,38,38,0.14)] transition-all duration-300 hover:-translate-y-1.5 flex flex-col items-center justify-between text-center overflow-hidden"
+            >
+              {/* Faculty Portrait (Popout with Red Circle Ring) */}
+              <div className="relative w-full h-[270px] sm:h-[285px] flex items-center justify-center mb-2 mt-2">
+                <div className="relative z-10 w-full h-full flex items-center justify-center pointer-events-none">
+                  <img
+                    src={fac.avatarUrl}
+                    alt={`${fac.name} – Star Faculty at Ahuja Career Institute`}
+                    className="w-full h-full object-contain select-none drop-shadow-[0_12px_24px_rgba(220,38,38,0.18)] group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
+                    draggable={false}
+                  />
+                </div>
+              </div>
+
+              {/* Faculty Details Content (Only Name & Subject Expert Name) */}
+              <div className="w-full pt-3 pb-1 border-t border-[#EAE4D8] flex flex-col items-center mt-auto">
+                <h3 className="text-base sm:text-lg font-black text-gray-900 group-hover:text-red-600 transition-colors uppercase tracking-tight leading-tight">
+                  {fac.name}
+                </h3>
+                <p className="text-xs sm:text-sm font-bold text-red-600 uppercase tracking-wide mt-1">
+                  {fac.role}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* How Our Faculty Delivers Results (Mentorship Methodology) */}
+        <div className="bg-[#18191B] text-white rounded-3xl p-6 sm:p-8 border border-gray-800 shadow-xl space-y-6">
+          <div className="text-center space-y-1">
+            <span className="text-[10px] font-bold text-red-400 uppercase tracking-widest font-mono">
+              PROVEN PEDAGOGICAL SYSTEM
+            </span>
+            <h3 className="text-xl sm:text-2xl font-extrabold text-white">
+              How Our Faculty Delivers <span className="text-red-400">Consistent Top Ranks</span>
+            </h3>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div className="bg-gray-900/90 p-4 sm:p-5 rounded-2xl border border-gray-800 space-y-2">
+              <div className="w-8 h-8 rounded-xl bg-red-600/20 text-red-400 flex items-center justify-center font-bold text-xs font-mono">
+                01
+              </div>
+              <h4 className="text-sm font-bold text-white">Visual &amp; Conceptual Depth</h4>
+              <p className="text-xs text-gray-400 leading-relaxed">
+                Lectures emphasize fundamental mechanics with smart interactive visuals rather than formula memorization.
+              </p>
+            </div>
+
+            <div className="bg-gray-900/90 p-4 sm:p-5 rounded-2xl border border-gray-800 space-y-2">
+              <div className="w-8 h-8 rounded-xl bg-red-600/20 text-red-400 flex items-center justify-center font-bold text-xs font-mono">
+                02
+              </div>
+              <h4 className="text-sm font-bold text-white">Diagnostic Error Audits</h4>
+              <p className="text-xs text-gray-400 leading-relaxed">
+                After every test, faculties audit answer sheets to classify conceptual gaps vs calculation slips, prescribing custom drill sheets.
+              </p>
+            </div>
+
+            <div className="bg-gray-900/90 p-4 sm:p-5 rounded-2xl border border-gray-800 space-y-2">
+              <div className="w-8 h-8 rounded-xl bg-red-600/20 text-red-400 flex items-center justify-center font-bold text-xs font-mono">
+                03
+              </div>
+              <h4 className="text-sm font-bold text-white">Daily 1-on-1 Doubt Desks</h4>
+              <p className="text-xs text-gray-400 leading-relaxed">
+                Dedicated personal teacher slots before and after sessions guarantee that no question remains unresolved before the next chapter.
+              </p>
+            </div>
+          </div>
+
+          <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-gray-800/80 text-xs">
+            <span className="text-gray-400">
+              Want to experience a lecture first-hand before enrolling?
+            </span>
+            <button
+              onClick={() => onInquireClick('Free Demo Lecture with Faculty')}
+              className="px-5 py-2.5 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl transition shadow-md shadow-red-600/25 active:scale-98 cursor-pointer flex items-center gap-1.5"
+            >
+              <Sparkles className="w-4 h-4" /> Attend A Free Demo Lecture
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. OUR CORE PHILOSOPHY - All 3 Cards with Photo Headers in Unified Theme */}
+      <section className="max-w-5xl mx-auto px-4 sm:px-6">
+        <div className="text-center space-y-2 mb-8">
+          <div className="inline-block px-3 py-1 bg-red-50 border border-red-100 text-red-600 text-[11px] font-bold uppercase tracking-wider rounded-full">
+            Our Guiding Foundations
+          </div>
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
+            Our Core <span className="text-red-600">Philosophy</span>
+          </h2>
+          <p className="text-xs sm:text-sm text-gray-600 max-w-xl mx-auto">
+            The values that drive every class, mentor session, and test evaluation.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Card 1: Conceptual Mastery */}
+          <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 card-hover-effect flex flex-col group">
+            <div className="h-44 sm:h-48 overflow-hidden relative">
+              <img
+                src="/assets/pillar-conceptual-mastery.jpg"
+                alt="Conceptual Mastery - Indian Student Diligently Studying Concepts"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+              <span className="absolute top-3 left-3 px-2.5 py-0.5 bg-white/95 backdrop-blur-xs text-red-600 text-[10px] font-extrabold rounded-md shadow-xs flex items-center gap-1">
+                <Sparkles className="w-3 h-3" /> Pillar 01
+              </span>
+            </div>
+            <div className="p-5 space-y-2.5 flex-1 flex flex-col justify-between">
+              <div className="space-y-1.5">
+                <h3 className="text-base sm:text-lg font-bold text-gray-900 group-hover:text-red-600 transition-colors">
+                  Conceptual Mastery
+                </h3>
+                <p className="text-xs text-gray-600 leading-relaxed">
+                  We prioritize deep understanding over rote learning, ensuring students grasp the fundamental mechanics of every subject.
+                </p>
+              </div>
+              <div className="pt-2.5 border-t border-gray-100 flex items-center justify-between text-[11px] font-semibold text-gray-400">
+                <span>Core Pedagogy</span>
+                <span className="text-red-500 font-bold">Deep Foundation</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 2: Unwavering Discipline */}
+          <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 card-hover-effect flex flex-col group">
+            <div className="h-44 sm:h-48 overflow-hidden relative">
+              <img
+                src="/assets/pillar-unwavering-discipline.jpg"
+                alt="Unwavering Discipline - Focused Indian Students in Coaching Classroom"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+              <span className="absolute top-3 left-3 px-2.5 py-0.5 bg-white/95 backdrop-blur-xs text-red-600 text-[10px] font-extrabold rounded-md shadow-xs flex items-center gap-1">
+                <Shield className="w-3 h-3" /> Pillar 02
+              </span>
+            </div>
+            <div className="p-5 space-y-2.5 flex-1 flex flex-col justify-between">
+              <div className="space-y-1.5">
+                <h3 className="text-base sm:text-lg font-bold text-gray-900 group-hover:text-red-600 transition-colors">
+                  Unwavering Discipline
+                </h3>
+                <p className="text-xs text-gray-600 leading-relaxed">
+                  A structured environment that instills punctuality, focus, and the resilience required to conquer competitive exams and board exams.
+                </p>
+              </div>
+              <div className="pt-2.5 border-t border-gray-100 flex items-center justify-between text-[11px] font-semibold text-gray-400">
+                <span>Academic Rigor</span>
+                <span className="text-red-500 font-bold">Focus &amp; Punctuality</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 3: Student-Centric Growth */}
+          <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 card-hover-effect flex flex-col group">
+            <div className="h-44 sm:h-48 overflow-hidden relative">
+              <img
+                src="/assets/pillar-student-centric-growth.jpg"
+                alt="Student-Centric Growth - Indian Students Mentorship & Collaborative Learning"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+              <span className="absolute top-3 left-3 px-2.5 py-0.5 bg-white/95 backdrop-blur-xs text-red-600 text-[10px] font-extrabold rounded-md shadow-xs flex items-center gap-1">
+                <Target className="w-3 h-3" /> Pillar 03
+              </span>
+            </div>
+            <div className="p-5 space-y-2.5 flex-1 flex flex-col justify-between">
+              <div className="space-y-1.5">
+                <h3 className="text-base sm:text-lg font-bold text-gray-900 group-hover:text-red-600 transition-colors">
+                  Student-Centric Growth
+                </h3>
+                <p className="text-xs text-gray-600 leading-relaxed">
+                  Personalized mentoring pathways designed to identify individual strengths and systematically eliminate weaknesses.
+                </p>
+              </div>
+              <div className="pt-2.5 border-t border-gray-100 flex items-center justify-between text-[11px] font-semibold text-gray-400">
+                <span>Personal Care</span>
+                <span className="text-red-500 font-bold">Mentorship Desks</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      {/* 4. OUR 27+ YEAR JOURNEY: BENTO GRID TIMELINE (Modern, Elegant, Non-Scrolljacked) */}
+      <section id="journey-timeline-section" className="mx-4 sm:mx-6 lg:mx-8 max-w-6xl lg:mx-auto">
+        <div className="bg-[#18191B] text-white rounded-3xl p-6 sm:p-10 lg:p-12 border border-gray-800 shadow-2xl space-y-8 sm:space-y-10">
+          {/* Section Header */}
+          <div className="text-center space-y-2.5 max-w-2xl mx-auto">
+            <div className="inline-block px-3.5 py-1 bg-red-600/20 text-red-400 border border-red-500/30 text-[11px] font-bold uppercase tracking-wider rounded-full font-mono">
+              1998 — 2026 • 27-YEAR LEGACY BENTO
+            </div>
+            <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
+              Our 27+ Year <span className="text-red-500">Journey</span>
+            </h2>
+            <p className="text-xs sm:text-sm text-gray-400 leading-relaxed">
+              Explore the key evolutionary milestones that established Ahuja Career Institute as Ahmedabad's trusted hub of academic excellence.
+            </p>
+          </div>
+
+          {/* Bento Grid Layout (12 Columns Desktop, Responsive Stack on Mobile) */}
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-5 sm:gap-6">
+            {/* Bento Card 1: 1998 Inception & Founder's Genesis (Large Featured 7-Cols) */}
+            <div className="col-span-1 md:col-span-12 lg:col-span-7 bg-gradient-to-br from-[#1E2129] via-[#1A1C23] to-[#14161C] border border-gray-800 hover:border-red-500/60 p-6 sm:p-8 rounded-3xl relative overflow-hidden group shadow-xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1">
+              {/* Ambient Red Glow */}
+              <div className="absolute top-0 right-0 w-48 h-48 bg-red-600/10 rounded-full blur-2xl pointer-events-none" />
+
+              <div className="space-y-5 relative z-10">
+                {/* Header Row */}
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="px-3.5 py-1 bg-red-600 text-white font-mono font-black text-sm rounded-xl shadow-xs">
+                      1998
+                    </span>
+                  </div>
+                  <div className="w-10 h-10 rounded-2xl bg-red-600/15 border border-red-500/30 flex items-center justify-center text-red-500 shadow-sm">
+                    <BookOpen className="w-5 h-5" />
+                  </div>
+                </div>
+
+                {/* Title & Story */}
+                <div className="space-y-2.5">
+                  <h3 className="text-xl sm:text-2xl font-extrabold text-white group-hover:text-red-400 transition-colors">
+                    Humble Beginnings in Ghodasar
+                  </h3>
+                  <p className="text-xs sm:text-sm text-gray-300 leading-relaxed font-normal">
+                    Founded by Late Shri R.A. Ahuja Sir with a small home setup in Ghodasar. Pioneered concept-first pedagogy over rote learning, instilling rigorous discipline and personalized mentoring that produced our first generation of Gujarat board toppers.
+                  </p>
+                </div>
+
+                {/* Founder Quote Pill */}
+                <div className="p-3.5 rounded-xl bg-black/40 border border-gray-800/80 text-xs italic text-gray-300 font-medium">
+                  "Life is Great but it never grows great until it is focused, dedicated &amp; disciplined."
+                  <span className="block text-[11px] text-red-400 font-semibold not-italic mt-1">— Late Shri R.A. Ahuja Sir (Founder)</span>
+                </div>
+
+                {/* Highlight Pills */}
+                <div className="flex flex-wrap gap-2 pt-1">
+                  <span className="px-2.5 py-1 rounded-lg text-xs bg-[#121316] text-gray-300 border border-gray-800 flex items-center gap-1">
+                    <MapPin className="w-3.5 h-3.5 text-red-400" /> Ghodasar Home Batch
+                  </span>
+                  <span className="px-2.5 py-1 rounded-lg text-xs bg-[#121316] text-gray-300 border border-gray-800 flex items-center gap-1">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-red-500" /> Concept-First Pedagogy
+                  </span>
+                  <span className="px-2.5 py-1 rounded-lg text-xs bg-[#121316] text-gray-300 border border-gray-800 flex items-center gap-1">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-red-500" /> 1-on-1 Mentorship
+                  </span>
+                </div>
+              </div>
+
+              {/* Bottom Card Footer */}
+              <div className="pt-4 mt-4 border-t border-gray-800/80 flex items-center justify-between text-xs text-gray-400 relative z-10">
+                <span className="font-bold text-red-400">100% Board Pass Rate (1st Batch)</span>
+                <span className="text-[11px] font-mono text-gray-500">The Inception of Excellence</span>
+              </div>
+            </div>
+
+            {/* Bento Card 2: 2005 Expansion to Jawaharchowk (5-Cols) */}
+            <div className="col-span-1 md:col-span-12 lg:col-span-5 bg-[#1E2129] border border-gray-800 hover:border-red-500/60 p-6 sm:p-8 rounded-3xl relative overflow-hidden group shadow-xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1">
+
+              <div className="space-y-4 relative z-10">
+                {/* Header Row */}
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="px-3.5 py-1 bg-red-950/80 text-red-400 border border-red-800/40 font-mono font-black text-sm rounded-xl">
+                      2005
+                    </span>
+                  </div>
+                  <div className="w-10 h-10 rounded-2xl bg-red-600/15 border border-red-500/30 flex items-center justify-center text-red-500 shadow-sm">
+                    <Compass className="w-5 h-5" />
+                  </div>
+                </div>
+
+                {/* Title & Story */}
+                <div className="space-y-2">
+                  <h3 className="text-xl sm:text-2xl font-extrabold text-white group-hover:text-red-400 transition-colors">
+                    Expansion to Jawaharchowk
+                  </h3>
+                  <p className="text-xs sm:text-sm text-gray-300 leading-relaxed font-normal">
+                    Expanded into Jawaharchowk to accommodate surging demand. Introduced structured batch systems, regular weekend test series, and specialized board &amp; entrance tracks across Gujarat.
+                  </p>
+                </div>
+
+                {/* Highlight Pills */}
+                <div className="flex flex-wrap gap-2 pt-1">
+                  <span className="px-2.5 py-1 rounded-lg text-xs bg-[#121316] text-gray-300 border border-gray-800 flex items-center gap-1">
+                    <MapPin className="w-3.5 h-3.5 text-red-400" /> Jawaharchowk, Maninagar
+                  </span>
+                  <span className="px-2.5 py-1 rounded-lg text-xs bg-[#121316] text-gray-300 border border-gray-800 flex items-center gap-1">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-red-500" /> Weekend Test Series
+                  </span>
+                  <span className="px-2.5 py-1 rounded-lg text-xs bg-[#121316] text-gray-300 border border-gray-800 flex items-center gap-1">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-red-500" /> Board Specialization
+                  </span>
+                </div>
+              </div>
+
+              {/* Bottom Card Footer */}
+              <div className="pt-4 mt-4 border-t border-gray-800/80 flex items-center justify-between text-xs text-gray-400 relative z-10">
+                <span className="font-bold text-red-400">500+ Students Milestone</span>
+                <span className="text-[11px] font-mono text-gray-500">Systematic Testing</span>
+              </div>
+            </div>
+
+            {/* Bento Card 3: 2014 Vastral Flagship Campus (4-Cols) */}
+            <div className="col-span-1 md:col-span-6 lg:col-span-4 bg-[#1E2129] border border-gray-800 hover:border-red-500/60 p-6 sm:p-7 rounded-3xl relative overflow-hidden group shadow-xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1">
+
+              <div className="space-y-4 relative z-10">
+                {/* Header Row */}
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="px-3 py-1 bg-red-950/80 text-red-400 border border-red-800/40 font-mono font-black text-xs sm:text-sm rounded-xl">
+                      2014
+                    </span>
+                  </div>
+                  <div className="w-9 h-9 rounded-xl bg-red-600/15 border border-red-500/30 flex items-center justify-center text-red-500 shadow-sm">
+                    <Building2 className="w-4 h-4" />
+                  </div>
+                </div>
+
+                {/* Title & Story */}
+                <div className="space-y-2">
+                  <h3 className="text-lg sm:text-xl font-extrabold text-white group-hover:text-red-400 transition-colors">
+                    Vastral Flagship Campus
+                  </h3>
+                  <p className="text-xs sm:text-sm text-gray-300 leading-relaxed font-normal">
+                    Built our premier campus at 502 Avadh Pride, Nirant Cross Road. Features spacious lecture halls, dedicated faculty doubt desks, and Science &amp; Commerce divisions.
+                  </p>
+                </div>
+
+                {/* Highlight Pills */}
+                <div className="flex flex-wrap gap-1.5 pt-1">
+                  <span className="px-2 py-0.5 rounded-md text-[11px] bg-[#121316] text-gray-300 border border-gray-800 flex items-center gap-1">
+                    <MapPin className="w-3 h-3 text-red-400" /> Nirant Cross Road
+                  </span>
+                  <span className="px-2 py-0.5 rounded-md text-[11px] bg-[#121316] text-gray-300 border border-gray-800 flex items-center gap-1">
+                    <CheckCircle2 className="w-3 h-3 text-red-500" /> Doubt Resolution Desks
+                  </span>
+                </div>
+              </div>
+
+              {/* Bottom Card Footer */}
+              <div className="pt-3.5 mt-3.5 border-t border-gray-800/80 flex items-center justify-between text-xs text-gray-400 relative z-10">
+                <span className="font-bold text-red-400">5,000+ Alumni</span>
+                <span className="text-[10px] font-mono text-gray-500">Flagship Center</span>
+              </div>
+            </div>
+
+            {/* Bento Card 4: 2020 Maninagar HQ & Digital Analytics (4-Cols) */}
+            <div className="col-span-1 md:col-span-6 lg:col-span-4 bg-[#1E2129] border border-gray-800 hover:border-red-500/60 p-6 sm:p-7 rounded-3xl relative overflow-hidden group shadow-xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1">
+
+              <div className="space-y-4 relative z-10">
+                {/* Header Row */}
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="px-3 py-1 bg-red-950/80 text-red-400 border border-red-800/40 font-mono font-black text-xs sm:text-sm rounded-xl">
+                      2020
+                    </span>
+                  </div>
+                  <div className="w-9 h-9 rounded-xl bg-red-600/15 border border-red-500/30 flex items-center justify-center text-red-500 shadow-sm">
+                    <Sparkles className="w-4 h-4" />
+                  </div>
+                </div>
+
+                {/* Title & Story */}
+                <div className="space-y-2">
+                  <h3 className="text-lg sm:text-xl font-extrabold text-white group-hover:text-red-400 transition-colors">
+                    Maninagar HQ &amp; Smart Tech
+                  </h3>
+                  <p className="text-xs sm:text-sm text-gray-300 leading-relaxed font-normal">
+                    Inaugurated modern Head Office at Takshshila Square, Krishnabaug. Integrated smart interactive screens, recorded video lectures, and digital test analytics for NEET &amp; JEE.
+                  </p>
+                </div>
+
+                {/* Highlight Pills */}
+                <div className="flex flex-wrap gap-1.5 pt-1">
+                  <span className="px-2 py-0.5 rounded-md text-[11px] bg-[#121316] text-gray-300 border border-gray-800 flex items-center gap-1">
+                    <MapPin className="w-3 h-3 text-red-400" /> Takshshila Square HQ
+                  </span>
+                  <span className="px-2 py-0.5 rounded-md text-[11px] bg-[#121316] text-gray-300 border border-gray-800 flex items-center gap-1">
+                    <CheckCircle2 className="w-3 h-3 text-red-500" /> Hybrid Learning
+                  </span>
+                </div>
+              </div>
+
+              {/* Bottom Card Footer */}
+              <div className="pt-3.5 mt-3.5 border-t border-gray-800/80 flex items-center justify-between text-xs text-gray-400 relative z-10">
+                <span className="font-bold text-red-400">15,000+ Enrolled</span>
+                <span className="text-[10px] font-mono text-gray-500">Digital Analytics</span>
+              </div>
+            </div>
+
+            {/* Bento Card 5: 2025-26 27+ Years Legacy (4-Cols Featured) */}
+            <div className="col-span-1 md:col-span-12 lg:col-span-4 bg-gradient-to-br from-[#232732] via-[#1E2129] to-[#15171D] border-2 border-red-500/50 hover:border-red-500 p-6 sm:p-7 rounded-3xl relative overflow-hidden group shadow-2xl shadow-red-950/30 transition-all duration-300 flex flex-col justify-between ring-2 ring-red-500/20 hover:-translate-y-1">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-red-600/15 rounded-full blur-xl pointer-events-none" />
+
+              <div className="space-y-4 relative z-10">
+                {/* Header Row */}
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="px-3 py-1 bg-red-600 text-white font-mono font-black text-xs sm:text-sm rounded-xl shadow-xs">
+                      2025–26
+                    </span>
+                  </div>
+                  <div className="w-9 h-9 rounded-xl bg-red-600 border border-red-400/50 flex items-center justify-center text-white shadow-lg shadow-red-600/30">
+                    <Trophy className="w-4 h-4" />
+                  </div>
+                </div>
+
+                {/* Title & Story */}
+                <div className="space-y-2">
+                  <h3 className="text-lg sm:text-xl font-extrabold text-white group-hover:text-red-400 transition-colors">
+                    27+ Years of Excellence
+                  </h3>
+                  <p className="text-xs sm:text-sm text-gray-300 leading-relaxed font-normal">
+                    Over 22,000+ students guided with hundreds of 100/100 perfect board &amp; competitive exam scores. Continuing Late Shri R.A. Ahuja Sir’s vision under Sunil Ahuja’s academic leadership.
+                  </p>
+                </div>
+
+                {/* Highlight Pills */}
+                <div className="flex flex-wrap gap-1.5 pt-1">
+                  <span className="px-2 py-0.5 rounded-md text-[11px] bg-[#121316] text-gray-300 border border-gray-800 flex items-center gap-1">
+                    <MapPin className="w-3 h-3 text-red-400" /> Maninagar &amp; Vastral
+                  </span>
+                  <span className="px-2 py-0.5 rounded-md text-[11px] bg-[#121316] text-gray-300 border border-gray-800 flex items-center gap-1">
+                    <CheckCircle2 className="w-3 h-3 text-red-500" /> 22,000+ Alumni Network
+                  </span>
+                </div>
+              </div>
+
+              {/* Bottom Card Footer */}
+              <div className="pt-3.5 mt-3.5 border-t border-gray-800/80 flex items-center justify-between text-xs text-gray-400 relative z-10">
+                <span className="font-bold text-red-400">22,000+ Students Guided</span>
+                <span className="text-[10px] font-mono text-gray-400">Silver Jubilee</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. CTA SECTION */}
+      <section className="max-w-4xl mx-auto px-4 text-center pt-2">
+        <div className="bg-slate-50 p-8 sm:p-10 rounded-3xl border border-gray-200 shadow-xs space-y-5">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-gray-900 tracking-tight">
+            Ready To Experience The Ahuja Difference?
+          </h2>
+          <p className="text-sm text-gray-600 max-w-md mx-auto">
+            Take the first step towards academic excellence with Ahmedabad's trusted institute since 1998.
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            <button
+              onClick={() => onInquireClick()}
+              className="px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl text-sm transition shadow-md shadow-red-600/20 cursor-pointer"
+            >
+              Inquire For Admissions
+            </button>
+            <button
+              onClick={() => setActiveTab('contact')}
+              className="px-6 py-3 bg-white hover:bg-gray-50 text-gray-800 font-semibold rounded-xl text-sm transition border border-gray-300 cursor-pointer shadow-xs"
+            >
+              Contact Campuses
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+};
